@@ -1,0 +1,6 @@
+dist/
+__pycache__/
+.DS_Store
+mra_index.json
+shmup_deck/art/
+.ruff_cache/

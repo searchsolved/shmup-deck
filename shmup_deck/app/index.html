@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shmup Deck</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<style>
+:root{
+  --pit:#07100B;        /* cabinet dark green-black */
+  --felt:#0C1A12;       /* card well */
+  --emerald:#2FAE6E;
+  --emerald-hot:#54E29A;
+  --gold:#D8B54A;
+  --gold-dim:#8a7434;
+  --bone:#E9E4D2;
+  --ash:#7d8a80;
+  --danger:#e0604f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--pit)}
+body{
+  background:
+    radial-gradient(120% 70% at 50% -10%, #12291b 0%, var(--pit) 60%),
+    var(--pit);
+  color:var(--bone);
+  font-family:"Avenir Next", Avenir, "Helvetica Neue", sans-serif;
+  min-height:100vh;
+  padding:max(20px, env(safe-area-inset-top)) 20px 48px;
+}
+
+header{
+  max-width:1080px;margin:0 auto 30px;
+  display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+}
+h1{
+  font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;
+  font-weight:800;font-size:clamp(34px,6vw,54px);
+  letter-spacing:.04em;text-transform:uppercase;line-height:.95;
+  color:var(--bone);
+}
+h1 em{font-style:normal;color:var(--emerald-hot)}
+.strapline{
+  font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--ash);
+}
+.controls{margin-left:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+/* screen orientation is a property of the cab, so the choice is remembered */
+.seg{display:flex;border:1px solid #1d3326;border-radius:999px;overflow:hidden;background:rgba(0,0,0,.25)}
+.seg button{
+  border:0;background:transparent;color:var(--ash);cursor:pointer;
+  padding:8px 15px;font-family:inherit;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+}
+.seg button[aria-pressed="true"]{background:var(--gold);color:#231c07}
+.seg button:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:-2px}
+.filterbar{
+  max-width:1080px;margin:0 auto 16px;display:flex;align-items:center;gap:16px;
+}
+#search{
+  flex:1;min-width:0;max-width:420px;
+  padding:9px 14px;border-radius:999px;border:1px solid #1d3326;
+  background:rgba(0,0,0,.25);color:var(--bone);font-family:inherit;font-size:13px;
+}
+#search::placeholder{color:#4e5c52;letter-spacing:.06em}
+#search:focus{outline:2px solid var(--emerald);outline-offset:1px}
+.count{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#44523f}
+.empty{
+  grid-column:1/-1;padding:50px 0;text-align:center;color:var(--ash);
+  font-size:13px;letter-spacing:.06em;
+}
+.plate .orient{
+  margin-left:auto;padding:1px 6px;border:1px solid rgba(125,138,128,.35);
+  border-radius:3px;font-size:9.5px;letter-spacing:.14em;color:#6d7a70;
+}
+.plate .plays{margin-left:auto;color:var(--emerald);font-size:10.5px;letter-spacing:.1em}
+.plate .plays + .orient{margin-left:8px}
+.statusbar{
+  display:flex;align-items:center;gap:10px;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ash);
+  border:1px solid #1d3326;border-radius:999px;
+  padding:8px 14px;background:rgba(0,0,0,.25);
+}
+.lamp{width:9px;height:9px;border-radius:50%;background:#3a4a3f;transition:background .3s, box-shadow .3s}
+.lamp.on{background:var(--emerald-hot);box-shadow:0 0 8px 1px rgba(84,226,154,.8)}
+.lamp.off{background:var(--danger);box-shadow:0 0 6px rgba(224,96,79,.6)}
+
+/* now playing banner */
+.now{
+  max-width:1080px;margin:0 auto 22px;display:flex;align-items:center;gap:14px;
+  padding:10px 14px;border:1px solid rgba(84,226,154,.35);border-radius:10px;
+  background:rgba(47,174,110,.08);
+}
+/* display:flex above would otherwise beat the hidden attribute */
+.now[hidden]{display:none}
+.now .label{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--emerald-hot)}
+.now .what{
+  font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;
+  font-weight:700;font-size:20px;letter-spacing:.05em;text-transform:uppercase;
+}
+
+.deck{
+  max-width:1080px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:26px;
+}
+
+/* ── TATE card: portrait, like the cab flyer on a marquee ── */
+.cab{
+  position:relative;border-radius:10px;overflow:hidden;
+  background:var(--felt);
+  border:2px solid #fff;
+  box-shadow:0 18px 40px -18px rgba(0,0,0,.85);
+  cursor:pointer;text-align:left;width:100%;height:100%;padding:0;
+  color:var(--bone);            /* buttons don't inherit page colour */
+  display:flex;flex-direction:column;
+  transition:transform .25s cubic-bezier(.2,.9,.3,1.2), border-color .25s;
+}
+.cab:hover,.cab:focus-visible{transform:translateY(-5px);border-color:var(--gold)}
+.cab:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:3px}
+.cab.playing{border-color:var(--emerald-hot)}
+/* Flyers arrive as raw scans of slightly different shapes. Each card is a
+   fixed poster shape, and art.json says which part of the scan to show (the
+   scan minus its blank margins), so every card lines up without cropping art. */
+.cab .art{
+  position:relative;overflow:hidden;aspect-ratio:1/1.42;
+  background-color:#13241a;background-repeat:no-repeat;
+}
+/* shown until the flyer has downloaded, or if it never does */
+.cab .art .stand-in{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  padding:18px;text-align:center;
+  font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;
+  font-weight:800;font-size:26px;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(216,181,74,.55);
+}
+.cab .art.loaded .stand-in{display:none}
+/* scanlines only over the art, faint */
+.cab .art::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg, rgba(0,0,0,.14) 0 1px, transparent 1px 3px);
+  mix-blend-mode:multiply;
+}
+.plate{
+  padding:14px 16px 16px;border-top:1px solid rgba(216,181,74,.25);
+  display:flex;flex-direction:column;gap:3px;
+  background:linear-gradient(180deg, rgba(216,181,74,.05), transparent 40%);
+}
+/* two lines are reserved on every card so long titles don't stretch the row */
+.plate .title{
+  font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;
+  font-weight:700;font-size:22px;letter-spacing:.05em;text-transform:uppercase;
+  line-height:1.12;min-height:2.24em;
+}
+.plate .meta{
+  font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ash);
+  display:flex;align-items:center;gap:8px;
+}
+.plate .core{color:var(--gold)}
+
+/* launch overlay */
+.cab .veil{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(4,10,7,.82);opacity:0;pointer-events:none;transition:opacity .2s;
+}
+.cab.busy .veil,.cab.done .veil,.cab.fail .veil{opacity:1}
+.veil span{
+  font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;
+  font-weight:700;font-size:24px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--emerald-hot);
+}
+.cab.fail .veil span{color:var(--danger);letter-spacing:.18em}
+.cab.busy .veil span{animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+@media (prefers-reduced-motion: reduce){
+  .cab,.cab .veil{transition:none}
+  .cab.busy .veil span{animation:none}
+}
+/* phones: let the controls wrap under the title instead of widening the page */
+@media (max-width: 560px){
+  body{padding-left:14px;padding-right:14px}
+  .controls{margin-left:0;gap:8px}
+  .seg button{padding:7px 10px;letter-spacing:.08em}
+  .filterbar{flex-wrap:wrap;gap:8px}
+  #search{max-width:none}
+  .deck{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+  .plate{padding:10px 10px 12px}
+  .plate .title{font-size:17px}
+  .plate .meta{font-size:10px;letter-spacing:.14em}
+}
+footer{max-width:1080px;margin:40px auto 0;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#44523f;line-height:1.8}
+footer a{color:inherit}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Shmup <em>Deck</em></h1>
+    <div class="strapline">MiSTer FPGA &middot; shmup launcher</div>
+  </div>
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Sort order">
+      <button data-sort="az" aria-pressed="true">A&ndash;Z</button>
+      <button data-sort="year" aria-pressed="false">Year</button>
+      <button data-sort="played" aria-pressed="false">Played</button>
+    </div>
+    <div class="seg" role="group" aria-label="Screen orientation">
+      <button data-screen="all" aria-pressed="true">All</button>
+      <button data-screen="tate" aria-pressed="false">Tate</button>
+      <button data-screen="yoko" aria-pressed="false">Yoko</button>
+    </div>
+    <div class="statusbar" id="status">
+      <span class="lamp" id="lamp"></span><span id="statusText">checking&hellip;</span>
+    </div>
+  </div>
+</header>
+<div class="now" id="now" hidden>
+  <span class="label">Now playing</span><span class="what" id="nowWhat"></span>
+</div>
+<div class="filterbar">
+  <input id="search" type="search" autocomplete="off" spellcheck="false"
+         placeholder="Search title, developer or core &mdash; press /" aria-label="Search games">
+  <p class="count" id="count"></p>
+</div>
+
+<main class="deck" id="deck"></main>
+
+<footer>tap a cab to launch &middot; only games installed on this MiSTer are shown<br>
+flyer art is downloaded from public archives and belongs to its copyright holders</footer>
+
+<script>
+/* The deck is defined in games.json: each entry names its MiSTer core, the
+   screen orientation and the MAME setnames that count as that game. The
+   service on the MiSTer matches those against the setnames inside the .mra
+   files on the SD card, and serves only what is installed. */
+const LS = {
+  screen: "shmupdeck.screen",
+  sort: "shmupdeck.sort",
+  plays: "shmupdeck.plays"
+};
+const $ = s => document.querySelector(s);
+// Which way the cab or monitor is fitted. Set once, remembered after that.
+const screenPref = () => localStorage.getItem(LS.screen) || "all";
+const sortPref = () => localStorage.getItem(LS.sort) || "az";
+
+/* Launch counts, kept on this device only. Counts launches, not play time. */
+const plays = () => { try { return JSON.parse(localStorage.getItem(LS.plays)) || {}; }
+                      catch { return {}; } };
+function countPlay(id) {
+  const p = plays();
+  p[id] = (p[id] || 0) + 1;
+  localStorage.setItem(LS.plays, JSON.stringify(p));
+}
+
+let GAMES = [];
+let ART = {};       // id -> { crop: [left, top, width, height], size: [w, h] }
+let AVAIL = null;   // id -> installed path; null until the first scan finishes
+let NOW = null;
+
+/* ── art ── */
+/* Show the crop box of the scan across the whole card. Background sizing
+   does this without a canvas: scale the scan so the crop fills the card, then
+   shift it so the crop's corner sits at the card's corner. */
+function paintArt(el, g) {
+  const a = ART[g.id];
+  const img = new Image();
+  img.onload = () => {
+    const [sw, sh] = [img.naturalWidth, img.naturalHeight];
+    let [l, t, w, h] = (a && a.size && a.size[0] === sw && a.size[1] === sh)
+      ? a.crop : [0, 0, sw, sh];   // a different scan than expected: show it whole
+    el.style.backgroundImage = `url("art/${g.id}")`;
+    el.style.backgroundSize = `${(sw / w) * 100}% ${(sh / h) * 100}%`;
+    el.style.backgroundPosition =
+      `${sw === w ? 0 : (l / (sw - w)) * 100}% ${sh === h ? 0 : (t / (sh - h)) * 100}%`;
+    el.classList.add("loaded");
+  };
+  img.src = `art/${g.id}`;
+}
+
+/* ── render ── */
+const deck = $("#deck");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+function card(g, played) {
+  const b = document.createElement("button");
+  b.className = "cab" + (g.id === NOW ? " playing" : "");
+  b.dataset.id = g.id;
+  b.innerHTML = `
+    <div class="art" role="img" aria-label="${esc(g.title)} arcade flyer">
+      <span class="stand-in">${esc(g.title)}</span>
+      <div class="veil"><span></span></div></div>
+    <div class="plate">
+      <span class="title">${esc(g.title)}</span>
+      <span class="meta">${esc(g.dev)} ${g.year}</span>
+      <span class="meta"><span class="core">${esc(g.core)}</span>
+        ${played ? `<span class="plays" title="${played} launches from this device">&times;${played}</span>` : ""}
+        <span class="orient">${g.orientation}</span></span>
+    </div>`;
+  paintArt(b.querySelector(".art"), g);
+  b.addEventListener("click", () => launch(g, b));
+  return b;
+}
+
+// plain collation, not numeric: numeric reads "19XX" as 19 and sorts it above
+// 1941, where plain keeps the Capcom run 1941..1944 then 19XX
+const byTitle = (a, b) => a.title.localeCompare(b.title, "en");
+const SORTS = {
+  az: byTitle,
+  year: (a, b) => a.year - b.year || byTitle(a, b),
+  // unplayed games keep their alphabetical order at the end
+  played: (p) => (a, b) => (p[b.id] || 0) - (p[a.id] || 0) || byTitle(a, b)
+};
+
+/* Punctuation varies wildly between titles ("ESP Ra.De.", "R-Type II"), so
+   both the query and the haystack are stripped down to bare characters. That
+   lets "esprade" and "rtype" find their games, and searching a core or a
+   developer works without a separate filter for either. */
+const squash = s => s.toLowerCase().normalize("NFD").replace(/[^a-z0-9]/g, "");
+const haystack = g => squash(`${g.title} ${g.dev} ${g.year} ${g.core} ${g.orientation}`);
+
+function matches(g, query) {
+  return query.every(t => haystack(g).includes(t));
+}
+
+function renderDeck() {
+  const want = screenPref(), order = sortPref(), p = plays();
+  const query = ($("#search").value || "").split(/\s+/).map(squash).filter(Boolean);
+  const cmp = order === "played" ? SORTS.played(p) : SORTS[order] || byTitle;
+  const shown = GAMES
+    .filter(g => (!AVAIL || AVAIL[g.id]) && (want === "all" || g.orientation === want) && matches(g, query))
+    .sort(cmp);
+  deck.replaceChildren(...shown.map(g => card(g, p[g.id] || 0)));
+  if (!shown.length) {
+    const e = document.createElement("p");
+    e.className = "empty";
+    e.textContent = AVAIL ? "Nothing matches that." : "Looking for games on the MiSTer…";
+    deck.replaceChildren(e);
+  }
+  $("#count").textContent = `${shown.length} game${shown.length === 1 ? "" : "s"}`;
+  for (const b of document.querySelectorAll(".seg button"))
+    b.setAttribute("aria-pressed",
+      String(b.dataset.screen === want || b.dataset.sort === order));
+}
+
+for (const b of document.querySelectorAll(".seg button")) {
+  b.addEventListener("click", () => {
+    localStorage.setItem(b.dataset.sort ? LS.sort : LS.screen, b.dataset.sort || b.dataset.screen);
+    renderDeck();
+  });
+}
+
+/* Search is deliberately not remembered - unlike the cab's orientation, a
+   query is about what you want right now, not how the machine is set up. */
+$("#search").addEventListener("input", renderDeck);
+$("#search").addEventListener("keydown", e => {
+  if (e.key === "Escape") { e.target.value = ""; renderDeck(); e.target.blur(); }
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "/" && document.activeElement !== $("#search")) {
+    e.preventDefault();
+    $("#search").focus();
+  }
+});
+
+/* ── launch ── */
+function veil(el, cls, msg, ms) {
+  el.classList.remove("busy", "done", "fail");
+  if (cls) {
+    el.classList.add(cls);
+    el.querySelector(".veil span").textContent = msg;
+    if (ms) setTimeout(() => el.classList.remove(cls), ms);
+  }
+}
+
+function launched(g, el) {
+  countPlay(g.id);
+  veil(el, "done", "have fun", 2200);
+  // reordering the wall under the user's finger mid-launch would be jarring,
+  // so a "played" sort only takes the new count on the next render
+  if (sortPref() !== "played") {
+    const m = el.querySelector(".meta:last-child .plays");
+    const n = plays()[g.id];
+    if (m) m.textContent = `×${n}`;
+    else el.querySelector(".orient").insertAdjacentHTML("beforebegin",
+      `<span class="plays">&times;${n}</span>`);
+  }
+}
+
+async function launch(g, el) {
+  veil(el, "busy", "launching");
+  try {
+    const r = await fetch("api/launch", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: g.id })
+    });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    launched(g, el);
+  } catch {
+    veil(el, "fail", "not found", 2600);
+  }
+}
+
+/* ── status ── */
+async function loadAvailable() {
+  try {
+    const map = await (await fetch("api/available", { cache: "no-store" })).json();
+    // an empty result means the first scan is still running
+    if (Object.values(map).some(Boolean)) { AVAIL = map; renderDeck(); }
+    else setTimeout(loadAvailable, 5000);
+  } catch { setTimeout(loadAvailable, 5000); }
+}
+
+let artWasFetching = false;
+async function ping() {
+  const lamp = $("#lamp"), txt = $("#statusText");
+  try {
+    const s = await (await fetch("api/status", { cache: "no-store", signal: AbortSignal.timeout(3000) })).json();
+    lamp.className = "lamp on";
+    txt.textContent = s.scanning ? "scanning games…"
+      : s.art.fetching ? `art ${s.art.done}/${s.art.total}`
+      : "ready";
+    // flyers that arrived since the page loaded
+    if (artWasFetching && !s.art.fetching) renderDeck();
+    artWasFetching = s.art.fetching;
+    if (s.now_playing !== NOW) {
+      NOW = s.now_playing;
+      const g = GAMES.find(x => x.id === NOW);
+      $("#now").hidden = !g;
+      if (g) $("#nowWhat").textContent = g.title;
+      renderDeck();
+    }
+  } catch {
+    lamp.className = "lamp off"; txt.textContent = "mister offline";
+  }
+}
+
+Promise.all([
+  fetch("games.json").then(r => r.json()),
+  fetch("art.json").then(r => r.json()).catch(() => ({}))
+]).then(([list, art]) => {
+  GAMES = list; ART = art;
+  renderDeck(); ping(); loadAvailable();
+  setInterval(ping, 5000);
+}).catch(() => { deck.innerHTML = `<p class="empty">Could not load games.json.</p>`; });
+</script>
+</body>
+</html>

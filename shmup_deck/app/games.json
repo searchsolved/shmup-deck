@@ -1,0 +1,1662 @@
+[
+ {
+  "id": "forgottn",
+  "title": "Forgotten Worlds",
+  "dev": "Capcom",
+  "year": 1988,
+  "core": "CPS1",
+  "orientation": "yoko",
+  "setnames": [
+   "forgottn",
+   "forgottna",
+   "forgottnj",
+   "forgottnu",
+   "forgottnua",
+   "forgottnuaa",
+   "forgottnuc",
+   "forgottnue"
+  ]
+ },
+ {
+  "id": "unsquad",
+  "title": "U.N. Squadron",
+  "dev": "Capcom",
+  "year": 1989,
+  "core": "CPS1",
+  "orientation": "yoko",
+  "setnames": [
+   "unsquad"
+  ]
+ },
+ {
+  "id": "cawing",
+  "title": "Carrier Air Wing",
+  "dev": "Capcom",
+  "year": 1990,
+  "core": "CPS1",
+  "orientation": "yoko",
+  "setnames": [
+   "cawing",
+   "cawingr1",
+   "cawingu",
+   "cawingur1"
+  ]
+ },
+ {
+  "id": "1941",
+  "title": "1941 Counter Attack",
+  "dev": "Capcom",
+  "year": 1990,
+  "core": "CPS1",
+  "orientation": "tate",
+  "setnames": [
+   "1941",
+   "1941j",
+   "1941r1",
+   "1941u"
+  ]
+ },
+ {
+  "id": "varth",
+  "title": "Varth",
+  "dev": "Capcom",
+  "year": 1992,
+  "core": "CPS1",
+  "orientation": "tate",
+  "setnames": [
+   "varth",
+   "varthj",
+   "varthjr",
+   "varthr1",
+   "varthu"
+  ]
+ },
+ {
+  "id": "ecofghtr",
+  "title": "Eco Fighters",
+  "dev": "Capcom",
+  "year": 1993,
+  "core": "CPS2",
+  "orientation": "yoko",
+  "setnames": [
+   "ecofghtr",
+   "ecofghtra",
+   "ecofghtrd",
+   "ecofghtrh",
+   "ecofghtru",
+   "ecofghtru1"
+  ]
+ },
+ {
+  "id": "19xx",
+  "title": "19XX",
+  "dev": "Capcom",
+  "year": 1996,
+  "core": "CPS2",
+  "orientation": "tate",
+  "setnames": [
+   "19xx",
+   "19xxa",
+   "19xxar1",
+   "19xxb",
+   "19xxd",
+   "19xxh",
+   "19xxj",
+   "19xxjr1",
+   "19xxjr2",
+   "19xxu"
+  ]
+ },
+ {
+  "id": "gigawing",
+  "title": "Giga Wing",
+  "dev": "Takumi",
+  "year": 1999,
+  "core": "CPS2",
+  "orientation": "tate",
+  "setnames": [
+   "gigawing",
+   "gigawinga",
+   "gigawingb",
+   "gigawingd",
+   "gigawingh",
+   "gigawingj",
+   "gigawingjd"
+  ]
+ },
+ {
+  "id": "mmatrix",
+  "title": "Mars Matrix",
+  "dev": "Takumi",
+  "year": 2000,
+  "core": "CPS2",
+  "orientation": "tate",
+  "setnames": [
+   "mmatrix",
+   "mmatrixa",
+   "mmatrixd",
+   "mmatrixj"
+  ]
+ },
+ {
+  "id": "dimahoo",
+  "title": "Dimahoo",
+  "dev": "Eighting",
+  "year": 2000,
+  "core": "CPS2",
+  "orientation": "tate",
+  "setnames": [
+   "dimahoo",
+   "dimahoo_1",
+   "dimahoo_2",
+   "dimahoou",
+   "dimahoud"
+  ]
+ },
+ {
+  "id": "1944",
+  "title": "1944 The Loop Master",
+  "dev": "Capcom",
+  "year": 2000,
+  "core": "CPS2",
+  "orientation": "tate",
+  "setnames": [
+   "1944",
+   "1944d",
+   "1944j",
+   "1944u"
+  ]
+ },
+ {
+  "id": "progear",
+  "title": "Progear",
+  "dev": "Cave",
+  "year": 2001,
+  "core": "CPS2",
+  "orientation": "tate",
+  "setnames": [
+   "progear",
+   "progear_1",
+   "progear_2",
+   "progear_3",
+   "progeara",
+   "progearj",
+   "progearjbl",
+   "progearjd",
+   "progearud"
+  ]
+ },
+ {
+  "id": "vulgus",
+  "title": "Vulgus",
+  "dev": "Capcom",
+  "year": 1984,
+  "core": "Capcom",
+  "orientation": "tate",
+  "setnames": [
+   "vulgus",
+   "mach9",
+   "vulgusa",
+   "vulgusj"
+  ]
+ },
+ {
+  "id": "1942",
+  "title": "1942",
+  "dev": "Capcom",
+  "year": 1984,
+  "core": "Capcom",
+  "orientation": "tate",
+  "setnames": [
+   "1942",
+   "1942a",
+   "1942b",
+   "1942h",
+   "1942w"
+  ]
+ },
+ {
+  "id": "exedexes",
+  "title": "Exed Exes",
+  "dev": "Capcom",
+  "year": 1985,
+  "core": "Capcom",
+  "orientation": "tate",
+  "setnames": [
+   "exedexes"
+  ]
+ },
+ {
+  "id": "sectionz",
+  "title": "Section Z",
+  "dev": "Capcom",
+  "year": 1985,
+  "core": "Capcom",
+  "orientation": "yoko",
+  "setnames": [
+   "sectionz",
+   "sectionza"
+  ]
+ },
+ {
+  "id": "sidearms",
+  "title": "Side Arms",
+  "dev": "Capcom",
+  "year": 1986,
+  "core": "Capcom",
+  "orientation": "yoko",
+  "setnames": [
+   "sidearms",
+   "sidearmsj",
+   "sidearmsu",
+   "sidearmsur1"
+  ]
+ },
+ {
+  "id": "legendos",
+  "title": "Legendary Wings",
+  "dev": "Capcom",
+  "year": 1986,
+  "core": "Capcom",
+  "orientation": "tate",
+  "setnames": [
+   "lwings",
+   "lwingsa",
+   "lwingsb"
+  ]
+ },
+ {
+  "id": "1943",
+  "title": "1943",
+  "dev": "Capcom",
+  "year": 1987,
+  "core": "Capcom",
+  "orientation": "tate",
+  "setnames": [
+   "1943",
+   "1943j",
+   "1943ja",
+   "1943jah",
+   "1943mii",
+   "1943u",
+   "1943ua"
+  ]
+ },
+ {
+  "id": "donpachi",
+  "title": "DonPachi",
+  "dev": "Cave",
+  "year": 1995,
+  "core": "Cave",
+  "orientation": "tate",
+  "setnames": [
+   "donpachi",
+   "donpachihk",
+   "donpachij",
+   "donpachijs",
+   "donpachikr"
+  ]
+ },
+ {
+  "id": "ddonpach",
+  "title": "DoDonPachi",
+  "dev": "Cave",
+  "year": 1997,
+  "core": "Cave",
+  "orientation": "tate",
+  "setnames": [
+   "ddonpach",
+   "ddonpacha",
+   "ddonpachj",
+   "ddonpachjt"
+  ]
+ },
+ {
+  "id": "dfeveron",
+  "title": "Dangun Feveron",
+  "dev": "Cave",
+  "year": 1998,
+  "core": "Cave",
+  "orientation": "tate",
+  "setnames": [
+   "dfeveron",
+   "dfeveronnd",
+   "feversos"
+  ]
+ },
+ {
+  "id": "esprade",
+  "title": "ESP Ra.De.",
+  "dev": "Cave",
+  "year": 1998,
+  "core": "Cave",
+  "orientation": "tate",
+  "setnames": [
+   "esprade",
+   "esprade_fp",
+   "espradej",
+   "espradej_fp"
+  ]
+ },
+ {
+  "id": "guwange",
+  "title": "Guwange",
+  "dev": "Cave",
+  "year": 1999,
+  "core": "Cave",
+  "orientation": "tate",
+  "setnames": [
+   "guwange",
+   "guwanges"
+  ]
+ },
+ {
+  "id": "gyruss",
+  "title": "Gyruss",
+  "dev": "Konami",
+  "year": 1983,
+  "core": "Gyruss",
+  "orientation": "tate",
+  "setnames": [
+   "gyruss"
+  ]
+ },
+ {
+  "id": "ajax",
+  "title": "Ajax",
+  "dev": "Konami",
+  "year": 1987,
+  "core": "Konami",
+  "orientation": "tate",
+  "setnames": [
+   "ajax",
+   "ajaxj"
+  ]
+ },
+ {
+  "id": "mx5000",
+  "title": "MX5000",
+  "dev": "Konami",
+  "year": 1987,
+  "core": "Konami",
+  "orientation": "tate",
+  "setnames": [
+   "mx5000"
+  ]
+ },
+ {
+  "id": "vulcan",
+  "title": "Vulcan Venture",
+  "dev": "Konami",
+  "year": 1988,
+  "core": "Konami",
+  "orientation": "yoko",
+  "setnames": [
+   "vulcan",
+   "vulcana",
+   "vulcanb",
+   "gradius2",
+   "gradius2a",
+   "gradius2b"
+  ]
+ },
+ {
+  "id": "gradius3",
+  "title": "Gradius III",
+  "dev": "Konami",
+  "year": 1989,
+  "core": "Konami",
+  "orientation": "yoko",
+  "setnames": [
+   "gradius3"
+  ]
+ },
+ {
+  "id": "parodius",
+  "title": "Parodius Da!",
+  "dev": "Konami",
+  "year": 1990,
+  "core": "Konami",
+  "orientation": "yoko",
+  "setnames": [
+   "parodius",
+   "parodiusa",
+   "parodiuse",
+   "parodiusj"
+  ]
+ },
+ {
+  "id": "rtype",
+  "title": "R-Type",
+  "dev": "Irem",
+  "year": 1987,
+  "core": "M72",
+  "orientation": "yoko",
+  "setnames": [
+   "rtype",
+   "rtypeb",
+   "rtypej",
+   "rtypejp",
+   "rtypeu"
+  ]
+ },
+ {
+  "id": "imgfight",
+  "title": "Image Fight",
+  "dev": "Irem",
+  "year": 1988,
+  "core": "M72",
+  "orientation": "tate",
+  "setnames": [
+   "imgfight",
+   "imgfightj"
+  ]
+ },
+ {
+  "id": "rtype2",
+  "title": "R-Type II",
+  "dev": "Irem",
+  "year": 1989,
+  "core": "M72",
+  "orientation": "yoko",
+  "setnames": [
+   "rtype2",
+   "rtype2inv",
+   "rtype2j",
+   "rtype2jc"
+  ]
+ },
+ {
+  "id": "xmultipl",
+  "title": "X Multiply",
+  "dev": "Irem",
+  "year": 1989,
+  "core": "M72",
+  "orientation": "yoko",
+  "setnames": [
+   "xmultiplm72",
+   "xmultiplm72inv"
+  ]
+ },
+ {
+  "id": "dbreed",
+  "title": "Dragon Breed",
+  "dev": "Irem",
+  "year": 1989,
+  "core": "M72",
+  "orientation": "yoko",
+  "setnames": [
+   "dbreedjm72"
+  ]
+ },
+ {
+  "id": "airduel",
+  "title": "Air Duel",
+  "dev": "Irem",
+  "year": 1990,
+  "core": "M72",
+  "orientation": "tate",
+  "setnames": [
+   "airduelm72",
+   "airdueljm72"
+  ]
+ },
+ {
+  "id": "gallop",
+  "title": "Gallop",
+  "dev": "Irem",
+  "year": 1991,
+  "core": "M72",
+  "orientation": "yoko",
+  "setnames": [
+   "gallopm72"
+  ]
+ },
+ {
+  "id": "dspirit",
+  "title": "Dragon Spirit",
+  "dev": "Namco",
+  "year": 1987,
+  "core": "Namco",
+  "orientation": "tate",
+  "setnames": [
+   "dspirit",
+   "dspirit1",
+   "dspirit2"
+  ]
+ },
+ {
+  "id": "ddp2",
+  "title": "DoDonPachi II",
+  "dev": "IGS",
+  "year": 2001,
+  "core": "PGM",
+  "orientation": "tate",
+  "setnames": [
+   "ddp2"
+  ]
+ },
+ {
+  "id": "ketsui",
+  "title": "Ketsui",
+  "dev": "Cave",
+  "year": 2002,
+  "core": "PGM",
+  "orientation": "tate",
+  "setnames": [
+   "ket"
+  ]
+ },
+ {
+  "id": "ddpdoj",
+  "title": "DoDonPachi Dai-Ou-Jou",
+  "dev": "Cave",
+  "year": 2002,
+  "core": "PGM",
+  "orientation": "tate",
+  "setnames": [
+   "ddp3"
+  ]
+ },
+ {
+  "id": "espgaluda",
+  "title": "Espgaluda",
+  "dev": "Cave",
+  "year": 2003,
+  "core": "PGM",
+  "orientation": "tate",
+  "setnames": [
+   "espgal"
+  ]
+ },
+ {
+  "id": "s1945ii",
+  "title": "Strikers 1945 II",
+  "dev": "Psikyo",
+  "year": 1997,
+  "core": "PsikyoSH2",
+  "orientation": "tate",
+  "setnames": [
+   "s1945ii"
+  ]
+ },
+ {
+  "id": "gunbird2",
+  "title": "Gunbird 2",
+  "dev": "Psikyo",
+  "year": 1998,
+  "core": "PsikyoSH2",
+  "orientation": "tate",
+  "setnames": [
+   "gunbird2",
+   "gunbird2a"
+  ]
+ },
+ {
+  "id": "spbomber",
+  "title": "Space Bomber",
+  "dev": "Psikyo",
+  "year": 1998,
+  "core": "PsikyoSH2",
+  "orientation": "tate",
+  "setnames": [
+   "sbomber",
+   "sbombera"
+  ]
+ },
+ {
+  "id": "s1945iii",
+  "title": "Strikers 1945 III",
+  "dev": "Psikyo",
+  "year": 1999,
+  "core": "PsikyoSH2",
+  "orientation": "tate",
+  "setnames": [
+   "s1945iii"
+  ]
+ },
+ {
+  "id": "dragnblz",
+  "title": "Dragon Blaze",
+  "dev": "Psikyo",
+  "year": 2000,
+  "core": "PsikyoSH2",
+  "orientation": "tate",
+  "setnames": [
+   "dragnblz"
+  ]
+ },
+ {
+  "id": "garegga",
+  "title": "Battle Garegga",
+  "dev": "Raizing",
+  "year": 1996,
+  "core": "Raizing",
+  "orientation": "tate",
+  "setnames": [
+   "bgaregga",
+   "bgareggacn",
+   "bgareggahk",
+   "bgareggak",
+   "bgaregganv",
+   "bgareggat",
+   "bgareggat2",
+   "bgareggatw"
+  ]
+ },
+ {
+  "id": "batrider",
+  "title": "Armed Police Batrider",
+  "dev": "Raizing",
+  "year": 1998,
+  "core": "Raizing",
+  "orientation": "tate",
+  "setnames": [
+   "batrider",
+   "batriderc",
+   "batriderhk",
+   "batriderj",
+   "batriderja",
+   "batriderk",
+   "batridert",
+   "batrideru"
+  ]
+ },
+ {
+  "id": "bbakraid",
+  "title": "Battle Bakraid",
+  "dev": "Raizing",
+  "year": 1999,
+  "core": "Raizing",
+  "orientation": "tate",
+  "setnames": [
+   "bbakraid",
+   "bbakraidc",
+   "bbakraidj",
+   "bbakraidja"
+  ]
+ },
+ {
+  "id": "fantzone",
+  "title": "Fantasy Zone",
+  "dev": "Sega",
+  "year": 1986,
+  "core": "Sega",
+  "orientation": "yoko",
+  "setnames": [
+   "fantzone",
+   "fantzone1",
+   "fantzonee",
+   "fantzonep",
+   "fantzonepr"
+  ]
+ },
+ {
+  "id": "fantzn2",
+  "title": "Fantasy Zone II",
+  "dev": "Sega",
+  "year": 1987,
+  "core": "Sega",
+  "orientation": "yoko",
+  "setnames": [
+   "fantzn2"
+  ]
+ },
+ {
+  "id": "sdi",
+  "title": "SDI Strategic Defense Initiative",
+  "dev": "Sega",
+  "year": 1987,
+  "core": "Sega",
+  "orientation": "yoko",
+  "setnames": [
+   "sdib"
+  ]
+ },
+ {
+  "id": "alcon",
+  "title": "Alcon / Slap Fight",
+  "dev": "Toaplan",
+  "year": 1986,
+  "core": "SlapFight",
+  "orientation": "tate",
+  "setnames": [
+   "slapfighb1"
+  ]
+ },
+ {
+  "id": "geminiw",
+  "title": "Gemini Wing",
+  "dev": "Tecmo",
+  "year": 1987,
+  "core": "Tecmo",
+  "orientation": "tate",
+  "setnames": [
+   "gemini"
+  ]
+ },
+ {
+  "id": "silkworm",
+  "title": "Silkworm",
+  "dev": "Tecmo",
+  "year": 1988,
+  "core": "Tecmo",
+  "orientation": "yoko",
+  "setnames": [
+   "silkworm"
+  ]
+ },
+ {
+  "id": "raiga",
+  "title": "Raiga Strato Fighter",
+  "dev": "Tecmo",
+  "year": 1991,
+  "core": "Tecmo",
+  "orientation": "tate",
+  "setnames": [
+   "stratof",
+   "raiga"
+  ]
+ },
+ {
+  "id": "tp84",
+  "title": "Time Pilot '84",
+  "dev": "Konami",
+  "year": 1984,
+  "core": "TimePilot84",
+  "orientation": "tate",
+  "setnames": [
+   "tp84",
+   "tp84a",
+   "tp84b"
+  ]
+ },
+ {
+  "id": "drtoppel",
+  "title": "Dr. Toppel's Adventure",
+  "dev": "Toaplan",
+  "year": 1987,
+  "core": "Toaplan",
+  "orientation": "tate",
+  "setnames": [
+   "drtoppel",
+   "drtoppelj",
+   "drtoppelu"
+  ]
+ },
+ {
+  "id": "insectx",
+  "title": "Insector X",
+  "dev": "Toaplan",
+  "year": 1989,
+  "core": "Toaplan",
+  "orientation": "tate",
+  "setnames": [
+   "insectx",
+   "insectxbl",
+   "insectxj"
+  ]
+ },
+ {
+  "id": "xevious",
+  "title": "Xevious",
+  "dev": "Namco",
+  "year": 1982,
+  "core": "Xevious",
+  "orientation": "tate",
+  "setnames": [
+   "xevious",
+   "xeviblk",
+   "xevious3",
+   "xevious4",
+   "xevious5",
+   "xevioush"
+  ]
+ },
+ {
+  "id": "samuraia",
+  "title": "Samurai Aces",
+  "dev": "Psikyo",
+  "year": 1993,
+  "core": "Psikyo",
+  "orientation": "tate",
+  "setnames": [
+   "samuraia",
+   "samuraiak"
+  ]
+ },
+ {
+  "id": "gunbird",
+  "title": "Gunbird",
+  "dev": "Psikyo",
+  "year": 1994,
+  "core": "Psikyo",
+  "orientation": "tate",
+  "setnames": [
+   "gunbird"
+  ]
+ },
+ {
+  "id": "tengai",
+  "title": "Tengai",
+  "dev": "Psikyo",
+  "year": 1996,
+  "core": "Psikyo",
+  "orientation": "tate",
+  "setnames": [
+   "tengai"
+  ]
+ },
+ {
+  "id": "mushisam",
+  "title": "Mushihime-Sama",
+  "dev": "Cave",
+  "year": 2004,
+  "core": "CV1000",
+  "orientation": "tate",
+  "setnames": [
+   "mushisam",
+   "mushisama",
+   "mushisamb"
+  ]
+ },
+ {
+  "id": "ibara",
+  "title": "Ibara",
+  "dev": "Cave",
+  "year": 2005,
+  "core": "CV1000",
+  "orientation": "tate",
+  "setnames": [
+   "ibara",
+   "ibarao"
+  ]
+ },
+ {
+  "id": "espgal2",
+  "title": "Espgaluda II",
+  "dev": "Cave",
+  "year": 2005,
+  "core": "CV1000",
+  "orientation": "tate",
+  "setnames": [
+   "espgal2",
+   "espgal2a",
+   "espgal2b"
+  ]
+ },
+ {
+  "id": "ibarablk",
+  "title": "Ibara Kuro Black Label",
+  "dev": "Cave",
+  "year": 2006,
+  "core": "CV1000",
+  "orientation": "tate",
+  "setnames": [
+   "ibarablk",
+   "ibarablka"
+  ]
+ },
+ {
+  "id": "pinkswts",
+  "title": "Pink Sweets",
+  "dev": "Cave",
+  "year": 2006,
+  "core": "CV1000",
+  "orientation": "tate",
+  "setnames": [
+   "pinkswts",
+   "pinkswtsa",
+   "pinkswtsb",
+   "pinkswtssc",
+   "pinkswtsx"
+  ]
+ },
+ {
+  "id": "futari15",
+  "title": "Mushihime-Sama Futari 1.5",
+  "dev": "Cave",
+  "year": 2006,
+  "core": "CV1000",
+  "orientation": "tate",
+  "setnames": [
+   "futari15",
+   "futari15a"
+  ]
+ },
+ {
+  "id": "deathsml",
+  "title": "Deathsmiles",
+  "dev": "Cave",
+  "year": 2007,
+  "core": "CV1000",
+  "orientation": "yoko",
+  "setnames": [
+   "deathsml"
+  ]
+ },
+ {
+  "id": "dsmbl",
+  "title": "Deathsmiles MegaBlack Label",
+  "dev": "Cave",
+  "year": 2008,
+  "core": "CV1000",
+  "orientation": "yoko",
+  "setnames": [
+   "dsmbl"
+  ]
+ },
+ {
+  "id": "ddpdfk",
+  "title": "DoDonPachi Dai-Fukkatsu 1.5",
+  "dev": "Cave",
+  "year": 2008,
+  "core": "CV1000",
+  "orientation": "tate",
+  "setnames": [
+   "ddpdfk"
+  ]
+ },
+ {
+  "id": "futaribl",
+  "title": "Mushihime-Sama Futari Black Label",
+  "dev": "Cave",
+  "year": 2009,
+  "core": "CV1000",
+  "orientation": "tate",
+  "setnames": [
+   "futaribl",
+   "futariblj"
+  ]
+ },
+ {
+  "id": "dfkbl",
+  "title": "DoDonPachi Dai-Fukkatsu Black Label",
+  "dev": "Cave",
+  "year": 2010,
+  "core": "CV1000",
+  "orientation": "tate",
+  "setnames": [
+   "dfkbl"
+  ]
+ },
+ {
+  "id": "ddpsdoj",
+  "title": "DoDonPachi SaiDaiOuJou",
+  "dev": "Cave",
+  "year": 2012,
+  "core": "CV1000",
+  "orientation": "tate",
+  "setnames": [
+   "ddpsdoj"
+  ]
+ },
+ {
+  "id": "mmpork",
+  "title": "Muchi Muchi Pork!",
+  "dev": "Cave",
+  "year": 2007,
+  "core": "CV1000",
+  "orientation": "tate",
+  "setnames": [
+   "mmpork"
+  ]
+ },
+ {
+  "id": "batsugun",
+  "title": "Batsugun",
+  "dev": "Toaplan",
+  "year": 1993,
+  "core": "Toaplan",
+  "orientation": "tate",
+  "setnames": [
+   "batsugun",
+   "batsugunb",
+   "batsuguna",
+   "batsugunc"
+  ]
+ },
+ {
+  "id": "batsugunsp",
+  "title": "Batsugun Special Version",
+  "dev": "Toaplan",
+  "year": 1994,
+  "core": "Toaplan",
+  "orientation": "tate",
+  "setnames": [
+   "batsugunsp"
+  ]
+ },
+ {
+  "id": "truxton",
+  "title": "Truxton",
+  "dev": "Toaplan",
+  "year": 1988,
+  "core": "Toaplan",
+  "orientation": "tate",
+  "setnames": [
+   "truxton"
+  ]
+ },
+ {
+  "id": "truxton2",
+  "title": "Truxton II",
+  "dev": "Toaplan",
+  "year": 1992,
+  "core": "Toaplan",
+  "orientation": "tate",
+  "setnames": [
+   "truxton2"
+  ]
+ },
+ {
+  "id": "twincobr",
+  "title": "Twin Cobra",
+  "dev": "Toaplan",
+  "year": 1987,
+  "core": "Toaplan",
+  "orientation": "tate",
+  "setnames": [
+   "twincobr",
+   "ktiger",
+   "twincobru",
+   "ktigera"
+  ]
+ },
+ {
+  "id": "fshark",
+  "title": "Flying Shark",
+  "dev": "Toaplan",
+  "year": 1987,
+  "core": "Toaplan",
+  "orientation": "tate",
+  "setnames": [
+   "fshark",
+   "hishouza"
+  ]
+ },
+ {
+  "id": "fireshrk",
+  "title": "Fire Shark",
+  "dev": "Toaplan",
+  "year": 1989,
+  "core": "Toaplan",
+  "orientation": "tate",
+  "setnames": [
+   "fireshrk",
+   "samesame2",
+   "fireshrka",
+   "samesame",
+   "fireshrkd",
+   "fireshrkdh",
+   "samesamenh"
+  ]
+ },
+ {
+  "id": "vimana",
+  "title": "Vimana",
+  "dev": "Toaplan",
+  "year": 1991,
+  "core": "Toaplan",
+  "orientation": "tate",
+  "setnames": [
+   "vimana",
+   "vimanaj",
+   "vimanan"
+  ]
+ },
+ {
+  "id": "outzone",
+  "title": "Out Zone",
+  "dev": "Toaplan",
+  "year": 1990,
+  "core": "Toaplan",
+  "orientation": "tate",
+  "setnames": [
+   "outzone",
+   "outzoneh",
+   "outzonea",
+   "outzoneb",
+   "outzonecv"
+  ]
+ },
+ {
+  "id": "hellfire",
+  "title": "Hellfire",
+  "dev": "Toaplan",
+  "year": 1989,
+  "core": "Toaplan",
+  "orientation": "yoko",
+  "setnames": [
+   "hellfire",
+   "hellfire1",
+   "hellfire1a",
+   "hellfire2a"
+  ]
+ },
+ {
+  "id": "zerowing",
+  "title": "Zero Wing",
+  "dev": "Toaplan",
+  "year": 1989,
+  "core": "Toaplan",
+  "orientation": "yoko",
+  "setnames": [
+   "zerowing",
+   "zerowing1",
+   "zerowingw"
+  ]
+ },
+ {
+  "id": "sstriker",
+  "title": "Sorcer Striker",
+  "dev": "Raizing",
+  "year": 1993,
+  "core": "Raizing",
+  "orientation": "tate",
+  "setnames": [
+   "sstriker",
+   "mahoudai",
+   "sstrikerk"
+  ]
+ },
+ {
+  "id": "kingdmgp",
+  "title": "Kingdom Grandprix",
+  "dev": "Raizing",
+  "year": 1994,
+  "core": "Raizing",
+  "orientation": "tate",
+  "setnames": [
+   "kingdmgp",
+   "shippumd"
+  ]
+ },
+ {
+  "id": "gradius",
+  "title": "Gradius",
+  "dev": "Konami",
+  "year": 1985,
+  "core": "Konami",
+  "orientation": "yoko",
+  "setnames": [
+   "gradius",
+   "nemesis",
+   "nemesisuk"
+  ]
+ },
+ {
+  "id": "salamand",
+  "title": "Salamander",
+  "dev": "Konami",
+  "year": 1986,
+  "core": "Konami",
+  "orientation": "yoko",
+  "setnames": [
+   "salamand",
+   "lifefrcej",
+   "salamandj",
+   "lifefrce",
+   "spclone",
+   "spcloneo"
+  ]
+ },
+ {
+  "id": "twinbee",
+  "title": "TwinBee",
+  "dev": "Konami",
+  "year": 1985,
+  "core": "Konami",
+  "orientation": "tate",
+  "setnames": [
+   "twinbee",
+   "twinbeeb"
+  ]
+ },
+ {
+  "id": "thunderx",
+  "title": "Thunder Cross",
+  "dev": "Konami",
+  "year": 1988,
+  "core": "Konami",
+  "orientation": "yoko",
+  "setnames": [
+   "thunderx",
+   "thunderxj",
+   "thunderxa",
+   "thunderxb"
+  ]
+ },
+ {
+  "id": "finalizr",
+  "title": "Finalizer",
+  "dev": "Konami",
+  "year": 1985,
+  "core": "Konami",
+  "orientation": "tate",
+  "setnames": [
+   "finalizr",
+   "finalizra",
+   "finalizrb"
+  ]
+ },
+ {
+  "id": "rtypeleo",
+  "title": "R-Type Leo",
+  "dev": "Irem",
+  "year": 1992,
+  "core": "M92",
+  "orientation": "yoko",
+  "setnames": [
+   "rtypeleo",
+   "rtypeleoj"
+  ]
+ },
+ {
+  "id": "inthunt",
+  "title": "In the Hunt",
+  "dev": "Irem",
+  "year": 1993,
+  "core": "M92",
+  "orientation": "yoko",
+  "setnames": [
+   "inthunt",
+   "inthuntu",
+   "kaiteids"
+  ]
+ },
+ {
+  "id": "lethalth",
+  "title": "Lethal Thunder",
+  "dev": "Irem",
+  "year": 1991,
+  "core": "M92",
+  "orientation": "tate",
+  "setnames": [
+   "lethalth",
+   "thndblst"
+  ]
+ },
+ {
+  "id": "mysticri",
+  "title": "Mystic Riders",
+  "dev": "Irem",
+  "year": 1992,
+  "core": "M92",
+  "orientation": "yoko",
+  "setnames": [
+   "mysticri",
+   "gunhohki"
+  ]
+ },
+ {
+  "id": "firebarr",
+  "title": "Fire Barrel",
+  "dev": "Irem",
+  "year": 1993,
+  "core": "M107",
+  "orientation": "tate",
+  "setnames": [
+   "firebarr",
+   "airass"
+  ]
+ },
+ {
+  "id": "horizon",
+  "title": "Horizon",
+  "dev": "Irem",
+  "year": 1985,
+  "core": "M62",
+  "orientation": "yoko",
+  "setnames": [
+   "horizon"
+  ]
+ },
+ {
+  "id": "youjyudn",
+  "title": "Youjyuden",
+  "dev": "Irem",
+  "year": 1986,
+  "core": "M62",
+  "orientation": "tate",
+  "setnames": [
+   "youjyudn"
+  ]
+ },
+ {
+  "id": "metalb",
+  "title": "Metal Black",
+  "dev": "Taito",
+  "year": 1991,
+  "core": "Taito F2",
+  "orientation": "yoko",
+  "setnames": [
+   "metalb",
+   "metalba",
+   "metalbj"
+  ]
+ },
+ {
+  "id": "tokio",
+  "title": "Tokio",
+  "dev": "Taito",
+  "year": 1986,
+  "core": "Taito",
+  "orientation": "tate",
+  "setnames": [
+   "tokio",
+   "tokiou",
+   "tokioo",
+   "tokiob"
+  ]
+ },
+ {
+  "id": "extrmatn",
+  "title": "Extermination",
+  "dev": "Taito",
+  "year": 1987,
+  "core": "Taito",
+  "orientation": "tate",
+  "setnames": [
+   "extrmatn",
+   "extrmatnj",
+   "extrmatnur",
+   "extrmatnu"
+  ]
+ },
+ {
+  "id": "hotdogst",
+  "title": "Hotdog Storm",
+  "dev": "Marble",
+  "year": 1996,
+  "core": "Cave",
+  "orientation": "tate",
+  "setnames": [
+   "hotdogst"
+  ]
+ },
+ {
+  "id": "terracre",
+  "title": "Terra Cresta",
+  "dev": "Nichibutsu",
+  "year": 1985,
+  "core": "Nichibutsu",
+  "orientation": "tate",
+  "setnames": [
+   "terracre",
+   "terracreo",
+   "terracrea"
+  ]
+ },
+ {
+  "id": "armedf",
+  "title": "Armed F",
+  "dev": "Nichibutsu",
+  "year": 1988,
+  "core": "Nichibutsu",
+  "orientation": "tate",
+  "setnames": [
+   "armedf",
+   "armedff"
+  ]
+ },
+ {
+  "id": "terraf",
+  "title": "Terra Force",
+  "dev": "Nichibutsu",
+  "year": 1987,
+  "core": "Nichibutsu",
+  "orientation": "yoko",
+  "setnames": [
+   "terraf",
+   "terrafj",
+   "terrafu"
+  ]
+ },
+ {
+  "id": "legion",
+  "title": "Legion",
+  "dev": "Nichibutsu",
+  "year": 1987,
+  "core": "Nichibutsu",
+  "orientation": "tate",
+  "setnames": [
+   "legion",
+   "legionj2"
+  ]
+ },
+ {
+  "id": "aso",
+  "title": "ASO",
+  "dev": "SNK",
+  "year": 1985,
+  "core": "SNK",
+  "orientation": "tate",
+  "setnames": [
+   "aso",
+   "alphamis"
+  ]
+ },
+ {
+  "id": "raflesia",
+  "title": "Rafflesia",
+  "dev": "Sega",
+  "year": 1986,
+  "core": "Sega System 1",
+  "orientation": "tate",
+  "setnames": [
+   "raflesia"
+  ]
+ },
+ {
+  "id": "cobracom",
+  "title": "Cobra-Command",
+  "dev": "Data East",
+  "year": 1988,
+  "core": "Data East",
+  "orientation": "yoko",
+  "setnames": [
+   "cobracom",
+   "cobracomj",
+   "cobracomb",
+   "cobracoma"
+  ]
+ },
+ {
+  "id": "tigerh",
+  "title": "Tiger Heli",
+  "dev": "Toaplan",
+  "year": 1985,
+  "core": "SlapFight",
+  "orientation": "tate",
+  "setnames": [
+   "tigerhb1"
+  ]
+ },
+ {
+  "id": "s1945",
+  "title": "Strikers 1945",
+  "dev": "Psikyo",
+  "year": 1995,
+  "core": "Psikyo",
+  "orientation": "tate",
+  "setnames": [
+   "s1945",
+   "s1945j",
+   "s1945k",
+   "s1945a",
+   "s1945nj",
+   "s1945n"
+  ]
+ },
+ {
+  "id": "akatana",
+  "title": "Akai Katana",
+  "dev": "Cave",
+  "year": 2010,
+  "core": "CV1000",
+  "orientation": "yoko",
+  "setnames": [
+   "akatana"
+  ]
+ },
+ {
+  "id": "blazstar",
+  "title": "Blazing Star",
+  "dev": "Yumekobo",
+  "year": 1998,
+  "core": "Neo Geo",
+  "platform": "neogeo",
+  "orientation": "yoko",
+  "setnames": [
+   "blazstar"
+  ]
+ },
+ {
+  "id": "pulstar",
+  "title": "Pulstar",
+  "dev": "Aicom",
+  "year": 1995,
+  "core": "Neo Geo",
+  "platform": "neogeo",
+  "orientation": "yoko",
+  "setnames": [
+   "pulstar"
+  ]
+ },
+ {
+  "id": "lresort",
+  "title": "Last Resort",
+  "dev": "SNK",
+  "year": 1992,
+  "core": "Neo Geo",
+  "platform": "neogeo",
+  "orientation": "yoko",
+  "setnames": [
+   "lresort",
+   "lresortp"
+  ]
+ },
+ {
+  "id": "s1945p",
+  "title": "Strikers 1945 Plus",
+  "dev": "Psikyo",
+  "year": 1999,
+  "core": "Neo Geo",
+  "platform": "neogeo",
+  "orientation": "yoko",
+  "setnames": [
+   "s1945p"
+  ]
+ },
+ {
+  "id": "sonicwi2",
+  "title": "Aero Fighters 2",
+  "dev": "Video System",
+  "year": 1994,
+  "core": "Neo Geo",
+  "platform": "neogeo",
+  "orientation": "yoko",
+  "setnames": [
+   "sonicwi2"
+  ]
+ },
+ {
+  "id": "sonicwi3",
+  "title": "Aero Fighters 3",
+  "dev": "Video System",
+  "year": 1995,
+  "core": "Neo Geo",
+  "platform": "neogeo",
+  "orientation": "yoko",
+  "setnames": [
+   "sonicwi3"
+  ]
+ },
+ {
+  "id": "viewpoin",
+  "title": "Viewpoint",
+  "dev": "Aicom",
+  "year": 1992,
+  "core": "Neo Geo",
+  "platform": "neogeo",
+  "orientation": "yoko",
+  "setnames": [
+   "viewpoin"
+  ]
+ },
+ {
+  "id": "zedblade",
+  "title": "Zed Blade",
+  "dev": "NMK",
+  "year": 1994,
+  "core": "Neo Geo",
+  "platform": "neogeo",
+  "orientation": "yoko",
+  "setnames": [
+   "zedblade"
+  ]
+ },
+ {
+  "id": "gpilots",
+  "title": "Ghost Pilots",
+  "dev": "SNK",
+  "year": 1991,
+  "core": "Neo Geo",
+  "platform": "neogeo",
+  "orientation": "yoko",
+  "setnames": [
+   "gpilots",
+   "gpilotsh"
+  ]
+ },
+ {
+  "id": "alpham2",
+  "title": "Alpha Mission II",
+  "dev": "SNK",
+  "year": 1991,
+  "core": "Neo Geo",
+  "platform": "neogeo",
+  "orientation": "yoko",
+  "setnames": [
+   "alpham2",
+   "alpham2p"
+  ]
+ },
+ {
+  "id": "androdun",
+  "title": "Andro Dunos",
+  "dev": "Visco",
+  "year": 1992,
+  "core": "Neo Geo",
+  "platform": "neogeo",
+  "orientation": "yoko",
+  "setnames": [
+   "androdun"
+  ]
+ },
+ {
+  "id": "preisle2",
+  "title": "Prehistoric Isle 2",
+  "dev": "Yumekobo",
+  "year": 1999,
+  "core": "Neo Geo",
+  "platform": "neogeo",
+  "orientation": "yoko",
+  "setnames": [
+   "preisle2"
+  ]
+ },
+ {
+  "id": "ctomaday",
+  "title": "Captain Tomaday",
+  "dev": "Visco",
+  "year": 1999,
+  "core": "Neo Geo",
+  "platform": "neogeo",
+  "orientation": "yoko",
+  "setnames": [
+   "ctomaday"
+  ]
+ }
+]

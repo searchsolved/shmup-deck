@@ -1,0 +1,1610 @@
+{
+ "forgottn": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Forgotten%20Worlds%20%28World%29.png",
+  "size": [
+   512,
+   690
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   690
+  ]
+ },
+ "unsquad": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/U.N.%20Squadron%20%28USA%29.png",
+  "size": [
+   512,
+   685
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   685
+  ]
+ },
+ "cawing": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Carrier%20Air%20Wing%20%28World%20901012%29.png",
+  "size": [
+   512,
+   719
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   719
+  ]
+ },
+ "1941": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/1941%20-%20Counter%20Attack%20%28World%29.png",
+  "size": [
+   512,
+   723
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   723
+  ]
+ },
+ "varth": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Varth%20-%20Operation%20Thunderstorm%20%28World%20920612%29.png",
+  "size": [
+   512,
+   729
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   729
+  ]
+ },
+ "ecofghtr": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Eco%20Fighters%20%28World%20931203%29.png",
+  "size": [
+   512,
+   741
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   724
+  ]
+ },
+ "19xx": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/19XX_%20The%20War%20Against%20Destiny%20%28USA%20951207%29.png",
+  "size": [
+   512,
+   714
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   714
+  ]
+ },
+ "gigawing": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Giga%20Wing%20%28USA%20990222%29.png",
+  "size": [
+   512,
+   724
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   724
+  ]
+ },
+ "mmatrix": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Mars%20Matrix_%20Hyper%20Solid%20Shooting%20%28Japan%20000412%29.png",
+  "size": [
+   512,
+   724
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   724
+  ]
+ },
+ "dimahoo": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Dimahoo%20%28Europe%20000121%29.png",
+  "size": [
+   512,
+   721
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   721
+  ]
+ },
+ "1944": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/1944_%20The%20Loop%20Master%20%28USA%20000620%29.png",
+  "size": [
+   512,
+   729
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   729
+  ]
+ },
+ "progear": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Progear%20%28USA%20010117%29.png",
+  "size": [
+   512,
+   727
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   727
+  ]
+ },
+ "vulgus": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Vulgus%20%28set%201%29.png",
+  "size": [
+   512,
+   662
+  ],
+  "crop": [
+   42,
+   36,
+   428,
+   604
+  ]
+ },
+ "1942": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/1942%20%28Revision%20B%29.png",
+  "size": [
+   512,
+   676
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   676
+  ]
+ },
+ "exedexes": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Exed%20Exes.png",
+  "size": [
+   512,
+   732
+  ],
+  "crop": [
+   6,
+   6,
+   501,
+   723
+  ]
+ },
+ "sectionz": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Section%20Z%20%28set%201%29.png",
+  "size": [
+   512,
+   674
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   674
+  ]
+ },
+ "sidearms": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Side%20Arms%20-%20Hyper%20Dyne%20%28World%29.png",
+  "size": [
+   512,
+   721
+  ],
+  "crop": [
+   4,
+   4,
+   504,
+   713
+  ]
+ },
+ "legendos": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Legendary%20Wings%20%28US%20set%201%29.png",
+  "size": [
+   512,
+   688
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   688
+  ]
+ },
+ "1943": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/1943%20-%20The%20Battle%20of%20Midway%20%28Japan%29.png",
+  "size": [
+   512,
+   717
+  ],
+  "crop": [
+   8,
+   4,
+   498,
+   709
+  ]
+ },
+ "donpachi": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/DonPachi%20%28Japan%29.png",
+  "size": [
+   512,
+   726
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   726
+  ]
+ },
+ "ddonpach": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/DoDonPachi%20%28International%29.png",
+  "size": [
+   512,
+   728
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   728
+  ]
+ },
+ "dfeveron": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Dangun%20Feveron%20%28Japan%2C%20Ver.%2098_09_17%29.png",
+  "size": [
+   512,
+   725
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   725
+  ]
+ },
+ "esprade": {
+  "url": "https://www.arcadeartwork.org/action.php?id=85606&part=e&download",
+  "size": [
+   809,
+   1200
+  ],
+  "crop": [
+   0,
+   0,
+   809,
+   1200
+  ],
+  "referer": "https://www.arcadeartwork.org/picture.php?/85606"
+ },
+ "guwange": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Guwange%20%28Japan%2C%20Master%20Ver.%2099_06_24%29.png",
+  "size": [
+   512,
+   733
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   733
+  ]
+ },
+ "gyruss": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Gyruss%20%28Konami%29.png",
+  "size": [
+   512,
+   731
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   731
+  ]
+ },
+ "ajax": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Ajax%20%28Japan%29.png",
+  "size": [
+   512,
+   723
+  ],
+  "crop": [
+   0,
+   24,
+   512,
+   699
+  ]
+ },
+ "mx5000": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Flak%20Attack%20%28Japan%29.png",
+  "size": [
+   512,
+   724
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   724
+  ]
+ },
+ "vulcan": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Vulcan%20Venture%20%28New%29.png",
+  "size": [
+   512,
+   687
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   687
+  ]
+ },
+ "gradius3": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Gradius%20III%20%28World%2C%20program%20code%20R%29.png",
+  "size": [
+   512,
+   719
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   719
+  ]
+ },
+ "parodius": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Parodius%20DA%21%20%28Japan%29.png",
+  "size": [
+   222,
+   322
+  ],
+  "crop": [
+   0,
+   0,
+   222,
+   322
+  ]
+ },
+ "rtype": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/R-Type%20%28Japan%29.png",
+  "size": [
+   512,
+   724
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   724
+  ]
+ },
+ "imgfight": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Image%20Fight%20%28Japan%29.png",
+  "size": [
+   512,
+   716
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   716
+  ]
+ },
+ "rtype2": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/R-Type%20II%20%28Japan%29.png",
+  "size": [
+   512,
+   730
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   730
+  ]
+ },
+ "xmultipl": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/X%20Multiply%20%28World%2C%20M81%20hardware%29.png",
+  "size": [
+   512,
+   683
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   683
+  ]
+ },
+ "dbreed": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Dragon%20Breed%20%28World%2C%20M72%20hardware%29.png",
+  "size": [
+   512,
+   699
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   689
+  ]
+ },
+ "airduel": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Air%20Duel%20%28World%2C%20M82-A-A%20%2B%20M82-B-A%29.png",
+  "size": [
+   512,
+   724
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   709
+  ]
+ },
+ "gallop": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Gallop%20-%20Armed%20Police%20Unit%20%28Japan%2C%20M72%29.png",
+  "size": [
+   512,
+   728
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   728
+  ]
+ },
+ "dspirit": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Dragon%20Spirit%20%28old%20version%29.png",
+  "size": [
+   512,
+   725
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   725
+  ]
+ },
+ "ddp2": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/DoDonPachi%20II%20-%20Bee%20Storm%20%28Japan%2C%20ver.%20102%29.png",
+  "size": [
+   512,
+   724
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   724
+  ]
+ },
+ "ketsui": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Ketsui_%20Kizuna%20Jigoku%20Tachi%20%282003_01_01.%20Master%20Ver.%29.png",
+  "size": [
+   512,
+   728
+  ],
+  "crop": [
+   0,
+   0,
+   489,
+   721
+  ]
+ },
+ "ddpdoj": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/DoDonPachi%20Dai-Ou-Jou%20%282002.10.07.Black%20Ver%29.png",
+  "size": [
+   512,
+   728
+  ],
+  "crop": [
+   5,
+   6,
+   499,
+   714
+  ]
+ },
+ "espgaluda": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Espgaluda%20%282003_10_15%20Master%20Ver%29.png",
+  "size": [
+   512,
+   725
+  ],
+  "crop": [
+   9,
+   10,
+   493,
+   697
+  ]
+ },
+ "s1945ii": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Strikers%201945%20II.png",
+  "size": [
+   512,
+   723
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   723
+  ]
+ },
+ "gunbird2": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Gunbird%202%20%28set%201%29.png",
+  "size": [
+   512,
+   753
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   753
+  ]
+ },
+ "spbomber": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Space%20Bomber%20%28ver.%20B%29.png",
+  "size": [
+   512,
+   719
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   719
+  ]
+ },
+ "s1945iii": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Strikers%201945%20III%20%28World%29%20-%20Strikers%201999%20%28Japan%29.png",
+  "size": [
+   512,
+   719
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   719
+  ]
+ },
+ "dragnblz": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Dragon%20Blaze.png",
+  "size": [
+   512,
+   730
+  ],
+  "crop": [
+   10,
+   0,
+   502,
+   730
+  ]
+ },
+ "garegga": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Battle%20Garegga%20%28Europe%20-%20USA%20-%20Japan%20-%20Asia%29%20%28Sat%20Feb%203%201996%29.png",
+  "size": [
+   512,
+   726
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   726
+  ]
+ },
+ "batrider": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Armed%20Police%20Batrider%20%28Japan%2C%20B%20version%29%20%28Fri%20Feb%2013%201998%29.png",
+  "size": [
+   512,
+   728
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   728
+  ]
+ },
+ "bbakraid": {
+  "url": "https://www.arcadeartwork.org/action.php?id=147440&part=e&download",
+  "size": [
+   450,
+   680
+  ],
+  "crop": [
+   0,
+   0,
+   450,
+   680
+  ],
+  "referer": "https://www.arcadeartwork.org/picture.php?/147440"
+ },
+ "fantzone": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Fantasy%20Zone%20%28Japan%20New%20Ver.%29.png",
+  "size": [
+   512,
+   720
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   720
+  ]
+ },
+ "fantzn2": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Fantasy%20Zone%20II%20-%20The%20Tears%20of%20Opa-Opa%20%28MC-8123%2C%20317-0057%29.png",
+  "size": [
+   512,
+   724
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   724
+  ]
+ },
+ "sdi": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/SDI%20-%20Strategic%20Defense%20Initiative%20%28Japan%2C%20newer%2C%20System%2016A%2C%20FD1089B%20317-0027%29.png",
+  "size": [
+   512,
+   727
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   727
+  ]
+ },
+ "alcon": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Slap%20Fight%20%28Japan%20set%201%29.png",
+  "size": [
+   222,
+   311
+  ],
+  "crop": [
+   0,
+   0,
+   222,
+   311
+  ]
+ },
+ "geminiw": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Gemini%20Wing%20%28Japan%29.png",
+  "size": [
+   512,
+   725
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   725
+  ]
+ },
+ "silkworm": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Silk%20Worm%20%28World%29.png",
+  "size": [
+   512,
+   677
+  ],
+  "crop": [
+   32,
+   0,
+   480,
+   643
+  ]
+ },
+ "raiga": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Raiga%20-%20Strato%20Fighter%20%28US%29.png",
+  "size": [
+   222,
+   316
+  ],
+  "crop": [
+   0,
+   0,
+   222,
+   316
+  ]
+ },
+ "tp84": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Time%20Pilot%20%2784%20%28set%201%29.png",
+  "size": [
+   512,
+   722
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   722
+  ]
+ },
+ "drtoppel": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Dr.%20Toppel%27s%20Adventure%20%28World%29.png",
+  "size": [
+   512,
+   726
+  ],
+  "crop": [
+   0,
+   7,
+   512,
+   719
+  ]
+ },
+ "insectx": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Insector%20X%20%28World%29.png",
+  "size": [
+   512,
+   729
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   728
+  ]
+ },
+ "xevious": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Xevious%20%28Namco%29.png",
+  "size": [
+   512,
+   726
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   726
+  ]
+ },
+ "samuraia": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Samurai%20Aces%20%28World%29.png",
+  "size": [
+   512,
+   729
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   729
+  ]
+ },
+ "gunbird": {
+  "url": "https://www.arcadeartwork.org/action.php?id=86039&part=e&download",
+  "size": [
+   973,
+   1400
+  ],
+  "crop": [
+   0,
+   0,
+   973,
+   1400
+  ],
+  "referer": "https://www.arcadeartwork.org/picture.php?/86039"
+ },
+ "tengai": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Tengai%20%28World%29.png",
+  "size": [
+   222,
+   315
+  ],
+  "crop": [
+   6,
+   10,
+   216,
+   298
+  ]
+ },
+ "mushisam": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Mushihime-Sama%20%282004_10_12.MASTER%20VER.%29.png",
+  "size": [
+   512,
+   725
+  ],
+  "crop": [
+   11,
+   10,
+   492,
+   695
+  ]
+ },
+ "ibara": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Ibara%20%282005_03_22%20MASTER%20VER..%29.png",
+  "size": [
+   512,
+   719
+  ],
+  "crop": [
+   12,
+   10,
+   489,
+   698
+  ]
+ },
+ "espgal2": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Espgaluda%20II%20%28Japan%2C%202005_11_14.MASTER%20VER.%29.png",
+  "size": [
+   512,
+   731
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   731
+  ]
+ },
+ "ibarablk": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Ibara%20Kuro%20Black%20Label%20%282006_02_06.%20MASTER%20VER.%29.png",
+  "size": [
+   512,
+   763
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   763
+  ]
+ },
+ "pinkswts": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Pink%20Sweets_%20Ibara%20Sorekara%20%282006_04_06%20MASTER%20VER....%29.png",
+  "size": [
+   512,
+   730
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   724
+  ]
+ },
+ "futari15": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Mushihime-Sama%20Futari%20Ver%201.5%20%282006_12_8.MASTER%20VER.%201.54.%29.png",
+  "size": [
+   512,
+   769
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   769
+  ]
+ },
+ "deathsml": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Deathsmiles%20%282007_10_09%20MASTER%20VER%29.png",
+  "size": [
+   512,
+   721
+  ],
+  "crop": [
+   12,
+   7,
+   489,
+   699
+  ]
+ },
+ "dsmbl": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Deathsmiles%20MegaBlack%20Label%20%282008_10_06%20MEGABLACK%20LABEL%20VER%29.png",
+  "size": [
+   512,
+   722
+  ],
+  "crop": [
+   11,
+   6,
+   493,
+   716
+  ]
+ },
+ "ddpdfk": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/DoDonPachi%20Dai-Fukkatsu%20Ver%201.5%20%282008_06_23%20MASTER%20VER%201.5%29.png",
+  "size": [
+   512,
+   759
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   759
+  ]
+ },
+ "futaribl": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Mushihime-Sama%20Futari%20Black%20Label%20%282009_11_27%20INTERNATIONAL%20BL%29.png",
+  "size": [
+   512,
+   765
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   765
+  ]
+ },
+ "dfkbl": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/DoDonPachi%20Dai-Fukkatsu%20Black%20Label%20%282010_1_18%20BLACK%20LABEL%29.png",
+  "size": [
+   510,
+   720
+  ],
+  "crop": [
+   0,
+   0,
+   510,
+   720
+  ]
+ },
+ "ddpsdoj": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/DoDonPachi%20SaiDaiOuJou%20%282012_%204_20%29.png",
+  "size": [
+   417,
+   572
+  ],
+  "crop": [
+   0,
+   0,
+   417,
+   572
+  ]
+ },
+ "mmpork": {
+  "url": "https://upload.wikimedia.org/wikipedia/en/5/5e/Muchi_Muchi_Pork%21_arcade_flyer.jpg",
+  "size": [
+   266,
+   375
+  ],
+  "crop": [
+   6,
+   6,
+   255,
+   365
+  ]
+ },
+ "batsugun": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Batsugun.png",
+  "size": [
+   512,
+   713
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   713
+  ]
+ },
+ "truxton": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Truxton%20_%20Tatsujin.png",
+  "size": [
+   512,
+   727
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   727
+  ]
+ },
+ "truxton2": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Truxton%20II%20_%20Tatsujin%20Oh.png",
+  "size": [
+   512,
+   715
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   715
+  ]
+ },
+ "fireshrk": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Fire%20Shark.png",
+  "size": [
+   512,
+   719
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   719
+  ]
+ },
+ "vimana": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Vimana.png",
+  "size": [
+   512,
+   724
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   724
+  ]
+ },
+ "outzone": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Out%20Zone.png",
+  "size": [
+   512,
+   717
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   717
+  ]
+ },
+ "hellfire": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Hellfire.png",
+  "size": [
+   512,
+   720
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   720
+  ]
+ },
+ "zerowing": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Zero%20Wing.png",
+  "size": [
+   512,
+   721
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   721
+  ]
+ },
+ "sstriker": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Sorcer%20Striker.png",
+  "size": [
+   512,
+   718
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   718
+  ]
+ },
+ "kingdmgp": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Shippu%20Mahou%20Daisakusen%20%28Japan%29.png",
+  "size": [
+   512,
+   805
+  ],
+  "crop": [
+   0,
+   16,
+   512,
+   767
+  ]
+ },
+ "gradius": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Gradius.png",
+  "size": [
+   512,
+   724
+  ],
+  "crop": [
+   22,
+   0,
+   469,
+   712
+  ]
+ },
+ "salamand": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Salamander%20%28version%20D%29.png",
+  "size": [
+   512,
+   726
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   726
+  ]
+ },
+ "thunderx": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Thunder%20Cross.png",
+  "size": [
+   512,
+   732
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   732
+  ]
+ },
+ "finalizr": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Finalizer%20-%20Super%20Transformation.png",
+  "size": [
+   512,
+   719
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   697
+  ]
+ },
+ "rtypeleo": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/R-Type%20Leo%20%28World%29.png",
+  "size": [
+   512,
+   724
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   724
+  ]
+ },
+ "lethalth": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Lethal%20Thunder%20%28World%29.png",
+  "size": [
+   512,
+   719
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   719
+  ]
+ },
+ "mysticri": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Mystic%20Riders%20%28World%29.png",
+  "size": [
+   512,
+   770
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   770
+  ]
+ },
+ "firebarr": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Air%20Assault%20%28World%29.png",
+  "size": [
+   512,
+   727
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   727
+  ]
+ },
+ "metalb": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Metal%20Black%20%28World%29.png",
+  "size": [
+   512,
+   724
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   724
+  ]
+ },
+ "armedf": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Armed%20Formation.png",
+  "size": [
+   512,
+   728
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   717
+  ]
+ },
+ "legion": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Legion%20-%20Spinner-87%20%28World%20ver%202.03%29.png",
+  "size": [
+   512,
+   721
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   713
+  ]
+ },
+ "aso": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/ASO%20-%20Armored%20Scrum%20Object.png",
+  "size": [
+   512,
+   726
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   726
+  ]
+ },
+ "blazstar": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Blazing%20Star.png",
+  "size": [
+   512,
+   740
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   740
+  ]
+ },
+ "pulstar": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Pulstar.png",
+  "size": [
+   512,
+   740
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   740
+  ]
+ },
+ "lresort": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Last%20Resort.png",
+  "size": [
+   512,
+   708
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   708
+  ]
+ },
+ "sonicwi3": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Aero%20Fighters%203%20_%20Sonic%20Wings%203.png",
+  "size": [
+   512,
+   722
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   722
+  ]
+ },
+ "viewpoin": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Viewpoint.png",
+  "size": [
+   512,
+   726
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   726
+  ]
+ },
+ "zedblade": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Zed%20Blade%20_%20Operation%20Ragnarok.png",
+  "size": [
+   512,
+   723
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   710
+  ]
+ },
+ "gpilots": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Ghost%20Pilots%20%28NGM-020%20~%20NGH-020%29.png",
+  "size": [
+   512,
+   730
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   730
+  ]
+ },
+ "alpham2": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Alpha%20Mission%20II%20_%20ASO%20II%20-%20Last%20Guardian%20%28NGM-007%20~%20NGH-007%29.png",
+  "size": [
+   512,
+   728
+  ],
+  "crop": [
+   0,
+   0,
+   511,
+   706
+  ]
+ },
+ "androdun": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Andro%20Dunos.png",
+  "size": [
+   512,
+   728
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   728
+  ]
+ },
+ "ctomaday": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Captain%20Tomaday.png",
+  "size": [
+   512,
+   723
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   723
+  ]
+ },
+ "fshark": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Hishou%20Zame%20%28Japan%29.png",
+  "size": [
+   512,
+   725
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   725
+  ]
+ },
+ "inthunt": {
+  "url": "https://www.arcadeartwork.org/action.php?id=147745&part=e&download",
+  "size": [
+   850,
+   1200
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1200
+  ],
+  "referer": "https://www.arcadeartwork.org/picture.php?/147745"
+ },
+ "youjyudn": {
+  "url": "https://www.arcadeartwork.org/action.php?id=148407&part=e&download",
+  "size": [
+   1198,
+   1618
+  ],
+  "crop": [
+   0,
+   0,
+   1198,
+   1618
+  ],
+  "referer": "https://www.arcadeartwork.org/picture.php?/148407"
+ },
+ "tokio": {
+  "url": "https://www.arcadeartwork.org/action.php?id=148314&part=e&download",
+  "size": [
+   850,
+   1200
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1200
+  ],
+  "referer": "https://www.arcadeartwork.org/picture.php?/148314"
+ },
+ "twinbee": {
+  "url": "https://flyers.arcade-museum.com/videogame-flyers/4/twin-bee-04902-01.jpg",
+  "size": [
+   850,
+   1199
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1199
+  ]
+ },
+ "batsugunsp": {
+  "url": "https://www.arcadeartwork.org/action.php?id=84668&part=e&download",
+  "size": [
+   900,
+   1254
+  ],
+  "crop": [
+   0,
+   0,
+   900,
+   1254
+  ],
+  "referer": "https://www.arcadeartwork.org/picture.php?/84668"
+ },
+ "terracre": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Terra%20Cresta%20%28YM2203%29.png",
+  "size": [
+   512,
+   737
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   731
+  ]
+ },
+ "terraf": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Terra%20Force%20%28US%29.png",
+  "size": [
+   512,
+   728
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   723
+  ]
+ },
+ "cobracom": {
+  "url": "https://www.arcadeartwork.org/action.php?id=147527&part=e&download",
+  "size": [
+   850,
+   1200
+  ],
+  "crop": [
+   18,
+   17,
+   817,
+   1167
+  ],
+  "referer": "https://www.arcadeartwork.org/picture.php?/147527"
+ },
+ "akatana": {
+  "url": "https://www.arcadeartwork.org/action.php?id=147384&part=e&download",
+  "size": [
+   950,
+   1330
+  ],
+  "crop": [
+   0,
+   0,
+   950,
+   1330
+  ],
+  "referer": "https://www.arcadeartwork.org/picture.php?/147384"
+ },
+ "raflesia": {
+  "url": "https://archive.org/download/arcadeflyer_rafflesia_JP/page/n0.jpg",
+  "size": [
+   1280,
+   1798
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1736
+  ]
+ },
+ "tigerh": {
+  "url": "https://upload.wikimedia.org/wikipedia/en/f/ff/Tiger-Heli_arcade_flyer.jpg",
+  "size": [
+   266,
+   375
+  ],
+  "crop": [
+   0,
+   0,
+   266,
+   375
+  ]
+ },
+ "sonicwi2": {
+  "url": "https://upload.wikimedia.org/wikipedia/en/f/f2/Aero_Fighters_2_arcade_flyer.jpg",
+  "size": [
+   265,
+   375
+  ],
+  "crop": [
+   0,
+   0,
+   265,
+   368
+  ]
+ },
+ "preisle2": {
+  "url": "https://images.launchbox-app.com/ec6efe7b-a540-428c-b25e-e10586d71c81.jpg",
+  "size": [
+   562,
+   791
+  ],
+  "crop": [
+   0,
+   0,
+   562,
+   791
+  ]
+ }
+}

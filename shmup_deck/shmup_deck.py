@@ -1,0 +1,517 @@
+#!/usr/bin/env python3
+"""Shmup Deck service for the MiSTer.
+
+Serves the deck web app and launches games itself, so nothing else (mrext
+Remote, a PC, a hosted site) is needed. The page and the API share one origin,
+which avoids the mixed-content and CORS problems of hosting the app elsewhere.
+
+Games are matched by MAME setname, read from inside each .mra, never guessed
+from filenames. That is what separates Gunbird from Gunbird 2 and DonPachi from
+DoDonPachi.
+
+Flyer art is not shipped. On first start the service downloads each flyer
+from the sources pinned in app/art.json and keeps it on the SD card.
+
+    python3 shmup_deck.py [--port 8190]
+
+Python 3.9 standard library only, which is what the MiSTer image ships.
+"""
+
+import argparse
+import json
+import os
+import re
+import socket
+import struct
+import threading
+import time
+import urllib.request
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+from xml.sax.saxutils import quoteattr
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+APP_DIR = os.environ.get("SHMUP_APP_DIR", os.path.join(HERE, "app"))
+ART_DIR = os.environ.get("SHMUP_ART_DIR", os.path.join(HERE, "art"))
+ARCADE = os.environ.get("SHMUP_ARCADE_DIR", "/media/fat/_Arcade")
+CMD = os.environ.get("SHMUP_CMD", "/dev/MiSTer_cmd")
+CACHE = os.environ.get("SHMUP_CACHE", os.path.join(HERE, "mra_index.json"))
+MGL_PATH = os.environ.get("SHMUP_MGL", "/tmp/shmup_deck.mgl")
+
+VERSION = "1.0.0"
+USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
+ART_DELAY = 2.0          # seconds between flyer downloads; be kind to the hosts
+SETNAME = re.compile(rb"<setname>\s*(.*?)\s*</setname>", re.S)
+HEAD_BYTES = 4096
+
+
+def path_cost(path):
+    """Lower is better: the ordinary release beats variants and edits."""
+    name = os.path.basename(path)
+    low = path.lower()
+    # organised sets file copies of each game into sorting folders (by letter,
+    # region, rotation...); the copy nearest the top of _Arcade is the plain one
+    n = 10 * os.path.relpath(path, ARCADE).count(os.sep)
+    if "/_alternatives/" in low:
+        n += 100
+    if "/_5 extra software/" in low:
+        n += 100
+    if "/_arcade offset/" in low:
+        n += 80
+    if "/_4 video & inputs/" in low:
+        n += 60                       # rotation and control-scheme edits
+    if name.startswith("}"):
+        n += 50                       # year-prefixed duplicate
+    if re.search(r"\[bl\]|bootleg", name, re.I):
+        n += 40
+    if re.search(r"free play|arrange|hack|prototype", name, re.I):
+        n += 30
+    return n + len(name)
+
+
+class Index:
+    """setname -> best .mra path, built by reading every MRA once."""
+
+    def __init__(self):
+        self.lock = threading.Lock()
+        self.best = {}
+        self.stats = {"mras": 0, "broken_links": 0, "unreadable": 0, "seconds": 0, "built": None}
+        self.scanning = False
+        self._load_cache()
+
+    def _load_cache(self):
+        try:
+            with open(CACHE) as f:
+                data = json.load(f)
+            self.best, self.stats = data["best"], data["stats"]
+        except (OSError, ValueError, KeyError):
+            pass
+
+    def scan(self):
+        with self.lock:
+            if self.scanning:
+                return
+            self.scanning = True
+        try:
+            t = time.time()
+            found, mras, broken, unreadable = {}, 0, 0, 0
+            for root, _dirs, files in os.walk(ARCADE):
+                for name in files:
+                    if not name.lower().endswith(".mra"):
+                        continue
+                    mras += 1
+                    path = os.path.join(root, name)
+                    try:
+                        with open(path, "rb") as f:
+                            m = SETNAME.search(f.read(HEAD_BYTES))
+                    except OSError:
+                        # organised sets often carry shortcuts to files that
+                        # have since moved; those are not worth reporting as errors
+                        if os.path.islink(path) and not os.path.exists(path):
+                            broken += 1
+                        else:
+                            unreadable += 1
+                        continue
+                    if not m:
+                        continue
+                    setname = m.group(1).decode("utf-8", "replace")
+                    if setname not in found or path_cost(path) < path_cost(found[setname]):
+                        found[setname] = path
+            stats = {"mras": mras, "broken_links": broken, "unreadable": unreadable,
+                     "seconds": round(time.time() - t, 1), "built": int(time.time())}
+            with self.lock:
+                self.best, self.stats = found, stats
+            tmp = CACHE + ".tmp"
+            with open(tmp, "w") as f:
+                json.dump({"best": found, "stats": stats}, f)
+            os.replace(tmp, CACHE)
+        finally:
+            with self.lock:
+                self.scanning = False
+
+    def resolve(self, setnames):
+        with self.lock:
+            for s in setnames:
+                if s in self.best:
+                    return self.best[s]
+        return None
+
+
+class Art:
+    """Downloads missing flyers once and keeps them on the SD card."""
+
+    def __init__(self):
+        self.fetching = False
+        self.done = 0
+        self.total = 0
+        self.failed = []
+
+    def fetch_missing(self):
+        if self.fetching:
+            return
+        self.fetching = True
+        try:
+            os.makedirs(ART_DIR, exist_ok=True)
+            with open(os.path.join(APP_DIR, "art.json")) as f:
+                sources = json.load(f)
+            # a flyer is fetched when it is missing, or when art.json now points
+            # somewhere else (a better scan found in a later release)
+            todo = [(gid, s) for gid, s in sources.items()
+                    if self._stored_url(gid) != s["url"]]
+            self.total, self.done, self.failed = len(todo), 0, []
+            for i, (gid, src) in enumerate(todo):
+                if i:
+                    time.sleep(ART_DELAY)
+                if not self._get(gid, src):
+                    self.failed.append(gid)
+                self.done += 1
+        finally:
+            self.fetching = False
+
+    @staticmethod
+    def _stored_url(gid):
+        if not os.path.exists(os.path.join(ART_DIR, gid + ".img")):
+            return None
+        try:
+            with open(os.path.join(ART_DIR, gid + ".src")) as f:
+                return f.read().strip()
+        except OSError:
+            return ""                   # fetched before sources were recorded
+
+    def _get(self, gid, src):
+        headers = {"User-Agent": USER_AGENT}
+        if src.get("referer"):
+            headers["Referer"] = src["referer"]
+        dest = os.path.join(ART_DIR, gid + ".img")
+        try:
+            req = urllib.request.Request(src["url"], headers=headers)
+            with urllib.request.urlopen(req, timeout=40) as r:
+                data = r.read()
+        except Exception:
+            return False
+        # an error page or placeholder is small and not an image
+        if len(data) < 10_000 or not (data[:8] == b"\x89PNG\r\n\x1a\n" or data[:3] == b"\xff\xd8\xff"):
+            return False
+        tmp = dest + ".tmp"
+        with open(tmp, "wb") as f:
+            f.write(data)
+        os.replace(tmp, dest)
+        with open(os.path.join(ART_DIR, gid + ".src"), "w") as f:
+            f.write(src["url"])
+        return True
+
+
+NEO_ROOTS = os.environ.get("SHMUP_NEO_ROOTS",
+                           "/media/fat/games/NeoGeo:/media/usb0/games/NeoGeo:/media/usb1/games/NeoGeo").split(":")
+NEO_SETNAME = re.compile(r"\(([a-z0-9_]+)\)$")
+# files that mark a folder as an unzipped Darksoft set
+DARKSOFT_PARTS = {"prom", "crom0", "vroma0", "m1rom", "fix"}
+
+
+class NeoIndex:
+    """setname -> Neo Geo game file, relative to the games/NeoGeo folder.
+
+    The Neo Geo core loads .neo files, and Darksoft or MAME sets as zips or
+    folders named by setname. Each is matched on that setname: the "(blazstar)"
+    in "Blazing Star (blazstar).neo", or a zip or folder called "blazstar".
+    """
+
+    RANK = {".neo": 0, ".zip": 1, "dir": 2}   # prefer the self-contained format
+
+    def __init__(self):
+        self.lock = threading.Lock()
+        self.best = {}                          # setname -> (root, relpath, kind)
+
+    def scan(self):
+        found = {}
+
+        def offer(setname, root, path, kind):
+            rel = os.path.relpath(path, root)
+            key = (self.RANK[kind], rel.count(os.sep), len(rel))
+            if setname not in found or key < found[setname][3]:
+                found[setname] = (root, rel, kind, key)
+
+        for root in NEO_ROOTS:
+            if not os.path.isdir(root):
+                continue
+            for d, dirs, files in os.walk(root):
+                if d != root and DARKSOFT_PARTS & {f.lower() for f in files}:
+                    offer(os.path.basename(d).lower(), root, d, "dir")
+                    dirs[:] = []
+                    continue
+                for f in files:
+                    stem, ext = os.path.splitext(f)
+                    ext = ext.lower()
+                    if ext not in (".neo", ".zip"):
+                        continue
+                    m = NEO_SETNAME.search(stem.lower())
+                    offer(m.group(1) if m else stem.lower(), root, os.path.join(d, f), ext)
+        with self.lock:
+            self.best = {s: v[:3] for s, v in found.items()}
+
+    def resolve(self, setnames):
+        with self.lock:
+            for s in setnames:
+                if s in self.best:
+                    return self.best[s]
+        return None
+
+
+INDEX = Index()
+NEO = NeoIndex()
+ART = Art()
+LAST_LAUNCH = {"id": None, "core": None}
+
+
+def load_deck():
+    with open(os.path.join(APP_DIR, "games.json")) as f:
+        return json.load(f)
+
+
+def now_playing():
+    """The deck game currently running.
+
+    Arcade cores report the game's setname. The Neo Geo core only reports
+    "NEOGEO", so for those the best available answer is the last Neo Geo game
+    launched from the deck.
+    """
+    try:
+        with open("/tmp/CORENAME") as f:
+            name = f.read().strip()
+    except OSError:
+        return None
+    if name.upper() == "NEOGEO":
+        return LAST_LAUNCH["id"] if LAST_LAUNCH["core"] == "neogeo" else None
+    for g in load_deck():
+        if g.get("platform") != "neogeo" and name in g.get("setnames", [g["id"]]):
+            return g["id"]
+    return None
+
+
+def resolve_game(game):
+    """Where a deck game lives on this MiSTer, or None if it isn't installed."""
+    sets = game.get("setnames", [game["id"]])
+    if game.get("platform") == "neogeo":
+        hit = NEO.resolve(sets)
+        return os.path.join(hit[0], hit[1]) if hit else None
+    return INDEX.resolve(sets)
+
+
+def send_command(cmd):
+    # paths come from our own indexes, but the command pipe is line based, so
+    # refuse anything that could smuggle a second command
+    if "\n" in cmd or "\r" in cmd:
+        raise ValueError("bad path")
+    with open(CMD, "w") as f:
+        f.write(cmd + "\n")
+
+
+def launch(game):
+    if game.get("platform") == "neogeo":
+        hit = NEO.resolve(game.get("setnames", [game["id"]]))
+        if not hit:
+            return None
+        root, rel, _kind = hit
+        # An MGL names the core and the file to hand it; the path is relative
+        # to the core's games folder. Settings verified on a MiSTer.
+        mgl = ('<mistergamedescription>\n'
+               '    <rbf>_Console/NeoGeo</rbf>\n'
+               '    <file delay="1" type="f" index="1" path=%s/>\n'
+               '</mistergamedescription>\n') % quoteattr(rel)
+        with open(MGL_PATH, "w") as f:
+            f.write(mgl)
+        send_command("load_core %s" % MGL_PATH)
+        LAST_LAUNCH.update(id=game["id"], core="neogeo")
+        return os.path.join(root, rel)
+    path = INDEX.resolve(game.get("setnames", [game["id"]]))
+    if not path:
+        return None
+    send_command("load_core %s" % path)
+    LAST_LAUNCH.update(id=game["id"], core="arcade")
+    return path
+
+
+class Handler(SimpleHTTPRequestHandler):
+    def __init__(self, *a, **kw):
+        super().__init__(*a, directory=APP_DIR, **kw)
+
+    def log_message(self, fmt, *args):
+        pass
+
+    def end_headers(self):
+        # the app changes between versions; the art never does
+        if not self.path.startswith("/art/"):
+            self.send_header("Cache-Control", "no-cache")
+        super().end_headers()
+
+    def send_json(self, obj, code=200):
+        body = json.dumps(obj).encode()
+        self.send_response(code)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def read_json(self):
+        n = int(self.headers.get("Content-Length") or 0)
+        if n > 10_000:
+            raise ValueError("too large")
+        return json.loads(self.rfile.read(n) or b"{}")
+
+    def send_art(self, gid):
+        path = os.path.join(ART_DIR, gid + ".img")
+        if not re.fullmatch(r"[a-z0-9_]+", gid) or not os.path.exists(path):
+            return self.send_json({"error": "no art"}, 404)
+        with open(path, "rb") as f:
+            data = f.read()
+        self.send_response(200)
+        self.send_header("Content-Type", "image/png" if data[:4] == b"\x89PNG" else "image/jpeg")
+        self.send_header("Cache-Control", "max-age=31536000")
+        self.send_header("Content-Length", str(len(data)))
+        self.end_headers()
+        self.wfile.write(data)
+
+    def do_GET(self):
+        if self.path == "/api/status":
+            return self.send_json({
+                "service": "shmup-deck", "version": VERSION, "scanning": INDEX.scanning,
+                **INDEX.stats,
+                "art": {"fetching": ART.fetching, "done": ART.done, "total": ART.total,
+                        "failed": ART.failed},
+                "now_playing": now_playing()})
+        if self.path == "/api/available":
+            return self.send_json({g["id"]: resolve_game(g) for g in load_deck()})
+        if self.path.startswith("/art/"):
+            return self.send_art(self.path[5:].split("?")[0])
+        return super().do_GET()
+
+    def do_POST(self):
+        try:
+            if self.path == "/api/launch":
+                gid = self.read_json().get("id")
+                game = next((g for g in load_deck() if g["id"] == gid), None)
+                if not game:
+                    return self.send_json({"error": "unknown game"}, 404)
+                path = launch(game)
+                if not path:
+                    return self.send_json({"error": "not installed"}, 404)
+                return self.send_json({"ok": True, "path": path})
+            if self.path == "/api/rescan":
+                threading.Thread(target=INDEX.scan, daemon=True).start()
+                threading.Thread(target=NEO.scan, daemon=True).start()
+                return self.send_json({"ok": True})
+        except (ValueError, OSError) as e:
+            return self.send_json({"error": str(e)}, 400)
+        self.send_json({"error": "not found"}, 404)
+
+
+MDNS_GROUP, MDNS_PORT = "224.0.0.251", 5353
+
+
+def lan_ip():
+    """This machine's LAN address. Connecting a UDP socket sends nothing."""
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        s.connect((MDNS_GROUP, MDNS_PORT))
+        return s.getsockname()[0]
+    finally:
+        s.close()
+
+
+def mdns_name(data, off):
+    labels = []
+    while True:
+        n = data[off]
+        if n & 0xC0 == 0xC0:                       # compressed pointer
+            ptr = struct.unpack("!H", data[off:off + 2])[0] & 0x3FFF
+            return labels + mdns_name(data, ptr)[0], off + 2
+        off += 1
+        if n == 0:
+            return labels, off
+        labels.append(data[off:off + n].decode("ascii", "replace").lower())
+        off += n
+
+
+def mdns_responder(hostname):
+    """Answer mDNS lookups for <hostname>.local with this MiSTer's address.
+
+    The MiSTer image has no Avahi, so without this the deck is only reachable
+    by IP, which changes whenever the router hands out a new one. Phones,
+    Macs and Windows all resolve .local names over mDNS.
+    """
+    want = [hostname.lower(), "local"]
+    qname = b"".join(bytes([len(p)]) + p.encode() for p in want) + b"\0"
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    if hasattr(socket, "SO_REUSEPORT"):
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+    sock.bind(("", MDNS_PORT))
+    sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP,
+                    struct.pack("4s4s", socket.inet_aton(MDNS_GROUP), socket.inet_aton("0.0.0.0")))
+    sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 255)
+
+    def answer(ipv6_asked=False):
+        ip = lan_ip()
+        # The address record, cache-flush class, two minute TTL. Its name is
+        # written out in full at offset 12, so later records point back to it.
+        a = qname + struct.pack("!HHIH", 1, 0x8001, 120, 4) + socket.inet_aton(ip)
+        # NSEC saying "A is the only address type this name has". Without it a
+        # client that also asks for IPv6 waits about five seconds for an answer
+        # that never comes before falling back to IPv4.
+        nsec = b"\xc0\x0c" + struct.pack("!HHIH", 47, 0x8001, 120, 5) + b"\xc0\x0c\x00\x01\x40"
+        if ipv6_asked:
+            # no IPv6 answer; the IPv4 address and the NSEC ride as extras
+            return struct.pack("!HHHHHH", 0, 0x8400, 0, 0, 0, 2) + a + nsec
+        return struct.pack("!HHHHHH", 0, 0x8400, 0, 1, 0, 1) + a + nsec
+
+    sock.sendto(answer(), (MDNS_GROUP, MDNS_PORT))    # announce on start
+    while True:
+        try:
+            data, addr = sock.recvfrom(9000)
+            flags, qd = struct.unpack("!2xHH", data[:6])
+            if flags & 0x8000:                         # a response, not a query
+                continue
+            off = 12
+            for _ in range(qd):
+                labels, off = mdns_name(data, off)
+                qtype, qclass = struct.unpack("!HH", data[off:off + 4])
+                off += 4
+                if labels == want and qtype in (1, 28, 255):
+                    # a one-shot resolver asks from a random port and wants a
+                    # direct reply; everyone else listens on the group
+                    dest = addr if addr[1] != MDNS_PORT or qclass & 0x8000 else (MDNS_GROUP, MDNS_PORT)
+                    sock.sendto(answer(ipv6_asked=qtype == 28), dest)
+                    break
+        except Exception:
+            time.sleep(1)
+
+
+def serve(port):
+    ThreadingHTTPServer(("0.0.0.0", port), Handler).serve_forever()
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--port", type=int, default=8190)
+    ap.add_argument("--name", default="shmupdeck", help="answers at http://<name>.local")
+    args = ap.parse_args()
+    if not INDEX.best:
+        threading.Thread(target=INDEX.scan, daemon=True).start()
+    # the Neo Geo folder is small, so it is simply rescanned on every start
+    threading.Thread(target=NEO.scan, daemon=True).start()
+    threading.Thread(target=ART.fetch_missing, daemon=True).start()
+    try:
+        threading.Thread(target=mdns_responder, args=(args.name,), daemon=True).start()
+    except OSError:
+        pass
+    # port 80 lets the address be just http://shmupdeck.local; if something
+    # else already has it, the numbered port still works
+    try:
+        http80 = ThreadingHTTPServer(("0.0.0.0", 80), Handler)
+        threading.Thread(target=http80.serve_forever, daemon=True).start()
+    except OSError:
+        pass
+    serve(args.port)
+
+
+if __name__ == "__main__":
+    main()
