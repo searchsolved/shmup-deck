@@ -6,6 +6,8 @@ phone, tap a flyer, and the MiSTer loads the game.
 It runs on the MiSTer itself. There is nothing to host, no PC involved and no
 other service to install.
 
+![Shmup Deck flyer wall](docs/screenshot.jpg)
+
 - 129 auto-scrolling shooters from 1985 onwards, across Toaplan, Cave,
   CV1000, Capcom CPS1/CPS2, PGM, Psikyo, Raizing, Konami, Irem, Neo Geo and more
 - Only games actually installed on your SD card are shown
