@@ -12,6 +12,7 @@ REPO="searchsolved/shmup-deck"
 PORT=8190
 HOME_DIR=/media/fat/Scripts/.config/shmup_deck
 PID_FILE=/tmp/shmup_deck.pid
+SELF=$(readlink -f "$0")
 LOG=/tmp/shmup_deck.log
 STARTUP=/media/fat/linux/user-startup.sh
 MARK="# shmup_deck"
@@ -49,9 +50,9 @@ fi
 
 echo "Checking for the latest Shmup Deck release..."
 # MiSTer's curl lacks a usable CA bundle for GitHub, Python's does not
-python3 - "$REPO" "$HOME_DIR" "${SHMUP_API:-https://api.github.com}" <<'EOF'
+python3 - "$REPO" "$HOME_DIR" "${SHMUP_API:-https://api.github.com}" "$SELF" <<'EOF'
 import io, json, os, shutil, sys, urllib.request, zipfile
-repo, home, api = sys.argv[1], sys.argv[2], sys.argv[3]
+repo, home, api, self_path = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
 ua = {"User-Agent": "ShmupDeck-installer"}
 def get(url):
     with urllib.request.urlopen(urllib.request.Request(url, headers=ua), timeout=60) as r:
@@ -71,6 +72,19 @@ except Exception as e:
     print("Download failed: %s" % e)
     sys.exit(1)
 tag = rel["tag_name"]
+# this script is part of the release too; a newer one is put beside this
+# file for the shell to swap in and re-run, so fixes to the installer itself
+# reach everyone who runs it
+try:
+    sh = next(a for a in rel["assets"] if a["name"] == "shmup_deck.sh")
+    latest = get(sh["browser_download_url"])
+    with open(self_path, "rb") as f:
+        mine = f.read()
+    if latest != mine and latest.startswith(b"#!/bin/bash") and len(latest) > 1000:
+        with open(self_path + ".new", "wb") as f:
+            f.write(latest)
+except Exception:
+    pass
 if tag == installed:
     print("Already on the latest version, %s." % tag)
     sys.exit(0)
@@ -91,6 +105,14 @@ for m in z.infolist():
 open(os.path.join(home, "VERSION"), "w").write(tag)
 EOF
 [ $? -ne 0 ] && { sleep 8; exit 1; }
+
+# a newer copy of this script arrived: swap it in and let it finish the job
+if [ -z "$SHMUP_REEXEC" ] && [ -f "$SELF.new" ]; then
+  mv "$SELF.new" "$SELF" && chmod +x "$SELF"
+  echo "Updated the installer itself."
+  SHMUP_REEXEC=1 exec bash "$SELF" "$@"
+fi
+rm -f "$SELF.new"
 
 # boot entry: one marked line, added once
 if [ ! -f "$STARTUP" ]; then
