@@ -34,42 +34,58 @@ body{
   padding:max(20px, env(safe-area-inset-top)) 20px 48px;
 }
 
-/* site header: brand, connection, page tabs, settings */
-header{max-width:1080px;margin:0 auto 26px}
-.strapline .conn{display:inline-flex;align-items:center;gap:7px;margin-left:10px;color:var(--emerald-hot)}
+/* site header: brand on the left, page tabs and settings on the right */
+header{
+  max-width:1080px;margin:0 auto 22px;padding-bottom:18px;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+}
+.strapline .conn{display:inline-flex;align-items:center;gap:7px;margin-left:8px;color:var(--emerald-hot)}
 .strapline .conn.off{color:var(--danger)}
 .strapline .conn.busy{color:var(--gold)}
-nav{display:flex;align-items:center;gap:4px;margin-top:18px}
-nav a,nav .cog{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:10px 20px;border-radius:999px;border:0;
-  background:transparent;color:var(--ash);cursor:pointer;text-decoration:none;
-  font-family:inherit;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+nav{margin-left:auto;display:flex;align-items:center;gap:6px}
+nav a{
+  display:inline-flex;align-items:center;padding:12px 24px;border-radius:999px;
+  color:var(--ash);text-decoration:none;font-size:14px;letter-spacing:.12em;text-transform:uppercase;
 }
-nav a:hover,nav .cog:hover{color:var(--bone)}
+nav a:hover{color:var(--bone)}
 nav a[aria-current="page"]{background:var(--gold);color:#231c07}
-nav .rule{width:1px;height:26px;background:var(--line);margin:0 12px}
-nav .cog{padding:8px 10px}
+nav .cog{
+  width:46px;height:46px;margin-left:8px;border-radius:50%;border:1px solid var(--line);
+  background:rgba(0,0,0,.25);color:var(--ash);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
+}
+nav .cog:hover{color:var(--bone)}
 nav .cog svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-nav .cog[aria-expanded="true"]{color:var(--gold)}
+nav .cog[aria-expanded="true"]{color:var(--gold);border-color:var(--gold)}
 nav a:focus-visible,nav .cog:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:2px}
-/* the toolbar: how to browse right now; labels sit above the controls */
-.toolbar{
-  max-width:1080px;margin:0 auto 18px;
-  display:flex;align-items:flex-start;gap:28px;flex-wrap:wrap;
-}
-.ctl{display:flex;flex-direction:column;gap:8px}
-.ctl>span{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ash)}
-.ctl.search{flex:1;min-width:200px;max-width:400px}
-.ctl .hint{font-size:12px;color:var(--gold);line-height:1.4;max-width:220px}
-.ctl.ask>span{color:var(--gold)}
-.ctl.ask .seg{border-color:var(--gold);box-shadow:0 0 0 3px rgba(216,181,74,.18)}
+/* search, full width */
+.searchrow{max-width:1080px;margin:0 auto 16px}
 .field{position:relative;display:flex;align-items:center}
-.field svg{position:absolute;left:14px;width:16px;height:16px;fill:none;stroke:var(--ash);stroke-width:2;stroke-linecap:round;pointer-events:none}
+.field svg{position:absolute;left:18px;width:18px;height:18px;fill:none;stroke:var(--ash);stroke-width:2;stroke-linecap:round;pointer-events:none}
 .field kbd{
-  position:absolute;right:12px;padding:2px 8px;border:1px solid var(--line);border-radius:5px;
-  font-family:inherit;font-size:11px;color:var(--ash);pointer-events:none;
+  position:absolute;right:16px;padding:2px 9px;border:1px solid var(--line);border-radius:6px;
+  font-family:inherit;font-size:12px;color:var(--ash);pointer-events:none;
 }
+/* filters: the count on the left, segments on the right */
+.filters{max-width:1080px;margin:0 auto 12px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.segs{margin-left:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hint{max-width:1080px;margin:0 auto 12px;font-size:12px;color:var(--gold)}
+.hint[hidden]{display:none}
+.seg.ask{border-color:var(--gold);box-shadow:0 0 0 3px rgba(216,181,74,.18)}
+.grouprow{max-width:1080px;margin:0 auto 18px}
+.dropdown{
+  position:relative;display:inline-flex;align-items:center;gap:8px;
+  padding:0 12px 0 14px;border:1px solid var(--line);border-radius:10px;background:rgba(0,0,0,.25);
+  color:var(--ash);cursor:pointer;
+}
+.dropdown:hover{color:var(--bone)}
+.dropdown svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.dropdown svg.chev{width:14px;height:14px}
+.dropdown select{
+  appearance:none;-webkit-appearance:none;border:0;background:transparent;color:inherit;cursor:pointer;
+  padding:10px 4px;font-family:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+}
+.dropdown select:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:2px;border-radius:4px}
+.dropdown.on{color:var(--bone);border-color:rgba(216,181,74,.5)}
 h1{
   font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;
   font-weight:800;font-size:clamp(34px,6vw,54px);
@@ -89,11 +105,10 @@ h1 em{font-style:normal;color:var(--emerald-hot)}
 }
 .seg button[aria-pressed="true"]{background:var(--gold);color:#231c07}
 .seg button:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:-2px}
-.count{max-width:1080px;margin:0 auto 14px}
 /* settings: set once, remembered on this device */
 .settings{position:relative}
 .sheet{
-  position:absolute;left:0;top:46px;z-index:6;width:min(340px,calc(100vw - 28px));
+  position:absolute;right:0;top:54px;z-index:6;width:min(340px,calc(100vw - 28px));
   padding:18px 18px 16px;border:1px solid var(--line);border-radius:14px;
   background:#0b1811;box-shadow:0 24px 60px -20px rgba(0,0,0,.9);
 }
@@ -117,7 +132,7 @@ body.compact .cab{border-width:1px}
 body.compact .divider h2{font-size:20px}
 #search{
   flex:1;min-width:0;width:100%;
-  padding:10px 44px 10px 40px;border-radius:999px;border:1px solid #1d3326;
+  padding:15px 52px 15px 50px;border-radius:14px;border:1px solid #1d3326;font-size:15px;
   background:rgba(0,0,0,.25);color:var(--bone);font-family:inherit;font-size:13px;
 }
 #search::placeholder{color:#4e5c52;letter-spacing:.06em}
@@ -143,6 +158,7 @@ body.compact .divider h2{font-size:20px}
 .cab .star[aria-pressed="true"]{color:var(--gold)}
 .cab .star:focus-visible{outline:2px solid var(--emerald-hot)}
 body.compact .cab .star{width:28px;height:28px;font-size:15px;top:5px;right:5px}
+.count{display:flex;align-items:center;gap:12px;margin:0;font-size:13px;letter-spacing:.06em;text-transform:none;color:var(--ash)}
 .copylink{
   border:1px solid var(--line);border-radius:999px;background:rgba(0,0,0,.25);color:var(--ash);
   padding:5px 11px;font-family:inherit;font-size:11px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;
@@ -270,13 +286,15 @@ body.compact .cab .star{width:28px;height:28px;font-size:15px;top:5px;right:5px}
 /* phones: let the controls wrap under the title instead of widening the page */
 @media (max-width: 560px){
   body{padding-left:14px;padding-right:14px}
-  nav{margin-top:14px}
-  nav a{padding:8px 12px;letter-spacing:.1em;font-size:12px}
-  nav .rule{margin:0 6px}
+  header{gap:12px;padding-bottom:14px}
+  nav{margin-left:0}
+  nav a{padding:9px 14px;letter-spacing:.1em;font-size:12px}
+  nav .cog{width:40px;height:40px}
   .seg button{padding:7px 11px;letter-spacing:.08em}
-  .toolbar{gap:14px 18px}
-  .ctl.search{flex-basis:100%;max-width:none}
+  #search{padding:12px 16px 12px 44px;font-size:14px}
   .field kbd{display:none}
+  .filters{gap:10px}
+  .segs{margin-left:0}
   body.compact .deck{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
   .deck{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
   .plate{padding:10px 10px 12px}
@@ -291,14 +309,15 @@ footer a{color:inherit}
 <body>
 
 <header>
-  <h1>Shmup <em>Deck</em></h1>
-  <div class="strapline">MiSTer FPGA &middot; shmup launcher &middot;
-    <span class="conn" id="status"><span class="lamp" id="lamp"></span><span id="statusText">checking&hellip;</span></span></div>
+  <div class="brand">
+    <h1>Shmup <em>Deck</em></h1>
+    <div class="strapline">MiSTer FPGA &middot;
+      <span class="conn" id="status"><span class="lamp" id="lamp"></span><span id="statusText">checking&hellip;</span></span></div>
+  </div>
   <nav aria-label="Pages">
     <a href="./" aria-current="page">Deck</a>
     <a href="stats.html">Stats</a>
-    <a href="check.html">ROM checklist</a>
-    <span class="rule" aria-hidden="true"></span>
+    <a href="check.html">ROMs</a>
     <div class="settings">
       <button id="gear" class="cog" aria-expanded="false" aria-controls="sheet" aria-label="Settings" title="Settings">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
@@ -320,39 +339,45 @@ footer a{color:inherit}
 <div class="now" id="now" hidden>
   <span class="label">Now playing</span><span class="what" id="nowWhat"></span>
 </div>
-<div class="toolbar">
-  <div class="ctl screen" id="screenCtl"><span>Screen</span>
-    <div class="seg" role="group" aria-label="Screen orientation" title="Which way the monitor is fitted; remembered on this device">
+<div class="searchrow">
+  <div class="field">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <input id="search" type="search" autocomplete="off" spellcheck="false" placeholder="Search games" aria-label="Search games">
+    <kbd>/</kbd>
+  </div>
+</div>
+<div class="filters">
+  <p class="count"><span id="count"></span><button class="copylink" id="copylink" hidden title="A link that opens just these games">Copy link</button></p>
+  <div class="segs">
+    <div class="seg" id="screenCtl" role="group" aria-label="Screen orientation" title="Which way the monitor is fitted; remembered on this device">
       <button data-screen="all" aria-pressed="true">All</button>
       <button data-screen="tate" aria-pressed="false">Tate</button>
       <button data-screen="yoko" aria-pressed="false">Yoko</button>
     </div>
-    <p class="hint" id="screenHint" hidden>Which way is your monitor fitted? Set it once; the deck remembers.</p></div>
-  <div class="ctl search"><span>Search</span>
-    <div class="field">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-      <input id="search" type="search" autocomplete="off" spellcheck="false" placeholder="Search" aria-label="Search games">
-      <kbd>/</kbd>
-    </div></div>
-  <div class="ctl"><span>Show</span>
     <div class="seg" role="group" aria-label="Show">
       <button data-show="all" aria-pressed="true">All</button>
-      <button data-show="favourites" aria-pressed="false" title="Games starred on this MiSTer">Favourites</button>
+      <button data-show="favourites" aria-pressed="false" title="Games starred on this MiSTer">Faves</button>
       <button data-show="played" aria-pressed="false" title="Games that have been played on this MiSTer">Played</button>
-    </div></div>
-  <div class="ctl"><span>Sort</span>
+    </div>
     <div class="seg" role="group" aria-label="Sort order">
       <button data-sort="az" aria-pressed="true">A&ndash;Z</button>
       <button data-sort="year" aria-pressed="false">Year</button>
       <button data-sort="played" aria-pressed="false" title="Most time played first">Plays</button>
-    </div></div>
-  <div class="ctl"><span>Group</span>
-    <div class="seg" role="group" aria-label="Group by">
-      <button data-group="dev" aria-pressed="false" title="Group by developer">Dev</button>
-      <button data-group="system" aria-pressed="false" title="Group by arcade system">System</button>
-    </div></div>
+    </div>
+  </div>
 </div>
-<p class="count"><span id="count"></span><button class="copylink" id="copylink" hidden title="A link that opens just these games">Copy link</button></p>
+<p class="hint" id="screenHint" hidden>Which way is your monitor fitted? Tate or yoko, set once; the deck remembers.</p>
+<div class="grouprow">
+  <label class="dropdown" title="Group the wall by developer or arcade system">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>
+    <select id="group" aria-label="Group by">
+      <option value="none">No grouping</option>
+      <option value="dev">By dev</option>
+      <option value="system">By system</option>
+    </select>
+    <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </label>
+</div>
 
 <main class="deck" id="deck"></main>
 
@@ -569,15 +594,19 @@ function renderDeck() {
     deck.replaceChildren(e);
   }
   const readyCount = shown.filter(ready).length;
+  const playedCount = shown.filter(g => p[g.id]).length;
   $("#count").textContent = showAll
     ? `${readyCount} of ${shown.length} ready`
-    : `${shown.length} ${show === "favourites" ? "favourite" : "game"}${shown.length === 1 ? "" : "s"}`;
+    : `${shown.length} ${show === "favourites" ? "favourite" : "game"}${shown.length === 1 ? "" : "s"}` +
+      (show === "all" && playedCount ? ` · ${playedCount} played` : "");
   $("#copylink").hidden = !(show === "favourites" && shown.length && !PICK.length);
   $("#copylink").dataset.ids = shown.map(g => g.id).join(",");
   for (const b of document.querySelectorAll(".seg button"))
     b.setAttribute("aria-pressed",
       String(b.dataset.screen === want || b.dataset.sort === order || b.dataset.show === show ||
-             b.dataset.group === groupPref() || b.dataset.density === densityPref()));
+             b.dataset.density === densityPref()));
+  $("#group").value = groupPref();
+  $("#group").closest(".dropdown").classList.toggle("on", groupPref() !== "none");
   $("#missingTog").setAttribute("aria-checked", String(missingPref() === "show"));
   document.body.classList.toggle("compact", densityPref() === "compact");
 }
@@ -617,7 +646,6 @@ for (const b of document.querySelectorAll(".seg button")) {
     const [key, value] = b.dataset.sort ? [LS.sort, b.dataset.sort]
       : b.dataset.show ? [LS.show, b.dataset.show]
       // grouping buttons act like radio buttons that can also be switched off
-      : b.dataset.group ? [LS.group, groupPref() === b.dataset.group ? "none" : b.dataset.group]
       : b.dataset.density ? [LS.density, b.dataset.density]
       : [LS.screen, b.dataset.screen];
     localStorage.setItem(key, value);
@@ -631,6 +659,10 @@ $("#copylink").addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(url); $("#copylink").textContent = "Copied"; }
   catch { $("#copylink").textContent = "Copy blocked"; }
   setTimeout(() => { $("#copylink").textContent = "Copy link"; }, 2000);
+});
+$("#group").addEventListener("change", e => {
+  localStorage.setItem(LS.group, e.target.value);
+  renderDeck();
 });
 $("#missingTog").addEventListener("click", () => {
   localStorage.setItem(LS.missing, missingPref() === "show" ? "hide" : "show");
