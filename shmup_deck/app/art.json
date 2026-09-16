@@ -1,15 +1,15 @@
 {
  "forgottn": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Forgotten%20Worlds%20%28World%29.png",
+  "url": "https://images.launchbox-app.com/da018d5c-cdc4-4d1e-939b-364e5bfe6889.jpg",
   "size": [
-   512,
-   690
+   850,
+   1142
   ],
   "crop": [
-   0,
-   0,
-   512,
-   690
+   33,
+   29,
+   796,
+   1084
   ]
  },
  "unsquad": {
@@ -26,42 +26,42 @@
   ]
  },
  "cawing": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Carrier%20Air%20Wing%20%28World%20901012%29.png",
+  "url": "https://images.launchbox-app.com/5729f038-8cc3-4c55-878a-a159be9f5e56.jpg",
   "size": [
-   512,
-   719
+   850,
+   1194
   ],
   "crop": [
    0,
    0,
-   512,
-   719
+   850,
+   1194
   ]
  },
  "1941": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/1941%20-%20Counter%20Attack%20%28World%29.png",
+  "url": "https://images.launchbox-app.com/ea54dfad-b388-4f09-b5da-9eb95e684a1b.jpg",
   "size": [
-   512,
-   723
+   1280,
+   1811
   ],
   "crop": [
    0,
-   0,
-   512,
-   723
+   11,
+   1280,
+   1800
   ]
  },
  "varth": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Varth%20-%20Operation%20Thunderstorm%20%28World%20920612%29.png",
+  "url": "https://images.launchbox-app.com/e0f230e5-7c51-48d7-a16c-5f5883b0971d.jpg",
   "size": [
-   512,
-   729
+   850,
+   1210
   ],
   "crop": [
    0,
    0,
-   512,
-   729
+   850,
+   1210
   ]
  },
  "ecofghtr": {
@@ -78,94 +78,94 @@
   ]
  },
  "19xx": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/19XX_%20The%20War%20Against%20Destiny%20%28USA%20951207%29.png",
+  "url": "https://images.launchbox-app.com/532d77fd-5665-4350-8334-66dc400ad991.png",
   "size": [
-   512,
-   714
+   1203,
+   1610
   ],
   "crop": [
    0,
    0,
-   512,
-   714
+   1203,
+   1610
   ]
  },
  "gigawing": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Giga%20Wing%20%28USA%20990222%29.png",
+  "url": "https://images.launchbox-app.com/fa85ab07-7fe4-4d72-a60f-3ca5a433e5fc.jpg",
   "size": [
-   512,
-   724
+   1280,
+   1824
   ],
   "crop": [
    0,
    0,
-   512,
-   724
+   1280,
+   1824
   ]
  },
  "mmatrix": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Mars%20Matrix_%20Hyper%20Solid%20Shooting%20%28Japan%20000412%29.png",
+  "url": "https://images.launchbox-app.com/6d8d9680-1c2e-4caa-98fd-8f2019bdb336.jpg",
   "size": [
-   512,
-   724
+   842,
+   1191
   ],
   "crop": [
    0,
    0,
-   512,
-   724
+   842,
+   1191
   ]
  },
  "dimahoo": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Dimahoo%20%28Europe%20000121%29.png",
+  "url": "https://images.launchbox-app.com/4efa5e28-3dbd-4e01-a914-11e307c9a891.jpg",
   "size": [
-   512,
-   721
+   2468,
+   3506
   ],
   "crop": [
    0,
    0,
-   512,
-   721
+   2468,
+   3506
   ]
  },
  "1944": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/1944_%20The%20Loop%20Master%20%28USA%20000620%29.png",
+  "url": "https://images.launchbox-app.com/a930b465-7b32-4c73-8449-3ab596aa36f8.png",
   "size": [
-   512,
-   729
+   850,
+   1203
   ],
   "crop": [
    0,
    0,
-   512,
-   729
+   850,
+   1203
   ]
  },
  "progear": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Progear%20%28USA%20010117%29.png",
+  "url": "https://images.launchbox-app.com/753e953e-5e95-4eab-b417-a2af7fd63cb2.jpg",
   "size": [
-   512,
-   727
+   2472,
+   3508
   ],
   "crop": [
    0,
    0,
-   512,
-   727
+   2472,
+   3508
   ]
  },
  "vulgus": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Vulgus%20%28set%201%29.png",
+  "url": "https://images.launchbox-app.com/03f68a5d-d117-4f23-96ae-dcb48b7a155e.jpg",
   "size": [
-   512,
-   662
+   1221,
+   1568
   ],
   "crop": [
-   42,
-   36,
-   428,
-   604
+   105,
+   73,
+   1018,
+   1426
   ]
  },
  "1942": {
@@ -182,16 +182,16 @@
   ]
  },
  "exedexes": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Exed%20Exes.png",
+  "url": "https://images.launchbox-app.com/92c6cd85-50de-4685-8a76-febf3626723b.jpg",
   "size": [
-   512,
-   732
+   2733,
+   3948
   ],
   "crop": [
-   6,
-   6,
-   501,
-   723
+   0,
+   0,
+   2733,
+   3948
   ]
  },
  "sectionz": {
@@ -208,55 +208,55 @@
   ]
  },
  "sidearms": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Side%20Arms%20-%20Hyper%20Dyne%20%28World%29.png",
+  "url": "https://images.launchbox-app.com/d426e673-cb8d-4b26-b4a9-397cb1d82578.jpg",
   "size": [
-   512,
-   721
+   1280,
+   1814
   ],
   "crop": [
-   4,
-   4,
-   504,
-   713
+   11,
+   7,
+   1258,
+   1792
   ]
  },
  "legendos": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Legendary%20Wings%20%28US%20set%201%29.png",
+  "url": "https://images.launchbox-app.com/r2_3771fca3-6f18-4519-bb14-e57be358deed.jpg",
   "size": [
-   512,
-   688
+   1788,
+   2400
   ],
   "crop": [
    0,
    0,
-   512,
-   688
+   1788,
+   2400
   ]
  },
  "1943": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/1943%20-%20The%20Battle%20of%20Midway%20%28Japan%29.png",
+  "url": "https://images.launchbox-app.com/2ca83547-b7ea-45d9-a372-13be0a4ab2b0.jpg",
   "size": [
-   512,
-   717
+   1280,
+   1815
   ],
   "crop": [
-   8,
-   4,
-   498,
-   709
+   10,
+   6,
+   1260,
+   1791
   ]
  },
  "donpachi": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/DonPachi%20%28Japan%29.png",
+  "url": "https://images.launchbox-app.com/a43c7672-ccdc-434f-b450-98ce44e8f4d1.jpg",
   "size": [
-   512,
-   726
+   2456,
+   3486
   ],
   "crop": [
    0,
    0,
-   512,
-   726
+   2456,
+   3486
   ]
  },
  "ddonpach": {
@@ -273,16 +273,16 @@
   ]
  },
  "dfeveron": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Dangun%20Feveron%20%28Japan%2C%20Ver.%2098_09_17%29.png",
+  "url": "https://images.launchbox-app.com/44521159-d9a3-42da-afb4-2c74e554cb04.jpg",
   "size": [
-   512,
-   725
+   2480,
+   3508
   ],
   "crop": [
    0,
    0,
-   512,
-   725
+   2480,
+   3508
   ]
  },
  "esprade": {
@@ -313,159 +313,159 @@
   ]
  },
  "gyruss": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Gyruss%20%28Konami%29.png",
+  "url": "https://images.launchbox-app.com/69a509f0-39ab-426f-836d-f67735aa2f30.jpg",
   "size": [
-   512,
-   731
+   850,
+   1214
   ],
   "crop": [
    0,
    0,
-   512,
-   731
+   850,
+   1214
   ]
  },
  "ajax": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Ajax%20%28Japan%29.png",
+  "url": "https://images.launchbox-app.com/60a6ccf1-1007-4724-981e-eb4ca4ac0705.jpg",
   "size": [
-   512,
-   723
+   1280,
+   1801
   ],
   "crop": [
    0,
-   24,
-   512,
-   699
+   58,
+   1280,
+   1743
   ]
  },
  "mx5000": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Flak%20Attack%20%28Japan%29.png",
+  "url": "https://images.launchbox-app.com/be80f2eb-9628-43f0-b3c1-180d0ea980ea.jpg",
   "size": [
-   512,
-   724
+   1280,
+   1799
   ],
   "crop": [
    0,
    0,
-   512,
-   724
+   1280,
+   1799
   ]
  },
  "vulcan": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Vulcan%20Venture%20%28New%29.png",
+  "url": "https://images.launchbox-app.com/89e266e3-0dea-4a74-82fb-77a5c5ad0f02.jpg",
   "size": [
-   512,
-   687
+   1280,
+   1747
   ],
   "crop": [
    0,
    0,
-   512,
-   687
+   1280,
+   1747
   ]
  },
  "gradius3": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Gradius%20III%20%28World%2C%20program%20code%20R%29.png",
+  "url": "https://images.launchbox-app.com/b3e466a0-6556-4b30-a983-e2b1b7dc702e.jpg",
   "size": [
-   512,
-   719
+   1654,
+   2367
   ],
   "crop": [
    0,
    0,
-   512,
-   719
+   1654,
+   2367
   ]
  },
  "parodius": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Parodius%20DA%21%20%28Japan%29.png",
+  "url": "https://images.launchbox-app.com/b965263f-f382-486a-b392-62c0eea5dab4.jpg",
   "size": [
-   222,
-   322
+   1280,
+   1792
   ],
   "crop": [
    0,
    0,
-   222,
-   322
+   1280,
+   1792
   ]
  },
  "rtype": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/R-Type%20%28Japan%29.png",
+  "url": "https://images.launchbox-app.com/bf5314af-7f11-4a73-9ec4-28a5a0a771b6.jpg",
   "size": [
-   512,
-   724
+   2126,
+   3000
   ],
   "crop": [
    0,
    0,
-   512,
-   724
+   2126,
+   3000
   ]
  },
  "imgfight": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Image%20Fight%20%28Japan%29.png",
+  "url": "https://images.launchbox-app.com/bd8ef02f-e0ce-447d-83c2-6def9be21840.jpg",
   "size": [
-   512,
-   716
+   1280,
+   1803
   ],
   "crop": [
    0,
    0,
-   512,
-   716
+   1280,
+   1803
   ]
  },
  "rtype2": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/R-Type%20II%20%28Japan%29.png",
+  "url": "https://images.launchbox-app.com/af11867e-655a-40ec-9664-f6d4a9c9db80.jpg",
   "size": [
-   512,
-   730
+   1280,
+   1812
   ],
   "crop": [
    0,
    0,
-   512,
-   730
+   1280,
+   1812
   ]
  },
  "xmultipl": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/X%20Multiply%20%28World%2C%20M81%20hardware%29.png",
+  "url": "https://images.launchbox-app.com/7a8db22d-9c41-4dbc-b6dc-ae51dde1f8d3.jpg",
   "size": [
-   512,
-   683
+   1280,
+   1816
   ],
   "crop": [
    0,
    0,
-   512,
-   683
+   1280,
+   1816
   ]
  },
  "dbreed": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Dragon%20Breed%20%28World%2C%20M72%20hardware%29.png",
+  "url": "https://images.launchbox-app.com/dbreed.png",
   "size": [
-   512,
-   699
+   850,
+   1161
   ],
   "crop": [
    0,
    0,
-   512,
-   689
+   850,
+   1144
   ]
  },
  "airduel": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Air%20Duel%20%28World%2C%20M82-A-A%20%2B%20M82-B-A%29.png",
+  "url": "https://images.launchbox-app.com/04346a89-2b6b-41e7-bad5-ab34ec7f50fe.jpg",
   "size": [
-   512,
-   724
+   850,
+   1191
   ],
   "crop": [
    0,
    0,
-   512,
-   709
+   850,
+   1191
   ]
  },
  "gallop": {
@@ -482,81 +482,81 @@
   ]
  },
  "dspirit": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Dragon%20Spirit%20%28old%20version%29.png",
+  "url": "https://images.launchbox-app.com/f99ac47d-6f79-444b-a1d7-e3e88aee59c0.jpg",
   "size": [
-   512,
-   725
+   1280,
+   1800
   ],
   "crop": [
    0,
    0,
-   512,
-   725
+   1280,
+   1800
   ]
  },
  "ddp2": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/DoDonPachi%20II%20-%20Bee%20Storm%20%28Japan%2C%20ver.%20102%29.png",
+  "url": "https://images.launchbox-app.com/ddp2j.png",
   "size": [
-   512,
-   724
+   850,
+   1202
   ],
   "crop": [
    0,
    0,
-   512,
-   724
+   850,
+   1202
   ]
  },
  "ketsui": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Ketsui_%20Kizuna%20Jigoku%20Tachi%20%282003_01_01.%20Master%20Ver.%29.png",
+  "url": "https://images.launchbox-app.com/ea9402d5-5792-4668-88f4-2574f7bd7385.jpg",
   "size": [
-   512,
-   728
+   2459,
+   3496
   ],
   "crop": [
    0,
    0,
-   489,
-   721
+   2352,
+   3462
   ]
  },
  "ddpdoj": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/DoDonPachi%20Dai-Ou-Jou%20%282002.10.07.Black%20Ver%29.png",
+  "url": "https://images.launchbox-app.com/f4988755-6075-46b1-ab4d-48117cc158c1.png",
   "size": [
-   512,
-   728
+   844,
+   1200
   ],
   "crop": [
-   5,
-   6,
-   499,
-   714
+   8,
+   10,
+   822,
+   1177
   ]
  },
  "espgaluda": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Espgaluda%20%282003_10_15%20Master%20Ver%29.png",
+  "url": "https://images.launchbox-app.com/caffa607-ddd5-4923-9b0c-383a5b4e4078.jpg",
   "size": [
-   512,
-   725
+   2480,
+   3508
   ],
   "crop": [
-   9,
-   10,
-   493,
-   697
+   42,
+   51,
+   2387,
+   3368
   ]
  },
  "s1945ii": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Strikers%201945%20II.png",
+  "url": "https://images.launchbox-app.com/7b133368-3a9f-429c-955c-54e1738f8d35.jpg",
   "size": [
-   512,
-   723
+   2472,
+   3508
   ],
   "crop": [
    0,
    0,
-   512,
-   723
+   2472,
+   3432
   ]
  },
  "gunbird2": {
@@ -573,68 +573,68 @@
   ]
  },
  "spbomber": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Space%20Bomber%20%28ver.%20B%29.png",
+  "url": "https://images.launchbox-app.com/2cd21822-6fa8-4992-aae7-c5d99b1f948b.jpg",
   "size": [
-   512,
-   719
+   876,
+   1200
   ],
   "crop": [
    0,
    0,
-   512,
-   719
+   876,
+   1200
   ]
  },
  "s1945iii": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Strikers%201945%20III%20%28World%29%20-%20Strikers%201999%20%28Japan%29.png",
+  "url": "https://images.launchbox-app.com/68aefe15-48c0-442b-957d-15c40f90a9a1.jpg",
   "size": [
-   512,
-   719
+   850,
+   1194
   ],
   "crop": [
    0,
    0,
-   512,
-   719
+   850,
+   1194
   ]
  },
  "dragnblz": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Dragon%20Blaze.png",
+  "url": "https://images.launchbox-app.com/8c1093cc-36cd-4ad5-9707-7a54064c66c9.jpg",
   "size": [
-   512,
-   730
+   2480,
+   3508
   ],
   "crop": [
-   10,
    0,
-   502,
-   730
+   0,
+   2480,
+   3508
   ]
  },
  "garegga": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Battle%20Garegga%20%28Europe%20-%20USA%20-%20Japan%20-%20Asia%29%20%28Sat%20Feb%203%201996%29.png",
+  "url": "https://images.launchbox-app.com/ffafa9f9-0730-4eb6-a4d9-74c0e5a345ca.jpg",
   "size": [
-   512,
-   726
+   2476,
+   3508
   ],
   "crop": [
    0,
    0,
-   512,
-   726
+   2476,
+   3508
   ]
  },
  "batrider": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Armed%20Police%20Batrider%20%28Japan%2C%20B%20version%29%20%28Fri%20Feb%2013%201998%29.png",
+  "url": "https://images.launchbox-app.com/8de32f22-6329-4e80-b0c8-02958553baf5.jpg",
   "size": [
-   512,
-   728
+   2473,
+   3500
   ],
   "crop": [
    0,
    0,
-   512,
-   728
+   2473,
+   3500
   ]
  },
  "bbakraid": {
@@ -678,16 +678,16 @@
   ]
  },
  "sdi": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/SDI%20-%20Strategic%20Defense%20Initiative%20%28Japan%2C%20newer%2C%20System%2016A%2C%20FD1089B%20317-0027%29.png",
+  "url": "https://images.launchbox-app.com/e9b4e97f-7105-4e4a-9bab-0b73f7267b6e.jpg",
   "size": [
-   512,
-   727
+   1188,
+   1677
   ],
   "crop": [
    0,
    0,
-   512,
-   727
+   1188,
+   1677
   ]
  },
  "alcon": {
@@ -704,107 +704,107 @@
   ]
  },
  "geminiw": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Gemini%20Wing%20%28Japan%29.png",
+  "url": "https://images.launchbox-app.com/5bec38c1-a458-4b44-ac0a-8c319ac71e5c.jpg",
   "size": [
-   512,
-   725
+   1192,
+   1670
   ],
   "crop": [
    0,
    0,
-   512,
-   725
+   1192,
+   1670
   ]
  },
  "silkworm": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Silk%20Worm%20%28World%29.png",
+  "url": "https://images.launchbox-app.com/3945d6e0-6349-4b86-b48f-cd59f20a4038.jpg",
   "size": [
-   512,
-   677
+   1224,
+   1573
   ],
   "crop": [
-   32,
+   100,
    0,
-   480,
-   643
+   1124,
+   1493
   ]
  },
  "raiga": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Raiga%20-%20Strato%20Fighter%20%28US%29.png",
+  "url": "https://images.launchbox-app.com/00b3478c-d820-44ba-bd00-ff66c50e7cf1.jpg",
   "size": [
-   222,
-   316
+   1193,
+   1676
   ],
   "crop": [
    0,
    0,
-   222,
-   316
+   1193,
+   1676
   ]
  },
  "tp84": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Time%20Pilot%20%2784%20%28set%201%29.png",
+  "url": "https://images.launchbox-app.com/8bdf7213-5055-4d1d-abce-458fe02f85c4.jpg",
   "size": [
-   512,
-   722
+   1280,
+   1798
   ],
   "crop": [
    0,
    0,
-   512,
-   722
+   1280,
+   1798
   ]
  },
  "drtoppel": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Dr.%20Toppel%27s%20Adventure%20%28World%29.png",
+  "url": "https://images.launchbox-app.com/316a40bd-91e4-42f0-82a6-442ec58ec1b4.jpg",
   "size": [
-   512,
-   726
+   850,
+   1205
   ],
   "crop": [
    0,
-   7,
-   512,
-   719
+   12,
+   850,
+   1193
   ]
  },
  "insectx": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Insector%20X%20%28World%29.png",
+  "url": "https://images.launchbox-app.com/71718211-6a98-4af6-9da4-35dc8b288d42.jpg",
   "size": [
-   512,
-   729
+   1186,
+   1668
   ],
   "crop": [
    0,
    0,
-   512,
-   728
+   1186,
+   1668
   ]
  },
  "xevious": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Xevious%20%28Namco%29.png",
+  "url": "https://images.launchbox-app.com/946fe721-15fb-4251-bd50-b54772eba6c0.jpg",
   "size": [
-   512,
-   726
+   1280,
+   1802
   ],
   "crop": [
    0,
    0,
-   512,
-   726
+   1280,
+   1802
   ]
  },
  "samuraia": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Samurai%20Aces%20%28World%29.png",
+  "url": "https://images.launchbox-app.com/r2_0a1cc70e-913f-4c79-9358-9624c1046ce5.jpg",
   "size": [
-   512,
-   729
+   2477,
+   3500
   ],
   "crop": [
    0,
    0,
-   512,
-   729
+   2477,
+   3500
   ]
  },
  "gunbird": {
@@ -822,16 +822,16 @@
   "referer": "https://www.arcadeartwork.org/picture.php?/86039"
  },
  "tengai": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Tengai%20%28World%29.png",
+  "url": "https://images.launchbox-app.com/80290d44-c528-4352-9765-7a6773645e1e.jpg",
   "size": [
-   222,
-   315
+   1280,
+   1798
   ],
   "crop": [
-   6,
-   10,
-   216,
-   298
+   0,
+   5,
+   1280,
+   1742
   ]
  },
  "mushisam": {
@@ -848,55 +848,55 @@
   ]
  },
  "ibara": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Ibara%20%282005_03_22%20MASTER%20VER..%29.png",
+  "url": "https://images.launchbox-app.com/f637f275-052e-4f1f-b342-777e203e3747.jpg",
   "size": [
-   512,
-   719
+   2487,
+   3494
   ],
   "crop": [
-   12,
-   10,
-   489,
-   698
+   59,
+   50,
+   2371,
+   3393
   ]
  },
  "espgal2": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Espgaluda%20II%20%28Japan%2C%202005_11_14.MASTER%20VER.%29.png",
+  "url": "https://images.launchbox-app.com/4089076f-a534-42a7-86e0-3a3418109838.jpg",
   "size": [
-   512,
-   731
+   1280,
+   1819
   ],
   "crop": [
    0,
    0,
-   512,
-   731
+   1280,
+   1819
   ]
  },
  "ibarablk": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Ibara%20Kuro%20Black%20Label%20%282006_02_06.%20MASTER%20VER.%29.png",
+  "url": "https://images.launchbox-app.com/6ce383d9-601b-4d0d-83f5-eb2ada65402a.png",
   "size": [
-   512,
-   763
+   805,
+   1200
   ],
   "crop": [
    0,
    0,
-   512,
-   763
+   805,
+   1200
   ]
  },
  "pinkswts": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Pink%20Sweets_%20Ibara%20Sorekara%20%282006_04_06%20MASTER%20VER....%29.png",
+  "url": "https://images.launchbox-app.com/b1c7321a-1e93-42c5-bab4-e2582b56d809.jpg",
   "size": [
-   512,
-   730
+   1280,
+   1796
   ],
   "crop": [
    0,
    0,
-   512,
-   724
+   1280,
+   1782
   ]
  },
  "futari15": {
@@ -926,16 +926,16 @@
   ]
  },
  "dsmbl": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Deathsmiles%20MegaBlack%20Label%20%282008_10_06%20MEGABLACK%20LABEL%20VER%29.png",
+  "url": "https://images.launchbox-app.com/fc639687-94ce-44fa-af65-6df2b2b117dc.jpg",
   "size": [
-   512,
-   722
+   850,
+   1199
   ],
   "crop": [
-   11,
-   6,
-   493,
-   716
+   18,
+   10,
+   818,
+   1189
   ]
  },
  "ddpdfk": {
@@ -1004,16 +1004,16 @@
   ]
  },
  "batsugun": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Batsugun.png",
+  "url": "https://images.launchbox-app.com/8e45dda1-ee8f-407d-9828-cc31355fb545.jpg",
   "size": [
-   512,
-   713
+   900,
+   1265
   ],
   "crop": [
    0,
    0,
-   512,
-   713
+   900,
+   1265
   ]
  },
  "truxton": {
@@ -1030,107 +1030,107 @@
   ]
  },
  "truxton2": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Truxton%20II%20_%20Tatsujin%20Oh.png",
+  "url": "https://images.launchbox-app.com/r2_b95216d5-f0dd-47c3-b2fc-f3a017f446d1.jpg",
   "size": [
-   512,
-   715
+   1498,
+   2000
   ],
   "crop": [
    0,
    0,
-   512,
-   715
+   1498,
+   2000
   ]
  },
  "fireshrk": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Fire%20Shark.png",
+  "url": "https://images.launchbox-app.com/3ae934cb-8610-49ba-839e-6051bda9e5e7.png",
   "size": [
-   512,
-   719
+   1226,
+   1756
   ],
   "crop": [
    0,
    0,
-   512,
-   719
+   1226,
+   1737
   ]
  },
  "vimana": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Vimana.png",
+  "url": "https://images.launchbox-app.com/15366a27-646b-4576-9d9a-f78c70c468af.jpg",
   "size": [
-   512,
-   724
+   1280,
+   1810
   ],
   "crop": [
    0,
    0,
-   512,
-   724
+   1280,
+   1810
   ]
  },
  "outzone": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Out%20Zone.png",
+  "url": "https://images.launchbox-app.com/4deae06d-0c39-4397-9ffb-ff87b3db7c6c.jpg",
   "size": [
-   512,
-   717
+   1280,
+   1793
   ],
   "crop": [
    0,
    0,
-   512,
-   717
+   1280,
+   1793
   ]
  },
  "hellfire": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Hellfire.png",
+  "url": "https://images.launchbox-app.com/22633dda-1c54-44e2-9ddb-56f608a9a8f8.jpg",
   "size": [
-   512,
-   720
+   1186,
+   1670
   ],
   "crop": [
    0,
    0,
-   512,
-   720
+   1186,
+   1670
   ]
  },
  "zerowing": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Zero%20Wing.png",
+  "url": "https://images.launchbox-app.com/0be3f907-dbdc-4523-96f3-6fda4c387e26.jpg",
   "size": [
-   512,
-   721
+   1192,
+   1672
   ],
   "crop": [
    0,
    0,
-   512,
-   721
+   1192,
+   1672
   ]
  },
  "sstriker": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Sorcer%20Striker.png",
+  "url": "https://images.launchbox-app.com/r2_a7bdc24b-dbe8-4e26-8bae-9c46ff0bb3fa.jpg",
   "size": [
-   512,
-   718
+   1728,
+   2424
   ],
   "crop": [
    0,
    0,
-   512,
-   718
+   1728,
+   2424
   ]
  },
  "kingdmgp": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Shippu%20Mahou%20Daisakusen%20%28Japan%29.png",
+  "url": "https://images.launchbox-app.com/557c2a8c-0e92-47de-8865-0ab0861d0b11.jpg",
   "size": [
-   512,
-   805
+   1056,
+   1480
   ],
   "crop": [
    0,
-   16,
-   512,
-   767
+   0,
+   1056,
+   1480
   ]
  },
  "gradius": {
@@ -1160,185 +1160,185 @@
   ]
  },
  "thunderx": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Thunder%20Cross.png",
+  "url": "https://images.launchbox-app.com/aaee9d76-e4d2-4de0-b798-8802a285edea.jpg",
   "size": [
-   512,
-   732
+   1280,
+   1798
   ],
   "crop": [
    0,
    0,
-   512,
-   732
+   1280,
+   1798
   ]
  },
  "finalizr": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Finalizer%20-%20Super%20Transformation.png",
+  "url": "https://images.launchbox-app.com/9db609b1-06e6-4ef3-817e-96a544cdd2d6.jpg",
   "size": [
-   512,
-   719
+   1280,
+   1798
   ],
   "crop": [
    0,
    0,
-   512,
-   697
+   1280,
+   1743
   ]
  },
  "rtypeleo": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/R-Type%20Leo%20%28World%29.png",
+  "url": "https://images.launchbox-app.com/cde4af24-5e29-4a88-8b9c-a3af74059017.jpg",
   "size": [
-   512,
-   724
+   850,
+   1202
   ],
   "crop": [
    0,
    0,
-   512,
-   724
+   850,
+   1202
   ]
  },
  "lethalth": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Lethal%20Thunder%20%28World%29.png",
+  "url": "https://images.launchbox-app.com/8298603c-3418-47ce-8563-4a0bbfd65442.jpg",
   "size": [
-   512,
-   719
+   1280,
+   1818
   ],
   "crop": [
    0,
    0,
-   512,
-   719
+   1280,
+   1818
   ]
  },
  "mysticri": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Mystic%20Riders%20%28World%29.png",
+  "url": "https://images.launchbox-app.com/224cc6ce-9a84-4fe7-9b97-8159edd75aa2.jpg",
   "size": [
-   512,
-   770
+   850,
+   1247
   ],
   "crop": [
    0,
    0,
-   512,
-   770
+   850,
+   1247
   ]
  },
  "firebarr": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Air%20Assault%20%28World%29.png",
+  "url": "https://images.launchbox-app.com/e65760c3-6525-4d44-bb07-dba32b2d620f.jpg",
   "size": [
-   512,
-   727
+   845,
+   1200
   ],
   "crop": [
    0,
    0,
-   512,
-   727
+   845,
+   1200
   ]
  },
  "metalb": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Metal%20Black%20%28World%29.png",
+  "url": "https://images.launchbox-app.com/9308a8a0-f1e8-4e19-8ccd-38d3d0215d55.jpg",
   "size": [
-   512,
-   724
+   1192,
+   1673
   ],
   "crop": [
    0,
    0,
-   512,
-   724
+   1192,
+   1673
   ]
  },
  "armedf": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Armed%20Formation.png",
+  "url": "https://images.launchbox-app.com/68a5efda-d28c-4c16-94f8-f863809ef072.jpg",
   "size": [
-   512,
-   728
+   1280,
+   1804
   ],
   "crop": [
    0,
    0,
-   512,
-   717
+   1280,
+   1777
   ]
  },
  "legion": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Legion%20-%20Spinner-87%20%28World%20ver%202.03%29.png",
+  "url": "https://images.launchbox-app.com/292bf618-4946-4d59-b208-62b74abcdcbf.jpg",
   "size": [
-   512,
-   721
+   1280,
+   1786
   ],
   "crop": [
    0,
    0,
-   512,
-   713
+   1280,
+   1774
   ]
  },
  "aso": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/ASO%20-%20Armored%20Scrum%20Object.png",
+  "url": "https://images.launchbox-app.com/c1ce5446-3a8f-42db-8042-7084525db642.jpg",
   "size": [
-   512,
-   726
+   1280,
+   1803
   ],
   "crop": [
    0,
    0,
-   512,
-   726
+   1280,
+   1803
   ]
  },
  "blazstar": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Blazing%20Star.png",
+  "url": "https://images.launchbox-app.com/4422bcf2-ba4e-4f9f-9b03-3887f00ce2b4.jpg",
   "size": [
-   512,
-   740
+   850,
+   1197
   ],
   "crop": [
    0,
    0,
-   512,
-   740
+   850,
+   1197
   ]
  },
  "pulstar": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Pulstar.png",
+  "url": "https://images.launchbox-app.com/pulstar.png",
   "size": [
-   512,
-   740
+   850,
+   1228
   ],
   "crop": [
    0,
    0,
-   512,
-   740
+   850,
+   1228
   ]
  },
  "lresort": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Last%20Resort.png",
+  "url": "https://images.launchbox-app.com/3b1ff5ea-51b8-49f6-98bc-2a88d54361e7.jpg",
   "size": [
-   512,
-   708
+   850,
+   1194
   ],
   "crop": [
    0,
    0,
-   512,
-   708
+   850,
+   1194
   ]
  },
  "sonicwi3": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Aero%20Fighters%203%20_%20Sonic%20Wings%203.png",
+  "url": "https://images.launchbox-app.com/9ad6be94-c696-4529-9c47-01218ba3a7b3.jpg",
   "size": [
-   512,
-   722
+   850,
+   1192
   ],
   "crop": [
    0,
    0,
-   512,
-   722
+   850,
+   1192
   ]
  },
  "viewpoin": {
@@ -1368,68 +1368,68 @@
   ]
  },
  "gpilots": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Ghost%20Pilots%20%28NGM-020%20~%20NGH-020%29.png",
+  "url": "https://images.launchbox-app.com/8bd0e56c-291c-4cee-9dc8-53be83ac8089.jpg",
   "size": [
-   512,
-   730
+   1187,
+   1669
   ],
   "crop": [
    0,
    0,
-   512,
-   730
+   1187,
+   1669
   ]
  },
  "alpham2": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Alpha%20Mission%20II%20_%20ASO%20II%20-%20Last%20Guardian%20%28NGM-007%20~%20NGH-007%29.png",
+  "url": "https://images.launchbox-app.com/3d2e28fa-c321-4109-b1e7-7fd12e280e38.jpg",
   "size": [
-   512,
-   728
+   1187,
+   1670
   ],
   "crop": [
    0,
    0,
-   511,
-   706
+   1187,
+   1670
   ]
  },
  "androdun": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Andro%20Dunos.png",
+  "url": "https://images.launchbox-app.com/a00f2c16-ec35-43e7-ac8e-14fcc4502f80.jpg",
   "size": [
-   512,
-   728
+   844,
+   1200
   ],
   "crop": [
    0,
    0,
-   512,
-   728
+   844,
+   1200
   ]
  },
  "ctomaday": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Captain%20Tomaday.png",
+  "url": "https://images.launchbox-app.com/ctomaday.png",
   "size": [
-   512,
-   723
+   992,
+   1400
   ],
   "crop": [
    0,
    0,
-   512,
-   723
+   992,
+   1400
   ]
  },
  "fshark": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Hishou%20Zame%20%28Japan%29.png",
+  "url": "https://images.launchbox-app.com/4b9d0648-8204-487e-9ec2-82a2d583676c.jpg",
   "size": [
-   512,
-   725
+   1181,
+   1664
   ],
   "crop": [
    0,
    0,
-   512,
-   725
+   1181,
+   1664
   ]
  },
  "inthunt": {
@@ -1475,16 +1475,16 @@
   "referer": "https://www.arcadeartwork.org/picture.php?/148314"
  },
  "twinbee": {
-  "url": "https://flyers.arcade-museum.com/videogame-flyers/4/twin-bee-04902-01.jpg",
+  "url": "https://images.launchbox-app.com/82b5f1c6-2d79-4afc-b3ba-dca6d6f979b9.jpg",
   "size": [
-   850,
-   1199
+   1280,
+   1796
   ],
   "crop": [
    0,
    0,
-   850,
-   1199
+   1280,
+   1796
   ]
  },
  "batsugunsp": {
@@ -1502,29 +1502,29 @@
   "referer": "https://www.arcadeartwork.org/picture.php?/84668"
  },
  "terracre": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Terra%20Cresta%20%28YM2203%29.png",
+  "url": "https://images.launchbox-app.com/2187175c-37c3-4e58-a451-03940501d043.jpg",
   "size": [
-   512,
-   737
+   1280,
+   1799
   ],
   "crop": [
    0,
    0,
-   512,
-   731
+   1280,
+   1769
   ]
  },
  "terraf": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Terra%20Force%20%28US%29.png",
+  "url": "https://images.launchbox-app.com/b8c15b5f-1a67-4176-bf49-ec58a06caf4e.jpg",
   "size": [
-   512,
-   728
+   1280,
+   1799
   ],
   "crop": [
    0,
    0,
-   512,
-   723
+   1280,
+   1779
   ]
  },
  "cobracom": {
@@ -1569,29 +1569,29 @@
   ]
  },
  "tigerh": {
-  "url": "https://upload.wikimedia.org/wikipedia/en/f/ff/Tiger-Heli_arcade_flyer.jpg",
+  "url": "https://images.launchbox-app.com/40c5e54c-43c3-4334-886a-88c0f5382d50.jpg",
   "size": [
-   266,
-   375
+   1280,
+   1803
   ],
   "crop": [
    0,
    0,
-   266,
-   375
+   1280,
+   1803
   ]
  },
  "sonicwi2": {
-  "url": "https://upload.wikimedia.org/wikipedia/en/f/f2/Aero_Fighters_2_arcade_flyer.jpg",
+  "url": "https://images.launchbox-app.com/2de38545-83df-4998-a036-6e65af1ac34a.jpg",
   "size": [
-   265,
-   375
+   1645,
+   2337
   ],
   "crop": [
    0,
    0,
-   265,
-   368
+   1645,
+   2278
   ]
  },
  "preisle2": {
@@ -1648,16 +1648,16 @@
   ]
  },
  "tharrier": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Task%20Force%20Harrier%20%28Japan%29.png",
+  "url": "https://images.launchbox-app.com/a9daf7b5-9dd0-45a9-a2b8-f00c023c5a8d.jpg",
   "size": [
-   512,
-   725
+   1192,
+   1671
   ],
   "crop": [
    0,
    0,
-   512,
-   725
+   1192,
+   1671
   ]
  },
  "mustang": {
@@ -1674,29 +1674,29 @@
   ]
  },
  "bioship": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Space%20Battle%20Ship%20Gomorrah.png",
+  "url": "https://images.launchbox-app.com/c1f36d56-1a1a-4037-b687-5f448d4f498a.png",
   "size": [
-   512,
-   729
+   826,
+   1176
   ],
   "crop": [
    0,
    0,
-   512,
-   729
+   826,
+   1176
   ]
  },
  "blkheart": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Black%20Heart.png",
+  "url": "https://images.launchbox-app.com/0b9155ca-d88c-4a63-88a0-bf2b224af05a.jpg",
   "size": [
-   512,
-   720
+   1191,
+   1671
   ],
   "crop": [
    0,
    0,
-   512,
-   720
+   1191,
+   1671
   ]
  },
  "acrobatm": {
@@ -1726,29 +1726,29 @@
   ]
  },
  "tdragon": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Thunder%20Dragon%20%288th%20Jan.%201992%2C%20unprotected%29.png",
+  "url": "https://images.launchbox-app.com/48bc7333-656c-41b4-b50b-57a91f831dc5.jpg",
   "size": [
-   512,
-   721
+   1190,
+   1673
   ],
   "crop": [
    0,
    0,
-   512,
-   721
+   1190,
+   1673
   ]
  },
  "macross": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Super%20Spacefortress%20Macross%20-%20Chou-Jikuu%20Yousai%20Macross.png",
+  "url": "https://images.launchbox-app.com/7759714a-3074-459e-81a1-58258af11fdd.jpg",
   "size": [
-   512,
-   714
+   850,
+   1202
   ],
   "crop": [
    0,
    0,
-   512,
-   714
+   850,
+   1202
   ]
  },
  "ssmissin": {
@@ -1765,16 +1765,16 @@
   ]
  },
  "gunnail": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/GunNail%20%2828th%20May.%201992%29.png",
+  "url": "https://images.launchbox-app.com/3fe75707-bdf3-4b6c-bdff-eb5dd3678811.jpg",
   "size": [
-   512,
-   716
+   850,
+   1189
   ],
   "crop": [
    0,
    0,
-   512,
-   716
+   850,
+   1189
   ]
  },
  "macross2": {
@@ -1817,185 +1817,185 @@
   ]
  },
  "airattck": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Air%20Attack%20%28set%201%29.png",
+  "url": "https://images.launchbox-app.com/7d87ab22-4c3b-4b4f-8e79-f9071c30f13f.jpg",
   "size": [
-   512,
-   728
+   850,
+   1208
   ],
   "crop": [
-   32,
-   14,
-   447,
-   688
+   0,
+   24,
+   796,
+   1142
   ]
  },
  "gseeker": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Grid%20Seeker%20-%20Project%20Stormhammer%20%28Japan%29.png",
+  "url": "https://images.launchbox-app.com/d2a00f2f-bfcd-4868-9dca-3a452c9a0a88.jpg",
   "size": [
-   512,
-   713
+   850,
+   1189
   ],
   "crop": [
    0,
    0,
-   512,
-   713
+   850,
+   1189
   ]
  },
  "gunlock": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Ray%20Force%20%28Ver%202.3A%201994_01_20%29.png",
+  "url": "https://images.launchbox-app.com/59ce3dc0-425e-44b6-8aa3-89d005c91613.jpg",
   "size": [
-   428,
-   605
+   850,
+   1187
   ],
   "crop": [
    0,
    0,
-   428,
-   605
+   850,
+   1187
   ]
  },
  "dariusg": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Darius%20Gaiden%20-%20Silver%20Hawk%20%28Ver%202.5O%201994_09_19%29.png",
+  "url": "https://images.launchbox-app.com/c98eba2d-35fb-4052-a46d-3b64e97b5f46.jpg",
   "size": [
-   512,
-   722
+   850,
+   1198
   ],
   "crop": [
    0,
    0,
-   512,
-   722
+   850,
+   1198
   ]
  },
  "gekiridn": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Gekirindan%20%28Japan%29.png",
+  "url": "https://images.launchbox-app.com/26b53793-e594-42b4-972c-80ca3412e5b7.jpg",
   "size": [
-   512,
-   723
+   850,
+   1200
   ],
   "crop": [
    0,
    0,
-   512,
-   723
+   850,
+   1200
   ]
  },
  "tcobra2": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Twin%20Cobra%20II%20%28Ver%202.1O%201995_11_30%29.png",
+  "url": "https://images.launchbox-app.com/45fc7a92-d2cd-45d6-96b8-2d9086ccee69.jpg",
   "size": [
-   512,
-   713
+   850,
+   1189
   ],
   "crop": [
    0,
    0,
-   512,
-   713
+   850,
+   1189
   ]
  },
  "raystorm": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Ray%20Storm%20%28Ver%202.06A%29.png",
+  "url": "https://images.launchbox-app.com/b433a694-bfef-43e1-8d3f-a154099554b7.jpg",
   "size": [
-   443,
-   627
+   850,
+   1198
   ],
   "crop": [
    0,
    0,
-   443,
-   627
+   850,
+   1198
   ]
  },
  "gdarius": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/G-Darius%20%28Ver%202.01J%29.png",
+  "url": "https://images.launchbox-app.com/223d17b9-c52e-4fba-bf05-e5a7c858b51a.jpg",
   "size": [
-   479,
-   670
+   850,
+   1204
   ],
   "crop": [
    0,
    0,
-   479,
-   670
+   850,
+   1204
   ]
  },
  "desertwr": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Desert%20War%20-%20Wangan%20Sensou.png",
+  "url": "https://images.launchbox-app.com/f6c83db4-9cae-40a8-90d7-b121b6558039.jpg",
   "size": [
-   512,
-   730
+   1280,
+   1800
   ],
   "crop": [
    0,
    0,
-   512,
-   730
+   1280,
+   1800
   ]
  },
  "gametngk": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/The%20Game%20Paradise%20-%20Master%20of%20Shooting%21%20-%20Game%20Tengoku%20-%20The%20Game%20Paradise.png",
+  "url": "https://images.launchbox-app.com/6997e54e-be01-4eec-9d56-b04f88922a29.jpg",
   "size": [
-   512,
-   720
+   850,
+   1196
   ],
   "crop": [
+   1,
    0,
-   0,
-   512,
-   720
+   849,
+   1196
   ]
  },
  "p47aces": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/P-47%20Aces%20%28ver%201.1%29.png",
+  "url": "https://images.launchbox-app.com/ea262f5a-cb89-4beb-9569-48781462b2ce.png",
   "size": [
-   512,
-   722
+   1063,
+   1500
   ],
   "crop": [
    0,
    0,
-   512,
-   722
+   1063,
+   1500
   ]
  },
  "gratia": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Gratia%20-%20Second%20Earth%20%2892047-01%20version%29.png",
+  "url": "https://images.launchbox-app.com/764d58c9-6384-40c6-853c-bec9441157ea.jpg",
   "size": [
-   512,
-   722
+   850,
+   1198
   ],
   "crop": [
    0,
    0,
-   512,
-   722
+   850,
+   1198
   ]
  },
  "stg": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Strike%20Gunner%20S.T.G.png",
+  "url": "https://images.launchbox-app.com/b1cde9d8-1c8a-480e-8335-1e4ce3a4fd12.jpg",
   "size": [
-   512,
-   723
+   1188,
+   1669
   ],
   "crop": [
    0,
    0,
-   512,
-   723
+   1188,
+   1669
   ]
  },
  "zingzip": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Zing%20Zing%20Zip.png",
+  "url": "https://images.launchbox-app.com/e36c90fd-e74c-410c-a078-ee0f485a5012.jpg",
   "size": [
-   512,
-   731
+   850,
+   1214
   ],
   "crop": [
-   14,
-   17,
-   489,
-   707
+   23,
+   29,
+   811,
+   1173
   ]
  },
  "neobattl": {
@@ -2090,29 +2090,29 @@
   ]
  },
  "sokyugrt": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Soukyugurentai%20_%20Terra%20Diver%20%28JUET%20960821%20V1.000%29.png",
+  "url": "https://images.launchbox-app.com/704a85bf-3f77-490e-a270-72eb3bfcba98.jpg",
   "size": [
-   512,
-   733
+   1539,
+   2205
   ],
   "crop": [
    0,
    0,
-   512,
-   733
+   1539,
+   2205
   ]
  },
  "stmblade": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Storm%20Blade%20%28US%29.png",
+  "url": "https://images.launchbox-app.com/f8ad8f6d-9006-4bbd-8b96-eed485be48ac.jpg",
   "size": [
-   512,
-   723
+   850,
+   1200
   ],
   "crop": [
    0,
    0,
-   512,
-   723
+   850,
+   1200
   ]
  },
  "cotton2": {
@@ -2142,20 +2142,17 @@
   ]
  },
  "horizon": {
-  "url": "https://www.arcadeartwork.org/galleries/arcade-custom-2022-oct/Horizon-01.png",
+  "url": "https://images.launchbox-app.com/r2_5deb4281-d55b-4081-94fa-58065488b0b8.jpg",
   "size": [
-   850,
-   1152
+   1770,
+   2400
   ],
   "crop": [
    0,
    0,
-   850,
-   1152
-  ],
-  "fit": "contain",
-  "upgrade": "From a custom gallery; not confirmed as a period flyer",
-  "referer": "https://www.arcadeartwork.org/"
+   1770,
+   2400
+  ]
  },
  "s1945": {
   "url": "https://images.launchbox-app.com/8a8b0af9-61d0-4be4-b952-41e4a507fb58.png",
@@ -2278,16 +2275,16 @@
   "upgrade": "Landscape flyer"
  },
  "daioh": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Daioh.png",
+  "url": "https://images.launchbox-app.com/0be70fe6-eeee-4637-8a03-ce45182d6efd.jpg",
   "size": [
-   512,
-   662
+   850,
+   1099
   ],
   "crop": [
    0,
    0,
-   512,
-   662
+   850,
+   1099
   ],
   "fit": "contain",
   "upgrade": "US flyer, squarer than a card; no Japanese flyer found"

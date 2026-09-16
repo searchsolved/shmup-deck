@@ -6,7 +6,6 @@ These games use the best art found so far, shown whole on the card. A portrait s
 | --- | --- |
 | Daioh | US flyer, squarer than a card; no Japanese flyer found |
 | Guardian Storm | US flyer, squarer than a card |
-| Horizon | From a custom gallery; not confirmed as a period flyer |
 | Koutetsu Yousai Strahl | Landscape flyer |
 | Rezon | Landscape flyer |
 | Spectrum 2000 | Landscape instruction sheet, not a flyer |
