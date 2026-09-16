@@ -31,14 +31,19 @@ body{
 }
 a{color:var(--gold)}
 .wrap{max-width:1080px;margin:0 auto}
-header{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+header{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:22px}
 h1{
   font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;
   font-weight:800;font-size:clamp(30px,5vw,46px);
   letter-spacing:.04em;text-transform:uppercase;line-height:.95;
 }
 h1 em{font-style:normal;color:var(--emerald-hot)}
-.back{margin-left:auto;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+nav{margin-left:auto;display:flex;align-items:center;gap:6px}
+nav a{padding:8px 13px;border-radius:999px;border:1px solid transparent;color:var(--ash);text-decoration:none;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+nav a:hover{color:var(--bone)}
+nav a[aria-current="page"]{color:var(--bone);border-color:var(--line);background:rgba(0,0,0,.25)}
+nav a:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:2px}
+@media (max-width: 560px){ nav a{padding:8px 9px;letter-spacing:.1em} }
 .intro{color:var(--ash);font-size:14px;line-height:1.6;max-width:720px;margin-bottom:22px}
 .intro code{color:var(--bone);font-size:13px}
 
@@ -102,8 +107,12 @@ footer{margin-top:32px;font-size:12px;color:var(--ash);line-height:1.7}
 <body>
 <div class="wrap">
 <header>
-  <h1>Shmup <em>Deck</em> checklist</h1>
-  <a class="back" href="./">&larr; back to the deck</a>
+  <h1>ROM <em>checklist</em></h1>
+  <nav aria-label="Pages">
+    <a href="./">Deck</a>
+    <a href="stats.html">Stats</a>
+    <a href="check.html" aria-current="page">ROM checklist</a>
+  </nav>
 </header>
 
 <p class="intro" id="intro">Every game the deck supports, and what this MiSTer still needs for each one.
