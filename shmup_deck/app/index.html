@@ -93,6 +93,8 @@ h1{
   color:var(--bone);
 }
 h1 em{font-style:normal;color:var(--emerald-hot)}
+h1 a{color:inherit;text-decoration:none}
+h1 a:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:4px;border-radius:4px}
 .strapline{
   font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--ash);
 }
@@ -310,7 +312,7 @@ footer a{color:inherit}
 
 <header>
   <div class="brand">
-    <h1>Shmup <em>Deck</em></h1>
+    <h1><a href="./" id="home">Shmup <em>Deck</em></a></h1>
     <div class="strapline">MiSTer FPGA &middot;
       <span class="conn" id="status"><span class="lamp" id="lamp"></span><span id="statusText">checking&hellip;</span></span></div>
   </div>
@@ -659,6 +661,14 @@ $("#copylink").addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(url); $("#copylink").textContent = "Copied"; }
   catch { $("#copylink").textContent = "Copy blocked"; }
   setTimeout(() => { $("#copylink").textContent = "Copy link"; }, 2000);
+});
+// the logo is the home link; on the deck itself it clears the search and
+// goes back to the top, leaving the remembered choices alone
+$("#home").addEventListener("click", e => {
+  e.preventDefault();
+  $("#search").value = "";
+  renderDeck();
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 $("#group").addEventListener("change", e => {
   localStorage.setItem(LS.group, e.target.value);
