@@ -29,19 +29,20 @@ body{
 }
 a{color:var(--gold)}
 .wrap{max-width:1080px;margin:0 auto}
-header{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:22px}
+header{margin-bottom:26px}
 h1{
   font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;
   font-weight:800;font-size:clamp(30px,5vw,46px);
   letter-spacing:.04em;text-transform:uppercase;line-height:.95;
 }
 h1 em{font-style:normal;color:var(--emerald-hot)}
-nav{margin-left:auto;display:flex;align-items:center;gap:6px}
-nav a{padding:8px 13px;border-radius:999px;border:1px solid transparent;color:var(--ash);text-decoration:none;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+nav{display:flex;align-items:center;gap:4px;margin-top:16px}
+nav a{display:inline-flex;padding:10px 20px;border-radius:999px;color:var(--ash);text-decoration:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
 nav a:hover{color:var(--bone)}
-nav a[aria-current="page"]{color:var(--bone);border-color:var(--line);background:rgba(0,0,0,.25)}
+nav a[aria-current="page"]{background:var(--gold);color:#231c07}
 nav a:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:2px}
-@media (max-width: 560px){ nav a{padding:8px 9px;letter-spacing:.1em} }
+.strapline{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--ash);margin-top:6px}
+@media (max-width: 560px){ nav a{padding:8px 12px;letter-spacing:.1em;font-size:12px} }
 
 .totals{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px}
 .tile{
@@ -96,7 +97,8 @@ footer{margin-top:36px;font-size:12px;color:var(--ash);line-height:1.7}
 <body>
 <div class="wrap">
 <header>
-  <h1>Play <em>stats</em></h1>
+  <h1>Shmup <em>Deck</em></h1>
+  <div class="strapline">MiSTer FPGA &middot; shmup launcher</div>
   <nav aria-label="Pages">
     <a href="./">Deck</a>
     <a href="stats.html" aria-current="page">Stats</a>

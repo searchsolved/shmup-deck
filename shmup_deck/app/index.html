@@ -34,29 +34,39 @@ body{
   padding:max(20px, env(safe-area-inset-top)) 20px 48px;
 }
 
-/* site bar: brand, pages, settings */
-header{
-  max-width:1080px;margin:0 auto 22px;
-  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
-}
-nav{margin-left:auto;display:flex;align-items:center;gap:6px}
-nav a,nav button{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:8px 13px;border-radius:999px;border:1px solid transparent;
+/* site header: brand, connection, page tabs, settings */
+header{max-width:1080px;margin:0 auto 26px}
+.strapline .conn{display:inline-flex;align-items:center;gap:7px;margin-left:10px;color:var(--emerald-hot)}
+.strapline .conn.off{color:var(--danger)}
+.strapline .conn.busy{color:var(--gold)}
+nav{display:flex;align-items:center;gap:4px;margin-top:18px}
+nav a,nav .cog{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:10px 20px;border-radius:999px;border:0;
   background:transparent;color:var(--ash);cursor:pointer;text-decoration:none;
-  font-family:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  font-family:inherit;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
 }
-nav a:hover,nav button:hover{color:var(--bone)}
-nav a[aria-current="page"]{color:var(--bone);border-color:var(--line);background:rgba(0,0,0,.25)}
-nav button[aria-expanded="true"]{color:var(--bone);border-color:var(--gold)}
-nav a:focus-visible,nav button:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:2px}
-/* the toolbar: how to browse right now */
+nav a:hover,nav .cog:hover{color:var(--bone)}
+nav a[aria-current="page"]{background:var(--gold);color:#231c07}
+nav .rule{width:1px;height:26px;background:var(--line);margin:0 12px}
+nav .cog{padding:8px 10px}
+nav .cog svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+nav .cog[aria-expanded="true"]{color:var(--gold)}
+nav a:focus-visible,nav .cog:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:2px}
+/* the toolbar: how to browse right now; labels sit above the controls */
 .toolbar{
-  max-width:1080px;margin:0 auto 16px;
-  display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  max-width:1080px;margin:0 auto 18px;
+  display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap;
 }
-.ctl{display:flex;align-items:center;gap:10px}
+.ctl{display:flex;flex-direction:column;gap:8px}
 .ctl>span{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ash)}
+.ctl.search{flex:1;min-width:200px;max-width:400px}
+.field{position:relative;display:flex;align-items:center}
+.field svg{position:absolute;left:14px;width:16px;height:16px;fill:none;stroke:var(--ash);stroke-width:2;stroke-linecap:round;pointer-events:none}
+.field kbd{
+  position:absolute;right:12px;padding:2px 8px;border:1px solid var(--line);border-radius:5px;
+  font-family:inherit;font-size:11px;color:var(--ash);pointer-events:none;
+}
 h1{
   font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;
   font-weight:800;font-size:clamp(34px,6vw,54px);
@@ -76,12 +86,11 @@ h1 em{font-style:normal;color:var(--emerald-hot)}
 }
 .seg button[aria-pressed="true"]{background:var(--gold);color:#231c07}
 .seg button:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:-2px}
-.filterbar{margin-left:auto;display:flex;align-items:center;gap:12px;flex:1;min-width:220px;max-width:460px}
 .count{max-width:1080px;margin:0 auto 14px}
 /* settings: set once, remembered on this device */
 .settings{position:relative}
 .sheet{
-  position:absolute;right:0;top:44px;z-index:6;width:min(340px,calc(100vw - 28px));
+  position:absolute;left:0;top:46px;z-index:6;width:min(340px,calc(100vw - 28px));
   padding:18px 18px 16px;border:1px solid var(--line);border-radius:14px;
   background:#0b1811;box-shadow:0 24px 60px -20px rgba(0,0,0,.9);
 }
@@ -104,8 +113,8 @@ body.compact .plate .meta{display:none}
 body.compact .cab{border-width:1px}
 body.compact .divider h2{font-size:20px}
 #search{
-  flex:1;min-width:0;max-width:420px;
-  padding:9px 14px;border-radius:999px;border:1px solid #1d3326;
+  flex:1;min-width:0;width:100%;
+  padding:10px 44px 10px 40px;border-radius:999px;border:1px solid #1d3326;
   background:rgba(0,0,0,.25);color:var(--bone);font-family:inherit;font-size:13px;
 }
 #search::placeholder{color:#4e5c52;letter-spacing:.06em}
@@ -138,15 +147,8 @@ body.compact .cab .star{width:28px;height:28px;font-size:15px;top:5px;right:5px}
 .copylink:hover{color:var(--bone)}
 .count{display:flex;align-items:center;gap:12px}
 .plate .plays + .orient{margin-left:8px}
-.statusbar{
-  display:flex;align-items:center;gap:10px;
-  font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ash);
-  border:1px solid #1d3326;border-radius:999px;
-  padding:8px 14px;background:rgba(0,0,0,.25);
-}
-.lamp{width:9px;height:9px;border-radius:50%;background:#3a4a3f;transition:background .3s, box-shadow .3s}
-.lamp.on{background:var(--emerald-hot);box-shadow:0 0 8px 1px rgba(84,226,154,.8)}
-.lamp.off{background:var(--danger);box-shadow:0 0 6px rgba(224,96,79,.6)}
+.lamp{width:8px;height:8px;border-radius:50%;background:currentColor;transition:box-shadow .3s}
+.lamp.on{box-shadow:0 0 8px 1px rgba(84,226,154,.7)}
 
 /* now playing banner */
 .now{
@@ -265,13 +267,13 @@ body.compact .cab .star{width:28px;height:28px;font-size:15px;top:5px;right:5px}
 /* phones: let the controls wrap under the title instead of widening the page */
 @media (max-width: 560px){
   body{padding-left:14px;padding-right:14px}
-  header{gap:10px}
-  nav a{padding:8px 9px;letter-spacing:.1em}
-  .seg button{padding:7px 10px;letter-spacing:.08em}
-  .toolbar{gap:10px}
-  .ctl>span{display:none}
-  .filterbar{margin-left:0;max-width:none;flex-basis:100%}
-  #search{max-width:none}
+  nav{margin-top:14px}
+  nav a{padding:8px 12px;letter-spacing:.1em;font-size:12px}
+  nav .rule{margin:0 6px}
+  .seg button{padding:7px 11px;letter-spacing:.08em}
+  .toolbar{gap:14px 18px}
+  .ctl.search{flex-basis:100%;max-width:none}
+  .field kbd{display:none}
   body.compact .deck{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
   .deck{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
   .plate{padding:10px 10px 12px}
@@ -286,16 +288,18 @@ footer a{color:inherit}
 <body>
 
 <header>
-  <div>
-    <h1>Shmup <em>Deck</em></h1>
-    <div class="strapline">MiSTer FPGA &middot; shmup launcher</div>
-  </div>
+  <h1>Shmup <em>Deck</em></h1>
+  <div class="strapline">MiSTer FPGA &middot; shmup launcher &middot;
+    <span class="conn" id="status"><span class="lamp" id="lamp"></span><span id="statusText">checking&hellip;</span></span></div>
   <nav aria-label="Pages">
     <a href="./" aria-current="page">Deck</a>
     <a href="stats.html">Stats</a>
     <a href="check.html">ROM checklist</a>
+    <span class="rule" aria-hidden="true"></span>
     <div class="settings">
-      <button id="gear" aria-expanded="false" aria-controls="sheet" title="Settings">&#9881; Settings</button>
+      <button id="gear" class="cog" aria-expanded="false" aria-controls="sheet" aria-label="Settings" title="Settings">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+      </button>
       <div class="sheet" id="sheet" hidden>
         <h3>Screen</h3>
         <div class="seg" role="group" aria-label="Screen orientation">
@@ -321,6 +325,12 @@ footer a{color:inherit}
   <span class="label">Now playing</span><span class="what" id="nowWhat"></span>
 </div>
 <div class="toolbar">
+  <div class="ctl search"><span>Search</span>
+    <div class="field">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="search" type="search" autocomplete="off" spellcheck="false" placeholder="Search" aria-label="Search games">
+      <kbd>/</kbd>
+    </div></div>
   <div class="ctl"><span>Show</span>
     <div class="seg" role="group" aria-label="Show">
       <button data-show="all" aria-pressed="true">All</button>
@@ -331,20 +341,13 @@ footer a{color:inherit}
     <div class="seg" role="group" aria-label="Sort order">
       <button data-sort="az" aria-pressed="true">A&ndash;Z</button>
       <button data-sort="year" aria-pressed="false">Year</button>
-      <button data-sort="played" aria-pressed="false" title="Most time played first">Most played</button>
+      <button data-sort="played" aria-pressed="false" title="Most time played first">Plays</button>
     </div></div>
   <div class="ctl"><span>Group</span>
     <div class="seg" role="group" aria-label="Group by">
       <button data-group="dev" aria-pressed="false" title="Group by developer">Dev</button>
       <button data-group="system" aria-pressed="false" title="Group by arcade system">System</button>
     </div></div>
-  <div class="filterbar">
-    <input id="search" type="search" autocomplete="off" spellcheck="false"
-           placeholder="Search title, developer or system &mdash; press /" aria-label="Search games">
-    <div class="statusbar" id="status">
-      <span class="lamp" id="lamp"></span><span id="statusText">checking&hellip;</span>
-    </div>
-  </div>
 </div>
 <p class="count"><span id="count"></span><button class="copylink" id="copylink" hidden title="A link that opens just these games">Copy link</button></p>
 
@@ -727,9 +730,10 @@ async function ping() {
   try {
     const s = await (await fetch("api/status", { cache: "no-store", signal: AbortSignal.timeout(3000) })).json();
     lamp.className = "lamp on";
-    txt.textContent = s.scanning ? "scanning games…"
-      : s.art.fetching ? `art ${s.art.done}/${s.art.total}`
-      : "ready";
+    $("#status").className = "conn" + (s.scanning || s.art.fetching ? " busy" : "");
+    txt.textContent = s.scanning ? "Scanning games…"
+      : s.art.fetching ? `Flyers ${s.art.done}/${s.art.total}`
+      : "Connected";
     // flyers that arrived since the page loaded
     if (artWasFetching && !s.art.fetching) renderDeck();
     artWasFetching = s.art.fetching;
@@ -746,7 +750,7 @@ async function ping() {
       loadStats().then(() => { if (sortPref() === "played") renderDeck(); });
     }
   } catch {
-    lamp.className = "lamp off"; txt.textContent = "mister offline";
+    lamp.className = "lamp"; $("#status").className = "conn off"; txt.textContent = "Offline";
   }
 }
 
