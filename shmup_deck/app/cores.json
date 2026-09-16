@@ -2,23 +2,28 @@
  "sources": {
   "official": {
    "name": "MiSTer main distribution",
-   "note": "installed by update_all by default"
+   "note": "installed by update_all by default",
+   "standard": true
   },
   "jotego": {
    "name": "JOTEGO cores",
-   "note": "optional database; switch it on in update_all's settings"
+   "note": "optional database; switch it on in update_all's settings",
+   "standard": true
   },
   "coinop": {
    "name": "Coin-Op Collection",
-   "note": "optional database; switch it on in update_all's settings"
+   "note": "optional database; switch it on in update_all's settings",
+   "standard": true
   },
   "github": {
    "name": "Not in update_all",
-   "note": "install the core and its MRAs by hand from the repository"
+   "note": "not distributed through Update All; the deck lists these games only when the core is already installed",
+   "standard": false
   },
   "meatcores": {
    "name": "MeatCores",
-   "note": "third-party database; add meathax/meatcores to downloader.ini"
+   "note": "not distributed through Update All; the deck lists these games only when the core is already installed",
+   "standard": false
   }
  },
  "cores": {

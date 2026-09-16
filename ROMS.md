@@ -21,7 +21,7 @@ Shmup Deck contains no ROMs, MRAs or cores.
 | MiSTer main distribution | Installed by update_all by default |
 | JOTEGO cores | Optional database; switch it on in update_all's settings |
 | Coin-Op Collection | Optional database; switch it on in update_all's settings |
-| MeatCores | Third-party database; add meathax/meatcores to downloader.ini |
+| MeatCores | Not distributed through Update All; the deck lists these games only when the core is already installed |
 
 These cores are not in update_all. Install the core and its MRAs from each repository:
 

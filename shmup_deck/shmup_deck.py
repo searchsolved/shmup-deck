@@ -45,7 +45,7 @@ CORENAME = os.environ.get("SHMUP_CORENAME", "/tmp/CORENAME")
 PLAYS = os.environ.get("SHMUP_PLAYS", os.path.join(HERE, "plays.json"))
 FAVS = os.environ.get("SHMUP_FAVS", os.path.join(HERE, "favourites.json"))
 
-VERSION = "1.4.2"
+VERSION = "1.4.3"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
 ART_DELAY = 2.0          # seconds between flyer downloads; be kind to the hosts
 SETNAME = re.compile(rb"<setname>\s*(.*?)\s*</setname>", re.S)
@@ -548,11 +548,28 @@ def needed_zips(game):
     return groups
 
 
+def core_is_standard(rbf):
+    """Whether a core is distributed through Update All (MiSTer-devel, JOTEGO
+    or Coin-Op Collection). Games on other cores are never reported as
+    missing: they show only once the user has installed the core themselves,
+    so the deck never points people at cores Update All can't provide."""
+    try:
+        with open(os.path.join(APP_DIR, "cores.json")) as f:
+            cores = json.load(f)
+    except (OSError, ValueError):
+        return True
+    name = rbf[7:] if rbf.lower().startswith("arcade-") else rbf
+    src = cores["cores"].get(name, cores["cores"].get(rbf, {})).get("source")
+    return bool(cores["sources"].get(src, {}).get("standard"))
+
+
 def checklist():
     """For every deck game: is it ready, and if not, what is missing.
 
     Checks the three things an arcade game needs: an MRA, the core it names
     and the ROM zips it reads. Neo Geo games only need their game file.
+    "listed" is false for a game that is not ready and whose core is not
+    distributed through Update All; the app hides those entirely.
     """
     zips = listing(MAME_DIRS, ".zip")
     cores = {}                              # arcade root -> core file names there
@@ -564,6 +581,7 @@ def checklist():
             if not entry["mra"]:
                 entry["missing"] = [g.get("roms", {}).get("zip", g["id"])]
             entry["state"] = "ready" if entry["mra"] else "roms"
+            entry["listed"] = True
             out.append(entry)
             continue
         path = INDEX.resolve(g.get("setnames", [g["id"]]))
@@ -581,6 +599,7 @@ def checklist():
                             if not any(z.lower() in zips for z in grp)]
         entry["state"] = ("mra" if not path else "core" if not entry["core"]
                           else "roms" if entry["missing"] else "ready")
+        entry["listed"] = entry["state"] == "ready" or core_is_standard(g.get("rbf", ""))
         out.append(entry)
     return out
 

@@ -120,7 +120,7 @@ footer{margin-top:32px;font-size:12px;color:var(--ash);line-height:1.7}
   </nav>
 </header>
 
-<p class="intro" id="intro">Every game the deck supports, and what this MiSTer still needs for each one.
+<p class="intro" id="intro">The games the deck supports through Update All, and what this MiSTer still needs for each one.
 ROM zips go in <code>games/mame</code>. Where a line says &ldquo;or&rdquo;, either zip will do: the game's own
 zip from a non-merged or split set, or its parent's zip from a merged set.</p>
 
@@ -137,6 +137,7 @@ zip from a non-merged or split set, or its parent's zip from a merged set.</p>
 
 <footer>
   A game shows on the deck once its MRA is found; it will only start if the core and ROM zips are there too.
+  Cores that Update All doesn't distribute aren't listed here; games on them appear once you've installed the core yourself.
   Zip names come from each game's MRA and MAME's parent and clone sets.
   The full list is also on <a href="https://github.com/searchsolved/shmup-deck/blob/main/ROMS.md">GitHub</a>.
 </footer>
@@ -164,14 +165,16 @@ function wanted(g) {
   return [main, ...(r.shared || [])].filter(Boolean);
 }
 
+/* Cores not distributed through Update All are named but not linked; games on
+   them appear here only once the core is installed. */
 function coreCell(g) {
   const c = CORES.cores[g.rbf] || {};
   const src = CORES.sources[c.source] || {};
-  const where = c.url
-    ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">GitHub</a> (not in update_all)`
-    : esc(src.name || "");
+  const where = src.standard ? esc(src.name || "") : "installed by hand";
   return `<div>${esc(g.core)}</div><div class="sub">${where}</div>`;
 }
+const listed = (g, c) => c ? c.listed !== false
+  : !!(CORES.sources[(CORES.cores[g.rbf] || {}).source] || {}).standard;
 
 /* Neo Geo games are single game files in games/NeoGeo, not MAME zips. */
 const neoFile = z => `${esc(z)}.neo, or a ${esc(z)} zip or folder, in games/NeoGeo`;
@@ -194,14 +197,17 @@ function visible() {
   const byId = Object.fromEntries((CHECK || []).map(c => [c.id, c]));
   return GAMES
     .map(g => ({ g, c: byId[g.id] }))
+    .filter(({ g, c }) => listed(g, c))
     .filter(({ g, c }) => show === "all" || (c && c.state === show))
     .filter(({ g }) => q.every(t => squash(`${g.title} ${g.dev} ${g.core} ${g.year}`).includes(t)))
     .sort((a, b) => a.g.title.localeCompare(b.g.title, "en"));
 }
 
 function render() {
-  const counts = { all: GAMES.length, ready: 0, roms: 0, core: 0, mra: 0 };
-  for (const c of CHECK || []) counts[c.state]++;
+  const byIdAll = Object.fromEntries((CHECK || []).map(c => [c.id, c]));
+  const shownGames = GAMES.filter(g => listed(g, byIdAll[g.id]));
+  const counts = { all: shownGames.length, ready: 0, roms: 0, core: 0, mra: 0 };
+  for (const g of shownGames) if (byIdAll[g.id]) counts[byIdAll[g.id].state]++;
   $("#tally").innerHTML = Object.entries(STATES)
     .filter(([k]) => CHECK || k === "all")
     .map(([k, s]) => `<button data-show="${k}" aria-pressed="${k === show}"><b>${counts[k]}</b>${s.label}</button>`)

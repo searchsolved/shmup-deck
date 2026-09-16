@@ -471,6 +471,8 @@ let CHECK = null;   // id -> { state, missing }; state is "ready", "roms", "core
 /* Ready means the game will actually start: MRA, core and ROMs all present.
    Services older than the checklist only know about MRAs. */
 const ready = g => CHECK ? CHECK[g.id] && CHECK[g.id].state === "ready" : !AVAIL || !!AVAIL[g.id];
+// a game on a core Update All can't provide is never shown as missing
+const listed = g => !CHECK || !CHECK[g.id] || CHECK[g.id].listed !== false;
 const NEEDS = { roms: "needs ROMs", core: "needs core", mra: "no MRA" };
 let NOW = null;
 
@@ -592,9 +594,9 @@ function renderDeck() {
   const groupBy = PICK.length ? null : { dev: "dev", system: "system" }[groupPref()];
   const grouped = !!groupBy;
   const shown = PICK.length
-    ? PICK.map(id => GAMES.find(g => g.id === id)).filter(g => g && (showAll || ready(g)) && matches(g, query))
+    ? PICK.map(id => GAMES.find(g => g.id === id)).filter(g => g && (showAll && listed(g) || ready(g)) && matches(g, query))
     : GAMES
-      .filter(g => (showAll || ready(g)) && (want === "all" || g.orientation === want) && matches(g, query))
+      .filter(g => (showAll && listed(g) || ready(g)) && (want === "all" || g.orientation === want) && matches(g, query))
       .filter(g => show === "all" || (show === "played" ? p[g.id] : FAVS.has(g.id)));
   const label = grouped ? groupLabels(shown, groupBy) : null;
   if (!PICK.length) shown.sort(grouped

@@ -58,9 +58,13 @@ in `/media/fat/Scripts/.config/shmup_deck/`.
 - The cores for those games
 
 [ROMS.md](ROMS.md) lists every supported game with its core, where to get the
-core and the ROM zips it needs. Several cores are not in update_all; that page
-links to each one. On the MiSTer itself, **http://shmupdeck.local/check.html**
-checks all of this against your SD card.
+core and the ROM zips it needs. On the MiSTer itself,
+**http://shmupdeck.local/check.html** checks all of this against your SD card.
+
+Some games run on cores that Update All doesn't distribute (they're listed in
+ROMS.md). The app never reports those as missing: they appear only once you've
+installed the core yourself, so nothing in the app points at a core Update All
+can't provide.
 
 ### Neo Geo formats
 
