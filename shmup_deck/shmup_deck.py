@@ -39,9 +39,10 @@ MRA_ROOTS = os.environ.get("SHMUP_MRA_ROOTS")
 DRIVES = ["/media/fat"] + ["/media/usb%d" % i for i in range(6)]
 CMD = os.environ.get("SHMUP_CMD", "/dev/MiSTer_cmd")
 CACHE = os.environ.get("SHMUP_CACHE", os.path.join(HERE, "mra_index.json"))
+SEEN = CACHE[:-5] + "_seen.json"     # size, date and setname of every MRA read
 MGL_PATH = os.environ.get("SHMUP_MGL", "/tmp/shmup_deck.mgl")
 
-VERSION = "1.1.1"
+VERSION = "1.1.2"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
 ART_DELAY = 2.0          # seconds between flyer downloads; be kind to the hosts
 SETNAME = re.compile(rb"<setname>\s*(.*?)\s*</setname>", re.S)
@@ -119,7 +120,12 @@ class Index:
         except (OSError, ValueError, KeyError):
             pass
 
-    def scan(self):
+    def scan(self, full=False):
+        """Index every MRA. Only files that are new or have changed size or
+        date since the last scan are actually read; the rest come from the
+        cache, so a rescan costs a directory walk rather than 30,000 file
+        reads. full=True reads everything again. That per-file cache is 30,000
+        entries, so it lives in its own file and only in memory during a scan."""
         with self.lock:
             if self.scanning:
                 return
@@ -127,37 +133,58 @@ class Index:
         try:
             t = time.time()
             roots = mra_roots()
-            found, mras, broken, unreadable = {}, 0, 0, 0
-            for root, _dirs, files in (w for top in roots for w in os.walk(top)):
-                for name in files:
-                    if not name.lower().endswith(".mra"):
-                        continue
-                    mras += 1
-                    path = os.path.join(root, name)
-                    try:
-                        with open(path, "rb") as f:
-                            m = SETNAME.search(f.read(HEAD_BYTES))
-                    except OSError:
-                        # organised sets often carry shortcuts to files that
-                        # have since moved; those are not worth reporting as errors
-                        if os.path.islink(path) and not os.path.exists(path):
-                            broken += 1
+            old = {}
+            if not full:
+                try:
+                    with open(SEEN) as f:
+                        old = json.load(f)
+                except (OSError, ValueError):
+                    pass
+            seen, costs = {}, {}
+            found, mras, broken, unreadable, read = {}, 0, 0, 0, 0
+            for top in roots:
+                for root, _dirs, files in os.walk(top):
+                    for name in files:
+                        if not name.lower().endswith(".mra"):
+                            continue
+                        mras += 1
+                        path = os.path.join(root, name)
+                        try:
+                            st = os.stat(path)
+                        except OSError:
+                            # organised sets often carry shortcuts to files that
+                            # have since moved; those are not worth reporting as errors
+                            if os.path.islink(path):
+                                broken += 1
+                            else:
+                                unreadable += 1
+                            continue
+                        prev = old.get(path)
+                        if prev and prev[0] == st.st_size and prev[1] == st.st_mtime:
+                            setname = prev[2]
                         else:
-                            unreadable += 1
-                        continue
-                    if not m:
-                        continue
-                    setname = m.group(1).decode("utf-8", "replace")
-                    if setname not in found or path_cost(path) < path_cost(found[setname]):
-                        found[setname] = path
-            stats = {"mras": mras, "broken_links": broken, "unreadable": unreadable,
+                            read += 1
+                            try:
+                                with open(path, "rb") as f:
+                                    m = SETNAME.search(f.read(HEAD_BYTES))
+                            except OSError:
+                                unreadable += 1
+                                continue
+                            setname = m.group(1).decode("utf-8", "replace") if m else None
+                        seen[path] = [st.st_size, st.st_mtime, setname]
+                        if not setname:
+                            continue
+                        cost = costs[path] = path_cost(path)
+                        if setname not in found or cost < costs[found[setname]]:
+                            found[setname] = path
+            stats = {"mras": mras, "read": read, "broken_links": broken, "unreadable": unreadable,
                      "seconds": round(time.time() - t, 1), "built": int(time.time())}
             with self.lock:
                 self.best, self.stats, self.roots = found, stats, roots
-            tmp = CACHE + ".tmp"
-            with open(tmp, "w") as f:
-                json.dump({"best": found, "stats": stats, "roots": roots}, f)
-            os.replace(tmp, CACHE)
+            for path, data in ((CACHE, {"best": found, "stats": stats, "roots": roots}), (SEEN, seen)):
+                with open(path + ".tmp", "w") as f:
+                    json.dump(data, f)
+                os.replace(path + ".tmp", path)
         finally:
             with self.lock:
                 self.scanning = False
@@ -296,9 +323,19 @@ ART = Art()
 LAST_LAUNCH = {"id": None, "core": None}
 
 
+_DECK = {"mtime": None, "games": []}
+_DECK_LOCK = threading.Lock()
+
+
 def load_deck():
-    with open(os.path.join(APP_DIR, "games.json")) as f:
-        return json.load(f)
+    """games.json, parsed once and re-read only when the file changes."""
+    path = os.path.join(APP_DIR, "games.json")
+    mtime = os.stat(path).st_mtime
+    with _DECK_LOCK:
+        if mtime != _DECK["mtime"]:
+            with open(path) as f:
+                _DECK["games"], _DECK["mtime"] = json.load(f), mtime
+        return _DECK["games"]
 
 
 def now_playing():
@@ -508,7 +545,9 @@ class Handler(SimpleHTTPRequestHandler):
                     return self.send_json({"error": "not installed"}, 404)
                 return self.send_json({"ok": True, "path": path})
             if self.path == "/api/rescan":
-                threading.Thread(target=INDEX.scan, daemon=True).start()
+                # {"full": true} re-reads every MRA instead of only changed ones
+                full = bool(self.read_json().get("full"))
+                threading.Thread(target=INDEX.scan, kwargs={"full": full}, daemon=True).start()
                 threading.Thread(target=NEO.scan, daemon=True).start()
                 return self.send_json({"ok": True})
         except (ValueError, OSError) as e:

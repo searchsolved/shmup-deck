@@ -137,7 +137,7 @@ flyer's crop from a downloaded scan.
 | GET | `/api/available` | game id to installed MRA path (null if missing) |
 | GET | `/api/checklist` | per game: ready, or the missing MRA, core or ROM zips |
 | POST | `/api/launch` | `{"id": "gunbird"}` |
-| POST | `/api/rescan` | rescan for MRAs after adding games |
+| POST | `/api/rescan` | rescan for MRAs after adding games; only new or changed files are read, `{"full": true}` reads them all |
 
 ## License
 

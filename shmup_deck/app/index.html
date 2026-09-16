@@ -551,7 +551,9 @@ async function ping() {
       // a picked list is its own little wall; don't advertise something outside it
       $("#now").hidden = !g || (PICK.length > 0 && !PICK.includes(g.id));
       if (g) $("#nowWhat").textContent = g.title;
-      renderDeck();
+      // move the highlight rather than rebuilding every card and its flyer
+      for (const c of deck.querySelectorAll(".cab"))
+        c.classList.toggle("playing", c.dataset.id === NOW);
     }
   } catch {
     lamp.className = "lamp off"; txt.textContent = "mister offline";

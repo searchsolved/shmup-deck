@@ -2,5 +2,6 @@ dist/
 __pycache__/
 .DS_Store
 mra_index.json
+mra_index_seen.json
 shmup_deck/art/
 .ruff_cache/
