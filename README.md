@@ -6,7 +6,7 @@ phone, tap a flyer, and the MiSTer loads the game.
 It runs on the MiSTer itself. There is nothing to host, no PC involved and no
 other service to install.
 
-![Shmup Deck showing the now playing banner and a search for Cave games](docs/screenshot.jpg)
+![Tapping a flyer on the deck launches the game on the MiSTer](docs/deck.gif)
 
 - 178 auto-scrolling shooters, mostly from 1985 onwards, across Toaplan, Cave,
   CV1000, Capcom CPS1/CPS2, PGM, Psikyo, Raizing, Konami, Irem, NMK, Taito F3,
