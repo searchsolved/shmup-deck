@@ -12,8 +12,12 @@ other service to install.
   CV1000, Capcom CPS1/CPS2, PGM, Psikyo, Raizing, Konami, Irem, NMK, Taito F3,
   Seta, Sega ST-V, Neo Geo and more
 - Only games actually installed on your SD card are shown
-- Sort by name, year or most played; group by developer or arcade system;
-  filter by tate or yoko; search by title, developer or core
+- Star games to build your own favourites deck, kept on the MiSTer so every
+  phone sees the same one; a Copy link button gives a URL that opens just those
+- Show all, favourites or played; sort by name, year or most played; group by
+  developer or arcade system; search by title, developer or system
+- Settings: which way the monitor is fitted (tate or yoko), whether to show
+  games the MiSTer can't run yet, and a compact layout
 - Shows what is playing right now
 - A ROM checklist page shows what each game still needs on your MiSTer: the
   MRA, the core or the ROM zips
@@ -139,6 +143,8 @@ flyer's crop from a downloaded scan.
 | GET | `/api/available` | game id to installed MRA path (null if missing) |
 | GET | `/api/checklist` | per game: ready, or the missing MRA, core or ROM zips |
 | GET | `/api/stats` | launches, seconds played and last played per game, and what is running |
+| GET | `/api/favourites` | `{"ids": [...]}` |
+| POST | `/api/favourites` | `{"id": "gunbird", "on": true}`; returns the list |
 | POST | `/api/launch` | `{"id": "gunbird"}` |
 | POST | `/api/rescan` | rescan for MRAs after adding games; only new or changed files are read, `{"full": true}` reads them all |
 

@@ -120,6 +120,23 @@ body.compact .divider h2{font-size:20px}
   border-radius:3px;font-size:9.5px;letter-spacing:.14em;color:#6d7a70;
 }
 .plate .plays{margin-left:auto;color:var(--emerald);font-size:10.5px;letter-spacing:.1em}
+/* the star: marks a favourite without launching */
+.cab .star{
+  position:absolute;top:8px;right:8px;z-index:3;width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(7,16,11,.7);color:rgba(233,228,210,.55);font-size:18px;line-height:1;
+  transition:color .15s, transform .15s;
+}
+.cab .star:hover{color:var(--gold);transform:scale(1.1)}
+.cab .star[aria-pressed="true"]{color:var(--gold)}
+.cab .star:focus-visible{outline:2px solid var(--emerald-hot)}
+body.compact .cab .star{width:28px;height:28px;font-size:15px;top:5px;right:5px}
+.copylink{
+  border:1px solid var(--line);border-radius:999px;background:rgba(0,0,0,.25);color:var(--ash);
+  padding:5px 11px;font-family:inherit;font-size:11px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;
+}
+.copylink:hover{color:var(--bone)}
+.count{display:flex;align-items:center;gap:12px}
 .plate .plays + .orient{margin-left:8px}
 .statusbar{
   display:flex;align-items:center;gap:10px;
@@ -304,11 +321,17 @@ footer a{color:inherit}
   <span class="label">Now playing</span><span class="what" id="nowWhat"></span>
 </div>
 <div class="toolbar">
+  <div class="ctl"><span>Show</span>
+    <div class="seg" role="group" aria-label="Show">
+      <button data-show="all" aria-pressed="true">All</button>
+      <button data-show="favourites" aria-pressed="false" title="Games starred on this MiSTer">Favourites</button>
+      <button data-show="played" aria-pressed="false" title="Games that have been played on this MiSTer">Played</button>
+    </div></div>
   <div class="ctl"><span>Sort</span>
     <div class="seg" role="group" aria-label="Sort order">
       <button data-sort="az" aria-pressed="true">A&ndash;Z</button>
       <button data-sort="year" aria-pressed="false">Year</button>
-      <button data-sort="played" aria-pressed="false" title="Only games you have played, most played first">Most played</button>
+      <button data-sort="played" aria-pressed="false" title="Most time played first">Most played</button>
     </div></div>
   <div class="ctl"><span>Group</span>
     <div class="seg" role="group" aria-label="Group by">
@@ -323,7 +346,7 @@ footer a{color:inherit}
     </div>
   </div>
 </div>
-<p class="count" id="count"></p>
+<p class="count"><span id="count"></span><button class="copylink" id="copylink" hidden title="A link that opens just these games">Copy link</button></p>
 
 <main class="deck" id="deck"></main>
 
@@ -338,6 +361,8 @@ flyer art is downloaded from public archives and belongs to its copyright holder
 const LS = {
   screen: "shmupdeck.screen",
   sort: "shmupdeck.sort",
+  show: "shmupdeck.show",
+  favs: "shmupdeck.favs",
   group: "shmupdeck.group",
   missing: "shmupdeck.missing",
   density: "shmupdeck.density",
@@ -347,6 +372,7 @@ const $ = s => document.querySelector(s);
 // Which way the cab or monitor is fitted. Set once, remembered after that.
 const screenPref = () => localStorage.getItem(LS.screen) || "all";
 const sortPref = () => localStorage.getItem(LS.sort) || "az";
+const showPref = () => localStorage.getItem(LS.show) || "all";
 const groupPref = () => localStorage.getItem(LS.group) || "none";
 const missingPref = () => localStorage.getItem(LS.missing) || "hide";
 const densityPref = () => localStorage.getItem(LS.density) || "comfortable";
@@ -355,6 +381,27 @@ const densityPref = () => localStorage.getItem(LS.density) || "comfortable";
    started. Before that existed, launches were counted per browser; that
    count is still used if the service is too old to keep stats. */
 let STATS = null;   // id -> { launches, seconds, last }
+
+/* Favourites live on the MiSTer, so they are the cab's rather than one
+   phone's. An older service without them falls back to this browser. */
+let FAVS = new Set(), FAVS_LOCAL = false;
+async function loadFavourites() {
+  try {
+    const r = await fetch("api/favourites", { cache: "no-store" });
+    if (r.ok) { FAVS = new Set((await r.json()).ids); return; }
+  } catch { /* fall through */ }
+  FAVS_LOCAL = true;
+  try { FAVS = new Set(JSON.parse(localStorage.getItem(LS.favs)) || []); } catch { FAVS = new Set(); }
+}
+async function setFavourite(id, on) {
+  if (on) FAVS.add(id); else FAVS.delete(id);
+  if (FAVS_LOCAL) { localStorage.setItem(LS.favs, JSON.stringify([...FAVS])); return; }
+  try {
+    const r = await fetch("api/favourites", { method: "POST", headers: { "Content-Type": "application/json" },
+                                              body: JSON.stringify({ id, on }) });
+    if (r.ok) FAVS = new Set((await r.json()).ids);
+  } catch { /* keep the optimistic change; it syncs on next load */ }
+}
 const plays = () => {
   if (STATS) return Object.fromEntries(Object.entries(STATS).map(([id, s]) => [id, s.seconds || s.launches]));
   try { return JSON.parse(localStorage.getItem(LS.plays)) || {}; } catch { return {}; }
@@ -431,7 +478,9 @@ function card(g, played, showSystem) {
   const ok = ready(g);
   b.className = "cab" + (g.id === NOW ? " playing" : "") + (ok ? "" : " missing");
   b.dataset.id = g.id;
+  const fav = FAVS.has(g.id);
   b.innerHTML = `${ok ? "" : `<span class="need">${NEEDS[CHECK && CHECK[g.id] ? CHECK[g.id].state : "mra"]}</span>`}
+    <span class="star" role="button" tabindex="0" aria-pressed="${fav}" aria-label="${fav ? "Remove from" : "Add to"} favourites">${fav ? "&#9733;" : "&#9734;"}</span>
     <div class="art" role="img" aria-label="${esc(g.title)} arcade flyer">
       <span class="stand-in">${esc(g.title)}</span>
       <div class="veil"><span></span></div></div>
@@ -443,8 +492,23 @@ function card(g, played, showSystem) {
         <span class="orient">${g.orientation}</span></span>
     </div>`;
   paintArt(b.querySelector(".art"), g);
+  const star = b.querySelector(".star");
+  const toggleStar = e => {
+    e.stopPropagation(); e.preventDefault();
+    const on = !FAVS.has(g.id);
+    setFavourite(g.id, on);
+    star.setAttribute("aria-pressed", String(on)); star.innerHTML = on ? "&#9733;" : "&#9734;";
+    star.setAttribute("aria-label", `${on ? "Remove from" : "Add to"} favourites`);
+    // in the favourites view, unstarring a game takes it off the wall
+    if (!on && showPref() === "favourites") renderDeck();
+  };
+  star.addEventListener("click", toggleStar);
+  star.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") toggleStar(e); });
   // a game that can't start opens its checklist entry instead
-  b.addEventListener("click", () => ok ? launch(g, b) : (location.href = `check.html?game=${encodeURIComponent(g.id)}`));
+  b.addEventListener("click", e => {
+    if (e.target.closest(".star")) return;
+    ok ? launch(g, b) : (location.href = `check.html?game=${encodeURIComponent(g.id)}`);
+  });
   return b;
 }
 
@@ -473,8 +537,7 @@ function renderDeck() {
   const want = screenPref(), order = sortPref(), p = plays();
   const query = ($("#search").value || "").split(/\s+/).map(squash).filter(Boolean);
   const cmp = order === "played" ? SORTS.played(p) : SORTS[order] || byTitle;
-  // "played" shows only games that have been played, most played first
-  const playedOnly = order === "played";
+  const show = showPref();
   // until the MiSTer has answered there is nothing to call missing
   const showAll = missingPref() === "show" && !!(CHECK || AVAIL);
   // a picked list keeps its own order, so it is never grouped
@@ -484,7 +547,7 @@ function renderDeck() {
     ? PICK.map(id => GAMES.find(g => g.id === id)).filter(g => g && (showAll || ready(g)) && matches(g, query))
     : GAMES
       .filter(g => (showAll || ready(g)) && (want === "all" || g.orientation === want) && matches(g, query))
-      .filter(g => !playedOnly || p[g.id]);
+      .filter(g => show === "all" || (show === "played" ? p[g.id] : FAVS.has(g.id)));
   const label = grouped ? groupLabels(shown, groupBy) : null;
   if (!PICK.length) shown.sort(grouped
     ? (a, b) => (label.get(a) === OTHER) - (label.get(b) === OTHER) ||
@@ -494,17 +557,20 @@ function renderDeck() {
   if (!shown.length) {
     const e = document.createElement("p");
     e.className = "empty";
-    e.textContent = playedOnly && !query.length ? "Nothing played yet. Launch something!"
+    e.textContent = show === "played" && !query.length ? "Nothing played yet. Launch something!"
+      : show === "favourites" && !query.length ? "No favourites yet. Tap the star on a card to build your own deck."
       : CHECK || AVAIL ? "Nothing matches that." : "Looking for games on the MiSTer…";
     deck.replaceChildren(e);
   }
   const readyCount = shown.filter(ready).length;
   $("#count").textContent = showAll
     ? `${readyCount} of ${shown.length} ready`
-    : `${shown.length} game${shown.length === 1 ? "" : "s"}`;
+    : `${shown.length} ${show === "favourites" ? "favourite" : "game"}${shown.length === 1 ? "" : "s"}`;
+  $("#copylink").hidden = !(show === "favourites" && shown.length && !PICK.length);
+  $("#copylink").dataset.ids = shown.map(g => g.id).join(",");
   for (const b of document.querySelectorAll(".seg button"))
     b.setAttribute("aria-pressed",
-      String(b.dataset.screen === want || b.dataset.sort === order ||
+      String(b.dataset.screen === want || b.dataset.sort === order || b.dataset.show === show ||
              b.dataset.group === groupPref() || b.dataset.density === densityPref()));
   $("#missingTog").setAttribute("aria-checked", String(missingPref() === "show"));
   document.body.classList.toggle("compact", densityPref() === "compact");
@@ -543,6 +609,7 @@ function withDividers(games, p, label) {
 for (const b of document.querySelectorAll(".seg button")) {
   b.addEventListener("click", () => {
     const [key, value] = b.dataset.sort ? [LS.sort, b.dataset.sort]
+      : b.dataset.show ? [LS.show, b.dataset.show]
       // grouping buttons act like radio buttons that can also be switched off
       : b.dataset.group ? [LS.group, groupPref() === b.dataset.group ? "none" : b.dataset.group]
       : b.dataset.density ? [LS.density, b.dataset.density]
@@ -552,6 +619,13 @@ for (const b of document.querySelectorAll(".seg button")) {
     renderDeck();
   });
 }
+/* a link that opens exactly this list, for sharing or a home-screen shortcut */
+$("#copylink").addEventListener("click", async () => {
+  const url = `${location.origin}${location.pathname}?games=${$("#copylink").dataset.ids}`;
+  try { await navigator.clipboard.writeText(url); $("#copylink").textContent = "Copied"; }
+  catch { $("#copylink").textContent = "Copy blocked"; }
+  setTimeout(() => { $("#copylink").textContent = "Copy link"; }, 2000);
+});
 $("#missingTog").addEventListener("click", () => {
   localStorage.setItem(LS.missing, missingPref() === "show" ? "hide" : "show");
   renderDeck();
@@ -683,6 +757,7 @@ Promise.all([
   GAMES = list; ART = art;
   renderDeck(); ping(); loadChecklist();
   loadStats().then(renderDeck);
+  loadFavourites().then(renderDeck);
   setInterval(ping, 5000);
 }).catch(() => { deck.innerHTML = `<p class="empty">Could not load games.json.</p>`; });
 </script>

@@ -43,8 +43,9 @@ SEEN = CACHE[:-5] + "_seen.json"     # size, date and setname of every MRA read
 MGL_PATH = os.environ.get("SHMUP_MGL", "/tmp/shmup_deck.mgl")
 CORENAME = os.environ.get("SHMUP_CORENAME", "/tmp/CORENAME")
 PLAYS = os.environ.get("SHMUP_PLAYS", os.path.join(HERE, "plays.json"))
+FAVS = os.environ.get("SHMUP_FAVS", os.path.join(HERE, "favourites.json"))
 
-VERSION = "1.2.0"
+VERSION = "1.3.0"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
 ART_DELAY = 2.0          # seconds between flyer downloads; be kind to the hosts
 SETNAME = re.compile(rb"<setname>\s*(.*?)\s*</setname>", re.S)
@@ -439,6 +440,39 @@ class Plays:
 PLAYED = Plays()
 
 
+class Favourites:
+    """The cab's own deck: game ids starred by anyone using it, kept on the
+    MiSTer so every phone and browser sees the same list."""
+
+    def __init__(self):
+        self.lock = threading.Lock()
+        self.ids = []
+        try:
+            with open(FAVS) as f:
+                self.ids = [i for i in json.load(f) if isinstance(i, str)]
+        except (OSError, ValueError):
+            pass
+
+    def get(self):
+        with self.lock:
+            return list(self.ids)
+
+    def set(self, gid, on):
+        with self.lock:
+            if on and gid not in self.ids:
+                self.ids.append(gid)
+            elif not on and gid in self.ids:
+                self.ids.remove(gid)
+            tmp = FAVS + ".tmp"
+            with open(tmp, "w") as f:
+                json.dump(self.ids, f)
+            os.replace(tmp, FAVS)
+            return list(self.ids)
+
+
+FAVOURITES = Favourites()
+
+
 def resolve_game(game):
     """Where a deck game lives on this MiSTer, or None if it isn't installed."""
     sets = game.get("setnames", [game["id"]])
@@ -614,6 +648,8 @@ class Handler(SimpleHTTPRequestHandler):
             return self.send_json(checklist())
         if self.path == "/api/stats":
             return self.send_json(PLAYED.snapshot())
+        if self.path == "/api/favourites":
+            return self.send_json({"ids": FAVOURITES.get()})
         if self.path.startswith("/art/"):
             return self.send_art(self.path[5:].split("?")[0])
         return super().do_GET()
@@ -629,6 +665,12 @@ class Handler(SimpleHTTPRequestHandler):
                 if not path:
                     return self.send_json({"error": "not installed"}, 404)
                 return self.send_json({"ok": True, "path": path})
+            if self.path == "/api/favourites":
+                body = self.read_json()
+                gid = body.get("id")
+                if not any(g["id"] == gid for g in load_deck()):
+                    return self.send_json({"error": "unknown game"}, 404)
+                return self.send_json({"ids": FAVOURITES.set(gid, bool(body.get("on")))})
             if self.path == "/api/rescan":
                 # {"full": true} re-reads every MRA instead of only changed ones
                 full = bool(self.read_json().get("full"))
