@@ -21,7 +21,7 @@ stop_service() {
   # find the service by what it is running rather than trusting the pid
   # file, which can go stale; a stale pid would leave the old version up
   for p in /proc/[0-9]*; do
-    c=$(tr "\0" " " <"$p/cmdline" 2>/dev/null)
+    c=$(tr "\0" " " 2>/dev/null <"$p/cmdline")   # a process can end mid-scan
     case "$c" in
       python3\ *shmup_deck.py*) kill "${p#/proc/}" 2>/dev/null ;;
     esac
