@@ -58,8 +58,13 @@ h2{
 ol{list-style:none;counter-reset:rank}
 li{
   display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:center;
-  padding:9px 0;border-bottom:1px solid var(--line);font-size:14px;position:relative;
+  padding:9px 4px;border-bottom:1px solid var(--line);font-size:14px;position:relative;
+  cursor:pointer;border-radius:6px;
 }
+li:hover,li:focus-visible{background:rgba(84,226,154,.08);outline:none}
+li:focus-visible{box-shadow:inset 0 0 0 2px var(--emerald-hot)}
+li.busy .v,li.done .v{color:var(--gold)}
+li.fail .v{color:#e0604f}
 li::before{
   counter-increment:rank;content:counter(rank);
   font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;font-weight:800;font-size:18px;color:var(--ash);
@@ -69,7 +74,7 @@ li .t{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 li .s{font-size:11.5px;color:var(--ash);letter-spacing:.06em}
 li .v{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;color:var(--emerald-hot);white-space:nowrap}
 li .bar{
-  position:absolute;left:38px;bottom:4px;height:2px;background:var(--emerald);opacity:.5;border-radius:1px;
+  position:absolute;left:42px;bottom:4px;height:2px;background:var(--emerald);opacity:.5;border-radius:1px;
 }
 .empty{padding:30px 0;color:var(--ash);font-size:13px}
 footer{margin-top:36px;font-size:12px;color:var(--ash);line-height:1.7}
@@ -91,8 +96,8 @@ footer{margin-top:36px;font-size:12px;color:var(--ash);line-height:1.7}
   <section><h2>Recently played</h2><ol id="recent"></ol></section>
 </div>
 
-<footer>Time played is counted by the MiSTer while a game is running, however it was started.
-A game that is running now is still counting.</footer>
+<footer>Tap a game to launch it. Time played is counted by the MiSTer while a game is running,
+however it was started. A game that is running now is still counting.</footer>
 </div>
 
 <script>
@@ -119,11 +124,32 @@ function list(el, rows, value, playing) {
   if (!rows.length) { el.innerHTML = `<p class="empty">Nothing played yet.</p>`; return; }
   const max = Math.max(...rows.map(r => r.n)) || 1;
   el.innerHTML = rows.map(r => `
-    <li>
+    <li data-id="${esc(r.g.id)}" tabindex="0" role="button" aria-label="Launch ${esc(r.g.title)}">
       <span class="t">${esc(r.g.title)}${r.g.id === playing ? " <span class=\"s\">(playing now)</span>" : ""}</span>
       <span class="v">${value(r)}</span>
       <span class="bar" style="width:${(r.n / max) * 60}%"></span>
     </li>`).join("");
+  for (const li of el.querySelectorAll("li")) {
+    li.addEventListener("click", () => launch(li));
+    li.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); launch(li); } });
+  }
+}
+
+/* Launch from the list. The value column shows what is happening for a moment. */
+async function launch(li) {
+  if (li.classList.contains("busy")) return;
+  const v = li.querySelector(".v"), was = v.textContent;
+  const show = (cls, text, ms) => {
+    li.classList.remove("busy", "done", "fail"); li.classList.add(cls); v.textContent = text;
+    if (ms) setTimeout(() => { li.classList.remove(cls); v.textContent = was; }, ms);
+  };
+  show("busy", "launching");
+  try {
+    const r = await fetch("api/launch", { method: "POST", headers: { "Content-Type": "application/json" },
+                                          body: JSON.stringify({ id: li.dataset.id }) });
+    if (!r.ok) throw new Error();
+    show("done", "have fun", 2200);
+  } catch { show("fail", "not found", 2600); }
 }
 
 Promise.all([
