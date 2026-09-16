@@ -16,8 +16,9 @@ other service to install.
   phone sees the same one; a Copy link button gives a URL that opens just those
 - Show all, favourites or played; sort by name, year or most played; group by
   developer or arcade system; search by title, developer or system
-- Settings: which way the monitor is fitted (tate or yoko), whether to show
-  games the MiSTer can't run yet, and a compact layout
+- Screen: which way the monitor is fitted (tate or yoko), asked on the first
+  visit and remembered; settings for showing games the MiSTer can't run yet
+  and a compact layout
 - Shows what is playing right now
 - A ROM checklist page shows what each game still needs on your MiSTer: the
   MRA, the core or the ROM zips
