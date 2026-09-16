@@ -41,7 +41,7 @@ CMD = os.environ.get("SHMUP_CMD", "/dev/MiSTer_cmd")
 CACHE = os.environ.get("SHMUP_CACHE", os.path.join(HERE, "mra_index.json"))
 MGL_PATH = os.environ.get("SHMUP_MGL", "/tmp/shmup_deck.mgl")
 
-VERSION = "1.1.0"
+VERSION = "1.1.1"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
 ART_DELAY = 2.0          # seconds between flyer downloads; be kind to the hosts
 SETNAME = re.compile(rb"<setname>\s*(.*?)\s*</setname>", re.S)
@@ -552,14 +552,22 @@ def mdns_responder(hostname):
     """
     want = [hostname.lower(), "local"]
     qname = b"".join(bytes([len(p)]) + p.encode() for p in want) + b"\0"
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    if hasattr(socket, "SO_REUSEPORT"):
-        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
-    sock.bind(("", MDNS_PORT))
-    sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP,
-                    struct.pack("4s4s", socket.inet_aton(MDNS_GROUP), socket.inet_aton("0.0.0.0")))
-    sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 255)
+
+    def open_socket():
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+        try:
+            sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            if hasattr(socket, "SO_REUSEPORT"):
+                sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+            sock.bind(("", MDNS_PORT))
+            sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP,
+                            struct.pack("4s4s", socket.inet_aton(MDNS_GROUP), socket.inet_aton("0.0.0.0")))
+            sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 255)
+            lan_ip()                               # fails until there is a route
+            return sock
+        except OSError:
+            sock.close()
+            raise
 
     def answer(ipv6_asked=False):
         ip = lan_ip()
@@ -575,6 +583,15 @@ def mdns_responder(hostname):
             return struct.pack("!HHHHHH", 0, 0x8400, 0, 0, 0, 2) + a + nsec
         return struct.pack("!HHHHHH", 0, 0x8400, 0, 1, 0, 1) + a + nsec
 
+    # At boot the service usually starts before the network is up, and joining
+    # the multicast group fails with "No such device" until it is. Keep trying
+    # rather than giving up, or the .local name never answers after a reboot.
+    while True:
+        try:
+            sock = open_socket()
+            break
+        except OSError:
+            time.sleep(5)
     sock.sendto(answer(), (MDNS_GROUP, MDNS_PORT))    # announce on start
     while True:
         try:
@@ -601,15 +618,30 @@ def serve(port):
     ThreadingHTTPServer(("0.0.0.0", port), Handler).serve_forever()
 
 
+def rescan_if_folders_changed():
+    """Rescan when the cached index covers different folders, e.g. a USB drive
+    was plugged in, or the cache predates scanning outside _Arcade. USB drives
+    can mount after the service starts at boot, so wait before comparing."""
+    time.sleep(60)
+    if INDEX.roots != mra_roots():
+        INDEX.scan()
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--port", type=int, default=8190)
     ap.add_argument("--name", default="shmupdeck", help="answers at http://<name>.local")
     args = ap.parse_args()
-    # rescan when the cache is missing or covers different folders, e.g. a
-    # USB drive was plugged in, or it predates scanning outside _Arcade
-    if not INDEX.best or INDEX.roots != mra_roots():
+    # Stay out of the way of the MiSTer's own software: the cores run in the
+    # FPGA, but loading games, the menu and CD-based cores use the same ARM CPU.
+    try:
+        os.nice(10)
+    except OSError:
+        pass
+    if not INDEX.best:
         threading.Thread(target=INDEX.scan, daemon=True).start()
+    else:
+        threading.Thread(target=rescan_if_folders_changed, daemon=True).start()
     # the Neo Geo folder is small, so it is simply rescanned on every start
     threading.Thread(target=NEO.scan, daemon=True).start()
     threading.Thread(target=ART.fetch_missing, daemon=True).start()

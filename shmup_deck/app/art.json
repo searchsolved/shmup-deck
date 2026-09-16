@@ -2140,5 +2140,216 @@
    823,
    1117
   ]
+ },
+ "horizon": {
+  "url": "https://www.arcadeartwork.org/galleries/arcade-custom-2022-oct/Horizon-01.png",
+  "size": [
+   850,
+   1152
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1152
+  ],
+  "fit": "contain",
+  "upgrade": "From a custom gallery; not confirmed as a period flyer",
+  "referer": "https://www.arcadeartwork.org/"
+ },
+ "s1945": {
+  "url": "https://images.launchbox-app.com/8a8b0af9-61d0-4be4-b952-41e4a507fb58.png",
+  "size": [
+   1700,
+   2092
+  ],
+  "crop": [
+   0,
+   0,
+   1700,
+   2092
+  ],
+  "fit": "contain",
+  "upgrade": "Front of a landscape flyer spread, squarer than a card"
+ },
+ "s1945p": {
+  "url": "https://flyers.arcade-museum.com/videogame-flyers/4/strikers-1945-plus-04821-01.jpg",
+  "size": [
+   850,
+   1099
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1099
+  ],
+  "fit": "contain",
+  "upgrade": "US flyer, squarer than a card; no Japanese flyer found"
+ },
+ "strahl": {
+  "url": "https://archive.org/download/koutetsu-yousai-strahl-1992-shoot-em-up-arcade/Flyer%20%20Koutetsu%20Yousai%20Strahl%20%281992%29%20%28Shoot%20Em%20Up%29%20%28Arcade%29.PNG",
+  "size": [
+   954,
+   667
+  ],
+  "crop": [
+   0,
+   0,
+   954,
+   667
+  ],
+  "fit": "contain",
+  "upgrade": "Landscape flyer"
+ },
+ "twinactn": {
+  "url": "https://images.launchbox-app.com/444ada03-ead7-486c-8b79-56ed19d66dcf.png",
+  "size": [
+   800,
+   1200
+  ],
+  "crop": [
+   0,
+   0,
+   800,
+   1200
+  ],
+  "fit": "contain",
+  "upgrade": "Looks like a digital re-creation, not a scanned flyer"
+ },
+ "stagger1": {
+  "url": "https://flyers.arcade-museum.com/videogame-flyers/5/red-hawk-05101-01.jpg",
+  "size": [
+   850,
+   1098
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1098
+  ],
+  "fit": "contain",
+  "upgrade": "Red Hawk export flyer, squarer than a card; no Stagger I flyer found"
+ },
+ "grdnstrm": {
+  "url": "https://flyers.arcade-museum.com/videogame-flyers/4/guardian-storm-04645-01.jpg",
+  "size": [
+   850,
+   1100
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1100
+  ],
+  "fit": "contain",
+  "upgrade": "US flyer, squarer than a card"
+ },
+ "spec2k": {
+  "url": "https://images.launchbox-app.com/47a8f7e5-5cbc-4cb2-893e-bddab9e0ad57.jpg",
+  "size": [
+   2031,
+   1536
+  ],
+  "crop": [
+   0,
+   0,
+   2031,
+   1536
+  ],
+  "fit": "contain",
+  "upgrade": "Landscape instruction sheet, not a flyer"
+ },
+ "rezon": {
+  "url": "https://flyers.arcade-museum.com/videogame-flyers/6/rezon-06008-01.jpg",
+  "size": [
+   1194,
+   850
+  ],
+  "crop": [
+   0,
+   0,
+   1194,
+   850
+  ],
+  "fit": "contain",
+  "upgrade": "Landscape flyer"
+ },
+ "daioh": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Daioh.png",
+  "size": [
+   512,
+   662
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   662
+  ],
+  "fit": "contain",
+  "upgrade": "US flyer, squarer than a card; no Japanese flyer found"
+ },
+ "twineag2": {
+  "url": "https://images.launchbox-app.com/b43870cc-f546-4d71-b433-43c0b488aea2.jpg",
+  "size": [
+   1132,
+   1456
+  ],
+  "crop": [
+   0,
+   0,
+   1132,
+   1456
+  ],
+  "fit": "contain",
+  "upgrade": "US flyer, squarer than a card; Japanese flyer is landscape"
+ },
+ "ultrax": {
+  "url": "https://images.launchbox-app.com/447d7460-8399-4f40-9b02-f6d1f507cb6a.jpg",
+  "size": [
+   797,
+   1099
+  ],
+  "crop": [
+   0,
+   0,
+   797,
+   1099
+  ],
+  "fit": "contain",
+  "upgrade": "Cabinet instruction card, not a flyer"
+ },
+ "vasara": {
+  "url": "https://flyers.arcade-museum.com/videogame-flyers/3/vasara-03751-01.jpg",
+  "size": [
+   1196,
+   850
+  ],
+  "crop": [
+   0,
+   0,
+   1196,
+   850
+  ],
+  "fit": "contain",
+  "upgrade": "Landscape flyer"
+ },
+ "vasara2": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Vasara%202%20%28set%201%29.png",
+  "size": [
+   512,
+   362
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   362
+  ],
+  "fit": "contain",
+  "upgrade": "Landscape flyer"
  }
 }

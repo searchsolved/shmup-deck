@@ -96,6 +96,10 @@ All flyer artwork belongs to its respective copyright holders.
 
 If a flyer can't be downloaded, its card shows the game title instead.
 
+A few games have no portrait flyer scan anywhere I could find, so their best
+available art is shown whole on the card. [FLYERS_WANTED.md](FLYERS_WANTED.md)
+lists them; links to better scans are very welcome.
+
 ## Adding games
 
 Games are listed in `shmup_deck/app/games.json`:
@@ -138,3 +142,6 @@ flyer's crop from a downloaded scan.
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+The rocket favicon is from [Twemoji](https://github.com/jdecked/twemoji),
+licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).

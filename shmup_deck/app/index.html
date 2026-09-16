@@ -7,6 +7,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="icons/icon-180.png">
 <style>
 :root{
@@ -137,6 +139,7 @@ h1 em{font-style:normal;color:var(--emerald-hot)}
   color:rgba(216,181,74,.55);
 }
 .cab .art.loaded .stand-in{display:none}
+.cab .art.fit{background-color:#050b08}
 /* scanlines only over the art, faint */
 .cab .art::after{
   content:"";position:absolute;inset:0;pointer-events:none;
@@ -313,13 +316,21 @@ function paintArt(el, g) {
   const img = new Image();
   img.onload = () => {
     const [sw, sh] = [img.naturalWidth, img.naturalHeight];
+    el.style.backgroundImage = `url("art/${g.id}")`;
+    el.classList.add("loaded");
+    // a flyer that isn't card shaped (landscape, or much squarer) is shown
+    // whole, centred on the card, rather than cropped or stretched
+    if (a && a.fit === "contain") {
+      el.classList.add("fit");
+      el.style.backgroundSize = "contain";
+      el.style.backgroundPosition = "center";
+      return;
+    }
     let [l, t, w, h] = (a && a.size && a.size[0] === sw && a.size[1] === sh)
       ? a.crop : [0, 0, sw, sh];   // a different scan than expected: show it whole
-    el.style.backgroundImage = `url("art/${g.id}")`;
     el.style.backgroundSize = `${(sw / w) * 100}% ${(sh / h) * 100}%`;
     el.style.backgroundPosition =
       `${sw === w ? 0 : (l / (sw - w)) * 100}% ${sh === h ? 0 : (t / (sh - h)) * 100}%`;
-    el.classList.add("loaded");
   };
   img.src = `art/${g.id}`;
 }
