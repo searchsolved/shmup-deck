@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shmup Deck Stats</title>
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<style>
+:root{
+  --pit:#07100B;
+  --felt:#0C1A12;
+  --line:#1d3326;
+  --emerald:#2FAE6E;
+  --emerald-hot:#54E29A;
+  --gold:#D8B54A;
+  --bone:#E9E4D2;
+  --ash:#7d8a80;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--pit)}
+body{
+  background:radial-gradient(120% 70% at 50% -10%, #12291b 0%, var(--pit) 60%), var(--pit);
+  color:var(--bone);
+  font-family:"Avenir Next", Avenir, "Helvetica Neue", sans-serif;
+  min-height:100vh;
+  padding:max(20px, env(safe-area-inset-top)) 20px 48px;
+}
+a{color:var(--gold)}
+.wrap{max-width:1080px;margin:0 auto}
+header{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+h1{
+  font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;
+  font-weight:800;font-size:clamp(30px,5vw,46px);
+  letter-spacing:.04em;text-transform:uppercase;line-height:.95;
+}
+h1 em{font-style:normal;color:var(--emerald-hot)}
+.back{margin-left:auto;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+
+.totals{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px}
+.tile{
+  flex:1;min-width:140px;padding:14px 16px;
+  border:1px solid var(--line);border-radius:10px;background:rgba(0,0,0,.25);
+}
+.tile b{
+  display:block;font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;
+  font-weight:800;font-size:30px;letter-spacing:.02em;color:var(--bone);line-height:1.1;
+}
+.tile span{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ash)}
+
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px 40px}
+h2{
+  font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;
+  font-weight:800;font-size:22px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);
+  padding-bottom:8px;margin-bottom:10px;border-bottom:1px solid rgba(216,181,74,.25);
+}
+ol{list-style:none;counter-reset:rank}
+li{
+  display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:center;
+  padding:9px 0;border-bottom:1px solid var(--line);font-size:14px;position:relative;
+}
+li::before{
+  counter-increment:rank;content:counter(rank);
+  font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;font-weight:800;font-size:18px;color:var(--ash);
+}
+li:nth-child(1)::before{color:var(--gold)}
+li .t{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+li .s{font-size:11.5px;color:var(--ash);letter-spacing:.06em}
+li .v{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;color:var(--emerald-hot);white-space:nowrap}
+li .bar{
+  position:absolute;left:38px;bottom:4px;height:2px;background:var(--emerald);opacity:.5;border-radius:1px;
+}
+.empty{padding:30px 0;color:var(--ash);font-size:13px}
+footer{margin-top:36px;font-size:12px;color:var(--ash);line-height:1.7}
+@media (max-width: 560px){ body{padding-left:16px;padding-right:16px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Shmup <em>Deck</em> stats</h1>
+  <a class="back" href="./">&larr; back to the deck</a>
+</header>
+
+<div class="totals" id="totals"></div>
+
+<div class="cols">
+  <section><h2>Most played</h2><ol id="byTime"></ol></section>
+  <section><h2>Most launched</h2><ol id="byLaunches"></ol></section>
+  <section><h2>Recently played</h2><ol id="recent"></ol></section>
+</div>
+
+<footer>Time played is counted by the MiSTer while a game is running, however it was started.
+A game that is running now is still counting.</footer>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const TOP = 10;
+
+function span(sec) {
+  const m = Math.round(sec / 60);
+  if (m < 1) return "under a minute";
+  if (m < 60) return `${m}m`;
+  const h = Math.floor(m / 60);
+  return h >= 24 ? `${Math.floor(h / 24)}d ${h % 24}h` : `${h}h ${m % 60}m`;
+}
+function ago(ts) {
+  const d = Math.floor((Date.now() / 1000 - ts) / 86400);
+  if (d < 1) return "today";
+  if (d === 1) return "yesterday";
+  if (d < 30) return `${d} days ago`;
+  return new Date(ts * 1000).toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
+}
+
+function list(el, rows, value, playing) {
+  if (!rows.length) { el.innerHTML = `<p class="empty">Nothing played yet.</p>`; return; }
+  const max = Math.max(...rows.map(r => r.n)) || 1;
+  el.innerHTML = rows.map(r => `
+    <li>
+      <span class="t">${esc(r.g.title)}${r.g.id === playing ? " <span class=\"s\">(playing now)</span>" : ""}</span>
+      <span class="v">${value(r)}</span>
+      <span class="bar" style="width:${(r.n / max) * 60}%"></span>
+    </li>`).join("");
+}
+
+Promise.all([
+  fetch("games.json").then(r => r.json()),
+  fetch("api/stats", { cache: "no-store" }).then(r => r.ok ? r.json() : null)
+]).then(([games, stats]) => {
+  if (!stats) {
+    $("#totals").innerHTML = `<p class="empty">This MiSTer's Shmup Deck is too old to keep stats. Run shmup_deck from the Scripts menu to update.</p>`;
+    return;
+  }
+  const byId = Object.fromEntries(games.map(g => [g.id, g]));
+  const rows = Object.entries(stats.games).filter(([id]) => byId[id])
+    .map(([id, s]) => ({ g: byId[id], ...s }));
+  const totalSec = rows.reduce((a, r) => a + r.seconds, 0);
+  const totalLaunch = rows.reduce((a, r) => a + r.launches, 0);
+  $("#totals").innerHTML = [
+    [span(totalSec), "time played"], [rows.length, "games played"], [totalLaunch, "launches"],
+    [`${rows.length} / ${games.length}`, "of the deck"]
+  ].map(([b, s]) => `<div class="tile"><b>${esc(b)}</b><span>${s}</span></div>`).join("");
+
+  list($("#byTime"), rows.filter(r => r.seconds >= 30).sort((a, b) => b.seconds - a.seconds).slice(0, TOP).map(r => ({ ...r, n: r.seconds })),
+       r => span(r.seconds), stats.playing);
+  list($("#byLaunches"), rows.sort((a, b) => b.launches - a.launches || b.seconds - a.seconds).slice(0, TOP).map(r => ({ ...r, n: r.launches })),
+       r => `×${r.launches}`, stats.playing);
+  list($("#recent"), rows.sort((a, b) => b.last - a.last).slice(0, TOP).map(r => ({ ...r, n: 0 })),
+       r => ago(r.last), stats.playing);
+}).catch(() => { $("#totals").innerHTML = `<p class="empty">Could not load stats.</p>`; });
+</script>
+</body>
+</html>

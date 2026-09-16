@@ -41,8 +41,10 @@ CMD = os.environ.get("SHMUP_CMD", "/dev/MiSTer_cmd")
 CACHE = os.environ.get("SHMUP_CACHE", os.path.join(HERE, "mra_index.json"))
 SEEN = CACHE[:-5] + "_seen.json"     # size, date and setname of every MRA read
 MGL_PATH = os.environ.get("SHMUP_MGL", "/tmp/shmup_deck.mgl")
+CORENAME = os.environ.get("SHMUP_CORENAME", "/tmp/CORENAME")
+PLAYS = os.environ.get("SHMUP_PLAYS", os.path.join(HERE, "plays.json"))
 
-VERSION = "1.1.2"
+VERSION = "1.2.0"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
 ART_DELAY = 2.0          # seconds between flyer downloads; be kind to the hosts
 SETNAME = re.compile(rb"<setname>\s*(.*?)\s*</setname>", re.S)
@@ -346,7 +348,7 @@ def now_playing():
     launched from the deck.
     """
     try:
-        with open("/tmp/CORENAME") as f:
+        with open(CORENAME) as f:
             name = f.read().strip()
     except OSError:
         return None
@@ -356,6 +358,85 @@ def now_playing():
         if g.get("platform") != "neogeo" and name in g.get("setnames", [g["id"]]):
             return g["id"]
     return None
+
+
+class Plays:
+    """Launches and time played per game, kept on the MiSTer.
+
+    Watches which core is running, so a game counts however it was started:
+    from the deck, from the MiSTer menu or from anything else. Time played is
+    written out every minute while a game runs, since a MiSTer is usually
+    switched off mid-game rather than returned to the menu.
+    """
+
+    POLL, FLUSH = 5, 60
+
+    def __init__(self):
+        self.lock = threading.Lock()
+        self.games = {}                 # id -> {"launches", "seconds", "last"}
+        self.current = None             # id of the game being timed
+        self.relaunch = None            # id the deck just launched again
+        try:
+            with open(PLAYS) as f:
+                self.games = json.load(f)
+        except (OSError, ValueError):
+            pass
+
+    def note_launch(self, gid):
+        # the same game launched again does not change CORENAME, so the
+        # watcher is told to close the session and start a new one
+        with self.lock:
+            if gid == self.current:
+                self.relaunch = gid
+
+    def watch(self):
+        last, since_flush, dirty = time.time(), 0, False
+        # a game already running when the service starts (after an update,
+        # say) was launched before it was watching, so it is timed, not counted
+        self.current = now_playing()
+        if self.current:
+            self.games.setdefault(self.current, {"launches": 0, "seconds": 0, "last": int(last)})
+        while True:
+            time.sleep(self.POLL)
+            now = time.time()
+            elapsed, last = now - last, now
+            gid = now_playing()
+            with self.lock:
+                restart = self.relaunch is not None and gid == self.current
+                self.relaunch = None
+                if gid == self.current and not restart:
+                    if gid:
+                        self.games[gid]["seconds"] += elapsed
+                        self.games[gid]["last"] = int(now)
+                        dirty = True
+                else:
+                    if gid:
+                        g = self.games.setdefault(gid, {"launches": 0, "seconds": 0, "last": 0})
+                        g["launches"] += 1
+                        g["last"] = int(now)
+                        dirty = True
+                    self.current = gid
+                    since_flush = self.FLUSH      # a change is saved at once
+                since_flush += elapsed
+                if dirty and since_flush >= self.FLUSH:
+                    self._save()
+                    since_flush, dirty = 0, False
+
+    def _save(self):
+        tmp = PLAYS + ".tmp"
+        with open(tmp, "w") as f:
+            json.dump(self.games, f)
+        os.replace(tmp, PLAYS)
+
+    def snapshot(self):
+        with self.lock:
+            games = {k: dict(v) for k, v in self.games.items()}
+            for g in games.values():
+                g["seconds"] = int(g["seconds"])
+            return {"games": games, "playing": self.current}
+
+
+PLAYED = Plays()
 
 
 def resolve_game(game):
@@ -468,12 +549,14 @@ def launch(game):
             f.write(mgl)
         send_command("load_core %s" % MGL_PATH)
         LAST_LAUNCH.update(id=game["id"], core="neogeo")
+        PLAYED.note_launch(game["id"])
         return os.path.join(root, rel)
     path = INDEX.resolve(game.get("setnames", [game["id"]]))
     if not path:
         return None
     send_command("load_core %s" % path)
     LAST_LAUNCH.update(id=game["id"], core="arcade")
+    PLAYED.note_launch(game["id"])
     return path
 
 
@@ -529,6 +612,8 @@ class Handler(SimpleHTTPRequestHandler):
             return self.send_json({g["id"]: resolve_game(g) for g in load_deck()})
         if self.path == "/api/checklist":
             return self.send_json(checklist())
+        if self.path == "/api/stats":
+            return self.send_json(PLAYED.snapshot())
         if self.path.startswith("/art/"):
             return self.send_art(self.path[5:].split("?")[0])
         return super().do_GET()
@@ -684,6 +769,7 @@ def main():
     # the Neo Geo folder is small, so it is simply rescanned on every start
     threading.Thread(target=NEO.scan, daemon=True).start()
     threading.Thread(target=ART.fetch_missing, daemon=True).start()
+    threading.Thread(target=PLAYED.watch, daemon=True).start()
     try:
         threading.Thread(target=mdns_responder, args=(args.name,), daemon=True).start()
     except OSError:

@@ -261,7 +261,7 @@ footer a{color:inherit}
 
 <main class="deck" id="deck"></main>
 
-<footer>tap a cab to launch &middot; only games ready to play on this MiSTer are shown, unless Missing is on &middot; <a href="check.html">ROM checklist</a><br>
+<footer>tap a cab to launch &middot; only games ready to play on this MiSTer are shown, unless Missing is on &middot; <a href="stats.html">stats</a> &middot; <a href="check.html">ROM checklist</a><br>
 flyer art is downloaded from public archives and belongs to its copyright holders</footer>
 
 <script>
@@ -283,13 +283,32 @@ const sortPref = () => localStorage.getItem(LS.sort) || "az";
 const groupPref = () => localStorage.getItem(LS.group) || "none";
 const missingPref = () => localStorage.getItem(LS.missing) || "hide";
 
-/* Launch counts, kept on this device only. Counts launches, not play time. */
-const plays = () => { try { return JSON.parse(localStorage.getItem(LS.plays)) || {}; }
-                      catch { return {}; } };
+/* Play history comes from the MiSTer, which times every game however it was
+   started. Before that existed, launches were counted per browser; that
+   count is still used if the service is too old to keep stats. */
+let STATS = null;   // id -> { launches, seconds, last }
+const plays = () => {
+  if (STATS) return Object.fromEntries(Object.entries(STATS).map(([id, s]) => [id, s.seconds || s.launches]));
+  try { return JSON.parse(localStorage.getItem(LS.plays)) || {}; } catch { return {}; }
+};
 function countPlay(id) {
+  if (STATS) return;
   const p = plays();
   p[id] = (p[id] || 0) + 1;
   localStorage.setItem(LS.plays, JSON.stringify(p));
+}
+const playedLabel = id => {
+  if (!STATS) { const n = plays()[id]; return n ? `×${n}` : ""; }
+  const s = STATS[id];
+  if (!s) return "";
+  const m = Math.round(s.seconds / 60);
+  return m >= 60 ? `${Math.floor(m / 60)}h ${m % 60}m` : m ? `${m}m` : `×${s.launches}`;
+};
+async function loadStats() {
+  try {
+    const r = await fetch("api/stats", { cache: "no-store" });
+    if (r.ok) STATS = (await r.json()).games;
+  } catch { /* an older service: keep the per-browser count */ }
 }
 
 let GAMES = [];
@@ -352,7 +371,7 @@ function card(g, played, showSystem) {
       <span class="title">${esc(g.title)}</span>
       <span class="meta">${esc(g.dev)} ${g.year}</span>
       <span class="meta"><span class="core">${esc(showSystem && g.system ? g.system : g.core)}</span>
-        ${played ? `<span class="plays" title="${played} launches from this device">&times;${played}</span>` : ""}
+        ${played ? `<span class="plays" title="${STATS && STATS[g.id] ? `${STATS[g.id].launches} launches` : `${played} launches from this device`}">${playedLabel(g.id)}</span>` : ""}
         <span class="orient">${g.orientation}</span></span>
     </div>`;
   paintArt(b.querySelector(".art"), g);
@@ -386,6 +405,8 @@ function renderDeck() {
   const want = screenPref(), order = sortPref(), p = plays();
   const query = ($("#search").value || "").split(/\s+/).map(squash).filter(Boolean);
   const cmp = order === "played" ? SORTS.played(p) : SORTS[order] || byTitle;
+  // "played" shows only games that have been played, most played first
+  const playedOnly = order === "played";
   // until the MiSTer has answered there is nothing to call missing
   const showAll = missingPref() === "show" && !!(CHECK || AVAIL);
   // a picked list keeps its own order, so it is never grouped
@@ -394,7 +415,8 @@ function renderDeck() {
   const shown = PICK.length
     ? PICK.map(id => GAMES.find(g => g.id === id)).filter(g => g && (showAll || ready(g)) && matches(g, query))
     : GAMES
-      .filter(g => (showAll || ready(g)) && (want === "all" || g.orientation === want) && matches(g, query));
+      .filter(g => (showAll || ready(g)) && (want === "all" || g.orientation === want) && matches(g, query))
+      .filter(g => !playedOnly || p[g.id]);
   const label = grouped ? groupLabels(shown, groupBy) : null;
   if (!PICK.length) shown.sort(grouped
     ? (a, b) => (label.get(a) === OTHER) - (label.get(b) === OTHER) ||
@@ -404,7 +426,8 @@ function renderDeck() {
   if (!shown.length) {
     const e = document.createElement("p");
     e.className = "empty";
-    e.textContent = CHECK || AVAIL ? "Nothing matches that." : "Looking for games on the MiSTer…";
+    e.textContent = playedOnly && !query.length ? "Nothing played yet. Launch something!"
+      : CHECK || AVAIL ? "Nothing matches that." : "Looking for games on the MiSTer…";
     deck.replaceChildren(e);
   }
   const readyCount = shown.filter(ready).length;
@@ -487,7 +510,7 @@ function launched(g, el) {
   veil(el, "done", "have fun", 2200);
   // reordering the wall under the user's finger mid-launch would be jarring,
   // so a "played" sort only takes the new count on the next render
-  if (sortPref() !== "played") {
+  if (!STATS && sortPref() !== "played") {
     const m = el.querySelector(".meta:last-child .plays");
     const n = plays()[g.id];
     if (m) m.textContent = `×${n}`;
@@ -554,6 +577,8 @@ async function ping() {
       // move the highlight rather than rebuilding every card and its flyer
       for (const c of deck.querySelectorAll(".cab"))
         c.classList.toggle("playing", c.dataset.id === NOW);
+      // a game starting or stopping is when the play history changes
+      loadStats().then(() => { if (sortPref() === "played") renderDeck(); });
     }
   } catch {
     lamp.className = "lamp off"; txt.textContent = "mister offline";
@@ -566,6 +591,7 @@ Promise.all([
 ]).then(([list, art]) => {
   GAMES = list; ART = art;
   renderDeck(); ping(); loadChecklist();
+  loadStats().then(renderDeck);
   setInterval(ping, 5000);
 }).catch(() => { deck.innerHTML = `<p class="empty">Could not load games.json.</p>`; });
 </script>

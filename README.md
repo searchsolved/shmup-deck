@@ -17,6 +17,8 @@ other service to install.
 - Shows what is playing right now
 - A ROM checklist page shows what each game still needs on your MiSTer: the
   MRA, the core or the ROM zips
+- Time played and launches are counted on the MiSTer for every game, however
+  it was started, with a stats page of your most played
 
 ## Install
 
@@ -136,6 +138,7 @@ flyer's crop from a downloaded scan.
 | GET | `/api/status` | scan and art progress, version, now playing |
 | GET | `/api/available` | game id to installed MRA path (null if missing) |
 | GET | `/api/checklist` | per game: ready, or the missing MRA, core or ROM zips |
+| GET | `/api/stats` | launches, seconds played and last played per game, and what is running |
 | POST | `/api/launch` | `{"id": "gunbird"}` |
 | POST | `/api/rescan` | rescan for MRAs after adding games; only new or changed files are read, `{"full": true}` reads them all |
 
