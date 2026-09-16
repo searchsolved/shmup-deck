@@ -33,15 +33,44 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 APP_DIR = os.environ.get("SHMUP_APP_DIR", os.path.join(HERE, "app"))
 ART_DIR = os.environ.get("SHMUP_ART_DIR", os.path.join(HERE, "art"))
 ARCADE = os.environ.get("SHMUP_ARCADE_DIR", "/media/fat/_Arcade")
+# where to look for MRAs; by default every top-level "_" folder on the SD card
+# and USB drives, since MRAs work from any of them, not just _Arcade
+MRA_ROOTS = os.environ.get("SHMUP_MRA_ROOTS")
+DRIVES = ["/media/fat"] + ["/media/usb%d" % i for i in range(6)]
 CMD = os.environ.get("SHMUP_CMD", "/dev/MiSTer_cmd")
 CACHE = os.environ.get("SHMUP_CACHE", os.path.join(HERE, "mra_index.json"))
 MGL_PATH = os.environ.get("SHMUP_MGL", "/tmp/shmup_deck.mgl")
 
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
 ART_DELAY = 2.0          # seconds between flyer downloads; be kind to the hosts
 SETNAME = re.compile(rb"<setname>\s*(.*?)\s*</setname>", re.S)
 HEAD_BYTES = 4096
+
+
+def mra_roots():
+    if MRA_ROOTS:
+        return MRA_ROOTS.split(":")
+    if "SHMUP_ARCADE_DIR" in os.environ:          # tests point at one folder
+        return [ARCADE]
+    roots = []
+    for drive in DRIVES:
+        try:
+            roots += sorted(os.path.join(drive, d) for d in os.listdir(drive)
+                            if d.startswith("_") and os.path.isdir(os.path.join(drive, d)))
+        except OSError:
+            pass
+    return roots
+
+
+def arcade_root(path):
+    """The top-level "_" folder an MRA sits under. The MiSTer loads the MRA's
+    core from that folder's cores/ subfolder (see Main_MiSTer mra_loader.cpp)."""
+    i = path.find("/_")
+    if i < 0:
+        return os.path.dirname(path)
+    j = path.find("/", i + 1)
+    return path[:j] if j >= 0 else path
 
 
 def path_cost(path):
@@ -50,7 +79,9 @@ def path_cost(path):
     low = path.lower()
     # organised sets file copies of each game into sorting folders (by letter,
     # region, rotation...); the copy nearest the top of _Arcade is the plain one
-    n = 10 * os.path.relpath(path, ARCADE).count(os.sep)
+    n = 10 * os.path.relpath(path, arcade_root(path)).count(os.sep)
+    if arcade_root(path) != ARCADE:
+        n += 30                       # a quick-launch copy outside _Arcade
     if "/_alternatives/" in low:
         n += 100
     if "/_5 extra software/" in low:
@@ -74,6 +105,7 @@ class Index:
     def __init__(self):
         self.lock = threading.Lock()
         self.best = {}
+        self.roots = []                 # the folders the cached index covers
         self.stats = {"mras": 0, "broken_links": 0, "unreadable": 0, "seconds": 0, "built": None}
         self.scanning = False
         self._load_cache()
@@ -83,6 +115,7 @@ class Index:
             with open(CACHE) as f:
                 data = json.load(f)
             self.best, self.stats = data["best"], data["stats"]
+            self.roots = data.get("roots", [ARCADE])
         except (OSError, ValueError, KeyError):
             pass
 
@@ -93,8 +126,9 @@ class Index:
             self.scanning = True
         try:
             t = time.time()
+            roots = mra_roots()
             found, mras, broken, unreadable = {}, 0, 0, 0
-            for root, _dirs, files in os.walk(ARCADE):
+            for root, _dirs, files in (w for top in roots for w in os.walk(top)):
                 for name in files:
                     if not name.lower().endswith(".mra"):
                         continue
@@ -119,10 +153,10 @@ class Index:
             stats = {"mras": mras, "broken_links": broken, "unreadable": unreadable,
                      "seconds": round(time.time() - t, 1), "built": int(time.time())}
             with self.lock:
-                self.best, self.stats = found, stats
+                self.best, self.stats, self.roots = found, stats, roots
             tmp = CACHE + ".tmp"
             with open(tmp, "w") as f:
-                json.dump({"best": found, "stats": stats}, f)
+                json.dump({"best": found, "stats": stats, "roots": roots}, f)
             os.replace(tmp, CACHE)
         finally:
             with self.lock:
@@ -296,6 +330,82 @@ def resolve_game(game):
     return INDEX.resolve(sets)
 
 
+MAME_DIRS = os.environ.get("SHMUP_MAME_DIRS", ":".join(
+    ["/media/fat/games/mame", "/media/fat/_Arcade/mame"] +
+    ["/media/usb%d/games/mame" % i for i in range(6)])).split(":")
+
+
+def listing(dirs, ext):
+    """Lower-cased file stems with this extension across folders that exist."""
+    found = set()
+    for d in dirs:
+        try:
+            found.update(f[:-len(ext)].lower() for f in os.listdir(d) if f.lower().endswith(ext))
+        except OSError:
+            pass
+    return found
+
+
+def core_present(rbf, cores):
+    # the MiSTer takes the newest <rbf>_<date>.rbf, with or without "Arcade-"
+    want = rbf.lower()
+    return any(c == want or c.startswith(want + "_") or
+               c == "arcade-" + want or c.startswith("arcade-" + want + "_") for c in cores)
+
+
+def needed_zips(game):
+    """ROM zips a game needs, as groups where any one zip will do.
+
+    The game's own zip comes from a non-merged or split set; a merged set keeps
+    clones inside the parent's zip instead. BIOS and sound chip zips are shared
+    between games and always needed. Taken from games.json, which records them
+    from each game's MRA and MAME's parent and clone lists.
+    """
+    roms = game.get("roms", {})
+    groups = []
+    if roms.get("zip"):
+        groups.append(list(dict.fromkeys([roms["zip"], roms.get("merged", roms["zip"])])))
+    groups += [[z] for z in roms.get("shared", [])]
+    return groups
+
+
+def checklist():
+    """For every deck game: is it ready, and if not, what is missing.
+
+    Checks the three things an arcade game needs: an MRA, the core it names
+    and the ROM zips it reads. Neo Geo games only need their game file.
+    """
+    zips = listing(MAME_DIRS, ".zip")
+    cores = {}                              # arcade root -> core file names there
+    out = []
+    for g in load_deck():
+        entry = {"id": g["id"], "mra": None, "core": True, "missing": []}
+        if g.get("platform") == "neogeo":
+            entry["mra"] = resolve_game(g)
+            if not entry["mra"]:
+                entry["missing"] = [g.get("roms", {}).get("zip", g["id"])]
+            entry["state"] = "ready" if entry["mra"] else "roms"
+            out.append(entry)
+            continue
+        path = INDEX.resolve(g.get("setnames", [g["id"]]))
+        entry["mra"] = path
+        if path:
+            home = arcade_root(path)
+            if home not in cores:
+                cores[home] = listing([os.path.join(home, "cores")], ".rbf")
+            entry["core"] = core_present(g.get("rbf", ""), cores[home])
+        else:
+            if ARCADE not in cores:
+                cores[ARCADE] = listing([os.path.join(ARCADE, "cores")], ".rbf")
+            entry["core"] = core_present(g.get("rbf", ""), cores[ARCADE])
+        entry["missing"] = [" or ".join(grp) for grp in needed_zips(g)
+                            if not any(z.lower() in zips for z in grp)]
+        entry["state"] = ("mra" if not path else "core" if not entry["core"]
+                          else "roms" if entry["missing"] else "ready")
+        out.append(entry)
+    return out
+
+
 def send_command(cmd):
     # paths come from our own indexes, but the command pipe is line based, so
     # refuse anything that could smuggle a second command
@@ -380,6 +490,8 @@ class Handler(SimpleHTTPRequestHandler):
                 "now_playing": now_playing()})
         if self.path == "/api/available":
             return self.send_json({g["id"]: resolve_game(g) for g in load_deck()})
+        if self.path == "/api/checklist":
+            return self.send_json(checklist())
         if self.path.startswith("/art/"):
             return self.send_art(self.path[5:].split("?")[0])
         return super().do_GET()
@@ -494,7 +606,9 @@ def main():
     ap.add_argument("--port", type=int, default=8190)
     ap.add_argument("--name", default="shmupdeck", help="answers at http://<name>.local")
     args = ap.parse_args()
-    if not INDEX.best:
+    # rescan when the cache is missing or covers different folders, e.g. a
+    # USB drive was plugged in, or it predates scanning outside _Arcade
+    if not INDEX.best or INDEX.roots != mra_roots():
         threading.Thread(target=INDEX.scan, daemon=True).start()
     # the Neo Geo folder is small, so it is simply rescanned on every start
     threading.Thread(target=NEO.scan, daemon=True).start()

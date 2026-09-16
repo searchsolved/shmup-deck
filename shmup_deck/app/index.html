@@ -160,6 +160,28 @@ h1 em{font-style:normal;color:var(--emerald-hot)}
 }
 .plate .core{color:var(--gold)}
 
+/* a game this MiSTer can't run yet, shown only with "Missing" switched on */
+.cab.missing .art{filter:grayscale(1) brightness(.45)}
+.cab.missing .plate{opacity:.6}
+.cab .need{
+  position:absolute;top:10px;left:10px;z-index:2;
+  padding:3px 8px;border-radius:4px;background:rgba(7,16,11,.9);border:1px solid var(--danger);
+  font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--danger);
+}
+.cab.missing:hover,.cab.missing:focus-visible{border-color:var(--danger)}
+
+/* developer dividers span the whole grid row */
+.divider{
+  grid-column:1/-1;display:flex;align-items:baseline;gap:14px;
+  margin-top:14px;padding-bottom:8px;border-bottom:1px solid rgba(216,181,74,.25);
+}
+.divider:first-child{margin-top:0}
+.divider h2{
+  font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;
+  font-weight:800;font-size:26px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);
+}
+.divider span{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ash)}
+
 /* launch overlay */
 .cab .veil{
   position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
@@ -189,6 +211,7 @@ h1 em{font-style:normal;color:var(--emerald-hot)}
   .plate{padding:10px 10px 12px}
   .plate .title{font-size:17px}
   .plate .meta{font-size:10px;letter-spacing:.14em}
+  .divider h2{font-size:21px}
 }
 footer{max-width:1080px;margin:40px auto 0;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#44523f;line-height:1.8}
 footer a{color:inherit}
@@ -206,6 +229,13 @@ footer a{color:inherit}
       <button data-sort="az" aria-pressed="true">A&ndash;Z</button>
       <button data-sort="year" aria-pressed="false">Year</button>
       <button data-sort="played" aria-pressed="false">Played</button>
+    </div>
+    <div class="seg" role="group" aria-label="Group by">
+      <button data-group="dev" aria-pressed="false" title="Group by developer">By dev</button>
+      <button data-group="system" aria-pressed="false" title="Group by arcade system">By system</button>
+    </div>
+    <div class="seg">
+      <button data-missing="show" aria-pressed="false" title="Also show games this MiSTer can't run yet">Missing</button>
     </div>
     <div class="seg" role="group" aria-label="Screen orientation">
       <button data-screen="all" aria-pressed="true">All</button>
@@ -228,7 +258,7 @@ footer a{color:inherit}
 
 <main class="deck" id="deck"></main>
 
-<footer>tap a cab to launch &middot; only games installed on this MiSTer are shown<br>
+<footer>tap a cab to launch &middot; only games ready to play on this MiSTer are shown, unless Missing is on &middot; <a href="check.html">ROM checklist</a><br>
 flyer art is downloaded from public archives and belongs to its copyright holders</footer>
 
 <script>
@@ -239,12 +269,16 @@ flyer art is downloaded from public archives and belongs to its copyright holder
 const LS = {
   screen: "shmupdeck.screen",
   sort: "shmupdeck.sort",
+  group: "shmupdeck.group",
+  missing: "shmupdeck.missing",
   plays: "shmupdeck.plays"
 };
 const $ = s => document.querySelector(s);
 // Which way the cab or monitor is fitted. Set once, remembered after that.
 const screenPref = () => localStorage.getItem(LS.screen) || "all";
 const sortPref = () => localStorage.getItem(LS.sort) || "az";
+const groupPref = () => localStorage.getItem(LS.group) || "none";
+const missingPref = () => localStorage.getItem(LS.missing) || "hide";
 
 /* Launch counts, kept on this device only. Counts launches, not play time. */
 const plays = () => { try { return JSON.parse(localStorage.getItem(LS.plays)) || {}; }
@@ -256,8 +290,18 @@ function countPlay(id) {
 }
 
 let GAMES = [];
+/* ?games=deathsml,espgal2,... shows just those games, in that order. Handy
+   for sharing a favourites list or taking a tidy screenshot. */
+const PICK = (new URLSearchParams(location.search).get("games") || "")
+  .split(",").map(s => s.trim()).filter(Boolean);
 let ART = {};       // id -> { crop: [left, top, width, height], size: [w, h] }
 let AVAIL = null;   // id -> installed path; null until the first scan finishes
+let CHECK = null;   // id -> { state, missing }; state is "ready", "roms", "core" or "mra"
+
+/* Ready means the game will actually start: MRA, core and ROMs all present.
+   Services older than the checklist only know about MRAs. */
+const ready = g => CHECK ? CHECK[g.id] && CHECK[g.id].state === "ready" : !AVAIL || !!AVAIL[g.id];
+const NEEDS = { roms: "needs ROMs", core: "needs core", mra: "no MRA" };
 let NOW = null;
 
 /* ── art ── */
@@ -284,23 +328,25 @@ function paintArt(el, g) {
 const deck = $("#deck");
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
-function card(g, played) {
+function card(g, played, showSystem) {
   const b = document.createElement("button");
-  b.className = "cab" + (g.id === NOW ? " playing" : "");
+  const ok = ready(g);
+  b.className = "cab" + (g.id === NOW ? " playing" : "") + (ok ? "" : " missing");
   b.dataset.id = g.id;
-  b.innerHTML = `
+  b.innerHTML = `${ok ? "" : `<span class="need">${NEEDS[CHECK && CHECK[g.id] ? CHECK[g.id].state : "mra"]}</span>`}
     <div class="art" role="img" aria-label="${esc(g.title)} arcade flyer">
       <span class="stand-in">${esc(g.title)}</span>
       <div class="veil"><span></span></div></div>
     <div class="plate">
       <span class="title">${esc(g.title)}</span>
       <span class="meta">${esc(g.dev)} ${g.year}</span>
-      <span class="meta"><span class="core">${esc(g.core)}</span>
+      <span class="meta"><span class="core">${esc(showSystem && g.system ? g.system : g.core)}</span>
         ${played ? `<span class="plays" title="${played} launches from this device">&times;${played}</span>` : ""}
         <span class="orient">${g.orientation}</span></span>
     </div>`;
   paintArt(b.querySelector(".art"), g);
-  b.addEventListener("click", () => launch(g, b));
+  // a game that can't start opens its checklist entry instead
+  b.addEventListener("click", () => ok ? launch(g, b) : (location.href = `check.html?game=${encodeURIComponent(g.id)}`));
   return b;
 }
 
@@ -319,7 +365,7 @@ const SORTS = {
    lets "esprade" and "rtype" find their games, and searching a core or a
    developer works without a separate filter for either. */
 const squash = s => s.toLowerCase().normalize("NFD").replace(/[^a-z0-9]/g, "");
-const haystack = g => squash(`${g.title} ${g.dev} ${g.year} ${g.core} ${g.orientation}`);
+const haystack = g => squash(`${g.title} ${g.dev} ${g.year} ${g.core} ${g.system || ""} ${g.orientation}`);
 
 function matches(g, query) {
   return query.every(t => haystack(g).includes(t));
@@ -329,25 +375,75 @@ function renderDeck() {
   const want = screenPref(), order = sortPref(), p = plays();
   const query = ($("#search").value || "").split(/\s+/).map(squash).filter(Boolean);
   const cmp = order === "played" ? SORTS.played(p) : SORTS[order] || byTitle;
-  const shown = GAMES
-    .filter(g => (!AVAIL || AVAIL[g.id]) && (want === "all" || g.orientation === want) && matches(g, query))
-    .sort(cmp);
-  deck.replaceChildren(...shown.map(g => card(g, p[g.id] || 0)));
+  // until the MiSTer has answered there is nothing to call missing
+  const showAll = missingPref() === "show" && !!(CHECK || AVAIL);
+  // a picked list keeps its own order, so it is never grouped
+  const groupBy = PICK.length ? null : { dev: "dev", system: "system" }[groupPref()];
+  const grouped = !!groupBy;
+  const shown = PICK.length
+    ? PICK.map(id => GAMES.find(g => g.id === id)).filter(g => g && (showAll || ready(g)) && matches(g, query))
+    : GAMES
+      .filter(g => (showAll || ready(g)) && (want === "all" || g.orientation === want) && matches(g, query));
+  const label = grouped ? groupLabels(shown, groupBy) : null;
+  if (!PICK.length) shown.sort(grouped
+    ? (a, b) => (label.get(a) === OTHER) - (label.get(b) === OTHER) ||
+                label.get(a).localeCompare(label.get(b), "en", { sensitivity: "base" }) || cmp(a, b)
+    : cmp);
+  deck.replaceChildren(...(grouped ? withDividers(shown, p, label) : shown.map(g => card(g, p[g.id] || 0))));
   if (!shown.length) {
     const e = document.createElement("p");
     e.className = "empty";
-    e.textContent = AVAIL ? "Nothing matches that." : "Looking for games on the MiSTer…";
+    e.textContent = CHECK || AVAIL ? "Nothing matches that." : "Looking for games on the MiSTer…";
     deck.replaceChildren(e);
   }
-  $("#count").textContent = `${shown.length} game${shown.length === 1 ? "" : "s"}`;
+  const readyCount = shown.filter(ready).length;
+  $("#count").textContent = showAll
+    ? `${readyCount} of ${shown.length} ready`
+    : `${shown.length} game${shown.length === 1 ? "" : "s"}`;
   for (const b of document.querySelectorAll(".seg button"))
     b.setAttribute("aria-pressed",
-      String(b.dataset.screen === want || b.dataset.sort === order));
+      String(b.dataset.screen === want || b.dataset.sort === order ||
+             b.dataset.group === groupPref() || b.dataset.missing === missingPref()));
+}
+
+/* Which section each game goes in. Many boards ran a single shmup, and a
+   divider per card would spread the page thin, so by system those share one
+   "Other systems" section at the end. Each card there still names its board. */
+const OTHER = "Other systems";
+function groupLabels(games, key) {
+  const counts = new Map();
+  for (const g of games) counts.set(g[key], (counts.get(g[key]) || 0) + 1);
+  return new Map(games.map(g =>
+    [g, key === "system" && counts.get(g.system) === 1 ? OTHER : g[key] || ""]));
+}
+
+/* Games arrive sorted by section, then by the chosen order; a divider heads
+   each run of cards. */
+function withDividers(games, p, label) {
+  const out = [];
+  let group = null;
+  for (const g of games) {
+    if (label.get(g) !== group) {
+      group = label.get(g);
+      const n = games.filter(x => label.get(x) === group).length;
+      const d = document.createElement("div");
+      d.className = "divider";
+      d.innerHTML = `<h2>${esc(group)}</h2><span>${n} game${n === 1 ? "" : "s"}</span>`;
+      out.push(d);
+    }
+    out.push(card(g, p[g.id] || 0, group === OTHER));
+  }
+  return out;
 }
 
 for (const b of document.querySelectorAll(".seg button")) {
   b.addEventListener("click", () => {
-    localStorage.setItem(b.dataset.sort ? LS.sort : LS.screen, b.dataset.sort || b.dataset.screen);
+    const [key, value] = b.dataset.sort ? [LS.sort, b.dataset.sort]
+      // grouping buttons act like radio buttons that can also be switched off
+      : b.dataset.group ? [LS.group, groupPref() === b.dataset.group ? "none" : b.dataset.group]
+      : b.dataset.missing ? [LS.missing, missingPref() === "show" ? "hide" : "show"]
+      : [LS.screen, b.dataset.screen];
+    localStorage.setItem(key, value);
     renderDeck();
   });
 }
@@ -404,6 +500,19 @@ async function launch(g, el) {
 }
 
 /* ── status ── */
+async function loadChecklist() {
+  try {
+    const r = await fetch("api/checklist", { cache: "no-store" });
+    if (r.status === 404) return loadAvailable();          // an older service
+    const list = await r.json();
+    // no MRA found for anything means the first scan is still running
+    if (list.some(c => c.mra)) {
+      CHECK = Object.fromEntries(list.map(c => [c.id, c]));
+      renderDeck();
+    } else setTimeout(loadChecklist, 5000);
+  } catch { setTimeout(loadChecklist, 5000); }
+}
+
 async function loadAvailable() {
   try {
     const map = await (await fetch("api/available", { cache: "no-store" })).json();
@@ -428,7 +537,8 @@ async function ping() {
     if (s.now_playing !== NOW) {
       NOW = s.now_playing;
       const g = GAMES.find(x => x.id === NOW);
-      $("#now").hidden = !g;
+      // a picked list is its own little wall; don't advertise something outside it
+      $("#now").hidden = !g || (PICK.length > 0 && !PICK.includes(g.id));
       if (g) $("#nowWhat").textContent = g.title;
       renderDeck();
     }
@@ -442,7 +552,7 @@ Promise.all([
   fetch("art.json").then(r => r.json()).catch(() => ({}))
 ]).then(([list, art]) => {
   GAMES = list; ART = art;
-  renderDeck(); ping(); loadAvailable();
+  renderDeck(); ping(); loadChecklist();
   setInterval(ping, 5000);
 }).catch(() => { deck.innerHTML = `<p class="empty">Could not load games.json.</p>`; });
 </script>

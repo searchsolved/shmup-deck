@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shmup Deck Checklist</title>
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<style>
+:root{
+  --pit:#07100B;
+  --felt:#0C1A12;
+  --line:#1d3326;
+  --emerald:#2FAE6E;
+  --emerald-hot:#54E29A;
+  --gold:#D8B54A;
+  --bone:#E9E4D2;
+  --ash:#7d8a80;
+  --danger:#e0604f;
+  --amber:#e0a44f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--pit)}
+body{
+  background:radial-gradient(120% 70% at 50% -10%, #12291b 0%, var(--pit) 60%), var(--pit);
+  color:var(--bone);
+  font-family:"Avenir Next", Avenir, "Helvetica Neue", sans-serif;
+  min-height:100vh;
+  padding:max(20px, env(safe-area-inset-top)) 20px 48px;
+}
+a{color:var(--gold)}
+.wrap{max-width:1080px;margin:0 auto}
+header{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+h1{
+  font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;
+  font-weight:800;font-size:clamp(30px,5vw,46px);
+  letter-spacing:.04em;text-transform:uppercase;line-height:.95;
+}
+h1 em{font-style:normal;color:var(--emerald-hot)}
+.back{margin-left:auto;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.intro{color:var(--ash);font-size:14px;line-height:1.6;max-width:720px;margin-bottom:22px}
+.intro code{color:var(--bone);font-size:13px}
+
+.tally{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.tally button{
+  display:flex;align-items:baseline;gap:8px;cursor:pointer;
+  border:1px solid var(--line);border-radius:999px;background:rgba(0,0,0,.25);
+  color:var(--ash);padding:8px 14px;font-family:inherit;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+}
+.tally button b{font-size:16px;letter-spacing:0;color:var(--bone)}
+.tally button[aria-pressed="true"]{border-color:var(--gold);color:var(--bone)}
+.tally button:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:2px}
+
+.tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+#search{
+  flex:1;min-width:0;max-width:420px;
+  padding:9px 14px;border-radius:999px;border:1px solid var(--line);
+  background:rgba(0,0,0,.25);color:var(--bone);font-family:inherit;font-size:13px;
+}
+#search:focus{outline:2px solid var(--emerald);outline-offset:1px}
+.btn{
+  border:1px solid var(--gold);border-radius:999px;background:transparent;color:var(--gold);
+  padding:8px 14px;font-family:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
+}
+.btn:disabled{opacity:.4;cursor:default}
+.btn:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:2px}
+.note{font-size:12px;color:var(--ash)}
+
+.rows{border-top:1px solid var(--line)}
+.row{
+  display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1.4fr) 120px minmax(0,2fr);
+  gap:14px;align-items:start;padding:12px 4px;border-bottom:1px solid var(--line);font-size:14px;
+}
+.row.head{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ash);padding-top:8px;padding-bottom:8px}
+.title{font-weight:600}
+.sub{font-size:12px;color:var(--ash);margin-top:2px}
+.state{
+  display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  padding:2px 8px;border-radius:4px;border:1px solid currentColor;white-space:nowrap;
+}
+.state.ready{color:var(--emerald-hot)}
+.state.roms{color:var(--amber)}
+.state.core,.state.mra{color:var(--danger)}
+.state.unknown{color:var(--ash)}
+.zips{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12.5px;line-height:1.6;overflow-wrap:anywhere}
+.zips .ok{color:var(--ash)}
+.empty{padding:40px 0;text-align:center;color:var(--ash)}
+
+@media (max-width: 720px){
+  body{padding-left:16px;padding-right:16px}
+  .row.head{display:none}
+  .row{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px}
+  .row .c-core{grid-column:1/2}
+  .row .c-state{grid-column:2/3;grid-row:1/2;justify-self:end}
+  .row .c-zips{grid-column:1/-1}
+}
+footer{margin-top:32px;font-size:12px;color:var(--ash);line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Shmup <em>Deck</em> checklist</h1>
+  <a class="back" href="./">&larr; back to the deck</a>
+</header>
+
+<p class="intro" id="intro">Every game the deck supports, and what this MiSTer still needs for each one.
+ROM zips go in <code>games/mame</code>. Where a line says &ldquo;or&rdquo;, either zip will do: the game's own
+zip from a non-merged or split set, or its parent's zip from a merged set.</p>
+
+<div class="tally" id="tally" role="group" aria-label="Show"></div>
+
+<div class="tools">
+  <input id="search" type="search" autocomplete="off" spellcheck="false"
+         placeholder="Search title, developer or core" aria-label="Search games">
+  <button class="btn" id="copy" type="button" title="Arcade ROM zips only; Neo Geo games are listed on the page">Copy missing zips</button>
+  <span class="note" id="copied" aria-live="polite"></span>
+</div>
+
+<div class="rows" id="rows"></div>
+
+<footer>
+  A game shows on the deck once its MRA is found; it will only start if the core and ROM zips are there too.
+  Zip names come from each game's MRA and MAME's parent and clone sets.
+  The full list is also on <a href="https://github.com/searchsolved/shmup-deck/blob/main/ROMS.md">GitHub</a>.
+</footer>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const squash = s => s.toLowerCase().normalize("NFD").replace(/[^a-z0-9]/g, "");
+
+const STATES = {
+  all:   { label: "All" },
+  ready: { label: "Ready" },
+  roms:  { label: "Missing ROMs" },
+  core:  { label: "Missing core" },
+  mra:   { label: "No MRA" }
+};
+let GAMES = [], CORES = { sources: {}, cores: {} }, CHECK = null, show = "all";
+
+/* What the game needs, from games.json. Used when the MiSTer can't be asked,
+   so the page still works as a plain list of supported ROMs. */
+function wanted(g) {
+  const r = g.roms || {};
+  const main = r.merged && r.merged !== r.zip ? `${r.zip} or ${r.merged}` : r.zip;
+  return [main, ...(r.shared || [])].filter(Boolean);
+}
+
+function coreCell(g) {
+  const c = CORES.cores[g.rbf] || {};
+  const src = CORES.sources[c.source] || {};
+  const where = c.url
+    ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">GitHub</a> (not in update_all)`
+    : esc(src.name || "");
+  return `<div>${esc(g.core)}</div><div class="sub">${where}</div>`;
+}
+
+/* Neo Geo games are single game files in games/NeoGeo, not MAME zips. */
+const neoFile = z => `${esc(z)}.neo, or a ${esc(z)} zip or folder, in games/NeoGeo`;
+
+function zipCell(g, c) {
+  const note = g.roms && g.roms.note ? `<div class="sub">${esc(g.roms.note)}</div>` : "";
+  if (g.platform === "neogeo") return !c ? neoFile(g.roms.zip)
+    : c.state === "ready" ? `<span class="ok">nothing</span>` : neoFile(g.roms.zip);
+  if (!c) return wanted(g).map(z => esc(z) + ".zip").join("<br>") + note;
+  if (c.state === "ready") return `<span class="ok">nothing</span>`;
+  const parts = [];
+  if (c.state === "mra") parts.push("the MRA");
+  if (!c.core) parts.push(`core <b>${esc(g.rbf)}</b>`);
+  const zips = c.missing.map(z => z.split(" or ").map(x => esc(x) + ".zip").join(" or "));
+  return [...parts, ...zips].join("<br>") + note;
+}
+
+function visible() {
+  const q = ($("#search").value || "").split(/\s+/).map(squash).filter(Boolean);
+  const byId = Object.fromEntries((CHECK || []).map(c => [c.id, c]));
+  return GAMES
+    .map(g => ({ g, c: byId[g.id] }))
+    .filter(({ g, c }) => show === "all" || (c && c.state === show))
+    .filter(({ g }) => q.every(t => squash(`${g.title} ${g.dev} ${g.core} ${g.year}`).includes(t)))
+    .sort((a, b) => a.g.title.localeCompare(b.g.title, "en"));
+}
+
+function render() {
+  const counts = { all: GAMES.length, ready: 0, roms: 0, core: 0, mra: 0 };
+  for (const c of CHECK || []) counts[c.state]++;
+  $("#tally").innerHTML = Object.entries(STATES)
+    .filter(([k]) => CHECK || k === "all")
+    .map(([k, s]) => `<button data-show="${k}" aria-pressed="${k === show}"><b>${counts[k]}</b>${s.label}</button>`)
+    .join("");
+  for (const b of $("#tally").querySelectorAll("button"))
+    b.addEventListener("click", () => { show = b.dataset.show; render(); });
+
+  const list = visible();
+  const head = `<div class="row head"><span>Game</span><span>Core</span><span>Status</span>
+    <span>${CHECK ? "Still needed" : "ROM zips"}</span></div>`;
+  $("#rows").innerHTML = list.length ? head + list.map(({ g, c }) => `
+    <div class="row">
+      <div class="c-game"><div class="title">${esc(g.title)}</div><div class="sub">${esc(g.dev)} ${g.year}</div></div>
+      <div class="c-core">${coreCell(g)}</div>
+      <div class="c-state"><span class="state ${c ? c.state : "unknown"}">${c ? STATES[c.state].label : "Not checked"}</span></div>
+      <div class="c-zips zips">${zipCell(g, c)}</div>
+    </div>`).join("") : `<p class="empty">Nothing matches that.</p>`;
+  $("#copy").disabled = !list.length;
+}
+
+/* One zip per line, ready to paste into a download manager's filter. Where
+   either of two zips will do, the merged-set name comes second on the line. */
+$("#copy").addEventListener("click", async () => {
+  const lines = new Set();
+  for (const { g, c } of visible()) {
+    if (g.platform === "neogeo") continue;
+    const need = c ? (c.state === "ready" ? [] : c.missing) : wanted(g);
+    need.forEach(z => lines.add(z.split(" or ").map(x => x + ".zip").join(" or ")));
+  }
+  const text = [...lines].sort().join("\n");
+  try {
+    await navigator.clipboard.writeText(text);
+    $("#copied").textContent = `${lines.size} copied`;
+  } catch {
+    $("#copied").textContent = "copy blocked by the browser";
+  }
+  setTimeout(() => { $("#copied").textContent = ""; }, 2500);
+});
+$("#search").addEventListener("input", render);
+
+Promise.all([
+  fetch("games.json").then(r => r.json()),
+  fetch("cores.json").then(r => r.json()).catch(() => ({ sources: {}, cores: {} })),
+  fetch("api/checklist", { cache: "no-store" }).then(r => r.ok ? r.json() : null).catch(() => null)
+]).then(([games, cores, check]) => {
+  GAMES = games; CORES = cores; CHECK = check;
+  // opened from a card on the deck: show just that game
+  const want = new URLSearchParams(location.search).get("game");
+  const g = want && games.find(x => x.id === want);
+  if (g) $("#search").value = g.title;
+  if (!CHECK) $("#intro").insertAdjacentHTML("beforeend",
+    " This copy of the page can't reach a MiSTer, so it lists what each game needs without checking.");
+  render();
+}).catch(() => { $("#rows").innerHTML = `<p class="empty">Could not load games.json.</p>`; });
+</script>
+</body>
+</html>

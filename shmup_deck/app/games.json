@@ -5,6 +5,7 @@
   "dev": "Capcom",
   "year": 1988,
   "core": "CPS1",
+  "system": "Capcom CPS1",
   "orientation": "yoko",
   "setnames": [
    "forgottn",
@@ -15,7 +16,13 @@
    "forgottnuaa",
    "forgottnuc",
    "forgottnue"
-  ]
+  ],
+  "rbf": "jtcps1",
+  "roms": {
+   "zip": "forgottn",
+   "merged": "forgottn",
+   "shared": []
+  }
  },
  {
   "id": "unsquad",
@@ -23,10 +30,17 @@
   "dev": "Capcom",
   "year": 1989,
   "core": "CPS1",
+  "system": "Capcom CPS1",
   "orientation": "yoko",
   "setnames": [
    "unsquad"
-  ]
+  ],
+  "rbf": "jtcps1",
+  "roms": {
+   "zip": "unsquad",
+   "merged": "unsquad",
+   "shared": []
+  }
  },
  {
   "id": "cawing",
@@ -34,13 +48,20 @@
   "dev": "Capcom",
   "year": 1990,
   "core": "CPS1",
+  "system": "Capcom CPS1",
   "orientation": "yoko",
   "setnames": [
    "cawing",
    "cawingr1",
    "cawingu",
    "cawingur1"
-  ]
+  ],
+  "rbf": "jtcps1",
+  "roms": {
+   "zip": "cawing",
+   "merged": "cawing",
+   "shared": []
+  }
  },
  {
   "id": "1941",
@@ -48,13 +69,20 @@
   "dev": "Capcom",
   "year": 1990,
   "core": "CPS1",
+  "system": "Capcom CPS1",
   "orientation": "tate",
   "setnames": [
    "1941",
    "1941j",
    "1941r1",
    "1941u"
-  ]
+  ],
+  "rbf": "jtcps1",
+  "roms": {
+   "zip": "1941",
+   "merged": "1941",
+   "shared": []
+  }
  },
  {
   "id": "varth",
@@ -62,6 +90,7 @@
   "dev": "Capcom",
   "year": 1992,
   "core": "CPS1",
+  "system": "Capcom CPS1",
   "orientation": "tate",
   "setnames": [
    "varth",
@@ -69,7 +98,13 @@
    "varthjr",
    "varthr1",
    "varthu"
-  ]
+  ],
+  "rbf": "jtcps1",
+  "roms": {
+   "zip": "varth",
+   "merged": "varth",
+   "shared": []
+  }
  },
  {
   "id": "ecofghtr",
@@ -77,6 +112,7 @@
   "dev": "Capcom",
   "year": 1993,
   "core": "CPS2",
+  "system": "Capcom CPS2",
   "orientation": "yoko",
   "setnames": [
    "ecofghtr",
@@ -85,7 +121,15 @@
    "ecofghtrh",
    "ecofghtru",
    "ecofghtru1"
-  ]
+  ],
+  "rbf": "jtcps2",
+  "roms": {
+   "zip": "ecofghtr",
+   "merged": "ecofghtr",
+   "shared": [
+    "qsound"
+   ]
+  }
  },
  {
   "id": "19xx",
@@ -93,6 +137,7 @@
   "dev": "Capcom",
   "year": 1996,
   "core": "CPS2",
+  "system": "Capcom CPS2",
   "orientation": "tate",
   "setnames": [
    "19xx",
@@ -105,7 +150,15 @@
    "19xxjr1",
    "19xxjr2",
    "19xxu"
-  ]
+  ],
+  "rbf": "jtcps2",
+  "roms": {
+   "zip": "19xx",
+   "merged": "19xx",
+   "shared": [
+    "qsound"
+   ]
+  }
  },
  {
   "id": "gigawing",
@@ -113,6 +166,7 @@
   "dev": "Takumi",
   "year": 1999,
   "core": "CPS2",
+  "system": "Capcom CPS2",
   "orientation": "tate",
   "setnames": [
    "gigawing",
@@ -122,7 +176,15 @@
    "gigawingh",
    "gigawingj",
    "gigawingjd"
-  ]
+  ],
+  "rbf": "jtcps2",
+  "roms": {
+   "zip": "gigawing",
+   "merged": "gigawing",
+   "shared": [
+    "qsound"
+   ]
+  }
  },
  {
   "id": "mmatrix",
@@ -130,13 +192,22 @@
   "dev": "Takumi",
   "year": 2000,
   "core": "CPS2",
+  "system": "Capcom CPS2",
   "orientation": "tate",
   "setnames": [
    "mmatrix",
    "mmatrixa",
    "mmatrixd",
    "mmatrixj"
-  ]
+  ],
+  "rbf": "jtcps2",
+  "roms": {
+   "zip": "mmatrix",
+   "merged": "mmatrix",
+   "shared": [
+    "qsound"
+   ]
+  }
  },
  {
   "id": "dimahoo",
@@ -144,6 +215,7 @@
   "dev": "Eighting",
   "year": 2000,
   "core": "CPS2",
+  "system": "Capcom CPS2",
   "orientation": "tate",
   "setnames": [
    "dimahoo",
@@ -151,7 +223,15 @@
    "dimahoo_2",
    "dimahoou",
    "dimahoud"
-  ]
+  ],
+  "rbf": "jtcps2",
+  "roms": {
+   "zip": "dimahoo",
+   "merged": "dimahoo",
+   "shared": [
+    "qsound"
+   ]
+  }
  },
  {
   "id": "1944",
@@ -159,13 +239,22 @@
   "dev": "Capcom",
   "year": 2000,
   "core": "CPS2",
+  "system": "Capcom CPS2",
   "orientation": "tate",
   "setnames": [
    "1944",
    "1944d",
    "1944j",
    "1944u"
-  ]
+  ],
+  "rbf": "jtcps2",
+  "roms": {
+   "zip": "1944",
+   "merged": "1944",
+   "shared": [
+    "qsound"
+   ]
+  }
  },
  {
   "id": "progear",
@@ -173,6 +262,7 @@
   "dev": "Cave",
   "year": 2001,
   "core": "CPS2",
+  "system": "Capcom CPS2",
   "orientation": "tate",
   "setnames": [
    "progear",
@@ -184,7 +274,15 @@
    "progearjbl",
    "progearjd",
    "progearud"
-  ]
+  ],
+  "rbf": "jtcps2",
+  "roms": {
+   "zip": "progear",
+   "merged": "progear",
+   "shared": [
+    "qsound"
+   ]
+  }
  },
  {
   "id": "vulgus",
@@ -192,13 +290,20 @@
   "dev": "Capcom",
   "year": 1984,
   "core": "Capcom",
+  "system": "Capcom Vulgus",
   "orientation": "tate",
   "setnames": [
    "vulgus",
    "mach9",
    "vulgusa",
    "vulgusj"
-  ]
+  ],
+  "rbf": "jt1942",
+  "roms": {
+   "zip": "vulgus",
+   "merged": "vulgus",
+   "shared": []
+  }
  },
  {
   "id": "1942",
@@ -206,6 +311,7 @@
   "dev": "Capcom",
   "year": 1984,
   "core": "Capcom",
+  "system": "Capcom 1942",
   "orientation": "tate",
   "setnames": [
    "1942",
@@ -213,7 +319,13 @@
    "1942b",
    "1942h",
    "1942w"
-  ]
+  ],
+  "rbf": "jt1942",
+  "roms": {
+   "zip": "1942",
+   "merged": "1942",
+   "shared": []
+  }
  },
  {
   "id": "exedexes",
@@ -221,10 +333,17 @@
   "dev": "Capcom",
   "year": 1985,
   "core": "Capcom",
+  "system": "Capcom Exed Exes",
   "orientation": "tate",
   "setnames": [
    "exedexes"
-  ]
+  ],
+  "rbf": "jtexed",
+  "roms": {
+   "zip": "exedexes",
+   "merged": "exedexes",
+   "shared": []
+  }
  },
  {
   "id": "sectionz",
@@ -232,11 +351,18 @@
   "dev": "Capcom",
   "year": 1985,
   "core": "Capcom",
+  "system": "Capcom Legendary Wings",
   "orientation": "yoko",
   "setnames": [
    "sectionz",
    "sectionza"
-  ]
+  ],
+  "rbf": "jtsectnz",
+  "roms": {
+   "zip": "sectionz",
+   "merged": "sectionz",
+   "shared": []
+  }
  },
  {
   "id": "sidearms",
@@ -244,13 +370,20 @@
   "dev": "Capcom",
   "year": 1986,
   "core": "Capcom",
+  "system": "Capcom Side Arms",
   "orientation": "yoko",
   "setnames": [
    "sidearms",
    "sidearmsj",
    "sidearmsu",
    "sidearmsur1"
-  ]
+  ],
+  "rbf": "jtsarms",
+  "roms": {
+   "zip": "sidearms",
+   "merged": "sidearms",
+   "shared": []
+  }
  },
  {
   "id": "legendos",
@@ -258,12 +391,19 @@
   "dev": "Capcom",
   "year": 1986,
   "core": "Capcom",
+  "system": "Capcom Legendary Wings",
   "orientation": "tate",
   "setnames": [
    "lwings",
    "lwingsa",
    "lwingsb"
-  ]
+  ],
+  "rbf": "jtsectnz",
+  "roms": {
+   "zip": "lwings",
+   "merged": "lwings",
+   "shared": []
+  }
  },
  {
   "id": "1943",
@@ -271,6 +411,7 @@
   "dev": "Capcom",
   "year": 1987,
   "core": "Capcom",
+  "system": "Capcom 1943",
   "orientation": "tate",
   "setnames": [
    "1943",
@@ -280,7 +421,13 @@
    "1943mii",
    "1943u",
    "1943ua"
-  ]
+  ],
+  "rbf": "jt1943",
+  "roms": {
+   "zip": "1943",
+   "merged": "1943",
+   "shared": []
+  }
  },
  {
   "id": "donpachi",
@@ -288,6 +435,7 @@
   "dev": "Cave",
   "year": 1995,
   "core": "Cave",
+  "system": "Cave 68000",
   "orientation": "tate",
   "setnames": [
    "donpachi",
@@ -295,7 +443,13 @@
    "donpachij",
    "donpachijs",
    "donpachikr"
-  ]
+  ],
+  "rbf": "cave",
+  "roms": {
+   "zip": "donpachi",
+   "merged": "donpachi",
+   "shared": []
+  }
  },
  {
   "id": "ddonpach",
@@ -303,13 +457,20 @@
   "dev": "Cave",
   "year": 1997,
   "core": "Cave",
+  "system": "Cave 68000",
   "orientation": "tate",
   "setnames": [
    "ddonpach",
    "ddonpacha",
    "ddonpachj",
    "ddonpachjt"
-  ]
+  ],
+  "rbf": "cave",
+  "roms": {
+   "zip": "ddonpach",
+   "merged": "ddonpach",
+   "shared": []
+  }
  },
  {
   "id": "dfeveron",
@@ -317,12 +478,19 @@
   "dev": "Cave",
   "year": 1998,
   "core": "Cave",
+  "system": "Cave 68000",
   "orientation": "tate",
   "setnames": [
    "dfeveron",
    "dfeveronnd",
    "feversos"
-  ]
+  ],
+  "rbf": "cave",
+  "roms": {
+   "zip": "dfeveron",
+   "merged": "feversos",
+   "shared": []
+  }
  },
  {
   "id": "esprade",
@@ -330,13 +498,20 @@
   "dev": "Cave",
   "year": 1998,
   "core": "Cave",
+  "system": "Cave 68000",
   "orientation": "tate",
   "setnames": [
    "esprade",
    "esprade_fp",
    "espradej",
    "espradej_fp"
-  ]
+  ],
+  "rbf": "cave",
+  "roms": {
+   "zip": "esprade",
+   "merged": "esprade",
+   "shared": []
+  }
  },
  {
   "id": "guwange",
@@ -344,11 +519,18 @@
   "dev": "Cave",
   "year": 1999,
   "core": "Cave",
+  "system": "Cave 68000",
   "orientation": "tate",
   "setnames": [
    "guwange",
    "guwanges"
-  ]
+  ],
+  "rbf": "cave",
+  "roms": {
+   "zip": "guwange",
+   "merged": "guwange",
+   "shared": []
+  }
  },
  {
   "id": "gyruss",
@@ -356,10 +538,17 @@
   "dev": "Konami",
   "year": 1983,
   "core": "Gyruss",
+  "system": "Konami Gyruss",
   "orientation": "tate",
   "setnames": [
    "gyruss"
-  ]
+  ],
+  "rbf": "Gyruss",
+  "roms": {
+   "zip": "gyruss",
+   "merged": "gyruss",
+   "shared": []
+  }
  },
  {
   "id": "ajax",
@@ -367,11 +556,18 @@
   "dev": "Konami",
   "year": 1987,
   "core": "Konami",
+  "system": "Konami Ajax",
   "orientation": "tate",
   "setnames": [
    "ajax",
    "ajaxj"
-  ]
+  ],
+  "rbf": "jtajax",
+  "roms": {
+   "zip": "ajax",
+   "merged": "ajax",
+   "shared": []
+  }
  },
  {
   "id": "mx5000",
@@ -379,10 +575,17 @@
   "dev": "Konami",
   "year": 1987,
   "core": "Konami",
+  "system": "Konami Flak Attack",
   "orientation": "tate",
   "setnames": [
    "mx5000"
-  ]
+  ],
+  "rbf": "jtmx5k",
+  "roms": {
+   "zip": "mx5000",
+   "merged": "mx5000",
+   "shared": []
+  }
  },
  {
   "id": "vulcan",
@@ -390,6 +593,7 @@
   "dev": "Konami",
   "year": 1988,
   "core": "Konami",
+  "system": "Konami Twin 16",
   "orientation": "yoko",
   "setnames": [
    "vulcan",
@@ -398,7 +602,13 @@
    "gradius2",
    "gradius2a",
    "gradius2b"
-  ]
+  ],
+  "rbf": "jttwin16",
+  "roms": {
+   "zip": "vulcan",
+   "merged": "vulcan",
+   "shared": []
+  }
  },
  {
   "id": "gradius3",
@@ -406,10 +616,20 @@
   "dev": "Konami",
   "year": 1989,
   "core": "Konami",
+  "system": "Konami Gradius III",
   "orientation": "yoko",
   "setnames": [
    "gradius3"
-  ]
+  ],
+  "rbf": "jtgrad3",
+  "roms": {
+   "zip": "gradius3",
+   "merged": "gradius3",
+   "shared": [
+    "jtbeta"
+   ],
+   "note": "jtbeta.zip is the JOTEGO beta key (Patreon), not a MAME file"
+  }
  },
  {
   "id": "parodius",
@@ -417,13 +637,20 @@
   "dev": "Konami",
   "year": 1990,
   "core": "Konami",
+  "system": "Konami Parodius",
   "orientation": "yoko",
   "setnames": [
    "parodius",
    "parodiusa",
    "parodiuse",
    "parodiusj"
-  ]
+  ],
+  "rbf": "jtparoda",
+  "roms": {
+   "zip": "parodius",
+   "merged": "parodius",
+   "shared": []
+  }
  },
  {
   "id": "rtype",
@@ -431,6 +658,7 @@
   "dev": "Irem",
   "year": 1987,
   "core": "M72",
+  "system": "Irem M72",
   "orientation": "yoko",
   "setnames": [
    "rtype",
@@ -438,7 +666,13 @@
    "rtypej",
    "rtypejp",
    "rtypeu"
-  ]
+  ],
+  "rbf": "IremM72",
+  "roms": {
+   "zip": "rtype",
+   "merged": "rtype",
+   "shared": []
+  }
  },
  {
   "id": "imgfight",
@@ -446,11 +680,18 @@
   "dev": "Irem",
   "year": 1988,
   "core": "M72",
+  "system": "Irem M72",
   "orientation": "tate",
   "setnames": [
    "imgfight",
    "imgfightj"
-  ]
+  ],
+  "rbf": "IremM72",
+  "roms": {
+   "zip": "imgfight",
+   "merged": "imgfight",
+   "shared": []
+  }
  },
  {
   "id": "rtype2",
@@ -458,13 +699,20 @@
   "dev": "Irem",
   "year": 1989,
   "core": "M72",
+  "system": "Irem M72",
   "orientation": "yoko",
   "setnames": [
    "rtype2",
    "rtype2inv",
    "rtype2j",
    "rtype2jc"
-  ]
+  ],
+  "rbf": "IremM72",
+  "roms": {
+   "zip": "rtype2",
+   "merged": "rtype2",
+   "shared": []
+  }
  },
  {
   "id": "xmultipl",
@@ -472,11 +720,18 @@
   "dev": "Irem",
   "year": 1989,
   "core": "M72",
+  "system": "Irem M72",
   "orientation": "yoko",
   "setnames": [
    "xmultiplm72",
    "xmultiplm72inv"
-  ]
+  ],
+  "rbf": "IremM72",
+  "roms": {
+   "zip": "xmultiplm72",
+   "merged": "xmultipl",
+   "shared": []
+  }
  },
  {
   "id": "dbreed",
@@ -484,10 +739,17 @@
   "dev": "Irem",
   "year": 1989,
   "core": "M72",
+  "system": "Irem M72",
   "orientation": "yoko",
   "setnames": [
    "dbreedjm72"
-  ]
+  ],
+  "rbf": "IremM72",
+  "roms": {
+   "zip": "dbreedjm72",
+   "merged": "dbreed",
+   "shared": []
+  }
  },
  {
   "id": "airduel",
@@ -495,11 +757,18 @@
   "dev": "Irem",
   "year": 1990,
   "core": "M72",
+  "system": "Irem M72",
   "orientation": "tate",
   "setnames": [
    "airduelm72",
    "airdueljm72"
-  ]
+  ],
+  "rbf": "IremM72",
+  "roms": {
+   "zip": "airduelm72",
+   "merged": "airduel",
+   "shared": []
+  }
  },
  {
   "id": "gallop",
@@ -507,10 +776,17 @@
   "dev": "Irem",
   "year": 1991,
   "core": "M72",
+  "system": "Irem M72",
   "orientation": "yoko",
   "setnames": [
    "gallopm72"
-  ]
+  ],
+  "rbf": "IremM72",
+  "roms": {
+   "zip": "gallopm72",
+   "merged": "cosmccop",
+   "shared": []
+  }
  },
  {
   "id": "dspirit",
@@ -518,12 +794,19 @@
   "dev": "Namco",
   "year": 1987,
   "core": "Namco",
+  "system": "Namco System 1",
   "orientation": "tate",
   "setnames": [
    "dspirit",
    "dspirit1",
    "dspirit2"
-  ]
+  ],
+  "rbf": "jtshouse",
+  "roms": {
+   "zip": "dspirit",
+   "merged": "dspirit",
+   "shared": []
+  }
  },
  {
   "id": "ddp2",
@@ -531,10 +814,19 @@
   "dev": "IGS",
   "year": 2001,
   "core": "PGM",
+  "system": "IGS PGM",
   "orientation": "tate",
   "setnames": [
    "ddp2"
-  ]
+  ],
+  "rbf": "IGSPGM",
+  "roms": {
+   "zip": "ddp2",
+   "merged": "ddp2",
+   "shared": [
+    "pgm"
+   ]
+  }
  },
  {
   "id": "ketsui",
@@ -542,10 +834,19 @@
   "dev": "Cave",
   "year": 2002,
   "core": "PGM",
+  "system": "IGS PGM",
   "orientation": "tate",
   "setnames": [
    "ket"
-  ]
+  ],
+  "rbf": "IGSPGM",
+  "roms": {
+   "zip": "ket",
+   "merged": "ket",
+   "shared": [
+    "pgm"
+   ]
+  }
  },
  {
   "id": "ddpdoj",
@@ -553,10 +854,19 @@
   "dev": "Cave",
   "year": 2002,
   "core": "PGM",
+  "system": "IGS PGM",
   "orientation": "tate",
   "setnames": [
    "ddp3"
-  ]
+  ],
+  "rbf": "IGSPGM",
+  "roms": {
+   "zip": "ddp3",
+   "merged": "ddp3",
+   "shared": [
+    "pgm"
+   ]
+  }
  },
  {
   "id": "espgaluda",
@@ -564,10 +874,19 @@
   "dev": "Cave",
   "year": 2003,
   "core": "PGM",
+  "system": "IGS PGM",
   "orientation": "tate",
   "setnames": [
    "espgal"
-  ]
+  ],
+  "rbf": "IGSPGM",
+  "roms": {
+   "zip": "espgal",
+   "merged": "espgal",
+   "shared": [
+    "pgm"
+   ]
+  }
  },
  {
   "id": "s1945ii",
@@ -575,10 +894,17 @@
   "dev": "Psikyo",
   "year": 1997,
   "core": "PsikyoSH2",
+  "system": "Psikyo SH-2",
   "orientation": "tate",
   "setnames": [
    "s1945ii"
-  ]
+  ],
+  "rbf": "PsikyoSH2",
+  "roms": {
+   "zip": "s1945ii",
+   "merged": "s1945ii",
+   "shared": []
+  }
  },
  {
   "id": "gunbird2",
@@ -586,11 +912,18 @@
   "dev": "Psikyo",
   "year": 1998,
   "core": "PsikyoSH2",
+  "system": "Psikyo SH-2",
   "orientation": "tate",
   "setnames": [
    "gunbird2",
    "gunbird2a"
-  ]
+  ],
+  "rbf": "PsikyoSH2",
+  "roms": {
+   "zip": "gunbird2",
+   "merged": "gunbird2",
+   "shared": []
+  }
  },
  {
   "id": "spbomber",
@@ -598,11 +931,18 @@
   "dev": "Psikyo",
   "year": 1998,
   "core": "PsikyoSH2",
+  "system": "Psikyo SH-2",
   "orientation": "tate",
   "setnames": [
    "sbomber",
    "sbombera"
-  ]
+  ],
+  "rbf": "PsikyoSH2",
+  "roms": {
+   "zip": "sbomber",
+   "merged": "sbomber",
+   "shared": []
+  }
  },
  {
   "id": "s1945iii",
@@ -610,10 +950,17 @@
   "dev": "Psikyo",
   "year": 1999,
   "core": "PsikyoSH2",
+  "system": "Psikyo SH-2",
   "orientation": "tate",
   "setnames": [
    "s1945iii"
-  ]
+  ],
+  "rbf": "PsikyoSH2",
+  "roms": {
+   "zip": "s1945iii",
+   "merged": "s1945iii",
+   "shared": []
+  }
  },
  {
   "id": "dragnblz",
@@ -621,10 +968,17 @@
   "dev": "Psikyo",
   "year": 2000,
   "core": "PsikyoSH2",
+  "system": "Psikyo SH-2",
   "orientation": "tate",
   "setnames": [
    "dragnblz"
-  ]
+  ],
+  "rbf": "PsikyoSH2",
+  "roms": {
+   "zip": "dragnblz",
+   "merged": "dragnblz",
+   "shared": []
+  }
  },
  {
   "id": "garegga",
@@ -632,6 +986,7 @@
   "dev": "Raizing",
   "year": 1996,
   "core": "Raizing",
+  "system": "Toaplan 2",
   "orientation": "tate",
   "setnames": [
    "bgaregga",
@@ -642,7 +997,13 @@
    "bgareggat",
    "bgareggat2",
    "bgareggatw"
-  ]
+  ],
+  "rbf": "bgaregga_mister",
+  "roms": {
+   "zip": "bgaregga",
+   "merged": "bgaregga",
+   "shared": []
+  }
  },
  {
   "id": "batrider",
@@ -650,6 +1011,7 @@
   "dev": "Raizing",
   "year": 1998,
   "core": "Raizing",
+  "system": "Toaplan 2",
   "orientation": "tate",
   "setnames": [
    "batrider",
@@ -660,7 +1022,13 @@
    "batriderk",
    "batridert",
    "batrideru"
-  ]
+  ],
+  "rbf": "batrider_mister",
+  "roms": {
+   "zip": "batrider",
+   "merged": "batrider",
+   "shared": []
+  }
  },
  {
   "id": "bbakraid",
@@ -668,13 +1036,20 @@
   "dev": "Raizing",
   "year": 1999,
   "core": "Raizing",
+  "system": "Toaplan 2",
   "orientation": "tate",
   "setnames": [
    "bbakraid",
    "bbakraidc",
    "bbakraidj",
    "bbakraidja"
-  ]
+  ],
+  "rbf": "bbakraid_mister",
+  "roms": {
+   "zip": "bbakraid",
+   "merged": "bbakraid",
+   "shared": []
+  }
  },
  {
   "id": "fantzone",
@@ -682,6 +1057,7 @@
   "dev": "Sega",
   "year": 1986,
   "core": "Sega",
+  "system": "Sega System 16A",
   "orientation": "yoko",
   "setnames": [
    "fantzone",
@@ -689,7 +1065,13 @@
    "fantzonee",
    "fantzonep",
    "fantzonepr"
-  ]
+  ],
+  "rbf": "jts16",
+  "roms": {
+   "zip": "fantzone",
+   "merged": "fantzone",
+   "shared": []
+  }
  },
  {
   "id": "fantzn2",
@@ -697,10 +1079,17 @@
   "dev": "Sega",
   "year": 1987,
   "core": "Sega",
+  "system": "Sega System E",
   "orientation": "yoko",
   "setnames": [
    "fantzn2"
-  ]
+  ],
+  "rbf": "SMS",
+  "roms": {
+   "zip": "fantzn2",
+   "merged": "fantzn2",
+   "shared": []
+  }
  },
  {
   "id": "sdi",
@@ -708,10 +1097,17 @@
   "dev": "Sega",
   "year": 1987,
   "core": "Sega",
+  "system": "Sega System 16B",
   "orientation": "yoko",
   "setnames": [
    "sdib"
-  ]
+  ],
+  "rbf": "jts16b",
+  "roms": {
+   "zip": "sdib",
+   "merged": "sdi",
+   "shared": []
+  }
  },
  {
   "id": "alcon",
@@ -719,10 +1115,17 @@
   "dev": "Toaplan",
   "year": 1986,
   "core": "SlapFight",
+  "system": "Toaplan Slap Fight",
   "orientation": "tate",
   "setnames": [
    "slapfighb1"
-  ]
+  ],
+  "rbf": "SlapFight",
+  "roms": {
+   "zip": "slapfighb1",
+   "merged": "alcon",
+   "shared": []
+  }
  },
  {
   "id": "geminiw",
@@ -730,10 +1133,17 @@
   "dev": "Tecmo",
   "year": 1987,
   "core": "Tecmo",
+  "system": "Tecmo Silkworm",
   "orientation": "tate",
   "setnames": [
    "gemini"
-  ]
+  ],
+  "rbf": "Tecmo",
+  "roms": {
+   "zip": "gemini",
+   "merged": "gemini",
+   "shared": []
+  }
  },
  {
   "id": "silkworm",
@@ -741,10 +1151,17 @@
   "dev": "Tecmo",
   "year": 1988,
   "core": "Tecmo",
+  "system": "Tecmo Silkworm",
   "orientation": "yoko",
   "setnames": [
    "silkworm"
-  ]
+  ],
+  "rbf": "Tecmo",
+  "roms": {
+   "zip": "silkworm",
+   "merged": "silkworm",
+   "shared": []
+  }
  },
  {
   "id": "raiga",
@@ -752,11 +1169,18 @@
   "dev": "Tecmo",
   "year": 1991,
   "core": "Tecmo",
+  "system": "Tecmo Ninja Gaiden",
   "orientation": "tate",
   "setnames": [
    "stratof",
    "raiga"
-  ]
+  ],
+  "rbf": "jtgaiden",
+  "roms": {
+   "zip": "stratof",
+   "merged": "stratof",
+   "shared": []
+  }
  },
  {
   "id": "tp84",
@@ -764,38 +1188,59 @@
   "dev": "Konami",
   "year": 1984,
   "core": "TimePilot84",
+  "system": "Konami Time Pilot '84",
   "orientation": "tate",
   "setnames": [
    "tp84",
    "tp84a",
    "tp84b"
-  ]
+  ],
+  "rbf": "TimePilot84",
+  "roms": {
+   "zip": "tp84",
+   "merged": "tp84",
+   "shared": []
+  }
  },
  {
   "id": "drtoppel",
   "title": "Dr. Toppel's Adventure",
-  "dev": "Toaplan",
+  "dev": "Kaneko",
   "year": 1987,
   "core": "Toaplan",
+  "system": "Taito TNZS",
   "orientation": "tate",
   "setnames": [
    "drtoppel",
    "drtoppelj",
    "drtoppelu"
-  ]
+  ],
+  "rbf": "jtkiwi",
+  "roms": {
+   "zip": "drtoppel",
+   "merged": "drtoppel",
+   "shared": []
+  }
  },
  {
   "id": "insectx",
   "title": "Insector X",
-  "dev": "Toaplan",
+  "dev": "Taito",
   "year": 1989,
   "core": "Toaplan",
+  "system": "Taito TNZS",
   "orientation": "tate",
   "setnames": [
    "insectx",
    "insectxbl",
    "insectxj"
-  ]
+  ],
+  "rbf": "jtkiwi",
+  "roms": {
+   "zip": "insectx",
+   "merged": "insectx",
+   "shared": []
+  }
  },
  {
   "id": "xevious",
@@ -803,6 +1248,7 @@
   "dev": "Namco",
   "year": 1982,
   "core": "Xevious",
+  "system": "Namco Galaga",
   "orientation": "tate",
   "setnames": [
    "xevious",
@@ -811,7 +1257,17 @@
    "xevious4",
    "xevious5",
    "xevioush"
-  ]
+  ],
+  "rbf": "xevious",
+  "roms": {
+   "zip": "xevious",
+   "merged": "xevious",
+   "shared": [
+    "namco50",
+    "namco51",
+    "namco54"
+   ]
+  }
  },
  {
   "id": "samuraia",
@@ -819,11 +1275,18 @@
   "dev": "Psikyo",
   "year": 1993,
   "core": "Psikyo",
+  "system": "Psikyo 68EC020",
   "orientation": "tate",
   "setnames": [
    "samuraia",
    "samuraiak"
-  ]
+  ],
+  "rbf": "Arcade-Psikyo",
+  "roms": {
+   "zip": "samuraia",
+   "merged": "samuraia",
+   "shared": []
+  }
  },
  {
   "id": "gunbird",
@@ -831,10 +1294,17 @@
   "dev": "Psikyo",
   "year": 1994,
   "core": "Psikyo",
+  "system": "Psikyo 68EC020",
   "orientation": "tate",
   "setnames": [
    "gunbird"
-  ]
+  ],
+  "rbf": "Arcade-Psikyo",
+  "roms": {
+   "zip": "gunbird",
+   "merged": "gunbird",
+   "shared": []
+  }
  },
  {
   "id": "tengai",
@@ -842,10 +1312,17 @@
   "dev": "Psikyo",
   "year": 1996,
   "core": "Psikyo",
+  "system": "Psikyo 68EC020",
   "orientation": "tate",
   "setnames": [
    "tengai"
-  ]
+  ],
+  "rbf": "Arcade-Psikyo",
+  "roms": {
+   "zip": "tengai",
+   "merged": "tengai",
+   "shared": []
+  }
  },
  {
   "id": "mushisam",
@@ -853,12 +1330,19 @@
   "dev": "Cave",
   "year": 2004,
   "core": "CV1000",
+  "system": "Cave CV1000",
   "orientation": "tate",
   "setnames": [
    "mushisam",
    "mushisama",
    "mushisamb"
-  ]
+  ],
+  "rbf": "ikacore_CV1k",
+  "roms": {
+   "zip": "mushisam",
+   "merged": "mushisam",
+   "shared": []
+  }
  },
  {
   "id": "ibara",
@@ -866,11 +1350,18 @@
   "dev": "Cave",
   "year": 2005,
   "core": "CV1000",
+  "system": "Cave CV1000",
   "orientation": "tate",
   "setnames": [
    "ibara",
    "ibarao"
-  ]
+  ],
+  "rbf": "ikacore_CV1k",
+  "roms": {
+   "zip": "ibara",
+   "merged": "ibara",
+   "shared": []
+  }
  },
  {
   "id": "espgal2",
@@ -878,12 +1369,19 @@
   "dev": "Cave",
   "year": 2005,
   "core": "CV1000",
+  "system": "Cave CV1000",
   "orientation": "tate",
   "setnames": [
    "espgal2",
    "espgal2a",
    "espgal2b"
-  ]
+  ],
+  "rbf": "ikacore_CV1k",
+  "roms": {
+   "zip": "espgal2",
+   "merged": "espgal2",
+   "shared": []
+  }
  },
  {
   "id": "ibarablk",
@@ -891,11 +1389,18 @@
   "dev": "Cave",
   "year": 2006,
   "core": "CV1000",
+  "system": "Cave CV1000",
   "orientation": "tate",
   "setnames": [
    "ibarablk",
    "ibarablka"
-  ]
+  ],
+  "rbf": "ikacore_CV1k",
+  "roms": {
+   "zip": "ibarablk",
+   "merged": "ibarablk",
+   "shared": []
+  }
  },
  {
   "id": "pinkswts",
@@ -903,6 +1408,7 @@
   "dev": "Cave",
   "year": 2006,
   "core": "CV1000",
+  "system": "Cave CV1000",
   "orientation": "tate",
   "setnames": [
    "pinkswts",
@@ -910,7 +1416,13 @@
    "pinkswtsb",
    "pinkswtssc",
    "pinkswtsx"
-  ]
+  ],
+  "rbf": "ikacore_CV1k",
+  "roms": {
+   "zip": "pinkswts",
+   "merged": "pinkswts",
+   "shared": []
+  }
  },
  {
   "id": "futari15",
@@ -918,11 +1430,18 @@
   "dev": "Cave",
   "year": 2006,
   "core": "CV1000",
+  "system": "Cave CV1000",
   "orientation": "tate",
   "setnames": [
    "futari15",
    "futari15a"
-  ]
+  ],
+  "rbf": "ikacore_CV1k",
+  "roms": {
+   "zip": "futari15",
+   "merged": "futari15",
+   "shared": []
+  }
  },
  {
   "id": "deathsml",
@@ -930,10 +1449,17 @@
   "dev": "Cave",
   "year": 2007,
   "core": "CV1000",
+  "system": "Cave CV1000",
   "orientation": "yoko",
   "setnames": [
    "deathsml"
-  ]
+  ],
+  "rbf": "ikacore_CV1k",
+  "roms": {
+   "zip": "deathsml",
+   "merged": "deathsml",
+   "shared": []
+  }
  },
  {
   "id": "dsmbl",
@@ -941,10 +1467,17 @@
   "dev": "Cave",
   "year": 2008,
   "core": "CV1000",
+  "system": "Cave CV1000",
   "orientation": "yoko",
   "setnames": [
    "dsmbl"
-  ]
+  ],
+  "rbf": "ikacore_CV1k",
+  "roms": {
+   "zip": "dsmbl",
+   "merged": "dsmbl",
+   "shared": []
+  }
  },
  {
   "id": "ddpdfk",
@@ -952,10 +1485,17 @@
   "dev": "Cave",
   "year": 2008,
   "core": "CV1000",
+  "system": "Cave CV1000",
   "orientation": "tate",
   "setnames": [
    "ddpdfk"
-  ]
+  ],
+  "rbf": "ikacore_CV1k",
+  "roms": {
+   "zip": "ddpdfk",
+   "merged": "ddpdfk",
+   "shared": []
+  }
  },
  {
   "id": "futaribl",
@@ -963,11 +1503,18 @@
   "dev": "Cave",
   "year": 2009,
   "core": "CV1000",
+  "system": "Cave CV1000",
   "orientation": "tate",
   "setnames": [
    "futaribl",
    "futariblj"
-  ]
+  ],
+  "rbf": "ikacore_CV1k",
+  "roms": {
+   "zip": "futaribl",
+   "merged": "futaribl",
+   "shared": []
+  }
  },
  {
   "id": "dfkbl",
@@ -975,10 +1522,17 @@
   "dev": "Cave",
   "year": 2010,
   "core": "CV1000",
+  "system": "Cave CV1000",
   "orientation": "tate",
   "setnames": [
    "dfkbl"
-  ]
+  ],
+  "rbf": "ikacore_CV1k",
+  "roms": {
+   "zip": "dfkbl",
+   "merged": "dfkbl",
+   "shared": []
+  }
  },
  {
   "id": "ddpsdoj",
@@ -986,10 +1540,18 @@
   "dev": "Cave",
   "year": 2012,
   "core": "CV1000",
+  "system": "Cave CV1000",
   "orientation": "tate",
   "setnames": [
    "ddpsdoj"
-  ]
+  ],
+  "rbf": "ikacore_CV1k",
+  "roms": {
+   "zip": "ddpsdoj",
+   "merged": "ddpsdoj",
+   "shared": [],
+   "note": "Removed from MAME after 0.238; use a 0.238 or older set"
+  }
  },
  {
   "id": "mmpork",
@@ -997,10 +1559,17 @@
   "dev": "Cave",
   "year": 2007,
   "core": "CV1000",
+  "system": "Cave CV1000",
   "orientation": "tate",
   "setnames": [
    "mmpork"
-  ]
+  ],
+  "rbf": "ikacore_CV1k",
+  "roms": {
+   "zip": "mmpork",
+   "merged": "mmpork",
+   "shared": []
+  }
  },
  {
   "id": "batsugun",
@@ -1008,13 +1577,20 @@
   "dev": "Toaplan",
   "year": 1993,
   "core": "Toaplan",
+  "system": "Toaplan 2",
   "orientation": "tate",
   "setnames": [
    "batsugun",
    "batsugunb",
    "batsuguna",
    "batsugunc"
-  ]
+  ],
+  "rbf": "Batsugun",
+  "roms": {
+   "zip": "batsugun",
+   "merged": "batsugun",
+   "shared": []
+  }
  },
  {
   "id": "batsugunsp",
@@ -1022,10 +1598,17 @@
   "dev": "Toaplan",
   "year": 1994,
   "core": "Toaplan",
+  "system": "Toaplan 2",
   "orientation": "tate",
   "setnames": [
    "batsugunsp"
-  ]
+  ],
+  "rbf": "Batsugun",
+  "roms": {
+   "zip": "batsugunsp",
+   "merged": "batsugun",
+   "shared": []
+  }
  },
  {
   "id": "truxton",
@@ -1033,10 +1616,17 @@
   "dev": "Toaplan",
   "year": 1988,
   "core": "Toaplan",
+  "system": "Toaplan 1",
   "orientation": "tate",
   "setnames": [
    "truxton"
-  ]
+  ],
+  "rbf": "zerowing_20240404",
+  "roms": {
+   "zip": "truxton",
+   "merged": "truxton",
+   "shared": []
+  }
  },
  {
   "id": "truxton2",
@@ -1044,10 +1634,17 @@
   "dev": "Toaplan",
   "year": 1992,
   "core": "Toaplan",
+  "system": "Toaplan 2",
   "orientation": "tate",
   "setnames": [
    "truxton2"
-  ]
+  ],
+  "rbf": "truxton2",
+  "roms": {
+   "zip": "truxton2",
+   "merged": "truxton2",
+   "shared": []
+  }
  },
  {
   "id": "twincobr",
@@ -1055,13 +1652,20 @@
   "dev": "Toaplan",
   "year": 1987,
   "core": "Toaplan",
+  "system": "Toaplan Twin Cobra",
   "orientation": "tate",
   "setnames": [
    "twincobr",
    "ktiger",
    "twincobru",
    "ktigera"
-  ]
+  ],
+  "rbf": "twincobr_mister",
+  "roms": {
+   "zip": "twincobr",
+   "merged": "twincobr",
+   "shared": []
+  }
  },
  {
   "id": "fshark",
@@ -1069,11 +1673,18 @@
   "dev": "Toaplan",
   "year": 1987,
   "core": "Toaplan",
+  "system": "Toaplan Twin Cobra",
   "orientation": "tate",
   "setnames": [
    "fshark",
    "hishouza"
-  ]
+  ],
+  "rbf": "fshark_mister",
+  "roms": {
+   "zip": "fshark",
+   "merged": "fshark",
+   "shared": []
+  }
  },
  {
   "id": "fireshrk",
@@ -1081,6 +1692,7 @@
   "dev": "Toaplan",
   "year": 1989,
   "core": "Toaplan",
+  "system": "Toaplan 1",
   "orientation": "tate",
   "setnames": [
    "fireshrk",
@@ -1090,7 +1702,13 @@
    "fireshrkd",
    "fireshrkdh",
    "samesamenh"
-  ]
+  ],
+  "rbf": "vimana",
+  "roms": {
+   "zip": "fireshrk",
+   "merged": "fireshrk",
+   "shared": []
+  }
  },
  {
   "id": "vimana",
@@ -1098,12 +1716,19 @@
   "dev": "Toaplan",
   "year": 1991,
   "core": "Toaplan",
+  "system": "Toaplan 1",
   "orientation": "tate",
   "setnames": [
    "vimana",
    "vimanaj",
    "vimanan"
-  ]
+  ],
+  "rbf": "vimana",
+  "roms": {
+   "zip": "vimana",
+   "merged": "vimana",
+   "shared": []
+  }
  },
  {
   "id": "outzone",
@@ -1111,6 +1736,7 @@
   "dev": "Toaplan",
   "year": 1990,
   "core": "Toaplan",
+  "system": "Toaplan 1",
   "orientation": "tate",
   "setnames": [
    "outzone",
@@ -1118,7 +1744,13 @@
    "outzonea",
    "outzoneb",
    "outzonecv"
-  ]
+  ],
+  "rbf": "zerowing_20240404",
+  "roms": {
+   "zip": "outzone",
+   "merged": "outzone",
+   "shared": []
+  }
  },
  {
   "id": "hellfire",
@@ -1126,13 +1758,20 @@
   "dev": "Toaplan",
   "year": 1989,
   "core": "Toaplan",
+  "system": "Toaplan 1",
   "orientation": "yoko",
   "setnames": [
    "hellfire",
    "hellfire1",
    "hellfire1a",
    "hellfire2a"
-  ]
+  ],
+  "rbf": "zerowing_20240404",
+  "roms": {
+   "zip": "hellfire",
+   "merged": "hellfire",
+   "shared": []
+  }
  },
  {
   "id": "zerowing",
@@ -1140,12 +1779,19 @@
   "dev": "Toaplan",
   "year": 1989,
   "core": "Toaplan",
+  "system": "Toaplan 1",
   "orientation": "yoko",
   "setnames": [
    "zerowing",
    "zerowing1",
    "zerowingw"
-  ]
+  ],
+  "rbf": "zerowing_mister",
+  "roms": {
+   "zip": "zerowing",
+   "merged": "zerowing",
+   "shared": []
+  }
  },
  {
   "id": "sstriker",
@@ -1153,12 +1799,19 @@
   "dev": "Raizing",
   "year": 1993,
   "core": "Raizing",
+  "system": "Toaplan 2",
   "orientation": "tate",
   "setnames": [
    "sstriker",
    "mahoudai",
    "sstrikerk"
-  ]
+  ],
+  "rbf": "sstriker_mister",
+  "roms": {
+   "zip": "sstriker",
+   "merged": "sstriker",
+   "shared": []
+  }
  },
  {
   "id": "kingdmgp",
@@ -1166,11 +1819,18 @@
   "dev": "Raizing",
   "year": 1994,
   "core": "Raizing",
+  "system": "Toaplan 2",
   "orientation": "tate",
   "setnames": [
    "kingdmgp",
    "shippumd"
-  ]
+  ],
+  "rbf": "kingdmgp_mister",
+  "roms": {
+   "zip": "kingdmgp",
+   "merged": "kingdmgp",
+   "shared": []
+  }
  },
  {
   "id": "gradius",
@@ -1178,12 +1838,19 @@
   "dev": "Konami",
   "year": 1985,
   "core": "Konami",
+  "system": "Konami Bubble System",
   "orientation": "yoko",
   "setnames": [
    "gradius",
    "nemesis",
    "nemesisuk"
-  ]
+  ],
+  "rbf": "BubSysROM",
+  "roms": {
+   "zip": "gradius",
+   "merged": "nemesis",
+   "shared": []
+  }
  },
  {
   "id": "salamand",
@@ -1191,6 +1858,7 @@
   "dev": "Konami",
   "year": 1986,
   "core": "Konami",
+  "system": "Konami Salamander",
   "orientation": "yoko",
   "setnames": [
    "salamand",
@@ -1199,7 +1867,13 @@
    "lifefrce",
    "spclone",
    "spcloneo"
-  ]
+  ],
+  "rbf": "Salamander",
+  "roms": {
+   "zip": "salamand",
+   "merged": "salamand",
+   "shared": []
+  }
  },
  {
   "id": "twinbee",
@@ -1207,11 +1881,18 @@
   "dev": "Konami",
   "year": 1985,
   "core": "Konami",
+  "system": "Konami Bubble System",
   "orientation": "tate",
   "setnames": [
    "twinbee",
    "twinbeeb"
-  ]
+  ],
+  "rbf": "BubSysROM",
+  "roms": {
+   "zip": "twinbee",
+   "merged": "twinbee",
+   "shared": []
+  }
  },
  {
   "id": "thunderx",
@@ -1219,13 +1900,20 @@
   "dev": "Konami",
   "year": 1988,
   "core": "Konami",
+  "system": "Konami Thunder Cross",
   "orientation": "yoko",
   "setnames": [
    "thunderx",
    "thunderxj",
    "thunderxa",
    "thunderxb"
-  ]
+  ],
+  "rbf": "jtaliens",
+  "roms": {
+   "zip": "thunderx",
+   "merged": "thunderx",
+   "shared": []
+  }
  },
  {
   "id": "finalizr",
@@ -1233,12 +1921,19 @@
   "dev": "Konami",
   "year": 1985,
   "core": "Konami",
+  "system": "Konami Finalizer",
   "orientation": "tate",
   "setnames": [
    "finalizr",
    "finalizra",
    "finalizrb"
-  ]
+  ],
+  "rbf": "Finalizer",
+  "roms": {
+   "zip": "finalizr",
+   "merged": "finalizr",
+   "shared": []
+  }
  },
  {
   "id": "rtypeleo",
@@ -1246,11 +1941,18 @@
   "dev": "Irem",
   "year": 1992,
   "core": "M92",
+  "system": "Irem M92",
   "orientation": "yoko",
   "setnames": [
    "rtypeleo",
    "rtypeleoj"
-  ]
+  ],
+  "rbf": "IremM92",
+  "roms": {
+   "zip": "rtypeleo",
+   "merged": "rtypeleo",
+   "shared": []
+  }
  },
  {
   "id": "inthunt",
@@ -1258,12 +1960,19 @@
   "dev": "Irem",
   "year": 1993,
   "core": "M92",
+  "system": "Irem M92",
   "orientation": "yoko",
   "setnames": [
    "inthunt",
    "inthuntu",
    "kaiteids"
-  ]
+  ],
+  "rbf": "IremM92",
+  "roms": {
+   "zip": "inthunt",
+   "merged": "inthunt",
+   "shared": []
+  }
  },
  {
   "id": "lethalth",
@@ -1271,11 +1980,18 @@
   "dev": "Irem",
   "year": 1991,
   "core": "M92",
+  "system": "Irem M92",
   "orientation": "tate",
   "setnames": [
    "lethalth",
    "thndblst"
-  ]
+  ],
+  "rbf": "IremM92",
+  "roms": {
+   "zip": "lethalth",
+   "merged": "lethalth",
+   "shared": []
+  }
  },
  {
   "id": "mysticri",
@@ -1283,11 +1999,18 @@
   "dev": "Irem",
   "year": 1992,
   "core": "M92",
+  "system": "Irem M92",
   "orientation": "yoko",
   "setnames": [
    "mysticri",
    "gunhohki"
-  ]
+  ],
+  "rbf": "IremM92",
+  "roms": {
+   "zip": "mysticri",
+   "merged": "mysticri",
+   "shared": []
+  }
  },
  {
   "id": "firebarr",
@@ -1295,11 +2018,18 @@
   "dev": "Irem",
   "year": 1993,
   "core": "M107",
+  "system": "Irem M107",
   "orientation": "tate",
   "setnames": [
    "firebarr",
    "airass"
-  ]
+  ],
+  "rbf": "IremM107",
+  "roms": {
+   "zip": "firebarr",
+   "merged": "airass",
+   "shared": []
+  }
  },
  {
   "id": "horizon",
@@ -1307,10 +2037,17 @@
   "dev": "Irem",
   "year": 1985,
   "core": "M62",
+  "system": "Irem M62",
   "orientation": "yoko",
   "setnames": [
    "horizon"
-  ]
+  ],
+  "rbf": "iremm62",
+  "roms": {
+   "zip": "horizon",
+   "merged": "horizon",
+   "shared": []
+  }
  },
  {
   "id": "youjyudn",
@@ -1318,10 +2055,17 @@
   "dev": "Irem",
   "year": 1986,
   "core": "M62",
+  "system": "Irem M62",
   "orientation": "tate",
   "setnames": [
    "youjyudn"
-  ]
+  ],
+  "rbf": "iremm62",
+  "roms": {
+   "zip": "youjyudn",
+   "merged": "youjyudn",
+   "shared": []
+  }
  },
  {
   "id": "metalb",
@@ -1329,12 +2073,19 @@
   "dev": "Taito",
   "year": 1991,
   "core": "Taito F2",
+  "system": "Taito F2",
   "orientation": "yoko",
   "setnames": [
    "metalb",
    "metalba",
    "metalbj"
-  ]
+  ],
+  "rbf": "TaitoF2",
+  "roms": {
+   "zip": "metalb",
+   "merged": "metalb",
+   "shared": []
+  }
  },
  {
   "id": "tokio",
@@ -1342,13 +2093,20 @@
   "dev": "Taito",
   "year": 1986,
   "core": "Taito",
+  "system": "Taito Bubble Bobble",
   "orientation": "tate",
   "setnames": [
    "tokio",
    "tokiou",
    "tokioo",
    "tokiob"
-  ]
+  ],
+  "rbf": "jtbubl",
+  "roms": {
+   "zip": "tokio",
+   "merged": "tokio",
+   "shared": []
+  }
  },
  {
   "id": "extrmatn",
@@ -1356,13 +2114,20 @@
   "dev": "Taito",
   "year": 1987,
   "core": "Taito",
+  "system": "Taito TNZS",
   "orientation": "tate",
   "setnames": [
    "extrmatn",
    "extrmatnj",
    "extrmatnur",
    "extrmatnu"
-  ]
+  ],
+  "rbf": "jtkiwi",
+  "roms": {
+   "zip": "extrmatn",
+   "merged": "extrmatn",
+   "shared": []
+  }
  },
  {
   "id": "hotdogst",
@@ -1370,10 +2135,17 @@
   "dev": "Marble",
   "year": 1996,
   "core": "Cave",
+  "system": "Cave 68000",
   "orientation": "tate",
   "setnames": [
    "hotdogst"
-  ]
+  ],
+  "rbf": "CaveBanpresto",
+  "roms": {
+   "zip": "hotdogst",
+   "merged": "hotdogst",
+   "shared": []
+  }
  },
  {
   "id": "terracre",
@@ -1381,12 +2153,19 @@
   "dev": "Nichibutsu",
   "year": 1985,
   "core": "Nichibutsu",
+  "system": "Nichibutsu Terra Cresta",
   "orientation": "tate",
   "setnames": [
    "terracre",
    "terracreo",
    "terracrea"
-  ]
+  ],
+  "rbf": "terracresta",
+  "roms": {
+   "zip": "terracre",
+   "merged": "terracre",
+   "shared": []
+  }
  },
  {
   "id": "armedf",
@@ -1394,11 +2173,18 @@
   "dev": "Nichibutsu",
   "year": 1988,
   "core": "Nichibutsu",
+  "system": "Nichibutsu Armed F",
   "orientation": "tate",
   "setnames": [
    "armedf",
    "armedff"
-  ]
+  ],
+  "rbf": "armedf",
+  "roms": {
+   "zip": "armedf",
+   "merged": "armedf",
+   "shared": []
+  }
  },
  {
   "id": "terraf",
@@ -1406,12 +2192,19 @@
   "dev": "Nichibutsu",
   "year": 1987,
   "core": "Nichibutsu",
+  "system": "Nichibutsu Armed F",
   "orientation": "yoko",
   "setnames": [
    "terraf",
    "terrafj",
    "terrafu"
-  ]
+  ],
+  "rbf": "armedf",
+  "roms": {
+   "zip": "terraf",
+   "merged": "terraf",
+   "shared": []
+  }
  },
  {
   "id": "legion",
@@ -1419,11 +2212,18 @@
   "dev": "Nichibutsu",
   "year": 1987,
   "core": "Nichibutsu",
+  "system": "Nichibutsu Armed F",
   "orientation": "tate",
   "setnames": [
    "legion",
    "legionj2"
-  ]
+  ],
+  "rbf": "armedf",
+  "roms": {
+   "zip": "legion",
+   "merged": "legion",
+   "shared": []
+  }
  },
  {
   "id": "aso",
@@ -1431,11 +2231,18 @@
   "dev": "SNK",
   "year": 1985,
   "core": "SNK",
+  "system": "SNK Triple Z80",
   "orientation": "tate",
   "setnames": [
    "aso",
    "alphamis"
-  ]
+  ],
+  "rbf": "SNK_TripleZ80",
+  "roms": {
+   "zip": "aso",
+   "merged": "aso",
+   "shared": []
+  }
  },
  {
   "id": "raflesia",
@@ -1443,10 +2250,17 @@
   "dev": "Sega",
   "year": 1986,
   "core": "Sega System 1",
+  "system": "Sega System 1",
   "orientation": "tate",
   "setnames": [
    "raflesia"
-  ]
+  ],
+  "rbf": "segasys1",
+  "roms": {
+   "zip": "raflesia",
+   "merged": "raflesia",
+   "shared": []
+  }
  },
  {
   "id": "cobracom",
@@ -1454,13 +2268,20 @@
   "dev": "Data East",
   "year": 1988,
   "core": "Data East",
+  "system": "Data East Cobra Command",
   "orientation": "yoko",
   "setnames": [
    "cobracom",
    "cobracomj",
    "cobracomb",
    "cobracoma"
-  ]
+  ],
+  "rbf": "cobracom_mister",
+  "roms": {
+   "zip": "cobracom",
+   "merged": "cobracom",
+   "shared": []
+  }
  },
  {
   "id": "tigerh",
@@ -1468,10 +2289,17 @@
   "dev": "Toaplan",
   "year": 1985,
   "core": "SlapFight",
+  "system": "Toaplan Slap Fight",
   "orientation": "tate",
   "setnames": [
    "tigerhb1"
-  ]
+  ],
+  "rbf": "SlapFight",
+  "roms": {
+   "zip": "tigerhb1",
+   "merged": "tigerh",
+   "shared": []
+  }
  },
  {
   "id": "s1945",
@@ -1479,6 +2307,7 @@
   "dev": "Psikyo",
   "year": 1995,
   "core": "Psikyo",
+  "system": "Psikyo 68EC020",
   "orientation": "tate",
   "setnames": [
    "s1945",
@@ -1487,7 +2316,13 @@
    "s1945a",
    "s1945nj",
    "s1945n"
-  ]
+  ],
+  "rbf": "Arcade-Psikyo",
+  "roms": {
+   "zip": "s1945",
+   "merged": "s1945",
+   "shared": []
+  }
  },
  {
   "id": "akatana",
@@ -1495,10 +2330,18 @@
   "dev": "Cave",
   "year": 2010,
   "core": "CV1000",
+  "system": "Cave CV1000",
   "orientation": "yoko",
   "setnames": [
    "akatana"
-  ]
+  ],
+  "rbf": "ikacore_CV1k",
+  "roms": {
+   "zip": "akatana",
+   "merged": "akatana",
+   "shared": [],
+   "note": "Removed from MAME after 0.238; use a 0.238 or older set"
+  }
  },
  {
   "id": "blazstar",
@@ -1506,11 +2349,18 @@
   "dev": "Yumekobo",
   "year": 1998,
   "core": "Neo Geo",
+  "system": "Neo Geo MVS",
   "platform": "neogeo",
   "orientation": "yoko",
   "setnames": [
    "blazstar"
-  ]
+  ],
+  "rbf": "NeoGeo",
+  "roms": {
+   "zip": "blazstar",
+   "merged": "blazstar",
+   "shared": []
+  }
  },
  {
   "id": "pulstar",
@@ -1518,11 +2368,18 @@
   "dev": "Aicom",
   "year": 1995,
   "core": "Neo Geo",
+  "system": "Neo Geo MVS",
   "platform": "neogeo",
   "orientation": "yoko",
   "setnames": [
    "pulstar"
-  ]
+  ],
+  "rbf": "NeoGeo",
+  "roms": {
+   "zip": "pulstar",
+   "merged": "pulstar",
+   "shared": []
+  }
  },
  {
   "id": "lresort",
@@ -1530,12 +2387,19 @@
   "dev": "SNK",
   "year": 1992,
   "core": "Neo Geo",
+  "system": "Neo Geo MVS",
   "platform": "neogeo",
   "orientation": "yoko",
   "setnames": [
    "lresort",
    "lresortp"
-  ]
+  ],
+  "rbf": "NeoGeo",
+  "roms": {
+   "zip": "lresort",
+   "merged": "lresort",
+   "shared": []
+  }
  },
  {
   "id": "s1945p",
@@ -1543,11 +2407,18 @@
   "dev": "Psikyo",
   "year": 1999,
   "core": "Neo Geo",
+  "system": "Neo Geo MVS",
   "platform": "neogeo",
   "orientation": "yoko",
   "setnames": [
    "s1945p"
-  ]
+  ],
+  "rbf": "NeoGeo",
+  "roms": {
+   "zip": "s1945p",
+   "merged": "s1945p",
+   "shared": []
+  }
  },
  {
   "id": "sonicwi2",
@@ -1555,11 +2426,18 @@
   "dev": "Video System",
   "year": 1994,
   "core": "Neo Geo",
+  "system": "Neo Geo MVS",
   "platform": "neogeo",
   "orientation": "yoko",
   "setnames": [
    "sonicwi2"
-  ]
+  ],
+  "rbf": "NeoGeo",
+  "roms": {
+   "zip": "sonicwi2",
+   "merged": "sonicwi2",
+   "shared": []
+  }
  },
  {
   "id": "sonicwi3",
@@ -1567,11 +2445,18 @@
   "dev": "Video System",
   "year": 1995,
   "core": "Neo Geo",
+  "system": "Neo Geo MVS",
   "platform": "neogeo",
   "orientation": "yoko",
   "setnames": [
    "sonicwi3"
-  ]
+  ],
+  "rbf": "NeoGeo",
+  "roms": {
+   "zip": "sonicwi3",
+   "merged": "sonicwi3",
+   "shared": []
+  }
  },
  {
   "id": "viewpoin",
@@ -1579,11 +2464,18 @@
   "dev": "Aicom",
   "year": 1992,
   "core": "Neo Geo",
+  "system": "Neo Geo MVS",
   "platform": "neogeo",
   "orientation": "yoko",
   "setnames": [
    "viewpoin"
-  ]
+  ],
+  "rbf": "NeoGeo",
+  "roms": {
+   "zip": "viewpoin",
+   "merged": "viewpoin",
+   "shared": []
+  }
  },
  {
   "id": "zedblade",
@@ -1591,11 +2483,18 @@
   "dev": "NMK",
   "year": 1994,
   "core": "Neo Geo",
+  "system": "Neo Geo MVS",
   "platform": "neogeo",
   "orientation": "yoko",
   "setnames": [
    "zedblade"
-  ]
+  ],
+  "rbf": "NeoGeo",
+  "roms": {
+   "zip": "zedblade",
+   "merged": "zedblade",
+   "shared": []
+  }
  },
  {
   "id": "gpilots",
@@ -1603,12 +2502,19 @@
   "dev": "SNK",
   "year": 1991,
   "core": "Neo Geo",
+  "system": "Neo Geo MVS",
   "platform": "neogeo",
   "orientation": "yoko",
   "setnames": [
    "gpilots",
    "gpilotsh"
-  ]
+  ],
+  "rbf": "NeoGeo",
+  "roms": {
+   "zip": "gpilots",
+   "merged": "gpilots",
+   "shared": []
+  }
  },
  {
   "id": "alpham2",
@@ -1616,12 +2522,19 @@
   "dev": "SNK",
   "year": 1991,
   "core": "Neo Geo",
+  "system": "Neo Geo MVS",
   "platform": "neogeo",
   "orientation": "yoko",
   "setnames": [
    "alpham2",
    "alpham2p"
-  ]
+  ],
+  "rbf": "NeoGeo",
+  "roms": {
+   "zip": "alpham2",
+   "merged": "alpham2",
+   "shared": []
+  }
  },
  {
   "id": "androdun",
@@ -1629,11 +2542,18 @@
   "dev": "Visco",
   "year": 1992,
   "core": "Neo Geo",
+  "system": "Neo Geo MVS",
   "platform": "neogeo",
   "orientation": "yoko",
   "setnames": [
    "androdun"
-  ]
+  ],
+  "rbf": "NeoGeo",
+  "roms": {
+   "zip": "androdun",
+   "merged": "androdun",
+   "shared": []
+  }
  },
  {
   "id": "preisle2",
@@ -1641,11 +2561,18 @@
   "dev": "Yumekobo",
   "year": 1999,
   "core": "Neo Geo",
+  "system": "Neo Geo MVS",
   "platform": "neogeo",
   "orientation": "yoko",
   "setnames": [
    "preisle2"
-  ]
+  ],
+  "rbf": "NeoGeo",
+  "roms": {
+   "zip": "preisle2",
+   "merged": "preisle2",
+   "shared": []
+  }
  },
  {
   "id": "ctomaday",
@@ -1653,10 +2580,994 @@
   "dev": "Visco",
   "year": 1999,
   "core": "Neo Geo",
+  "system": "Neo Geo MVS",
   "platform": "neogeo",
   "orientation": "yoko",
   "setnames": [
    "ctomaday"
-  ]
+  ],
+  "rbf": "NeoGeo",
+  "roms": {
+   "zip": "ctomaday",
+   "merged": "ctomaday",
+   "shared": []
+  }
+ },
+ {
+  "id": "tharrier",
+  "title": "Task Force Harrier",
+  "dev": "UPL",
+  "year": 1989,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "tate",
+  "setnames": [
+   "tharrier",
+   "tharrieru",
+   "tharrierb"
+  ],
+  "rbf": "NMK16_Gunnail",
+  "roms": {
+   "zip": "tharrier",
+   "merged": "tharrier",
+   "shared": [
+    "nmk004"
+   ]
+  }
+ },
+ {
+  "id": "mustang",
+  "title": "US AAF Mustang",
+  "dev": "UPL",
+  "year": 1990,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "yoko",
+  "setnames": [
+   "mustang",
+   "mustangs",
+   "mustangb",
+   "mustangb2",
+   "mustangb3"
+  ],
+  "rbf": "NMK16_Gunnail",
+  "roms": {
+   "zip": "mustang",
+   "merged": "mustang",
+   "shared": [
+    "nmk004"
+   ]
+  }
+ },
+ {
+  "id": "bioship",
+  "title": "Bio-ship Paladin",
+  "dev": "UPL",
+  "year": 1990,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "yoko",
+  "setnames": [
+   "bioship",
+   "sbsgomo"
+  ],
+  "rbf": "NMK16_Gunnail",
+  "roms": {
+   "zip": "bioship",
+   "merged": "bioship",
+   "shared": [
+    "nmk004"
+   ]
+  }
+ },
+ {
+  "id": "blkheart",
+  "title": "Black Heart",
+  "dev": "UPL",
+  "year": 1991,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "yoko",
+  "setnames": [
+   "blkheart",
+   "blkheartj"
+  ],
+  "rbf": "NMK16_Gunnail",
+  "roms": {
+   "zip": "blkheart",
+   "merged": "blkheart",
+   "shared": [
+    "nmk004"
+   ]
+  }
+ },
+ {
+  "id": "acrobatm",
+  "title": "Acrobat Mission",
+  "dev": "UPL",
+  "year": 1991,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "tate",
+  "setnames": [
+   "acrobatm",
+   "acrobatmbl"
+  ],
+  "rbf": "NMK16_Gunnail",
+  "roms": {
+   "zip": "acrobatm",
+   "merged": "acrobatm",
+   "shared": [
+    "nmk004"
+   ]
+  }
+ },
+ {
+  "id": "hachamf",
+  "title": "Hacha Mecha Fighter",
+  "dev": "NMK",
+  "year": 1991,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "yoko",
+  "setnames": [
+   "hachamf",
+   "hachamfa",
+   "hachamfp",
+   "hachamfb",
+   "hachamfb2"
+  ],
+  "rbf": "NMK16_Gunnail",
+  "roms": {
+   "zip": "hachamf",
+   "merged": "hachamf",
+   "shared": [
+    "nmk004"
+   ]
+  }
+ },
+ {
+  "id": "tdragon",
+  "title": "Thunder Dragon",
+  "dev": "NMK",
+  "year": 1991,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "tate",
+  "setnames": [
+   "tdragon",
+   "tdragon1",
+   "tdragonb",
+   "tdragonb3"
+  ],
+  "rbf": "NMK16_Gunnail",
+  "roms": {
+   "zip": "tdragon",
+   "merged": "tdragon",
+   "shared": [
+    "nmk004"
+   ]
+  }
+ },
+ {
+  "id": "strahl",
+  "title": "Koutetsu Yousai Strahl",
+  "dev": "UPL",
+  "year": 1992,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "yoko",
+  "setnames": [
+   "strahl",
+   "strahlj",
+   "strahlja",
+   "strahljbl"
+  ],
+  "rbf": "NMK16_Gunnail",
+  "roms": {
+   "zip": "strahl",
+   "merged": "strahl",
+   "shared": [
+    "nmk004"
+   ]
+  }
+ },
+ {
+  "id": "macross",
+  "title": "Super Spacefortress Macross",
+  "dev": "Banpresto",
+  "year": 1992,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "tate",
+  "setnames": [
+   "macross"
+  ],
+  "rbf": "NMK16_Gunnail",
+  "roms": {
+   "zip": "macross",
+   "merged": "macross",
+   "shared": [
+    "nmk004"
+   ]
+  }
+ },
+ {
+  "id": "ssmissin",
+  "title": "S.S. Mission",
+  "dev": "Comad",
+  "year": 1992,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "tate",
+  "setnames": [
+   "ssmissin"
+  ],
+  "rbf": "NMK16_Gunnail",
+  "roms": {
+   "zip": "ssmissin",
+   "merged": "ssmissin",
+   "shared": [
+    "nmk004"
+   ]
+  }
+ },
+ {
+  "id": "gunnail",
+  "title": "GunNail",
+  "dev": "NMK",
+  "year": 1993,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "tate",
+  "setnames": [
+   "gunnail",
+   "gunnailp",
+   "gunnailb"
+  ],
+  "rbf": "NMK16_Gunnail",
+  "roms": {
+   "zip": "gunnail",
+   "merged": "gunnail",
+   "shared": [
+    "nmk004"
+   ]
+  }
+ },
+ {
+  "id": "macross2",
+  "title": "Super Spacefortress Macross II",
+  "dev": "Banpresto",
+  "year": 1993,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "yoko",
+  "setnames": [
+   "macross2",
+   "macross2g",
+   "macross2k"
+  ],
+  "rbf": "NMK16_Macross2",
+  "roms": {
+   "zip": "macross2",
+   "merged": "macross2",
+   "shared": []
+  }
+ },
+ {
+  "id": "tdragon2",
+  "title": "Thunder Dragon 2",
+  "dev": "NMK",
+  "year": 1993,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "tate",
+  "setnames": [
+   "tdragon2",
+   "tdragon2a",
+   "bigbang",
+   "bigbanga",
+   "tdragon3h"
+  ],
+  "rbf": "NMK16_Macross2",
+  "roms": {
+   "zip": "tdragon2",
+   "merged": "tdragon2",
+   "shared": []
+  }
+ },
+ {
+  "id": "raphero",
+  "title": "Rapid Hero",
+  "dev": "NMK",
+  "year": 1994,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "tate",
+  "setnames": [
+   "raphero",
+   "arcadian",
+   "rapheroa"
+  ],
+  "rbf": "NMK16_Raphero",
+  "roms": {
+   "zip": "raphero",
+   "merged": "arcadian",
+   "shared": []
+  }
+ },
+ {
+  "id": "twinactn",
+  "title": "Twin Action",
+  "dev": "Afega",
+  "year": 1995,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "yoko",
+  "setnames": [
+   "twinactn"
+  ],
+  "rbf": "NMK16_Gunnail",
+  "roms": {
+   "zip": "twinactn",
+   "merged": "twinactn",
+   "shared": [
+    "nmk004"
+   ]
+  }
+ },
+ {
+  "id": "airattck",
+  "title": "Air Attack",
+  "dev": "Comad",
+  "year": 1996,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "tate",
+  "setnames": [
+   "airattck",
+   "airattcka"
+  ],
+  "rbf": "NMK16_Gunnail",
+  "roms": {
+   "zip": "airattck",
+   "merged": "airattck",
+   "shared": [
+    "nmk004"
+   ]
+  }
+ },
+ {
+  "id": "stagger1",
+  "title": "Stagger I",
+  "dev": "Afega",
+  "year": 1998,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "tate",
+  "setnames": [
+   "stagger1",
+   "redhawk",
+   "redhawke",
+   "redhawkk",
+   "redhawkc"
+  ],
+  "rbf": "NMK16_Afega",
+  "roms": {
+   "zip": "stagger1",
+   "merged": "stagger1",
+   "shared": [
+    "nmk004"
+   ]
+  }
+ },
+ {
+  "id": "grdnstrm",
+  "title": "Guardian Storm",
+  "dev": "Afega",
+  "year": 1998,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "yoko",
+  "setnames": [
+   "grdnstrm",
+   "grdnstrmau"
+  ],
+  "rbf": "NMK16_Afega",
+  "roms": {
+   "zip": "grdnstrm",
+   "merged": "grdnstrm",
+   "shared": [
+    "nmk004"
+   ]
+  }
+ },
+ {
+  "id": "spec2k",
+  "title": "Spectrum 2000",
+  "dev": "Yona Tech",
+  "year": 2000,
+  "core": "NMK16",
+  "system": "NMK16",
+  "orientation": "tate",
+  "setnames": [
+   "spec2k"
+  ],
+  "rbf": "NMK16_Afega",
+  "roms": {
+   "zip": "spec2k",
+   "merged": "spec2k",
+   "shared": [
+    "nmk004"
+   ]
+  }
+ },
+ {
+  "id": "gseeker",
+  "title": "Grid Seeker: Project Storm Hammer",
+  "dev": "Taito",
+  "year": 1992,
+  "core": "Taito F3",
+  "system": "Taito F3",
+  "orientation": "tate",
+  "setnames": [
+   "gseeker"
+  ],
+  "rbf": "Rayforce",
+  "roms": {
+   "zip": "gseeker",
+   "merged": "gseeker",
+   "shared": []
+  }
+ },
+ {
+  "id": "gunlock",
+  "title": "RayForce",
+  "dev": "Taito",
+  "year": 1993,
+  "core": "Taito F3",
+  "system": "Taito F3",
+  "orientation": "tate",
+  "setnames": [
+   "gunlock",
+   "rayforce",
+   "rayforcej"
+  ],
+  "rbf": "Rayforce",
+  "roms": {
+   "zip": "gunlock",
+   "merged": "gunlock",
+   "shared": []
+  }
+ },
+ {
+  "id": "dariusg",
+  "title": "Darius Gaiden",
+  "dev": "Taito",
+  "year": 1994,
+  "core": "Taito F3",
+  "system": "Taito F3",
+  "orientation": "yoko",
+  "setnames": [
+   "dariusg",
+   "dariusgx"
+  ],
+  "rbf": "Rayforce",
+  "roms": {
+   "zip": "dariusg",
+   "merged": "dariusg",
+   "shared": []
+  }
+ },
+ {
+  "id": "gekiridn",
+  "title": "Gekirindan",
+  "dev": "Taito",
+  "year": 1995,
+  "core": "Taito F3",
+  "system": "Taito F3",
+  "orientation": "tate",
+  "setnames": [
+   "gekiridn"
+  ],
+  "rbf": "Rayforce",
+  "roms": {
+   "zip": "gekiridn",
+   "merged": "gekiridn",
+   "shared": []
+  }
+ },
+ {
+  "id": "tcobra2",
+  "title": "Twin Cobra II",
+  "dev": "Takumi",
+  "year": 1995,
+  "core": "Taito F3",
+  "system": "Taito F3",
+  "orientation": "tate",
+  "setnames": [
+   "tcobra2"
+  ],
+  "rbf": "Rayforce",
+  "roms": {
+   "zip": "tcobra2",
+   "merged": "tcobra2",
+   "shared": []
+  }
+ },
+ {
+  "id": "raystorm",
+  "title": "RayStorm",
+  "dev": "Taito",
+  "year": 1996,
+  "core": "Taito FX-1B",
+  "system": "Taito FX-1B",
+  "orientation": "yoko",
+  "setnames": [
+   "raystorm"
+  ],
+  "rbf": "XNZN1TaitoFX1B",
+  "roms": {
+   "zip": "raystorm",
+   "merged": "raystorm",
+   "shared": [
+    "coh1000t"
+   ],
+   "note": "On first launch the game opens its test menu; choose FACTORY SETTING, then EXIT. The core saves this, so it only happens once"
+  }
+ },
+ {
+  "id": "gdarius",
+  "title": "G-Darius",
+  "dev": "Taito",
+  "year": 1997,
+  "core": "Taito FX-1B",
+  "system": "Taito FX-1B",
+  "orientation": "yoko",
+  "setnames": [
+   "gdarius",
+   "gdarius2"
+  ],
+  "rbf": "XNZN1TaitoFX1B",
+  "roms": {
+   "zip": "gdarius",
+   "merged": "gdarius2",
+   "shared": [
+    "coh1000t"
+   ]
+  }
+ },
+ {
+  "id": "desertwr",
+  "title": "Desert War",
+  "dev": "Jaleco",
+  "year": 1995,
+  "core": "MegaSystem 32",
+  "system": "Jaleco Mega System 32",
+  "orientation": "tate",
+  "setnames": [
+   "desertwr"
+  ],
+  "rbf": "Arcade-JalecoMS32",
+  "roms": {
+   "zip": "desertwr",
+   "merged": "desertwr",
+   "shared": []
+  }
+ },
+ {
+  "id": "gametngk",
+  "title": "The Game Paradise",
+  "dev": "Jaleco",
+  "year": 1995,
+  "core": "MegaSystem 32",
+  "system": "Jaleco Mega System 32",
+  "orientation": "tate",
+  "setnames": [
+   "gametngk"
+  ],
+  "rbf": "Arcade-JalecoMS32",
+  "roms": {
+   "zip": "gametngk",
+   "merged": "gametngk",
+   "shared": []
+  }
+ },
+ {
+  "id": "p47aces",
+  "title": "P-47 Aces",
+  "dev": "Jaleco",
+  "year": 1995,
+  "core": "MegaSystem 32",
+  "system": "Jaleco Mega System 32",
+  "orientation": "yoko",
+  "setnames": [
+   "p47aces",
+   "p47acesa"
+  ],
+  "rbf": "Arcade-JalecoMS32",
+  "roms": {
+   "zip": "p47aces",
+   "merged": "p47aces",
+   "shared": []
+  }
+ },
+ {
+  "id": "gratia",
+  "title": "Gratia: Second Earth",
+  "dev": "Jaleco",
+  "year": 1996,
+  "core": "MegaSystem 32",
+  "system": "Jaleco Mega System 32",
+  "orientation": "yoko",
+  "setnames": [
+   "gratia",
+   "gratiaa"
+  ],
+  "rbf": "Arcade-JalecoMS32",
+  "roms": {
+   "zip": "gratia",
+   "merged": "gratia",
+   "shared": []
+  }
+ },
+ {
+  "id": "stg",
+  "title": "Strike Gunner S.T.G",
+  "dev": "Athena",
+  "year": 1991,
+  "core": "Seta",
+  "system": "Seta 1",
+  "orientation": "tate",
+  "setnames": [
+   "stg"
+  ],
+  "rbf": "Seta",
+  "roms": {
+   "zip": "stg",
+   "merged": "stg",
+   "shared": []
+  }
+ },
+ {
+  "id": "rezon",
+  "title": "Rezon",
+  "dev": "Allumer",
+  "year": 1992,
+  "core": "Seta",
+  "system": "Seta 1",
+  "orientation": "yoko",
+  "setnames": [
+   "rezon",
+   "rezono"
+  ],
+  "rbf": "Seta",
+  "roms": {
+   "zip": "rezon",
+   "merged": "rezon",
+   "shared": []
+  }
+ },
+ {
+  "id": "zingzip",
+  "title": "Zing Zing Zip",
+  "dev": "Allumer",
+  "year": 1992,
+  "core": "Seta",
+  "system": "Seta 1",
+  "orientation": "tate",
+  "setnames": [
+   "zingzip"
+  ],
+  "rbf": "Seta",
+  "roms": {
+   "zip": "zingzip",
+   "merged": "zingzip",
+   "shared": []
+  }
+ },
+ {
+  "id": "neobattl",
+  "title": "SD Gundam Neo Battling",
+  "dev": "Banpresto",
+  "year": 1992,
+  "core": "Seta",
+  "system": "Seta 1",
+  "orientation": "tate",
+  "setnames": [
+   "neobattl"
+  ],
+  "rbf": "Seta",
+  "roms": {
+   "zip": "neobattl",
+   "merged": "neobattl",
+   "shared": []
+  }
+ },
+ {
+  "id": "daioh",
+  "title": "Daioh",
+  "dev": "Athena",
+  "year": 1993,
+  "core": "Seta",
+  "system": "Seta 1",
+  "orientation": "tate",
+  "setnames": [
+   "daioh",
+   "daioha"
+  ],
+  "rbf": "Seta",
+  "roms": {
+   "zip": "daioh",
+   "merged": "daioh",
+   "shared": []
+  }
+ },
+ {
+  "id": "madshark",
+  "title": "Mad Shark",
+  "dev": "Allumer",
+  "year": 1993,
+  "core": "Seta",
+  "system": "Seta 1",
+  "orientation": "tate",
+  "setnames": [
+   "madshark"
+  ],
+  "rbf": "Seta",
+  "roms": {
+   "zip": "madshark",
+   "merged": "madshark",
+   "shared": []
+  }
+ },
+ {
+  "id": "wrofaero",
+  "title": "War of Aero: Project MEIOU",
+  "dev": "Yang Cheng",
+  "year": 1993,
+  "core": "Seta",
+  "system": "Seta 1",
+  "orientation": "tate",
+  "setnames": [
+   "wrofaero"
+  ],
+  "rbf": "Seta",
+  "roms": {
+   "zip": "wrofaero",
+   "merged": "wrofaero",
+   "shared": []
+  }
+ },
+ {
+  "id": "eightfrc",
+  "title": "Eight Forces",
+  "dev": "Tecmo",
+  "year": 1994,
+  "core": "Seta",
+  "system": "Seta 1",
+  "orientation": "tate",
+  "setnames": [
+   "eightfrc"
+  ],
+  "rbf": "Seta",
+  "roms": {
+   "zip": "eightfrc",
+   "merged": "eightfrc",
+   "shared": []
+  }
+ },
+ {
+  "id": "rsgun",
+  "title": "Radiant Silvergun",
+  "dev": "Treasure",
+  "year": 1998,
+  "core": "ST-V",
+  "system": "Sega ST-V",
+  "orientation": "yoko",
+  "setnames": [
+   "rsgun"
+  ],
+  "rbf": "ST-V",
+  "roms": {
+   "zip": "rsgun",
+   "merged": "rsgun",
+   "shared": [
+    "stvbios"
+   ]
+  }
+ },
+ {
+  "id": "shienryu",
+  "title": "Shienryu",
+  "dev": "Warashi",
+  "year": 1997,
+  "core": "ST-V",
+  "system": "Sega ST-V",
+  "orientation": "tate",
+  "setnames": [
+   "shienryu"
+  ],
+  "rbf": "ST-V",
+  "roms": {
+   "zip": "shienryu",
+   "merged": "shienryu",
+   "shared": [
+    "stvbios"
+   ]
+  }
+ },
+ {
+  "id": "cotton2",
+  "title": "Cotton 2",
+  "dev": "Success",
+  "year": 1997,
+  "core": "ST-V",
+  "system": "Sega ST-V",
+  "orientation": "yoko",
+  "setnames": [
+   "cotton2"
+  ],
+  "rbf": "ST-V",
+  "roms": {
+   "zip": "cotton2",
+   "merged": "cotton2",
+   "shared": [
+    "stvbios"
+   ]
+  }
+ },
+ {
+  "id": "cottonbm",
+  "title": "Cotton Boomerang",
+  "dev": "Success",
+  "year": 1998,
+  "core": "ST-V",
+  "system": "Sega ST-V",
+  "orientation": "yoko",
+  "setnames": [
+   "cottonbm"
+  ],
+  "rbf": "ST-V",
+  "roms": {
+   "zip": "cottonbm",
+   "merged": "cottonbm",
+   "shared": [
+    "stvbios"
+   ]
+  }
+ },
+ {
+  "id": "grdforce",
+  "title": "Guardian Force",
+  "dev": "Success",
+  "year": 1998,
+  "core": "ST-V",
+  "system": "Sega ST-V",
+  "orientation": "yoko",
+  "setnames": [
+   "grdforce"
+  ],
+  "rbf": "ST-V",
+  "roms": {
+   "zip": "grdforce",
+   "merged": "grdforce",
+   "shared": [
+    "stvbios"
+   ]
+  }
+ },
+ {
+  "id": "sokyugrt",
+  "title": "Terra Diver",
+  "dev": "Raizing",
+  "year": 1996,
+  "core": "ST-V",
+  "system": "Sega ST-V",
+  "orientation": "yoko",
+  "setnames": [
+   "sokyugrt"
+  ],
+  "rbf": "ST-V",
+  "roms": {
+   "zip": "sokyugrt",
+   "merged": "sokyugrt",
+   "shared": [
+    "stvbios"
+   ]
+  }
+ },
+ {
+  "id": "twineag2",
+  "title": "Twin Eagle II",
+  "dev": "Seta",
+  "year": 1994,
+  "core": "SSV",
+  "system": "Seta SSV",
+  "orientation": "tate",
+  "setnames": [
+   "twineag2"
+  ],
+  "rbf": "Arcade-SSV",
+  "roms": {
+   "zip": "twineag2",
+   "merged": "twineag2",
+   "shared": []
+  }
+ },
+ {
+  "id": "ultrax",
+  "title": "Ultra X Weapons",
+  "dev": "Banpresto",
+  "year": 1995,
+  "core": "SSV",
+  "system": "Seta SSV",
+  "orientation": "tate",
+  "setnames": [
+   "ultrax",
+   "ultraxg"
+  ],
+  "rbf": "Arcade-SSV",
+  "roms": {
+   "zip": "ultrax",
+   "merged": "ultrax",
+   "shared": []
+  }
+ },
+ {
+  "id": "stmblade",
+  "title": "Storm Blade",
+  "dev": "Visco",
+  "year": 1996,
+  "core": "SSV",
+  "system": "Seta SSV",
+  "orientation": "tate",
+  "setnames": [
+   "stmblade",
+   "stmbladej"
+  ],
+  "rbf": "Arcade-SSV",
+  "roms": {
+   "zip": "stmblade",
+   "merged": "stmblade",
+   "shared": []
+  }
+ },
+ {
+  "id": "vasara",
+  "title": "Vasara",
+  "dev": "Visco",
+  "year": 2000,
+  "core": "SSV",
+  "system": "Seta SSV",
+  "orientation": "tate",
+  "setnames": [
+   "vasara"
+  ],
+  "rbf": "Arcade-SSV",
+  "roms": {
+   "zip": "vasara",
+   "merged": "vasara",
+   "shared": []
+  }
+ },
+ {
+  "id": "vasara2",
+  "title": "Vasara 2",
+  "dev": "Visco",
+  "year": 2001,
+  "core": "SSV",
+  "system": "Seta SSV",
+  "orientation": "tate",
+  "setnames": [
+   "vasara2",
+   "vasara2a"
+  ],
+  "rbf": "Arcade-SSV",
+  "roms": {
+   "zip": "vasara2",
+   "merged": "vasara2",
+   "shared": []
+  }
  }
 ]

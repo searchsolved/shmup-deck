@@ -1,0 +1,239 @@
+{
+ "sources": {
+  "official": {
+   "name": "MiSTer main distribution",
+   "note": "installed by update_all by default"
+  },
+  "jotego": {
+   "name": "JOTEGO cores",
+   "note": "optional database; switch it on in update_all's settings"
+  },
+  "coinop": {
+   "name": "Coin-Op Collection",
+   "note": "optional database; switch it on in update_all's settings"
+  },
+  "github": {
+   "name": "Not in update_all",
+   "note": "install the core and its MRAs by hand from the repository"
+  },
+  "meatcores": {
+   "name": "MeatCores",
+   "note": "third-party database; add meathax/meatcores to downloader.ini"
+  }
+ },
+ "cores": {
+  "Arcade-JalecoMS32": {
+   "source": "github",
+   "url": "https://github.com/ppriest/Arcade-JalecoMS32_MiSTer"
+  },
+  "Arcade-Psikyo": {
+   "source": "official"
+  },
+  "Arcade-SSV": {
+   "source": "meatcores"
+  },
+  "armedf": {
+   "source": "coinop"
+  },
+  "batrider_mister": {
+   "source": "coinop"
+  },
+  "Batsugun": {
+   "source": "github",
+   "url": "https://github.com/TheJesusFish/Arcade-Batsugun_MiSTer",
+   "note": "The repository has MRAs but no core build"
+  },
+  "bbakraid_mister": {
+   "source": "coinop"
+  },
+  "bgaregga_mister": {
+   "source": "coinop"
+  },
+  "BubSysROM": {
+   "source": "official"
+  },
+  "cave": {
+   "source": "official"
+  },
+  "CaveBanpresto": {
+   "source": "official"
+  },
+  "cobracom_mister": {
+   "source": "coinop"
+  },
+  "Finalizer": {
+   "source": "official"
+  },
+  "fshark_mister": {
+   "source": "coinop"
+  },
+  "Gyruss": {
+   "source": "official"
+  },
+  "IGSPGM": {
+   "source": "official"
+  },
+  "ikacore_CV1k": {
+   "source": "github",
+   "url": "https://github.com/ika-musume/ikacore_CV1k",
+   "note": "The repository has no core build or MRAs; builds come from the developer"
+  },
+  "IremM107": {
+   "source": "official"
+  },
+  "iremm62": {
+   "source": "official"
+  },
+  "IremM72": {
+   "source": "official"
+  },
+  "IremM92": {
+   "source": "official"
+  },
+  "jt1942": {
+   "source": "jotego"
+  },
+  "jt1943": {
+   "source": "jotego"
+  },
+  "jtajax": {
+   "source": "jotego"
+  },
+  "jtaliens": {
+   "source": "jotego"
+  },
+  "jtbubl": {
+   "source": "jotego"
+  },
+  "jtcps1": {
+   "source": "jotego"
+  },
+  "jtcps2": {
+   "source": "jotego"
+  },
+  "jtexed": {
+   "source": "jotego"
+  },
+  "jtgaiden": {
+   "source": "jotego"
+  },
+  "jtgrad3": {
+   "source": "jotego"
+  },
+  "jtkiwi": {
+   "source": "jotego"
+  },
+  "jtmx5k": {
+   "source": "jotego"
+  },
+  "jtparoda": {
+   "source": "jotego"
+  },
+  "jts16": {
+   "source": "jotego"
+  },
+  "jts16b": {
+   "source": "jotego"
+  },
+  "jtsarms": {
+   "source": "jotego"
+  },
+  "jtsectnz": {
+   "source": "jotego"
+  },
+  "jtshouse": {
+   "source": "jotego"
+  },
+  "jttwin16": {
+   "source": "jotego"
+  },
+  "kingdmgp_mister": {
+   "source": "coinop"
+  },
+  "NeoGeo": {
+   "source": "official"
+  },
+  "NMK16_Afega": {
+   "source": "github",
+   "url": "https://github.com/kuzearcade/Arcade-NMK16_MiSTer"
+  },
+  "NMK16_Gunnail": {
+   "source": "github",
+   "url": "https://github.com/kuzearcade/Arcade-NMK16_MiSTer"
+  },
+  "NMK16_Macross2": {
+   "source": "github",
+   "url": "https://github.com/kuzearcade/Arcade-NMK16_MiSTer"
+  },
+  "NMK16_Raphero": {
+   "source": "github",
+   "url": "https://github.com/kuzearcade/Arcade-NMK16_MiSTer"
+  },
+  "PsikyoSH2": {
+   "source": "official"
+  },
+  "Rayforce": {
+   "source": "github",
+   "url": "https://github.com/spacestate1/Arcade-taitoF3_MiSTer"
+  },
+  "Salamander": {
+   "source": "official"
+  },
+  "segasys1": {
+   "source": "official"
+  },
+  "Seta": {
+   "source": "github",
+   "url": "https://github.com/ppriest/Arcade-Seta_MiSTer"
+  },
+  "SlapFight": {
+   "source": "official"
+  },
+  "SMS": {
+   "source": "official"
+  },
+  "SNK_TripleZ80": {
+   "source": "official"
+  },
+  "sstriker_mister": {
+   "source": "coinop"
+  },
+  "ST-V": {
+   "source": "official"
+  },
+  "TaitoF2": {
+   "source": "official"
+  },
+  "Tecmo": {
+   "source": "official"
+  },
+  "terracresta": {
+   "source": "coinop"
+  },
+  "TimePilot84": {
+   "source": "official"
+  },
+  "truxton2": {
+   "source": "coinop"
+  },
+  "twincobr_mister": {
+   "source": "coinop"
+  },
+  "vimana": {
+   "source": "coinop"
+  },
+  "xevious": {
+   "source": "official"
+  },
+  "XNZN1TaitoFX1B": {
+   "source": "github",
+   "url": "https://github.com/XelaNotPu/ZN1-TaitoFX1B_MiSTer"
+  },
+  "zerowing_20240404": {
+   "source": "coinop"
+  },
+  "zerowing_mister": {
+   "source": "coinop"
+  }
+ }
+}

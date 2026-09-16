@@ -691,16 +691,16 @@
   ]
  },
  "alcon": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Slap%20Fight%20%28Japan%20set%201%29.png",
+  "url": "https://images.launchbox-app.com/6f46cc85-85e8-44ff-8641-e67863cde3f7.jpg",
   "size": [
-   222,
-   311
+   1200,
+   1699
   ],
   "crop": [
    0,
    0,
-   222,
-   311
+   1200,
+   1699
   ]
  },
  "geminiw": {
@@ -1605,6 +1605,540 @@
    0,
    562,
    791
+  ]
+ },
+ "twincobr": {
+  "url": "https://archive.org/download/arcadeflyer_kyukyoku-tiger_JP/page/n0.jpg",
+  "size": [
+   1280,
+   1804
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1804
+  ]
+ },
+ "extrmatn": {
+  "url": "https://images.launchbox-app.com/8cada19a-1805-46f1-88e6-034febeaafbd.jpg",
+  "size": [
+   1200,
+   1704
+  ],
+  "crop": [
+   0,
+   0,
+   1200,
+   1704
+  ]
+ },
+ "hotdogst": {
+  "url": "https://www.arcadeartwork.org/action.php?id=147734&part=e&download",
+  "referer": "https://www.arcadeartwork.org/picture.php?/147734",
+  "size": [
+   785,
+   1050
+  ],
+  "crop": [
+   0,
+   0,
+   785,
+   1050
+  ]
+ },
+ "tharrier": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Task%20Force%20Harrier%20%28Japan%29.png",
+  "size": [
+   512,
+   725
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   725
+  ]
+ },
+ "mustang": {
+  "url": "https://images.launchbox-app.com/r2_57513f79-dc68-40d0-94b7-d0321f8325f7.jpg",
+  "size": [
+   1450,
+   2005
+  ],
+  "crop": [
+   0,
+   0,
+   1450,
+   2005
+  ]
+ },
+ "bioship": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Space%20Battle%20Ship%20Gomorrah.png",
+  "size": [
+   512,
+   729
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   729
+  ]
+ },
+ "blkheart": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Black%20Heart.png",
+  "size": [
+   512,
+   720
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   720
+  ]
+ },
+ "acrobatm": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Acrobat%20Mission.png",
+  "size": [
+   512,
+   736
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   736
+  ]
+ },
+ "hachamf": {
+  "url": "https://archive.org/download/arcadeflyer_hacha-mecha-fighter_JP/page/n0.jpg",
+  "size": [
+   1280,
+   1807
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1807
+  ]
+ },
+ "tdragon": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Thunder%20Dragon%20%288th%20Jan.%201992%2C%20unprotected%29.png",
+  "size": [
+   512,
+   721
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   721
+  ]
+ },
+ "macross": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Super%20Spacefortress%20Macross%20-%20Chou-Jikuu%20Yousai%20Macross.png",
+  "size": [
+   512,
+   714
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   714
+  ]
+ },
+ "ssmissin": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/S.S.%20Mission.png",
+  "size": [
+   512,
+   718
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   718
+  ]
+ },
+ "gunnail": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/GunNail%20%2828th%20May.%201992%29.png",
+  "size": [
+   512,
+   716
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   716
+  ]
+ },
+ "macross2": {
+  "url": "https://images.launchbox-app.com/81fe0aa7-f922-48a5-b327-d3643099dd14.png",
+  "size": [
+   1004,
+   1446
+  ],
+  "crop": [
+   0,
+   0,
+   1004,
+   1446
+  ]
+ },
+ "tdragon2": {
+  "url": "https://archive.org/download/thunder-dragon-2-1993-shoot-em-up-arcade/Flyer%20%20Thunder%20Dragon%202%20%281993%29%20%28Shoot%20Em%20Up%29%20%28Arcade%29.jpg",
+  "size": [
+   600,
+   864
+  ],
+  "crop": [
+   0,
+   0,
+   600,
+   864
+  ]
+ },
+ "raphero": {
+  "url": "https://images.launchbox-app.com/5f50a4f1-16e6-4b09-b2c1-5a0d42d987c0.jpg",
+  "size": [
+   735,
+   1036
+  ],
+  "crop": [
+   0,
+   0,
+   735,
+   1036
+  ]
+ },
+ "airattck": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Air%20Attack%20%28set%201%29.png",
+  "size": [
+   512,
+   728
+  ],
+  "crop": [
+   32,
+   14,
+   447,
+   688
+  ]
+ },
+ "gseeker": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Grid%20Seeker%20-%20Project%20Stormhammer%20%28Japan%29.png",
+  "size": [
+   512,
+   713
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   713
+  ]
+ },
+ "gunlock": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Ray%20Force%20%28Ver%202.3A%201994_01_20%29.png",
+  "size": [
+   428,
+   605
+  ],
+  "crop": [
+   0,
+   0,
+   428,
+   605
+  ]
+ },
+ "dariusg": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Darius%20Gaiden%20-%20Silver%20Hawk%20%28Ver%202.5O%201994_09_19%29.png",
+  "size": [
+   512,
+   722
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   722
+  ]
+ },
+ "gekiridn": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Gekirindan%20%28Japan%29.png",
+  "size": [
+   512,
+   723
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   723
+  ]
+ },
+ "tcobra2": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Twin%20Cobra%20II%20%28Ver%202.1O%201995_11_30%29.png",
+  "size": [
+   512,
+   713
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   713
+  ]
+ },
+ "raystorm": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Ray%20Storm%20%28Ver%202.06A%29.png",
+  "size": [
+   443,
+   627
+  ],
+  "crop": [
+   0,
+   0,
+   443,
+   627
+  ]
+ },
+ "gdarius": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/G-Darius%20%28Ver%202.01J%29.png",
+  "size": [
+   479,
+   670
+  ],
+  "crop": [
+   0,
+   0,
+   479,
+   670
+  ]
+ },
+ "desertwr": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Desert%20War%20-%20Wangan%20Sensou.png",
+  "size": [
+   512,
+   730
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   730
+  ]
+ },
+ "gametngk": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/The%20Game%20Paradise%20-%20Master%20of%20Shooting%21%20-%20Game%20Tengoku%20-%20The%20Game%20Paradise.png",
+  "size": [
+   512,
+   720
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   720
+  ]
+ },
+ "p47aces": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/P-47%20Aces%20%28ver%201.1%29.png",
+  "size": [
+   512,
+   722
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   722
+  ]
+ },
+ "gratia": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Gratia%20-%20Second%20Earth%20%2892047-01%20version%29.png",
+  "size": [
+   512,
+   722
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   722
+  ]
+ },
+ "stg": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Strike%20Gunner%20S.T.G.png",
+  "size": [
+   512,
+   723
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   723
+  ]
+ },
+ "zingzip": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Zing%20Zing%20Zip.png",
+  "size": [
+   512,
+   731
+  ],
+  "crop": [
+   14,
+   17,
+   489,
+   707
+  ]
+ },
+ "neobattl": {
+  "url": "https://images.launchbox-app.com/f4a9f718-0ebf-459f-9a3f-ca5782959b89.png",
+  "size": [
+   842,
+   1186
+  ],
+  "crop": [
+   0,
+   0,
+   842,
+   1186
+  ]
+ },
+ "madshark": {
+  "url": "https://images.launchbox-app.com/r2_ccdf169e-125f-4c5b-9ac9-fa5b16e60d48.jpg",
+  "size": [
+   2407,
+   3443
+  ],
+  "crop": [
+   2,
+   1,
+   2403,
+   3381
+  ]
+ },
+ "wrofaero": {
+  "url": "https://images.launchbox-app.com/a653adfc-6a6d-42bb-8011-31cb2ca866ac.png",
+  "size": [
+   400,
+   581
+  ],
+  "crop": [
+   0,
+   0,
+   400,
+   581
+  ]
+ },
+ "eightfrc": {
+  "url": "https://images.launchbox-app.com/4dcc2da8-2655-4536-bf59-0d323041d2b2.png",
+  "size": [
+   1278,
+   1814
+  ],
+  "crop": [
+   0,
+   0,
+   1278,
+   1814
+  ]
+ },
+ "cottonbm": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Cotton%20Boomerang%20%28JUET%20980709%20V1.000%29.png",
+  "size": [
+   512,
+   731
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   725
+  ]
+ },
+ "rsgun": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Radiant%20Silvergun%20%28JUET%20980523%20V1.000%29.png",
+  "size": [
+   512,
+   723
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   723
+  ]
+ },
+ "shienryu": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Shienryu%20%28JUET%20961226%20V1.000%29.png",
+  "size": [
+   512,
+   734
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   734
+  ]
+ },
+ "sokyugrt": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Soukyugurentai%20_%20Terra%20Diver%20%28JUET%20960821%20V1.000%29.png",
+  "size": [
+   512,
+   733
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   733
+  ]
+ },
+ "stmblade": {
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Storm%20Blade%20%28US%29.png",
+  "size": [
+   512,
+   723
+  ],
+  "crop": [
+   0,
+   0,
+   512,
+   723
+  ]
+ },
+ "cotton2": {
+  "url": "https://images.launchbox-app.com/c9a8a9a9-152f-4ef7-8e9d-c8290dc9e085.jpg",
+  "size": [
+   1181,
+   1728
+  ],
+  "crop": [
+   0,
+   0,
+   1181,
+   1728
+  ]
+ },
+ "grdforce": {
+  "url": "https://images.launchbox-app.com/7df48c1b-01c1-4d51-a41b-50e3958ce537.jpg",
+  "size": [
+   823,
+   1133
+  ],
+  "crop": [
+   0,
+   0,
+   823,
+   1117
   ]
  }
 }

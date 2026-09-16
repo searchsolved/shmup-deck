@@ -8,12 +8,15 @@ other service to install.
 
 ![Shmup Deck showing the now playing banner and a search for Cave games](docs/screenshot.jpg)
 
-- 129 auto-scrolling shooters from 1985 onwards, across Toaplan, Cave,
-  CV1000, Capcom CPS1/CPS2, PGM, Psikyo, Raizing, Konami, Irem, Neo Geo and more
+- 178 auto-scrolling shooters, mostly from 1985 onwards, across Toaplan, Cave,
+  CV1000, Capcom CPS1/CPS2, PGM, Psikyo, Raizing, Konami, Irem, NMK, Taito F3,
+  Seta, Sega ST-V, Neo Geo and more
 - Only games actually installed on your SD card are shown
-- Sort by name, year or most played; filter by tate or yoko; search by title,
-  developer or core
+- Sort by name, year or most played; group by developer or arcade system;
+  filter by tate or yoko; search by title, developer or core
 - Shows what is playing right now
+- A ROM checklist page shows what each game still needs on your MiSTer: the
+  MRA, the core or the ROM zips
 
 ## Install
 
@@ -27,7 +30,7 @@ The address stays the same even when your router gives the MiSTer a new IP.
 If `shmupdeck.local` doesn't load on your network, the script also shows the
 numbered address, like `http://192.168.1.50:8190`, which always works.
 
-The first start scans your `_Arcade` folder and downloads the flyer art, which
+The first start scans your arcade folders and downloads the flyer art, which
 takes a few minutes. Games appear as soon as the scan finishes and flyers fill
 in as they arrive.
 
@@ -39,11 +42,17 @@ in `/media/fat/Scripts/.config/shmup_deck/`.
 ## Requirements
 
 - A MiSTer with network access
-- Arcade MRAs and ROMs for the games you want, in `_Arcade` (any folder layout
-  works, including organised sets)
+- Arcade MRAs and ROMs for the games you want. MRAs can be anywhere under
+  `_Arcade` or another top-level `_` folder, on the SD card or a USB drive, in
+  any folder layout including organised sets
 - For Neo Geo games: the Neo Geo core and games in `games/NeoGeo` (on the SD
   card or a USB drive, subfolders are fine)
 - The cores for those games
+
+[ROMS.md](ROMS.md) lists every supported game with its core, where to get the
+core and the ROM zips it needs. Several cores are not in update_all; that page
+links to each one. On the MiSTer itself, **http://shmupdeck.local/check.html**
+checks all of this against your SD card.
 
 ### Neo Geo formats
 
@@ -64,7 +73,9 @@ Shmup Deck contains no ROMs, MRAs or cores.
 `shmup_deck.py` is a small Python service using only the standard library that
 ships with the MiSTer. It:
 
-- reads the MAME setname inside every `.mra` under `/media/fat/_Arcade`, so
+- reads the MAME setname inside every `.mra` in the top-level `_` folders of
+  the SD card and USB drives (`_Arcade`, and any others such as a quick-launch
+  `_CAVE CV1000`), so
   games are matched exactly (Gunbird is never confused with Gunbird 2) and
   your folder names don't matter
 - prefers the plain release over alternatives, bootlegs, free play edits and
@@ -96,13 +107,21 @@ Games are listed in `shmup_deck/app/games.json`:
  "dev": "Psikyo",
  "year": 1994,
  "core": "Psikyo",
+ "system": "Psikyo 68EC020",
  "orientation": "tate",
- "setnames": ["gunbird"]
+ "setnames": ["gunbird"],
+ "rbf": "Arcade-Psikyo",
+ "roms": {"zip": "gunbird", "merged": "gunbird", "shared": []}
 }
 ```
 
 `setnames` lists the MAME sets that count as this game, preferred first.
-`orientation` is which way the monitor is fitted for it. Flyer sources go in
+`orientation` is which way the monitor is fitted for it. `system` is the
+arcade board it runs on, used for grouping. `rbf` is the core the
+game's MRA names, and `cores.json` says where that core comes from. `roms` is
+the zip from a non-merged set, the zip a merged set keeps it in, and any BIOS
+or chip zips it shares with other games. After adding games, run
+`python3 tools/build_rom_list.py` to rebuild ROMS.md. Flyer sources go in
 `shmup_deck/app/art.json`; `tools/build_art_manifest.py` works out each
 flyer's crop from a downloaded scan.
 
@@ -112,8 +131,9 @@ flyer's crop from a downloaded scan.
 | --- | --- | --- |
 | GET | `/api/status` | scan and art progress, version, now playing |
 | GET | `/api/available` | game id to installed MRA path (null if missing) |
+| GET | `/api/checklist` | per game: ready, or the missing MRA, core or ROM zips |
 | POST | `/api/launch` | `{"id": "gunbird"}` |
-| POST | `/api/rescan` | rescan `_Arcade` after adding games |
+| POST | `/api/rescan` | rescan for MRAs after adding games |
 
 ## License
 
