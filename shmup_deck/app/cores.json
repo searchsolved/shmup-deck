@@ -22,16 +22,6 @@
   }
  },
  "cores": {
-  "Arcade-JalecoMS32": {
-   "source": "github",
-   "url": "https://github.com/ppriest/Arcade-JalecoMS32_MiSTer"
-  },
-  "Arcade-Psikyo": {
-   "source": "official"
-  },
-  "Arcade-SSV": {
-   "source": "meatcores"
-  },
   "armedf": {
    "source": "coinop"
   },
@@ -89,6 +79,10 @@
   },
   "IremM92": {
    "source": "official"
+  },
+  "JalecoMS32": {
+   "source": "github",
+   "url": "https://github.com/ppriest/Arcade-JalecoMS32_MiSTer"
   },
   "jt1942": {
    "source": "jotego"
@@ -169,6 +163,9 @@
    "source": "github",
    "url": "https://github.com/kuzearcade/Arcade-NMK16_MiSTer"
   },
+  "Psikyo": {
+   "source": "official"
+  },
   "PsikyoSH2": {
    "source": "official"
   },
@@ -197,6 +194,9 @@
   },
   "sstriker_mister": {
    "source": "coinop"
+  },
+  "SSV": {
+   "source": "meatcores"
   },
   "ST-V": {
    "source": "official"

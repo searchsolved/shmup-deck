@@ -1281,7 +1281,7 @@
    "samuraia",
    "samuraiak"
   ],
-  "rbf": "Arcade-Psikyo",
+  "rbf": "Psikyo",
   "roms": {
    "zip": "samuraia",
    "merged": "samuraia",
@@ -1299,7 +1299,7 @@
   "setnames": [
    "gunbird"
   ],
-  "rbf": "Arcade-Psikyo",
+  "rbf": "Psikyo",
   "roms": {
    "zip": "gunbird",
    "merged": "gunbird",
@@ -1317,7 +1317,7 @@
   "setnames": [
    "tengai"
   ],
-  "rbf": "Arcade-Psikyo",
+  "rbf": "Psikyo",
   "roms": {
    "zip": "tengai",
    "merged": "tengai",
@@ -2317,7 +2317,7 @@
    "s1945nj",
    "s1945n"
   ],
-  "rbf": "Arcade-Psikyo",
+  "rbf": "Psikyo",
   "roms": {
    "zip": "s1945",
    "merged": "s1945",
@@ -3148,7 +3148,7 @@
   "setnames": [
    "desertwr"
   ],
-  "rbf": "Arcade-JalecoMS32",
+  "rbf": "JalecoMS32",
   "roms": {
    "zip": "desertwr",
    "merged": "desertwr",
@@ -3166,7 +3166,7 @@
   "setnames": [
    "gametngk"
   ],
-  "rbf": "Arcade-JalecoMS32",
+  "rbf": "JalecoMS32",
   "roms": {
    "zip": "gametngk",
    "merged": "gametngk",
@@ -3185,7 +3185,7 @@
    "p47aces",
    "p47acesa"
   ],
-  "rbf": "Arcade-JalecoMS32",
+  "rbf": "JalecoMS32",
   "roms": {
    "zip": "p47aces",
    "merged": "p47aces",
@@ -3204,7 +3204,7 @@
    "gratia",
    "gratiaa"
   ],
-  "rbf": "Arcade-JalecoMS32",
+  "rbf": "JalecoMS32",
   "roms": {
    "zip": "gratia",
    "merged": "gratia",
@@ -3488,7 +3488,7 @@
   "setnames": [
    "twineag2"
   ],
-  "rbf": "Arcade-SSV",
+  "rbf": "SSV",
   "roms": {
    "zip": "twineag2",
    "merged": "twineag2",
@@ -3507,7 +3507,7 @@
    "ultrax",
    "ultraxg"
   ],
-  "rbf": "Arcade-SSV",
+  "rbf": "SSV",
   "roms": {
    "zip": "ultrax",
    "merged": "ultrax",
@@ -3526,7 +3526,7 @@
    "stmblade",
    "stmbladej"
   ],
-  "rbf": "Arcade-SSV",
+  "rbf": "SSV",
   "roms": {
    "zip": "stmblade",
    "merged": "stmblade",
@@ -3544,7 +3544,7 @@
   "setnames": [
    "vasara"
   ],
-  "rbf": "Arcade-SSV",
+  "rbf": "SSV",
   "roms": {
    "zip": "vasara",
    "merged": "vasara",
@@ -3563,7 +3563,7 @@
    "vasara2",
    "vasara2a"
   ],
-  "rbf": "Arcade-SSV",
+  "rbf": "SSV",
   "roms": {
    "zip": "vasara2",
    "merged": "vasara2",

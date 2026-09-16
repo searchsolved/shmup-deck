@@ -133,7 +133,8 @@ def main():
     # flyers shown whole rather than card shaped, or not confirmed as flyers
     art = json.loads((APP / "art.json").read_text())
     titles = {g["id"]: g["title"] for g in games}
-    wanted = [(titles[gid], a["upgrade"]) for gid, a in art.items() if a.get("upgrade") and gid in titles]
+    wanted = [(titles[gid], a["upgrade"]) for gid, a in art.items()
+              if not gid.startswith("_") and a.get("upgrade") and gid in titles]
     lines = ["# Flyers wanted", "",
              "These games use the best art found so far, shown whole on the card. A portrait scan of the "
              "front of the original arcade flyer would be an upgrade. If you have one, or know where one "

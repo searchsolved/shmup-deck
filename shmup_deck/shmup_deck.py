@@ -45,7 +45,7 @@ CORENAME = os.environ.get("SHMUP_CORENAME", "/tmp/CORENAME")
 PLAYS = os.environ.get("SHMUP_PLAYS", os.path.join(HERE, "plays.json"))
 FAVS = os.environ.get("SHMUP_FAVS", os.path.join(HERE, "favourites.json"))
 
-VERSION = "1.4.1"
+VERSION = "1.4.2"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
 ART_DELAY = 2.0          # seconds between flyer downloads; be kind to the hosts
 SETNAME = re.compile(rb"<setname>\s*(.*?)\s*</setname>", re.S)
@@ -522,8 +522,12 @@ def listing(dirs, ext):
 
 
 def core_present(rbf, cores):
-    # the MiSTer takes the newest <rbf>_<date>.rbf, with or without "Arcade-"
+    # The MiSTer takes the newest <rbf>_<date>.rbf, with or without an
+    # "Arcade-" prefix: cores in the main distribution drop it, cores from a
+    # developer's own repo usually keep it. Match either way.
     want = rbf.lower()
+    if want.startswith("arcade-"):
+        want = want[7:]
     return any(c == want or c.startswith(want + "_") or
                c == "arcade-" + want or c.startswith("arcade-" + want + "_") for c in cores)
 
