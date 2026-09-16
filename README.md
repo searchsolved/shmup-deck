@@ -40,7 +40,8 @@ The first start scans your arcade folders and downloads the flyer art, which
 takes a few minutes. Games appear as soon as the scan finishes and flyers fill
 in as they arrive.
 
-Run `shmup_deck` from the Scripts menu again at any time to update.
+Run `shmup_deck` from the Scripts menu again at any time to update. The
+script updates itself too, so fixes to the installer reach you as well.
 
 To remove it from startup, run `shmup_deck.sh uninstall` over SSH. Files live
 in `/media/fat/Scripts/.config/shmup_deck/`.
