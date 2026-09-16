@@ -45,7 +45,7 @@ CORENAME = os.environ.get("SHMUP_CORENAME", "/tmp/CORENAME")
 PLAYS = os.environ.get("SHMUP_PLAYS", os.path.join(HERE, "plays.json"))
 FAVS = os.environ.get("SHMUP_FAVS", os.path.join(HERE, "favourites.json"))
 
-VERSION = "1.4.0"
+VERSION = "1.4.1"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
 ART_DELAY = 2.0          # seconds between flyer downloads; be kind to the hosts
 SETNAME = re.compile(rb"<setname>\s*(.*?)\s*</setname>", re.S)
@@ -803,8 +803,47 @@ def mdns_responder(hostname):
             time.sleep(1)
 
 
-def serve(port):
-    ThreadingHTTPServer(("0.0.0.0", port), Handler).serve_forever()
+def other_instances():
+    """Pids of any other copy of this service."""
+    me = os.getpid()
+    found = []
+    try:
+        pids = os.listdir("/proc")
+    except OSError:
+        return found
+    for pid in pids:
+        if not pid.isdigit() or int(pid) == me:
+            continue
+        try:
+            with open("/proc/%s/cmdline" % pid, "rb") as f:
+                cmd = f.read().replace(b"\0", b" ")
+        except OSError:
+            continue
+        if cmd.startswith(b"python3 ") and b"shmup_deck.py" in cmd:
+            found.append(int(pid))
+    return found
+
+
+def bind(port):
+    """The HTTP server on a port, taking it over from an older copy of this
+    service if one still holds it.
+
+    An update starts the new service while the old one may be running (an
+    installer from before 1.3.0 cannot stop it). Rather than die with
+    "address already in use", stop the older copy and try again.
+    """
+    for attempt in range(6):
+        try:
+            return ThreadingHTTPServer(("0.0.0.0", port), Handler)
+        except OSError as e:
+            if e.errno not in (98, 48) or attempt == 5:     # EADDRINUSE on Linux, macOS
+                raise
+            for pid in other_instances():
+                try:
+                    os.kill(pid, 15)
+                except OSError:
+                    pass
+            time.sleep(1)
 
 
 def rescan_if_folders_changed():
@@ -839,14 +878,15 @@ def main():
         threading.Thread(target=mdns_responder, args=(args.name,), daemon=True).start()
     except OSError:
         pass
+    main_server = bind(args.port)
     # port 80 lets the address be just http://shmupdeck.local; if something
     # else already has it, the numbered port still works
     try:
-        http80 = ThreadingHTTPServer(("0.0.0.0", 80), Handler)
+        http80 = bind(80)
         threading.Thread(target=http80.serve_forever, daemon=True).start()
     except OSError:
         pass
-    serve(args.port)
+    main_server.serve_forever()
 
 
 if __name__ == "__main__":
