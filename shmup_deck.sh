@@ -17,14 +17,15 @@ STARTUP=/media/fat/linux/user-startup.sh
 MARK="# shmup_deck"
 
 stop_service() {
-  if [ -f "$PID_FILE" ]; then
-    pid=$(cat "$PID_FILE")
-    # only stop it if that pid really is our service, not a reused pid
-    if grep -q shmup_deck.py "/proc/$pid/cmdline" 2>/dev/null; then
-      kill "$pid"
-    fi
-    rm -f "$PID_FILE"
-  fi
+  # find the service by what it is running rather than trusting the pid
+  # file, which can go stale; a stale pid would leave the old version up
+  for p in /proc/[0-9]*; do
+    c=$(tr "\0" " " <"$p/cmdline" 2>/dev/null)
+    case "$c" in
+      python3\ *shmup_deck.py*) kill "${p#/proc/}" 2>/dev/null ;;
+    esac
+  done
+  rm -f "$PID_FILE"
 }
 
 start_service() {
