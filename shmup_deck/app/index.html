@@ -478,7 +478,22 @@ let NOW = null;
 /* Show the crop box of the scan across the whole card. Background sizing
    does this without a canvas: scale the scan so the crop fills the card, then
    shift it so the crop's corner sits at the card's corner. */
+/* Flyers are fetched only as their cards come near the screen; on a wall of
+   178 that is the difference between a few cards and a few hundred MB. */
+const lazy = new IntersectionObserver(entries => {
+  for (const e of entries) {
+    if (!e.isIntersecting) continue;
+    lazy.unobserve(e.target);
+    loadArt(e.target, e.target._game);
+  }
+}, { rootMargin: "600px 0px" });
+
 function paintArt(el, g) {
+  el._game = g;
+  lazy.observe(el);
+}
+
+function loadArt(el, g) {
   const a = ART[g.id];
   const img = new Image();
   img.onload = () => {

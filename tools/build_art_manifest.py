@@ -50,6 +50,12 @@ def trim_box(im):
 def main(sources_path, scans_dir, out_path):
     sources = json.loads(Path(sources_path).read_text())
     out, problems = {}, []
+    # entries starting with "_" are settings (the mirror list), not games
+    try:
+        existing = json.loads(Path(out_path).read_text())
+        out.update({k: v for k, v in existing.items() if k.startswith("_")})
+    except (OSError, ValueError):
+        pass
     for gid, src in sources.items():
         scan = Path(scans_dir) / f"{gid}.img"
         if not scan.exists():

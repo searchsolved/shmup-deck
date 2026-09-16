@@ -200,6 +200,20 @@ class Index:
         return None
 
 
+def image_type(data):
+    if data[:8] == b"\x89PNG\r\n\x1a\n":
+        return "image/png"
+    if data[:3] == b"\xff\xd8\xff":
+        return "image/jpeg"
+    if data[:4] == b"RIFF" and data[8:12] == b"WEBP":
+        return "image/webp"
+    return None
+
+
+def is_image(data):
+    return image_type(data) is not None
+
+
 class Art:
     """Downloads missing flyers once and keeps them on the SD card."""
 
@@ -217,19 +231,28 @@ class Art:
             os.makedirs(ART_DIR, exist_ok=True)
             with open(os.path.join(APP_DIR, "art.json")) as f:
                 sources = json.load(f)
-            # a flyer is fetched when it is missing, or when art.json now points
-            # somewhere else (a better scan found in a later release)
+            # The mirrors hold a small, card-sized copy of every flyer; the
+            # per-game source is the original scan, used if no mirror has it.
+            mirrors = sources.get("_mirrors", [])
+            # a flyer is fetched when it is missing, or when the preferred
+            # place to get it has changed (a better scan, or a new mirror snapshot)
             todo = [(gid, s) for gid, s in sources.items()
-                    if self._stored_url(gid) != s["url"]]
+                    if not gid.startswith("_") and self._stored_url(gid) != self._urls(gid, s, mirrors)[0]]
             self.total, self.done, self.failed = len(todo), 0, []
             for i, (gid, src) in enumerate(todo):
                 if i:
                     time.sleep(ART_DELAY)
-                if not self._get(gid, src):
+                if not any(self._get(gid, url, src.get("referer") if url == src["url"] else None)
+                           for url in self._urls(gid, src, mirrors)):
                     self.failed.append(gid)
                 self.done += 1
         finally:
             self.fetching = False
+
+    @staticmethod
+    def _urls(gid, src, mirrors):
+        """Where to try, in order: each mirror, then the original scan."""
+        return [m.rstrip("/") + "/" + gid + ".webp" for m in mirrors] + [src["url"]]
 
     @staticmethod
     def _stored_url(gid):
@@ -241,26 +264,26 @@ class Art:
         except OSError:
             return ""                   # fetched before sources were recorded
 
-    def _get(self, gid, src):
+    def _get(self, gid, url, referer=None):
         headers = {"User-Agent": USER_AGENT}
-        if src.get("referer"):
-            headers["Referer"] = src["referer"]
+        if referer:
+            headers["Referer"] = referer
         dest = os.path.join(ART_DIR, gid + ".img")
         try:
-            req = urllib.request.Request(src["url"], headers=headers)
+            req = urllib.request.Request(url, headers=headers)
             with urllib.request.urlopen(req, timeout=40) as r:
                 data = r.read()
         except Exception:
             return False
         # an error page or placeholder is small and not an image
-        if len(data) < 10_000 or not (data[:8] == b"\x89PNG\r\n\x1a\n" or data[:3] == b"\xff\xd8\xff"):
+        if len(data) < 5_000 or not is_image(data):
             return False
         tmp = dest + ".tmp"
         with open(tmp, "wb") as f:
             f.write(data)
         os.replace(tmp, dest)
         with open(os.path.join(ART_DIR, gid + ".src"), "w") as f:
-            f.write(src["url"])
+            f.write(url)
         return True
 
 
@@ -628,7 +651,7 @@ class Handler(SimpleHTTPRequestHandler):
         with open(path, "rb") as f:
             data = f.read()
         self.send_response(200)
-        self.send_header("Content-Type", "image/png" if data[:4] == b"\x89PNG" else "image/jpeg")
+        self.send_header("Content-Type", image_type(data) or "application/octet-stream")
         self.send_header("Cache-Control", "max-age=31536000")
         self.send_header("Content-Length", str(len(data)))
         self.end_headers()

@@ -97,9 +97,13 @@ ships with the MiSTer. It:
 ## Flyer art
 
 Flyer art is not included in this repository. On first start each flyer is
-downloaded once, a couple of seconds apart, from a pinned snapshot of the
-[libretro thumbnails](https://github.com/libretro-thumbnails/MAME) archive
-(plus a few from arcadeartwork.org and Wikipedia), and stored on your SD card.
+downloaded once, a couple of seconds apart, and stored on your SD card. They
+come from [shmup-deck-art](https://github.com/searchsolved/shmup-deck-art), a
+mirror of the original scans cut and sized for the cards (about 100 KB each),
+pinned to a snapshot in `art.json`. If the mirror is unavailable, the original
+scan is fetched from its source instead: the
+[libretro thumbnails](https://github.com/libretro-thumbnails/MAME) archive,
+LaunchBox, The Arcade Flyer Archive, arcadeartwork.org, Wikipedia or archive.org.
 All flyer artwork belongs to its respective copyright holders.
 
 If a flyer can't be downloaded, its card shows the game title instead.
@@ -135,7 +139,8 @@ the zip from a non-merged set, the zip a merged set keeps it in, and any BIOS
 or chip zips it shares with other games. After adding games, run
 `python3 tools/build_rom_list.py` to rebuild ROMS.md. Flyer sources go in
 `shmup_deck/app/art.json`; `tools/build_art_manifest.py` works out each
-flyer's crop from a downloaded scan.
+flyer's crop from a downloaded scan, and `tools/build_art_mirror.py` rebuilds
+the mirror repo from it.
 
 ## API
 
