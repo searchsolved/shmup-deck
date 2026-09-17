@@ -1,5 +1,7 @@
 # Shmup Deck
 
+![Shmup Deck: a flyer wall for your shoot 'em ups on the MiSTer FPGA](docs/banner.jpg)
+
 A flyer-wall launcher for shoot 'em ups on the MiSTer FPGA. Open it on your
 phone, tap a flyer, and the MiSTer loads the game.
 
@@ -98,6 +100,28 @@ ships with the MiSTer. It:
 - answers mDNS lookups for `shmupdeck.local` itself, since the MiSTer image
   has no Avahi (start it with `--name` to use a different name)
 
+## Resource usage
+
+Measured on 1.4.3 on a DE10-Nano (492 MB total on the ARM side) across three
+phases: over an hour idle on the menu, a full rescan, then ten minutes with a
+game running.
+
+| | Idle (menu) | During rescan | After rescan | Game running |
+|---|---|---|---|---|
+| Memory | 14 MB | 25 MB peak | 18 MB | 18 MB |
+| CPU (one core) | 0.1% | about 90%, at low priority | 0.1% | 0.08% |
+
+Memory stays under 25 MB and CPU under 1% except while a rescan runs.
+
+- **Rescan:** 45 to 90 seconds for 30,000 MRAs, at low priority (nice 10) so
+  the MiSTer's own work comes first. It runs on first start, when you add a
+  drive or folder, or on request. In steady state the service does nothing but
+  poll a file every few seconds.
+- **Network:** fetches flyer art once (18 MB in total, from GitHub), then
+  nothing.
+
+These numbers are checked before every release; see Development below.
+
 ## Flyer art
 
 Flyer art is not included in this repository. On first start each flyer is
@@ -158,6 +182,20 @@ the mirror repo from it.
 | POST | `/api/favourites` | `{"id": "gunbird", "on": true}`; returns the list |
 | POST | `/api/launch` | `{"id": "gunbird"}` |
 | POST | `/api/rescan` | rescan for MRAs after adding games; only new or changed files are read, `{"full": true}` reads them all |
+
+## Development
+
+`tools/release.sh 1.5.0 < notes.md` is the release checklist: it checks the
+version and a clean tree, rebuilds ROMS.md, benchmarks the build running on
+your MiSTer, packages `dist/` and publishes the GitHub release.
+
+The benchmark, `tools/bench.py`, times a full rescan, watches the service
+idle on the menu for half an hour, then launches a game and watches it for as
+long again while the game runs, reporting memory and CPU for each. It compares
+the numbers with `tools/bench_baseline.json`, the figures from the last
+release, and fails the release on a regression: memory up by more than a
+quarter, CPU over 1% of a core idle or in-game, or a rescan half again as slow.
+Run it with `--save` to make the current numbers the new baseline.
 
 ## License
 

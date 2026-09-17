@@ -1,0 +1,16 @@
+{
+ "version": "1.4.3",
+ "mras": 30681,
+ "rescan_seconds": 89.5,
+ "rescan_per_1k": 2.92,
+ "rss_kb": 18428,
+ "hwm_kb": 23880,
+ "idle_cpu_pct": 0.1,
+ "threads": 4,
+ "minutes": 10,
+ "cores_seen": [
+  "MENU"
+ ],
+ "game": "esprade",
+ "game_cpu_pct": 0.08
+}
