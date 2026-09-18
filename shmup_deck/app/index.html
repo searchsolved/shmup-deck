@@ -56,6 +56,9 @@ nav .cog{
 nav .cog:hover{color:var(--bone)}
 nav .cog svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 nav .cog[aria-expanded="true"]{color:var(--gold);border-color:var(--gold)}
+/* a newer release is out: a dot on the cog, the details are in the sheet */
+nav .cog{position:relative}
+nav .cog.update::after{content:"";position:absolute;top:5px;right:5px;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 2px #07100B}
 nav a:focus-visible,nav .cog:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:2px}
 /* search, full width */
 .searchrow{max-width:1080px;margin:0 auto 16px}
@@ -119,6 +122,14 @@ h1 a:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:4px;borde
 .sheet h3:first-child{margin-top:0}
 .sheet .hint{font-size:12px;color:var(--ash);line-height:1.5;margin-top:6px}
 .sheet .hint.ask{color:var(--gold)}
+.sheet .hint.bad{color:var(--danger)}
+.sheet .btn{
+  flex:none;border:1px solid var(--gold);border-radius:999px;background:transparent;color:var(--gold);
+  padding:7px 14px;font-family:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
+}
+.sheet .btn:hover{background:var(--gold);color:#231c07}
+.sheet .btn[disabled]{opacity:.5;cursor:default;background:transparent;color:var(--gold)}
+.sheet .btn:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:2px}
 .switch{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px}
 .tog{width:42px;height:24px;border-radius:999px;background:#1d3326;position:relative;border:0;cursor:pointer;flex:none}
 .tog::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--ash);transition:left .15s}
@@ -287,6 +298,9 @@ body.compact .cab .star{width:28px;height:28px;font-size:15px;top:5px;right:5px}
 }
 /* phones: let the controls wrap under the title instead of widening the page */
 @media (max-width: 560px){
+  /* the cog is not at the screen edge here, so the sheet cannot hang off
+     it; it comes up from the bottom of the screen instead */
+  .sheet{position:fixed;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));top:auto;width:auto;max-height:calc(100vh - 24px);overflow:auto}
   body{padding-left:14px;padding-right:14px}
   header{gap:12px;padding-bottom:14px}
   nav{margin-left:0}
@@ -334,6 +348,10 @@ footer a{color:inherit}
           <button data-density="comfortable" aria-pressed="true">Comfortable</button>
           <button data-density="compact" aria-pressed="false">Compact</button>
         </div>
+        <h3>Software</h3>
+        <div class="switch"><span>Shmup Deck <span id="verNow"></span></span>
+          <button class="btn" id="updBtn" hidden>Check for updates</button></div>
+        <p class="hint" id="updHint"></p>
       </div>
     </div>
   </nav>
@@ -785,15 +803,57 @@ async function loadAvailable() {
   } catch { setTimeout(loadAvailable, 5000); }
 }
 
+/* updates: the service looks at GitHub now and then; the page only shows
+   what it found and passes on the tap to install */
+let UPD = {}, RUNNING = null;
+function renderUpdate(u) {
+  if (!u) return;                                  // an older service
+  UPD = u;
+  $("#verNow").textContent = u.current;
+  gear.classList.toggle("update", u.available && !u.state);
+  const btn = $("#updBtn"), hint = $("#updHint");
+  btn.hidden = false;
+  if (u.state) {
+    btn.disabled = true; btn.textContent = "Updating…";
+    hint.className = "hint ask";
+    hint.textContent = u.state === "downloading" ? `Downloading ${u.latest}…`
+      : u.state === "installing" ? `Installing ${u.latest}…` : "Restarting…";
+  } else if (u.available) {
+    btn.disabled = false; btn.textContent = `Update to ${u.latest}`;
+    hint.className = "hint ask";
+    hint.textContent = `${u.latest} is out. ` + (u.notes ? u.notes.split("\n")[0].replace(/^[#*\s-]+/, "") : "");
+  } else {
+    btn.disabled = false; btn.textContent = "Check for updates";
+    hint.className = "hint" + (u.error ? " bad" : "");
+    hint.textContent = u.error ? u.error : u.checked ? "Up to date." : "";
+  }
+}
+$("#updBtn").addEventListener("click", async () => {
+  const btn = $("#updBtn");
+  btn.disabled = true;
+  try {
+    if (UPD.available) await fetch("api/update", { method: "POST" });
+    else { btn.textContent = "Checking…"; renderUpdate(await (await fetch("api/update/check", { method: "POST" })).json()); }
+  } catch {}
+  ping();
+});
+
 let artWasFetching = false;
 async function ping() {
   const lamp = $("#lamp"), txt = $("#statusText");
   try {
     const s = await (await fetch("api/status", { cache: "no-store", signal: AbortSignal.timeout(3000) })).json();
+    // the new version is up: this page and the app it came from are stale
+    if (RUNNING && s.version !== RUNNING) return location.reload();
+    RUNNING = s.version;
+    renderUpdate(s.update);
+    const u = s.update || {};
     lamp.className = "lamp on";
-    $("#status").className = "conn" + (s.scanning || s.art.fetching ? " busy" : "");
+    $("#status").className = "conn" + (s.scanning || s.art.fetching || u.state || u.available ? " busy" : "");
     txt.textContent = s.scanning ? "Scanning games…"
       : s.art.fetching ? `Flyers ${s.art.done}/${s.art.total}`
+      : u.state ? "Updating…"
+      : u.available ? `Update ${u.latest} available`
       : "Connected";
     // flyers that arrived since the page loaded
     if (artWasFetching && !s.art.fetching) renderDeck();
@@ -811,6 +871,8 @@ async function ping() {
       loadStats().then(() => { if (sortPref() === "played") renderDeck(); });
     }
   } catch {
+    // the service is away for a few seconds while it restarts into a new version
+    if (UPD.state) { lamp.className = "lamp"; $("#status").className = "conn busy"; txt.textContent = "Restarting…"; return; }
     lamp.className = "lamp"; $("#status").className = "conn off"; txt.textContent = "Offline";
   }
 }

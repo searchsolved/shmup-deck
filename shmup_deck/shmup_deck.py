@@ -18,14 +18,18 @@ Python 3.9 standard library only, which is what the MiSTer image ships.
 """
 
 import argparse
+import io
 import json
 import os
 import re
+import shutil
 import socket
 import struct
+import sys
 import threading
 import time
 import urllib.request
+import zipfile
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from xml.sax.saxutils import quoteattr
 
@@ -45,8 +49,14 @@ CORENAME = os.environ.get("SHMUP_CORENAME", "/tmp/CORENAME")
 PLAYS = os.environ.get("SHMUP_PLAYS", os.path.join(HERE, "plays.json"))
 FAVS = os.environ.get("SHMUP_FAVS", os.path.join(HERE, "favourites.json"))
 
-VERSION = "1.4.4"
+VERSION = "1.5.0"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
+PROGRAM = os.path.abspath(__file__)
+REPO = os.environ.get("SHMUP_REPO", "searchsolved/shmup-deck")
+GITHUB_API = os.environ.get("SHMUP_API", "https://api.github.com")
+UPDATE_EVERY = int(os.environ.get("SHMUP_UPDATE_EVERY", 6 * 3600))
+# the script in the Scripts menu, which is part of every release too
+INSTALLER = os.environ.get("SHMUP_INSTALLER", os.path.normpath(os.path.join(HERE, "..", "..", "shmup_deck.sh")))
 ART_DELAY = 2.0          # seconds between flyer downloads; be kind to the hosts
 SETNAME = re.compile(rb"<setname>\s*(.*?)\s*</setname>", re.S)
 HEAD_BYTES = 4096
@@ -496,6 +506,165 @@ class Favourites:
 FAVOURITES = Favourites()
 
 
+def fetch(url, timeout=30):
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read()
+
+
+def version_key(tag):
+    """'v1.4.10' -> (1, 4, 10). Anything else sorts below every real version."""
+    m = re.fullmatch(r"v?(\d+(?:\.\d+)*)", (tag or "").strip())
+    return tuple(int(x) for x in m.group(1).split(".")) if m else ()
+
+
+class Updater:
+    """Looks for a newer release on GitHub and installs it when asked.
+
+    The check runs a minute and a half after start and every six hours after
+    that, so a MiSTer left on all evening asks GitHub once or twice, well
+    inside the limit for anonymous requests. Installing does what
+    shmup_deck.sh does: replace the program and the app, keep the art, the
+    index, favourites and play history, refresh the script in the Scripts
+    menu, then start the new program in place of this one.
+    """
+
+    def __init__(self):
+        self.latest = None      # tag, version, zip, sh, notes, published
+        self.checked = 0
+        self.error = ""
+        self.state = ""         # "", downloading, installing, restarting
+        self.lock = threading.Lock()
+
+    @property
+    def available(self):
+        return bool(self.latest) and version_key(self.latest["tag"]) > version_key(VERSION)
+
+    def snapshot(self):
+        return {"current": VERSION, "available": self.available,
+                "latest": self.latest["version"] if self.latest else None,
+                "notes": self.latest["notes"] if self.latest else "",
+                "checked": int(self.checked), "state": self.state, "error": self.error}
+
+    def check(self):
+        # a tap on "check" straight after the last look gets the same answer
+        if time.time() - self.checked < 30:
+            return self.available
+        try:
+            rel = json.loads(fetch("%s/repos/%s/releases/latest" % (GITHUB_API, REPO)))
+            assets = {a["name"]: a["browser_download_url"] for a in rel.get("assets", [])}
+            if "shmup_deck.zip" not in assets:
+                raise ValueError("release %s has no shmup_deck.zip" % rel.get("tag_name"))
+            tag = rel["tag_name"]
+            self.latest = {"tag": tag, "version": tag.lstrip("v"), "zip": assets["shmup_deck.zip"],
+                           "sh": assets.get("shmup_deck.sh"), "published": rel.get("published_at") or "",
+                           "notes": (rel.get("body") or "").strip()[:1500]}
+            self.error = ""
+        except Exception as e:
+            self.error = "could not check GitHub: %s" % e
+        self.checked = time.time()
+        return self.available
+
+    def watch(self):
+        time.sleep(90)
+        while True:
+            self.check()
+            time.sleep(UPDATE_EVERY)
+
+    def start_install(self):
+        """Begins the install on its own thread; progress is read from /api/status."""
+        if not self.available or not self.lock.acquire(blocking=False):
+            return False
+        threading.Thread(target=self._install, daemon=True).start()
+        return True
+
+    def _install(self):
+        rel = self.latest
+        try:
+            self.error = ""
+            self.state = "downloading"
+            z = zipfile.ZipFile(io.BytesIO(fetch(rel["zip"], timeout=180)))
+            self.state = "installing"
+            files = {}
+            for m in z.infolist():
+                name = m.filename.split("/", 1)[-1] if m.filename.startswith("shmup_deck/") else m.filename
+                if not name or name.endswith("/") or ".." in name or name.startswith("/"):
+                    continue
+                files[name] = z.read(m)
+            program = files.pop("shmup_deck.py", None)
+            if not program or not any(n.startswith("app/") for n in files):
+                raise ValueError("the download is not a Shmup Deck release")
+            # a release that does not even parse must not take the service down
+            compile(program, "shmup_deck.py", "exec")
+            # the app is swapped whole so a half-written one is never served
+            new_app = APP_DIR + ".new"
+            old_app = APP_DIR + ".old"
+            shutil.rmtree(new_app, ignore_errors=True)
+            shutil.rmtree(old_app, ignore_errors=True)
+            for name, data in files.items():
+                dest = os.path.join(new_app, name[4:]) if name.startswith("app/") else os.path.join(HERE, name)
+                os.makedirs(os.path.dirname(dest), exist_ok=True)
+                with open(dest, "wb") as f:
+                    f.write(data)
+            if os.path.isdir(APP_DIR):
+                os.rename(APP_DIR, old_app)
+            os.rename(new_app, APP_DIR)
+            shutil.rmtree(old_app, ignore_errors=True)
+            with open(PROGRAM + ".new", "wb") as f:
+                f.write(program)
+            os.replace(PROGRAM + ".new", PROGRAM)
+            # the installer reads this to know what is on the card
+            with open(os.path.join(HERE, "VERSION"), "w") as f:
+                f.write(rel["tag"])
+            self._refresh_installer(rel.get("sh"))
+            self.state = "restarting"
+            # a scan writing its index should not be cut off mid-file
+            for _ in range(120):
+                if not INDEX.scanning:
+                    break
+                time.sleep(1)
+            restart()
+            # only reached when exec failed: the new files are in place and
+            # start on the next boot, but this process is still the old one
+            self.error = "installed %s, but the service could not restart; it will start on the next boot" % rel["version"]
+        except Exception as e:
+            self.error = "update failed: %s" % e
+        finally:
+            self.state = ""
+            self.lock.release()
+
+    def _refresh_installer(self, url):
+        if not url or not os.path.isfile(INSTALLER):
+            return
+        try:
+            latest = fetch(url)
+            with open(INSTALLER, "rb") as f:
+                mine = f.read()
+            if latest != mine and latest.startswith(b"#!/bin/bash") and len(latest) > 1000:
+                with open(INSTALLER + ".new", "wb") as f:
+                    f.write(latest)
+                os.replace(INSTALLER + ".new", INSTALLER)
+                os.chmod(INSTALLER, 0o755)
+        except Exception:
+            pass                # the script updates itself the next time it runs
+
+
+def restart():
+    """Start the program on disk in place of this process. The pid, the pid
+    file and the boot entry all stay valid; the listening sockets close on
+    exec, so the new copy can bind the same ports. argv[0] stays "python3"
+    because that is what shmup_deck.sh and other_instances() look for."""
+    sys.stdout.flush()
+    sys.stderr.flush()
+    try:
+        os.execvp("python3", ["python3"] + sys.argv)
+    except OSError:
+        pass
+
+
+UPDATER = Updater()
+
+
 def resolve_game(game):
     """Where a deck game lives on this MiSTer, or None if it isn't installed."""
     sets = game.get("setnames", [game["id"]])
@@ -687,7 +856,8 @@ class Handler(SimpleHTTPRequestHandler):
                 **INDEX.stats,
                 "art": {"fetching": ART.fetching, "done": ART.done, "total": ART.total,
                         "failed": ART.failed},
-                "now_playing": now_playing()})
+                "now_playing": now_playing(),
+                "update": UPDATER.snapshot()})
         if self.path == "/api/available":
             return self.send_json({g["id"]: resolve_game(g) for g in load_deck()})
         if self.path == "/api/checklist":
@@ -717,6 +887,15 @@ class Handler(SimpleHTTPRequestHandler):
                 if not any(g["id"] == gid for g in load_deck()):
                     return self.send_json({"error": "unknown game"}, 404)
                 return self.send_json({"ids": FAVOURITES.set(gid, bool(body.get("on")))})
+            if self.path == "/api/update/check":
+                UPDATER.check()
+                return self.send_json(UPDATER.snapshot())
+            if self.path == "/api/update":
+                if not UPDATER.available:
+                    return self.send_json({"error": "nothing newer than %s" % VERSION}, 409)
+                if not UPDATER.start_install():
+                    return self.send_json({"error": "already updating"}, 409)
+                return self.send_json({"ok": True, "installing": UPDATER.latest["version"]})
             if self.path == "/api/rescan":
                 # {"full": true} re-reads every MRA instead of only changed ones
                 full = bool(self.read_json().get("full"))
@@ -897,6 +1076,7 @@ def main():
     threading.Thread(target=NEO.scan, daemon=True).start()
     threading.Thread(target=ART.fetch_missing, daemon=True).start()
     threading.Thread(target=PLAYED.watch, daemon=True).start()
+    threading.Thread(target=UPDATER.watch, daemon=True).start()
     try:
         threading.Thread(target=mdns_responder, args=(args.name,), daemon=True).start()
     except OSError:

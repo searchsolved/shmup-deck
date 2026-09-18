@@ -43,8 +43,11 @@ The first start scans your arcade folders and downloads the flyer art, which
 takes a few minutes. Games appear as soon as the scan finishes and flyers fill
 in as they arrive.
 
-Run `shmup_deck` from the Scripts menu again at any time to update. The
-script updates itself too, so fixes to the installer reach you as well.
+Shmup Deck checks GitHub for a newer release now and then. When one is out,
+a dot appears on the settings cog and the status line says so; open the
+settings sheet and tap **Update** to install it and restart. Your flyer art,
+play history and favourites stay as they are. Running `shmup_deck` from the
+Scripts menu does the same thing, and the script updates itself too.
 
 To remove it from startup, run `shmup_deck.sh uninstall` over SSH. Files live
 in `/media/fat/Scripts/.config/shmup_deck/`.
