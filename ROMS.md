@@ -27,7 +27,7 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 
 | Core | Games | Repository | Notes |
 | --- | --- | --- | --- |
-| CV1000 | 14 | [ika-musume/ikacore_CV1k](https://github.com/ika-musume/ikacore_CV1k) | The repository has no core build or MRAs; builds come from the developer |
+| CV1000 | 14 | [ika-musume/ikacore_CV1k](https://github.com/ika-musume/ikacore_CV1k) | The repository has no core build or MRAs; builds come from the developer. MRAs for all games, including DoDonPachi SaiDaiOuJou and Akai Katana, are in [funkycochise/CV1K_Res](https://github.com/funkycochise/CV1K_Res) |
 | MegaSystem 32 | 4 | [ppriest/Arcade-JalecoMS32_MiSTer](https://github.com/ppriest/Arcade-JalecoMS32_MiSTer) |  |
 | NMK16 | 19 | [kuzearcade/Arcade-NMK16_MiSTer](https://github.com/kuzearcade/Arcade-NMK16_MiSTer) |  |
 | Seta | 8 | [ppriest/Arcade-Seta_MiSTer](https://github.com/ppriest/Arcade-Seta_MiSTer) |  |
@@ -101,8 +101,8 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Mushihime-Sama Futari Black Label | 2009 | [GitHub](https://github.com/ika-musume/ikacore_CV1k) | `futaribl.zip` | same |  |
 | Pink Sweets | 2006 | [GitHub](https://github.com/ika-musume/ikacore_CV1k) | `pinkswts.zip` | same |  |
 
-\* DoDonPachi SaiDaiOuJou: Removed from MAME after 0.238; use a 0.238 or older set.
-\* Akai Katana: Removed from MAME after 0.238; use a 0.238 or older set.
+\* DoDonPachi SaiDaiOuJou: Removed from MAME after 0.238; use a 0.238 or older set. The MRA is not in the core author's releases; get it from funkycochise/CV1K_Res.
+\* Akai Katana: Removed from MAME after 0.238; use a 0.238 or older set. The MRA is not in the core author's releases; get it from funkycochise/CV1K_Res.
 
 ### Data East
 

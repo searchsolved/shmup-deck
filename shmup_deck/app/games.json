@@ -167,7 +167,7 @@
   "year": 1999,
   "core": "CPS2",
   "system": "Capcom CPS2",
-  "orientation": "tate",
+  "orientation": "yoko",
   "setnames": [
    "gigawing",
    "gigawinga",
@@ -263,7 +263,7 @@
   "year": 2001,
   "core": "CPS2",
   "system": "Capcom CPS2",
-  "orientation": "tate",
+  "orientation": "yoko",
   "setnames": [
    "progear",
    "progear_1",
@@ -1550,7 +1550,7 @@
    "zip": "ddpsdoj",
    "merged": "ddpsdoj",
    "shared": [],
-   "note": "Removed from MAME after 0.238; use a 0.238 or older set"
+   "note": "Removed from MAME after 0.238; use a 0.238 or older set. The MRA is not in the core author's releases; get it from funkycochise/CV1K_Res"
   }
  },
  {
@@ -2340,7 +2340,7 @@
    "zip": "akatana",
    "merged": "akatana",
    "shared": [],
-   "note": "Removed from MAME after 0.238; use a 0.238 or older set"
+   "note": "Removed from MAME after 0.238; use a 0.238 or older set. The MRA is not in the core author's releases; get it from funkycochise/CV1K_Res"
   }
  },
  {

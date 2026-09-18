@@ -71,7 +71,7 @@
   "ikacore_CV1k": {
    "source": "github",
    "url": "https://github.com/ika-musume/ikacore_CV1k",
-   "note": "The repository has no core build or MRAs; builds come from the developer"
+   "note": "The repository has no core build or MRAs; builds come from the developer. MRAs for all games, including DoDonPachi SaiDaiOuJou and Akai Katana, are in [funkycochise/CV1K_Res](https://github.com/funkycochise/CV1K_Res)"
   },
   "IremM107": {
    "source": "official"
