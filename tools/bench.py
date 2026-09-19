@@ -39,8 +39,8 @@ LOG = "/tmp/shmup_bench.log"
 SAMPLER = r'''
 pid=""
 for p in /proc/[0-9]*; do
-  case "$(tr "\0" " " < $p/cmdline 2>/dev/null)" in python3*shmup_deck.py*) pid=${p#/proc/};; esac
-done
+  case "$(tr "\0" " " < $p/cmdline)" in python3*shmup_deck.py*) pid=${p#/proc/};; esac
+done 2>/dev/null
 [ -n "$pid" ] || { echo "no service"; exit 1; }
 t0=$(awk "{print \$14+\$15}" /proc/$pid/stat); s0=$(date +%s)
 echo "pid $pid ticks0 $t0 start $s0 threads $(awk '/Threads/{print $2}' /proc/$pid/status)"
@@ -103,7 +103,7 @@ def sample(host, minutes, label):
         if "done" in out.splitlines()[-1:]:
             break
     print()
-    head = last.splitlines()[0].split()
+    head = next(l for l in last.splitlines() if l.startswith("pid ")).split()
     samples = [dict(kv.split("=") for kv in line.split()[1:]) for line in last.splitlines() if line.startswith("sample")]
     end = samples[-1]
     elapsed, ticks = int(end["elapsed"]), int(end["ticks"])
