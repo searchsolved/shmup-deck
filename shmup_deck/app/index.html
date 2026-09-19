@@ -324,7 +324,7 @@ body.kiosk .now .what{font-size:17px}
 body.kiosk .exitspot{display:block}
 .exitspot.holding{background:radial-gradient(circle at 0 0, rgba(216,181,74,.35), transparent 70%)}
 /* attract: flyers drift by while nobody is touching the screen */
-.attract{position:fixed;top:0;left:0;right:0;height:100vh;height:100dvh;z-index:20;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px}
+.attract{position:fixed;top:0;left:0;right:0;height:100vh;height:100dvh;z-index:20;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px}
 .attract[hidden]{display:none}
 .attract .pic{width:100%;height:100%;position:absolute;inset:0;background:center/contain no-repeat;opacity:0;transition:opacity 1.2s}
 .attract .pic.on{opacity:1}
@@ -339,7 +339,7 @@ body.kiosk .exitspot{display:block}
 .attract .caption .meta{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
 /* phones and kiosk: a game starting takes the whole screen until it is tapped */
 /* iOS: bottom:0 on a fixed box hides under the browser toolbar; size it to the visible viewport instead */
-.nowfull{position:fixed;top:0;left:0;right:0;height:100vh;height:100dvh;z-index:15;background:#000;cursor:pointer}
+.nowfull{position:fixed;top:0;left:0;right:0;height:100vh;height:100dvh;z-index:15;background:#000;cursor:pointer;overflow:hidden}
 .nowfull[hidden]{display:none}
 /* the flyer is taller-than-wide but not phone-shaped: the bands either side
    are filled with a blurred copy of itself rather than left black */
@@ -366,6 +366,7 @@ body.kiosk .exitspot{display:block}
 
 /* phones: title row, search row, then the covers; the rest goes in sheets and a bottom bar */
 @media (max-width: 560px){
+  html,body{overflow-x:hidden}
   body{padding:max(14px, env(safe-area-inset-top)) 14px calc(76px + env(safe-area-inset-bottom))}
   header{gap:10px;margin-bottom:14px;padding-bottom:0;border-bottom:0}
   .brand{display:flex;align-items:center;gap:12px}
