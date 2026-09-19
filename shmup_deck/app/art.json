@@ -1,6 +1,6 @@
 {
  "_mirrors": [
-  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/1f453890ec60e0f9666a625367688779ad5575ec/"
+  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/71fe959609c4c3c321f321cc7b0ab6a895f653f9/"
  ],
  "forgottn": {
   "url": "https://images.launchbox-app.com/da018d5c-cdc4-4d1e-939b-364e5bfe6889.jpg",
@@ -16,16 +16,16 @@
   ]
  },
  "unsquad": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/U.N.%20Squadron%20%28USA%29.png",
+  "url": "https://images.launchbox-app.com/8d641c6b-f634-46bc-80a3-0844066553c6.jpg",
   "size": [
-   512,
-   685
+   1280,
+   1808
   ],
   "crop": [
    0,
    0,
-   512,
-   685
+   1280,
+   1808
   ]
  },
  "cawing": {
@@ -68,16 +68,16 @@
   ]
  },
  "ecofghtr": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Eco%20Fighters%20%28World%20931203%29.png",
+  "url": "https://images.launchbox-app.com/f2e4437f-6bdc-47dd-b38b-e17b6f535fed.jpg",
   "size": [
-   512,
-   741
+   872,
+   1231
   ],
   "crop": [
-   0,
-   0,
-   512,
-   724
+   61,
+   24,
+   760,
+   1178
   ]
  },
  "19xx": {
@@ -172,16 +172,16 @@
   ]
  },
  "1942": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/1942%20%28Revision%20B%29.png",
+  "url": "https://images.launchbox-app.com/9f234335-da46-494e-a2bd-92bdba3c8f15.jpg",
   "size": [
-   512,
-   676
+   850,
+   1195
   ],
   "crop": [
-   0,
-   0,
-   512,
-   676
+   17,
+   20,
+   814,
+   1155
   ]
  },
  "exedexes": {
@@ -198,16 +198,16 @@
   ]
  },
  "sectionz": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Section%20Z%20%28set%201%29.png",
+  "url": "https://images.launchbox-app.com/ae2826cc-2e22-47ed-bd44-cf1917afc399.jpg",
   "size": [
-   512,
-   674
+   850,
+   1132
   ],
   "crop": [
    0,
    0,
-   512,
-   674
+   850,
+   1132
   ]
  },
  "sidearms": {
@@ -263,16 +263,16 @@
   ]
  },
  "ddonpach": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/DoDonPachi%20%28International%29.png",
+  "url": "https://images.launchbox-app.com/d7d28f43-d83a-44d5-9e87-0a16820e78fb.jpg",
   "size": [
-   512,
-   728
+   2492,
+   3508
   ],
   "crop": [
    0,
    0,
-   512,
-   728
+   2492,
+   3508
   ]
  },
  "dfeveron": {
@@ -303,16 +303,16 @@
   "referer": "https://www.arcadeartwork.org/picture.php?/85606"
  },
  "guwange": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Guwange%20%28Japan%2C%20Master%20Ver.%2099_06_24%29.png",
+  "url": "https://images.launchbox-app.com/1106b7df-4ccf-4562-bd50-431f592dc241.jpg",
   "size": [
-   512,
-   733
+   2450,
+   3510
   ],
   "crop": [
    0,
    0,
-   512,
-   733
+   2450,
+   3510
   ]
  },
  "gyruss": {
@@ -563,16 +563,16 @@
   ]
  },
  "gunbird2": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Gunbird%202%20%28set%201%29.png",
+  "url": "https://images.launchbox-app.com/575a9e5f-926b-423e-889f-87c70334317c.jpg",
   "size": [
-   512,
-   753
+   1245,
+   1754
   ],
   "crop": [
    0,
    0,
-   512,
-   753
+   1241,
+   1752
   ]
  },
  "spbomber": {
@@ -641,30 +641,29 @@
   ]
  },
  "bbakraid": {
-  "url": "https://www.arcadeartwork.org/action.php?id=147440&part=e&download",
+  "url": "https://images.launchbox-app.com/r2_566a920e-22f2-4faf-9779-f534a3827e67.jpg",
   "size": [
-   450,
-   680
+   816,
+   1280
   ],
   "crop": [
-   0,
-   0,
-   450,
-   680
-  ],
-  "referer": "https://www.arcadeartwork.org/picture.php?/147440"
+   1,
+   1,
+   815,
+   1279
+  ]
  },
  "fantzone": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Fantasy%20Zone%20%28Japan%20New%20Ver.%29.png",
+  "url": "https://images.launchbox-app.com/e199e4f1-5026-45d4-8966-87e48bc4b461.jpg",
   "size": [
-   512,
-   720
+   1280,
+   1802
   ],
   "crop": [
    0,
    0,
-   512,
-   720
+   1280,
+   1802
   ]
  },
  "fantzn2": {
@@ -838,16 +837,16 @@
   ]
  },
  "mushisam": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Mushihime-Sama%20%282004_10_12.MASTER%20VER.%29.png",
+  "url": "https://images.launchbox-app.com/3b75b2ff-4d6f-437b-bd66-483ff7ce544b.jpg",
   "size": [
-   512,
-   725
+   2480,
+   3508
   ],
   "crop": [
-   11,
-   10,
-   492,
-   695
+   52,
+   52,
+   2382,
+   3358
   ]
  },
  "ibara": {
@@ -903,29 +902,29 @@
   ]
  },
  "futari15": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Mushihime-Sama%20Futari%20Ver%201.5%20%282006_12_8.MASTER%20VER.%201.54.%29.png",
+  "url": "https://images.launchbox-app.com/33982e87-653b-4bf8-8070-faf0c23de0e5.jpg",
   "size": [
-   512,
-   769
+   1280,
+   1796
   ],
   "crop": [
    0,
    0,
-   512,
-   769
+   1280,
+   1796
   ]
  },
  "deathsml": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Deathsmiles%20%282007_10_09%20MASTER%20VER%29.png",
+  "url": "https://images.launchbox-app.com/e375fbff-d1a3-420c-b94e-42b57bd0e43a.jpg",
   "size": [
-   512,
-   721
+   1280,
+   1801
   ],
   "crop": [
-   12,
-   7,
-   489,
-   699
+   0,
+   0,
+   1280,
+   1788
   ]
  },
  "dsmbl": {
@@ -942,29 +941,29 @@
   ]
  },
  "ddpdfk": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/DoDonPachi%20Dai-Fukkatsu%20Ver%201.5%20%282008_06_23%20MASTER%20VER%201.5%29.png",
+  "url": "https://images.launchbox-app.com/ff7cfa68-c98f-4d6f-bd54-120fa9e584dd.jpg",
   "size": [
-   512,
-   759
+   850,
+   1202
   ],
   "crop": [
-   0,
-   0,
-   512,
-   759
+   20,
+   16,
+   808,
+   1167
   ]
  },
  "futaribl": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Mushihime-Sama%20Futari%20Black%20Label%20%282009_11_27%20INTERNATIONAL%20BL%29.png",
+  "url": "https://images.launchbox-app.com/f2602643-bc21-47ee-91ee-5d50b88e1fca.jpg",
   "size": [
-   512,
-   765
+   1118,
+   1598
   ],
   "crop": [
    0,
    0,
-   512,
-   765
+   1118,
+   1598
   ]
  },
  "dfkbl": {
@@ -1020,16 +1019,16 @@
   ]
  },
  "truxton": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Truxton%20_%20Tatsujin.png",
+  "url": "https://images.launchbox-app.com/e506785b-a012-41ed-8719-f4838da31242.jpg",
   "size": [
-   512,
-   727
+   1189,
+   1675
   ],
   "crop": [
    0,
    0,
-   512,
-   727
+   1189,
+   1675
   ]
  },
  "truxton2": {
@@ -1137,29 +1136,29 @@
   ]
  },
  "gradius": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Gradius.png",
+  "url": "https://images.launchbox-app.com/493d40af-a12c-49e1-b5ec-c736b566b9a6.jpg",
   "size": [
-   512,
-   724
+   1280,
+   1810
   ],
   "crop": [
-   22,
+   55,
    0,
-   469,
-   712
+   1173,
+   1780
   ]
  },
  "salamand": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Salamander%20%28version%20D%29.png",
+  "url": "https://images.launchbox-app.com/c0ab8a8e-72cb-4f69-a9b9-37f57477c7c4.jpg",
   "size": [
-   512,
-   726
+   1280,
+   1803
   ],
   "crop": [
    0,
    0,
-   512,
-   726
+   1280,
+   1775
   ]
  },
  "thunderx": {
@@ -1345,29 +1344,29 @@
   ]
  },
  "viewpoin": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Viewpoint.png",
+  "url": "https://images.launchbox-app.com/d62c56b1-93b3-468a-8fba-c14840173526.jpg",
   "size": [
-   512,
-   726
+   846,
+   1200
   ],
   "crop": [
    0,
    0,
-   512,
-   726
+   846,
+   1200
   ]
  },
  "zedblade": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Zed%20Blade%20_%20Operation%20Ragnarok.png",
+  "url": "https://images.launchbox-app.com/ce82477c-c5a3-4dda-a530-95b2d274537c.jpg",
   "size": [
-   512,
-   723
+   850,
+   1200
   ],
   "crop": [
    0,
    0,
-   512,
-   710
+   850,
+   1178
   ]
  },
  "gpilots": {
@@ -1755,16 +1754,16 @@
   ]
  },
  "ssmissin": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/S.S.%20Mission.png",
+  "url": "https://images.launchbox-app.com/b5743721-6345-44bd-b7ac-4cc0682fd9ba.jpg",
   "size": [
-   512,
-   718
+   850,
+   1114
   ],
   "crop": [
    0,
    0,
-   512,
-   718
+   850,
+   1114
   ]
  },
  "gunnail": {
@@ -2054,42 +2053,42 @@
   ]
  },
  "cottonbm": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Cotton%20Boomerang%20%28JUET%20980709%20V1.000%29.png",
+  "url": "https://images.launchbox-app.com/579cc910-6003-41f7-a04c-8e852a240a72.jpg",
   "size": [
-   512,
-   731
+   729,
+   1041
   ],
   "crop": [
    0,
    0,
-   512,
-   725
+   729,
+   1032
   ]
  },
  "rsgun": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Radiant%20Silvergun%20%28JUET%20980523%20V1.000%29.png",
+  "url": "https://images.launchbox-app.com/rsgun.png",
   "size": [
-   512,
-   723
+   687,
+   970
   ],
   "crop": [
    0,
    0,
-   512,
-   723
+   687,
+   970
   ]
  },
  "shienryu": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Shienryu%20%28JUET%20961226%20V1.000%29.png",
+  "url": "https://images.launchbox-app.com/c48c4d10-aa60-4c2b-9000-49b8ded515cf.jpg",
   "size": [
-   512,
-   734
+   707,
+   1000
   ],
   "crop": [
    0,
    0,
-   512,
-   734
+   707,
+   1000
   ]
  },
  "sokyugrt": {
@@ -2353,42 +2352,42 @@
   "upgrade": "Landscape flyer"
  },
  "raiden": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Raiden%20%28set%201%29.png",
+  "url": "https://images.launchbox-app.com/ecf7ad78-96f4-4333-a3e5-09ae268286c3.jpg",
   "size": [
-   512,
-   720
+   850,
+   1204
   ],
   "crop": [
    0,
    0,
-   512,
-   720
+   850,
+   1204
   ]
  },
  "raiden2": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Raiden%20II%20%28US%2C%20set%201%29.png",
+  "url": "https://images.launchbox-app.com/eecadf8f-08b5-47f6-a7b9-3528f80830ee.jpg",
   "size": [
-   512,
-   670
+   1280,
+   1648
   ],
   "crop": [
    0,
    0,
-   512,
-   670
+   1280,
+   1648
   ]
  },
  "raidendx": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Raiden%20DX%20%28UK%29.png",
+  "url": "https://images.launchbox-app.com/3c577a4a-ca2b-4ead-ac9a-35ec92007402.jpg",
   "size": [
-   512,
-   666
+   1280,
+   1658
   ],
   "crop": [
    0,
    0,
-   512,
-   666
+   1280,
+   1658
   ]
  },
  "viprp1": {
@@ -2405,42 +2404,42 @@
   ]
  },
  "rdft": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Raiden%20Fighters%20%28Germany%29.png",
+  "url": "https://images.launchbox-app.com/b7b580b1-4e39-4940-b4ce-74aec1d64e71.jpg",
   "size": [
-   512,
-   719
+   850,
+   1194
   ],
   "crop": [
    0,
    0,
-   512,
-   719
+   850,
+   1194
   ]
  },
  "rdft2": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Raiden%20Fighters%202%20-%20Operation%20Hell%20Dive%20%28US%29.png",
+  "url": "https://images.launchbox-app.com/09987b9d-8feb-4ec5-be73-5dc6fe488723.jpg",
   "size": [
-   512,
-   672
+   1280,
+   1658
   ],
   "crop": [
    0,
    0,
-   512,
-   672
+   1280,
+   1658
   ]
  },
  "rfjet": {
-  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/98a416763471b2325914712aec42b9fe7cf5d37b/Named_Boxarts/Raiden%20Fighters%20Jet%20%28Germany%29.png",
+  "url": "https://images.launchbox-app.com/4281fdfc-8979-4eff-b31a-648a95bc551e.png",
   "size": [
-   512,
-   727
+   850,
+   1194
   ],
   "crop": [
    0,
    0,
-   512,
-   727
+   850,
+   1194
   ]
  }
 }
