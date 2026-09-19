@@ -78,7 +78,9 @@ def main():
         if c.get("url"):
             manual[(g["core"], c["url"], c.get("note", ""))].append(g["title"])
     for (core, url, note), titles in sorted(manual.items()):
-        w(f"| {core} | {len(titles)} | [{url.split('github.com/')[1]}]({url}) | {note} |")
+        # a core can live outside GitHub, on the author's Patreon say
+        label = url.split("github.com/")[1] if "github.com/" in url else url.split("//")[-1].split("/posts/")[0]
+        w(f"| {core} | {len(titles)} | [{label}]({url}) | {note} |")
     w("")
     w("## Arcade games")
     w("")

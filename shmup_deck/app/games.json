@@ -3766,5 +3766,161 @@
    "merged": "rfjet",
    "shared": []
   }
+ },
+ {
+  "id": "cyvern",
+  "title": "Cyvern: The Dragon Weapons",
+  "dev": "Kaneko",
+  "year": 1998,
+  "core": "SKNS",
+  "system": "Super Kaneko Nova System",
+  "orientation": "tate",
+  "setnames": [
+   "cyvern",
+   "cyvernj"
+  ],
+  "rbf": "SKNS",
+  "roms": {
+   "zip": "cyvern",
+   "merged": "cyvern",
+   "shared": [
+    "skns"
+   ]
+  }
+ },
+ {
+  "id": "sengekis",
+  "title": "Sengeki Striker",
+  "dev": "Kaneko",
+  "year": 1997,
+  "core": "SKNS",
+  "system": "Super Kaneko Nova System",
+  "orientation": "tate",
+  "setnames": [
+   "sengekis",
+   "sengekisj"
+  ],
+  "rbf": "SKNS",
+  "roms": {
+   "zip": "sengekis",
+   "merged": "sengekis",
+   "shared": [
+    "skns"
+   ]
+  }
+ },
+ {
+  "id": "twineagl",
+  "title": "Twin Eagle",
+  "dev": "Seta",
+  "year": 1988,
+  "core": "SetaDowntown",
+  "system": "Seta Downtown",
+  "orientation": "tate",
+  "setnames": [
+   "twineagl"
+  ],
+  "rbf": "SetaDowntown",
+  "roms": {
+   "zip": "twineagl",
+   "merged": "twineagl",
+   "shared": []
+  }
+ },
+ {
+  "id": "arbalest",
+  "title": "Arbalester",
+  "dev": "Seta",
+  "year": 1989,
+  "core": "SetaDowntown",
+  "system": "Seta Downtown",
+  "orientation": "tate",
+  "setnames": [
+   "arbalest"
+  ],
+  "rbf": "SetaDowntown",
+  "roms": {
+   "zip": "arbalest",
+   "merged": "arbalest",
+   "shared": []
+  }
+ },
+ {
+  "id": "metafox",
+  "title": "Meta Fox",
+  "dev": "Seta",
+  "year": 1989,
+  "core": "SetaDowntown",
+  "system": "Seta Downtown",
+  "orientation": "tate",
+  "setnames": [
+   "metafox"
+  ],
+  "rbf": "SetaDowntown",
+  "roms": {
+   "zip": "metafox",
+   "merged": "metafox",
+   "shared": []
+  }
+ },
+ {
+  "id": "twinhawk",
+  "title": "Twin Hawk",
+  "dev": "Toaplan",
+  "year": 1989,
+  "core": "TwinHawk",
+  "system": "Taito X System",
+  "orientation": "tate",
+  "setnames": [
+   "twinhawk",
+   "twinhawku",
+   "daisenpu"
+  ],
+  "rbf": "TwinHawk",
+  "roms": {
+   "zip": "twinhawk",
+   "merged": "twinhawk",
+   "shared": []
+  }
+ },
+ {
+  "id": "gigandes",
+  "title": "Gigandes",
+  "dev": "East Technology",
+  "year": 1989,
+  "core": "Gigandes",
+  "system": "Taito X System",
+  "orientation": "yoko",
+  "setnames": [
+   "gigandes",
+   "gigandesa"
+  ],
+  "rbf": "Gigandes",
+  "roms": {
+   "zip": "gigandes",
+   "merged": "gigandes",
+   "shared": []
+  }
+ },
+ {
+  "id": "earthjkr",
+  "title": "U.N. Defense Force: Earth Joker",
+  "dev": "Visco",
+  "year": 1993,
+  "core": "EarthJoker",
+  "system": "Taito Asuka",
+  "orientation": "tate",
+  "setnames": [
+   "earthjkr",
+   "earthjkra",
+   "earthjkrb",
+   "earthjkrp"
+  ],
+  "rbf": "EarthJoker",
+  "roms": {
+   "zip": "earthjkr",
+   "merged": "earthjkr",
+   "shared": []
+  }
  }
 ]

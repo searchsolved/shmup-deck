@@ -1,6 +1,6 @@
 {
  "_mirrors": [
-  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/71fe959609c4c3c321f321cc7b0ab6a895f653f9/"
+  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/e1fa60830cadabfd82aad9b502b46c4c20b2556d/"
  ],
  "forgottn": {
   "url": "https://images.launchbox-app.com/da018d5c-cdc4-4d1e-939b-364e5bfe6889.jpg",
@@ -2440,6 +2440,110 @@
    0,
    850,
    1194
+  ]
+ },
+ "cyvern": {
+  "url": "https://images.launchbox-app.com/cyvern.png",
+  "size": [
+   995,
+   1385
+  ],
+  "crop": [
+   0,
+   0,
+   995,
+   1385
+  ]
+ },
+ "sengekis": {
+  "url": "https://images.launchbox-app.com/7a4cf09c-99be-40ec-8081-1ea2303cc987.jpg",
+  "size": [
+   850,
+   1200
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1200
+  ]
+ },
+ "twineagl": {
+  "url": "https://images.launchbox-app.com/60aa935b-ffc6-4cf4-8cd9-08311aa44be7.jpg",
+  "size": [
+   1190,
+   1673
+  ],
+  "crop": [
+   0,
+   0,
+   1190,
+   1673
+  ]
+ },
+ "arbalest": {
+  "url": "https://images.launchbox-app.com/66aa34cd-8ce7-4afb-8926-58a5b54770f5.png",
+  "size": [
+   420,
+   661
+  ],
+  "crop": [
+   0,
+   0,
+   420,
+   661
+  ]
+ },
+ "metafox": {
+  "url": "https://images.launchbox-app.com/0641b328-9643-4f58-ad52-13cc28d69183.jpg",
+  "size": [
+   627,
+   953
+  ],
+  "crop": [
+   0,
+   0,
+   627,
+   953
+  ]
+ },
+ "twinhawk": {
+  "url": "https://images.launchbox-app.com/470784ba-e943-4ece-a4bb-43d0c7f37ae6.jpg",
+  "size": [
+   1188,
+   1671
+  ],
+  "crop": [
+   0,
+   0,
+   1188,
+   1671
+  ]
+ },
+ "gigandes": {
+  "url": "https://images.launchbox-app.com/9a33fbc6-9cdd-43f4-878e-01ebd3850242.jpg",
+  "size": [
+   1280,
+   1815
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1815
+  ]
+ },
+ "earthjkr": {
+  "url": "https://images.launchbox-app.com/57ad541c-57f9-4b59-a377-e257892e0b92.jpg",
+  "size": [
+   850,
+   1243
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1243
   ]
  }
 }

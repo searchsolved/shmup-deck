@@ -56,11 +56,21 @@
   "cobracom_mister": {
    "source": "coinop"
   },
+  "EarthJoker": {
+   "source": "github",
+   "url": "https://www.patreon.com/bazset/posts/u-n-defense-1993-169900198",
+   "note": "Core and MRA from the author's Patreon post; no repository"
+  },
   "Finalizer": {
    "source": "official"
   },
   "fshark_mister": {
    "source": "coinop"
+  },
+  "Gigandes": {
+   "source": "github",
+   "url": "https://github.com/bazset/Gigandes-FPGA",
+   "note": "Source only; the core build and MRA are on the author's Patreon"
   },
   "Gyruss": {
    "source": "official"
@@ -203,6 +213,16 @@
    "source": "github",
    "url": "https://github.com/ppriest/Arcade-Seta_MiSTer"
   },
+  "SetaDowntown": {
+   "source": "github",
+   "url": "https://github.com/ppriest/Arcade-Seta_MiSTer",
+   "note": "Core and MRAs in the repository's releases folder; a separate core from Seta, for the Downtown board"
+  },
+  "SKNS": {
+   "source": "github",
+   "url": "https://github.com/srg320/Arcade-SKNS_MiSTer",
+   "note": "Core and MRAs in the repository's releases folder; every game also needs skns.zip, the system BIOS"
+  },
   "SlapFight": {
    "source": "official"
   },
@@ -238,6 +258,11 @@
   },
   "twincobr_mister": {
    "source": "coinop"
+  },
+  "TwinHawk": {
+   "source": "github",
+   "url": "https://github.com/bazset/Twin-Hawk-FPGA",
+   "note": "MRAs in the repository; the core build is on the author's Patreon"
   },
   "vimana": {
    "source": "coinop"
