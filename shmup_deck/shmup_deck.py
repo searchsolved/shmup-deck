@@ -22,14 +22,13 @@ import io
 import json
 import os
 import re
-import shutil
 import socket
 import struct
+import subprocess
 import sys
 import threading
 import time
 import urllib.request
-import zipfile
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from xml.sax.saxutils import quoteattr
 
@@ -512,6 +511,28 @@ def fetch(url, timeout=30):
         return r.read()
 
 
+FETCH_CHILD = """
+import sys, urllib.request
+req = urllib.request.Request(sys.argv[1], headers={"User-Agent": sys.argv[2]})
+with urllib.request.urlopen(req, timeout=30) as r:
+    sys.stdout.buffer.write(r.read())
+"""
+
+
+def fetch_apart(url):
+    """Fetch in a child process. Python's TLS stack keeps about 2 MB resident
+    from its first HTTPS request onwards, measured on the MiSTer, and this
+    service's memory budget is tight, so the routine check runs where that
+    cost is thrown away. The install itself fetches in-process: it ends in
+    exec, which throws away everything anyway."""
+    r = subprocess.run([sys.executable, "-c", FETCH_CHILD, url, USER_AGENT],
+                       capture_output=True, timeout=90)
+    if r.returncode != 0:
+        lines = r.stderr.decode("utf-8", "replace").strip().splitlines()
+        raise RuntimeError(lines[-1] if lines else "fetch failed")
+    return r.stdout
+
+
 def version_key(tag):
     """'v1.4.10' -> (1, 4, 10). Anything else sorts below every real version."""
     m = re.fullmatch(r"v?(\d+(?:\.\d+)*)", (tag or "").strip())
@@ -551,7 +572,7 @@ class Updater:
         if time.time() - self.checked < 30:
             return self.available
         try:
-            rel = json.loads(fetch("%s/repos/%s/releases/latest" % (GITHUB_API, REPO)))
+            rel = json.loads(fetch_apart("%s/repos/%s/releases/latest" % (GITHUB_API, REPO)))
             assets = {a["name"]: a["browser_download_url"] for a in rel.get("assets", [])}
             if "shmup_deck.zip" not in assets:
                 raise ValueError("release %s has no shmup_deck.zip" % rel.get("tag_name"))
@@ -579,6 +600,8 @@ class Updater:
         return True
 
     def _install(self):
+        import shutil
+        import zipfile
         rel = self.latest
         try:
             self.error = ""
