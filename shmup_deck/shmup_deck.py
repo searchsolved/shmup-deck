@@ -48,7 +48,7 @@ CORENAME = os.environ.get("SHMUP_CORENAME", "/tmp/CORENAME")
 PLAYS = os.environ.get("SHMUP_PLAYS", os.path.join(HERE, "plays.json"))
 FAVS = os.environ.get("SHMUP_FAVS", os.path.join(HERE, "favourites.json"))
 
-VERSION = "1.5.0"
+VERSION = "1.6.0"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
 PROGRAM = os.path.abspath(__file__)
 REPO = os.environ.get("SHMUP_REPO", "searchsolved/shmup-deck")

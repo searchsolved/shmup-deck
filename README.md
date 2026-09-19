@@ -43,6 +43,16 @@ The first start scans your arcade folders and downloads the flyer art, which
 takes a few minutes. Games appear as soon as the scan finishes and flyers fill
 in as they arrive.
 
+On a phone the deck is a title, a search box and the covers; the filters sit
+behind the button beside the search, and Deck, Stats, ROMs and Settings are a
+bar along the bottom. When a game starts, its flyer fills the screen until
+you tap it.
+
+**Kiosk mode**, switched on in Settings or by opening `http://shmupdeck.local/?kiosk`,
+is for a tablet by the cab: nothing but the wall, full screen, kept awake,
+flyers drifting by after a minute untouched. Hold the top left corner for
+two seconds to leave.
+
 Shmup Deck checks GitHub for a newer release now and then. When one is out,
 a dot appears on the settings cog and the status line says so; open the
 settings sheet and tap **Update** to install it and restart. Your flyer art,
