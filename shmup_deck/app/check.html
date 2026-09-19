@@ -47,7 +47,14 @@ nav a:hover{color:var(--bone)}
 nav a[aria-current="page"]{background:var(--gold);color:#231c07}
 nav a:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:2px}
 .strapline{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--ash)}
-@media (max-width: 560px){ nav{margin-left:0} nav a{padding:9px 14px;letter-spacing:.1em;font-size:12px} }
+@media (max-width: 560px){
+  body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+  header{padding-bottom:0;border-bottom:0}
+  nav{position:fixed;left:0;right:0;bottom:0;z-index:5;margin:0;gap:0;padding:6px 8px max(6px,env(safe-area-inset-bottom));background:rgba(7,16,11,.96);border-top:1px solid var(--line);backdrop-filter:blur(10px)}
+  nav a{flex:1;justify-content:center;padding:10px 4px;border-radius:8px;font-size:13px;letter-spacing:.02em;text-transform:none}
+  nav a[aria-current="page"]{background:transparent;color:var(--gold)}
+  h1{font-size:28px}
+}
 .intro{color:var(--ash);font-size:14px;line-height:1.6;max-width:720px;margin-bottom:22px}
 .intro code{color:var(--bone);font-size:13px}
 

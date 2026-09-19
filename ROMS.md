@@ -1,6 +1,6 @@
 # Supported games and ROMs
 
-Shmup Deck supports 178 games: 165 arcade games that run from MRA files and 13 Neo Geo games. This page lists the core and ROM files each one needs.
+Shmup Deck supports 185 games: 172 arcade games that run from MRA files and 13 Neo Geo games. This page lists the core and ROM files each one needs.
 
 To see what your own MiSTer is missing, open **http://shmupdeck.local/check.html** once Shmup Deck is installed. It checks every game for its MRA, core and ROM zips and can copy the missing zip names.
 
@@ -30,6 +30,9 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | CV1000 | 14 | [ika-musume/ikacore_CV1k](https://github.com/ika-musume/ikacore_CV1k) | The repository has no core build or MRAs; builds come from the developer. MRAs for all games, including DoDonPachi SaiDaiOuJou and Akai Katana, are in [funkycochise/CV1K_Res](https://github.com/funkycochise/CV1K_Res) |
 | MegaSystem 32 | 4 | [ppriest/Arcade-JalecoMS32_MiSTer](https://github.com/ppriest/Arcade-JalecoMS32_MiSTer) |  |
 | NMK16 | 19 | [kuzearcade/Arcade-NMK16_MiSTer](https://github.com/kuzearcade/Arcade-NMK16_MiSTer) |  |
+| Raiden | 1 | [rmonic79/Arcade-Raiden_MiSTer](https://github.com/rmonic79/Arcade-Raiden_MiSTer) | Core and MRAs in the repository's releases folder |
+| Raiden2 | 2 | [rmonic79/Arcade-Raiden2_MiSTer](https://github.com/rmonic79/Arcade-Raiden2_MiSTer) | Core and MRAs in the repository's releases folder; Raiden II and Raiden DX share it |
+| SeibuSPI | 4 | [zakk4223/Arcade-SeibuSPI_MiSTer](https://github.com/zakk4223/Arcade-SeibuSPI_MiSTer) | Core and MRAs in the repository's releases folder; an early core, the author describes it as unvalidated against hardware |
 | Seta | 8 | [ppriest/Arcade-Seta_MiSTer](https://github.com/ppriest/Arcade-Seta_MiSTer) |  |
 | Taito F3 | 5 | [spacestate1/Arcade-taitoF3_MiSTer](https://github.com/spacestate1/Arcade-taitoF3_MiSTer) |  |
 | Taito FX-1B | 2 | [XelaNotPu/ZN1-TaitoFX1B_MiSTer](https://github.com/XelaNotPu/ZN1-TaitoFX1B_MiSTer) |  |
@@ -243,6 +246,19 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Strikers 1945 II | 1997 | MiSTer main distribution | `s1945ii.zip` | same |  |
 | Strikers 1945 III | 1999 | MiSTer main distribution | `s1945iii.zip` | same |  |
 
+### Raiden
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Raiden | 1990 | [GitHub](https://github.com/rmonic79/Arcade-Raiden_MiSTer) | `raiden.zip` | same |  |
+
+### Raiden2
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Raiden DX | 1994 | [GitHub](https://github.com/rmonic79/Arcade-Raiden2_MiSTer) | `raidendx.zip` | same |  |
+| Raiden II | 1993 | [GitHub](https://github.com/rmonic79/Arcade-Raiden2_MiSTer) | `raiden2.zip` | same |  |
+
 ### Raizing
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
@@ -266,6 +282,15 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
 | Rafflesia | 1986 | MiSTer main distribution | `raflesia.zip` | same |  |
+
+### SeibuSPI
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Raiden Fighters | 1996 | [GitHub](https://github.com/zakk4223/Arcade-SeibuSPI_MiSTer) | `rdft.zip` | same |  |
+| Raiden Fighters 2: Operation Hell Dive | 1997 | [GitHub](https://github.com/zakk4223/Arcade-SeibuSPI_MiSTer) | `rdft2.zip` | same |  |
+| Raiden Fighters Jet | 1998 | [GitHub](https://github.com/zakk4223/Arcade-SeibuSPI_MiSTer) | `rfjet.zip` | same |  |
+| Viper Phase 1 | 1995 | [GitHub](https://github.com/zakk4223/Arcade-SeibuSPI_MiSTer) | `viprp1.zip` | same |  |
 
 ### Seta
 
@@ -522,9 +547,15 @@ pinkswts.zip
 progear.zip
 qsound.zip
 raflesia.zip
+raiden.zip
+raiden2.zip
+raidendx.zip
 raphero.zip
 raystorm.zip
+rdft.zip
+rdft2.zip
 rezon.zip
+rfjet.zip
 rsgun.zip
 rtype.zip
 rtype2.zip
@@ -574,6 +605,7 @@ varth.zip
 vasara.zip
 vasara2.zip
 vimana.zip
+viprp1.zip
 vulcan.zip
 vulgus.zip
 wrofaero.zip
@@ -701,8 +733,14 @@ pinkswts.zip
 progear.zip
 qsound.zip
 raflesia.zip
+raiden.zip
+raiden2.zip
+raidendx.zip
 raystorm.zip
+rdft.zip
+rdft2.zip
 rezon.zip
+rfjet.zip
 rsgun.zip
 rtype.zip
 rtype2.zip
@@ -751,6 +789,7 @@ varth.zip
 vasara.zip
 vasara2.zip
 vimana.zip
+viprp1.zip
 vulcan.zip
 vulgus.zip
 wrofaero.zip

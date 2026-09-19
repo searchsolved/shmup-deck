@@ -3569,5 +3569,202 @@
    "merged": "vasara2",
    "shared": []
   }
+ },
+ {
+  "id": "raiden",
+  "title": "Raiden",
+  "dev": "Seibu Kaihatsu",
+  "year": 1990,
+  "core": "Raiden",
+  "system": "Seibu Raiden",
+  "orientation": "tate",
+  "setnames": [
+   "raiden",
+   "raidenu",
+   "raidenj",
+   "raidenk",
+   "raident",
+   "raidenb"
+  ],
+  "rbf": "Raiden",
+  "roms": {
+   "zip": "raiden",
+   "merged": "raiden",
+   "shared": []
+  }
+ },
+ {
+  "id": "raiden2",
+  "title": "Raiden II",
+  "dev": "Seibu Kaihatsu",
+  "year": 1993,
+  "core": "Raiden2",
+  "system": "Seibu Raiden 2",
+  "orientation": "tate",
+  "setnames": [
+   "raiden2",
+   "raiden2u",
+   "raiden2j",
+   "raiden2g",
+   "raiden2gb",
+   "raiden2f",
+   "raiden2i",
+   "raiden2es",
+   "raiden2nl",
+   "raiden2sw",
+   "raiden2hk",
+   "raiden2au",
+   "raiden2k",
+   "raiden2dx",
+   "raiden2e",
+   "raiden2ea",
+   "raiden2eg",
+   "raiden2eu",
+   "raiden2eua",
+   "raiden2eub",
+   "raiden2eup"
+  ],
+  "rbf": "Raiden2",
+  "roms": {
+   "zip": "raiden2",
+   "merged": "raiden2",
+   "shared": []
+  }
+ },
+ {
+  "id": "raidendx",
+  "title": "Raiden DX",
+  "dev": "Seibu Kaihatsu",
+  "year": 1994,
+  "core": "Raiden2",
+  "system": "Seibu Raiden 2",
+  "orientation": "tate",
+  "setnames": [
+   "raidendx",
+   "raidendxj",
+   "raidendxja",
+   "raidendxu",
+   "raidendxg",
+   "raidendxnl",
+   "raidendxch",
+   "raidendxk",
+   "raidendxpt",
+   "raidendxa1",
+   "raidendxa2"
+  ],
+  "rbf": "Raiden2",
+  "roms": {
+   "zip": "raidendx",
+   "merged": "raidendx",
+   "shared": []
+  }
+ },
+ {
+  "id": "viprp1",
+  "title": "Viper Phase 1",
+  "dev": "Seibu Kaihatsu",
+  "year": 1995,
+  "core": "SeibuSPI",
+  "system": "Seibu SPI",
+  "orientation": "tate",
+  "setnames": [
+   "viprp1",
+   "viprp1j",
+   "viprp1u",
+   "viprp1ua",
+   "viprp1t",
+   "viprp1h",
+   "viprp1k",
+   "viprp1pt",
+   "viprp1s",
+   "viprp1oj",
+   "viprp1ot",
+   "viprp1hk"
+  ],
+  "rbf": "SeibuSPI",
+  "roms": {
+   "zip": "viprp1",
+   "merged": "viprp1",
+   "shared": []
+  }
+ },
+ {
+  "id": "rdft",
+  "title": "Raiden Fighters",
+  "dev": "Seibu Kaihatsu",
+  "year": 1996,
+  "core": "SeibuSPI",
+  "system": "Seibu SPI",
+  "orientation": "tate",
+  "setnames": [
+   "rdft",
+   "rdftj",
+   "rdftja",
+   "rdftu",
+   "rdftgb",
+   "rdfta",
+   "rdftau",
+   "rdftgr",
+   "rdftit",
+   "rdftadia",
+   "rdfts",
+   "rdftauge"
+  ],
+  "rbf": "SeibuSPI",
+  "roms": {
+   "zip": "rdft",
+   "merged": "rdft",
+   "shared": []
+  }
+ },
+ {
+  "id": "rdft2",
+  "title": "Raiden Fighters 2: Operation Hell Dive",
+  "dev": "Seibu Kaihatsu",
+  "year": 1997,
+  "core": "SeibuSPI",
+  "system": "Seibu SPI",
+  "orientation": "tate",
+  "setnames": [
+   "rdft2",
+   "rdft2j",
+   "rdft2ja",
+   "rdft2jb",
+   "rdft2jc",
+   "rdft2u",
+   "rdft2a",
+   "rdft2aa",
+   "rdft2it",
+   "rdft2s",
+   "rdft2t"
+  ],
+  "rbf": "SeibuSPI",
+  "roms": {
+   "zip": "rdft2",
+   "merged": "rdft2",
+   "shared": []
+  }
+ },
+ {
+  "id": "rfjet",
+  "title": "Raiden Fighters Jet",
+  "dev": "Seibu Kaihatsu",
+  "year": 1998,
+  "core": "SeibuSPI",
+  "system": "Seibu SPI",
+  "orientation": "tate",
+  "setnames": [
+   "rfjet",
+   "rfjetj",
+   "rfjetu",
+   "rfjeta",
+   "rfjett"
+  ],
+  "rbf": "SeibuSPI",
+  "roms": {
+   "zip": "rfjet",
+   "merged": "rfjet",
+   "shared": []
+  }
  }
 ]

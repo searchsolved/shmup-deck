@@ -45,7 +45,7 @@ header{
 nav{margin-left:auto;display:flex;align-items:center;gap:6px}
 nav a{
   display:inline-flex;align-items:center;padding:12px 24px;border-radius:999px;
-  color:var(--ash);text-decoration:none;font-size:14px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ash);text-decoration:none;font-size:15px;letter-spacing:.02em;
 }
 nav a:hover{color:var(--bone)}
 nav a[aria-current="page"]{background:var(--gold);color:#231c07}
@@ -56,6 +56,14 @@ nav .cog{
 nav .cog:hover{color:var(--bone)}
 nav .cog svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 nav .cog[aria-expanded="true"]{color:var(--gold);border-color:var(--gold)}
+/* phones only: filters live in a sheet behind this button */
+.searchrow{display:flex;gap:10px;align-items:stretch}
+.field{flex:1;min-width:0}
+#search{-webkit-appearance:none;appearance:none}
+#search::-webkit-search-decoration,#search::-webkit-search-cancel-button{-webkit-appearance:none}
+.filterbtn{display:none}
+.chips{display:none}
+.seglabel{display:none}
 /* a newer release is out: a dot on the cog, the details are in the sheet */
 nav .cog{position:relative}
 nav .cog.update::after{content:"";position:absolute;top:5px;right:5px;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 2px #07100B}
@@ -85,7 +93,7 @@ nav a:focus-visible,nav .cog:focus-visible{outline:2px solid var(--emerald-hot);
 .dropdown svg.chev{width:14px;height:14px}
 .dropdown select{
   appearance:none;-webkit-appearance:none;border:0;background:transparent;color:inherit;cursor:pointer;
-  padding:10px 4px;font-family:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  padding:10px 4px;font-family:inherit;font-size:13px;letter-spacing:.02em;
 }
 .dropdown select:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:2px;border-radius:4px}
 .dropdown.on{color:var(--bone);border-color:rgba(216,181,74,.5)}
@@ -106,7 +114,7 @@ h1 a:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:4px;borde
 .seg button{
   border:0;background:transparent;color:var(--ash);cursor:pointer;
   padding:8px 15px;font-family:inherit;
-  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  font-size:13px;letter-spacing:.02em;
 }
 .seg button[aria-pressed="true"]{background:var(--gold);color:#231c07}
 .seg button:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:-2px}
@@ -125,7 +133,7 @@ h1 a:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:4px;borde
 .sheet .hint.bad{color:var(--danger)}
 .sheet .btn{
   flex:none;border:1px solid var(--gold);border-radius:999px;background:transparent;color:var(--gold);
-  padding:7px 14px;font-family:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
+  padding:7px 14px;font-family:inherit;font-size:13px;letter-spacing:.02em;cursor:pointer;
 }
 .sheet .btn:hover{background:var(--gold);color:#231c07}
 .sheet .btn[disabled]{opacity:.5;cursor:default;background:transparent;color:var(--gold)}
@@ -136,6 +144,9 @@ h1 a:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:4px;borde
 .tog[aria-checked="true"]{background:var(--emerald)}
 .tog[aria-checked="true"]::after{left:21px;background:#07100B}
 .tog:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:2px}
+/* large layout: fewer, bigger cards; one to a row on a phone */
+body.large .deck{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:30px}
+body.large .plate .title{font-size:26px}
 /* compact layout: smaller cards, title only */
 body.compact .deck{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
 body.compact .plate{padding:8px 10px 9px;gap:0}
@@ -174,7 +185,7 @@ body.compact .cab .star{width:28px;height:28px;font-size:15px;top:5px;right:5px}
 .count{display:flex;align-items:center;gap:12px;margin:0;font-size:13px;letter-spacing:.06em;text-transform:none;color:var(--ash)}
 .copylink{
   border:1px solid var(--line);border-radius:999px;background:rgba(0,0,0,.25);color:var(--ash);
-  padding:5px 11px;font-family:inherit;font-size:11px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;
+  padding:5px 11px;font-family:inherit;font-size:12px;letter-spacing:.02em;cursor:pointer;
 }
 .copylink:hover{color:var(--bone)}
 .count{display:flex;align-items:center;gap:12px}
@@ -296,23 +307,131 @@ body.compact .cab .star{width:28px;height:28px;font-size:15px;top:5px;right:5px}
   .cab,.cab .veil{transition:none}
   .cab.busy .veil span{animation:none}
 }
-/* phones: let the controls wrap under the title instead of widening the page */
+/* ── kiosk: just the wall, for a tablet by the cab ── */
+body.kiosk header,body.kiosk .searchrow,body.kiosk .chips,body.kiosk .filters,body.kiosk .grouprow,
+body.kiosk #screenHint,body.kiosk footer{display:none}
+body.kiosk{padding:12px 12px calc(56px + env(safe-area-inset-bottom))}
+body.kiosk .deck{max-width:none;gap:14px;grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
+body.kiosk.compact .deck{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+body.kiosk.large .deck{grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+body.kiosk .now{
+  position:fixed;left:12px;right:12px;bottom:max(10px,env(safe-area-inset-bottom));z-index:5;margin:0;
+  padding:8px 12px;background:#0b1811;box-shadow:0 12px 40px -10px rgba(0,0,0,.9);
+}
+body.kiosk .now .what{font-size:17px}
+/* leave kiosk: hold the top-left corner */
+.exitspot{display:none;position:fixed;top:0;left:0;width:72px;height:72px;z-index:30;background:transparent}
+body.kiosk .exitspot{display:block}
+.exitspot.holding{background:radial-gradient(circle at 0 0, rgba(216,181,74,.35), transparent 70%)}
+/* attract: flyers drift by while nobody is touching the screen */
+.attract{position:fixed;top:0;left:0;right:0;height:100vh;height:100dvh;z-index:20;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px}
+.attract[hidden]{display:none}
+.attract .pic{width:100%;height:100%;position:absolute;inset:0;background:center/contain no-repeat;opacity:0;transition:opacity 1.2s}
+.attract .pic.on{opacity:1}
+.attract .caption{
+  position:absolute;left:0;right:0;bottom:max(24px,env(safe-area-inset-bottom));text-align:center;
+  padding:14px 20px;background:linear-gradient(0deg, rgba(0,0,0,.85), transparent);
+}
+.attract .caption .title{
+  font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;font-weight:800;font-size:clamp(26px,5vw,48px);
+  letter-spacing:.06em;text-transform:uppercase;color:var(--bone);display:block;
+}
+.attract .caption .meta{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+/* phones and kiosk: a game starting takes the whole screen until it is tapped */
+/* iOS: bottom:0 on a fixed box hides under the browser toolbar; size it to the visible viewport instead */
+.nowfull{position:fixed;top:0;left:0;right:0;height:100vh;height:100dvh;z-index:15;background:#000;cursor:pointer}
+.nowfull[hidden]{display:none}
+/* the flyer is taller-than-wide but not phone-shaped: the bands either side
+   are filled with a blurred copy of itself rather than left black */
+.nowfull .blur,.attract .blur{position:absolute;inset:-40px;background:center/cover no-repeat;filter:blur(28px) brightness(.45) saturate(1.2)}
+.nowfull .pic{position:absolute;inset:0;background:center/contain no-repeat}
+.nowfull .pic::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg, rgba(0,0,0,.14) 0 1px, transparent 1px 3px);mix-blend-mode:multiply;
+}
+.nowfull .caption{
+  position:absolute;left:0;right:0;bottom:0;text-align:center;
+  padding:60px 20px max(22px,env(safe-area-inset-bottom));
+  background:linear-gradient(0deg, rgba(0,0,0,.92) 40%, transparent);
+}
+.nowfull .ribbon{display:inline-block;margin-bottom:8px;padding:4px 10px;border-radius:4px;border:1px solid var(--emerald-hot);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--emerald-hot)}
+.nowfull .title{
+  display:block;font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;font-weight:800;
+  font-size:clamp(34px,9vw,60px);letter-spacing:.05em;text-transform:uppercase;color:var(--bone);line-height:1.05;
+}
+.nowfull .meta{display:block;margin-top:6px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.nowfull .tap{display:block;margin-top:18px;font-size:12px;color:var(--ash);animation:pulse 2.4s ease-in-out infinite}
+/* until the MiSTer reports the core running, the ribbon says so and pulses */
+.nowfull.launching .ribbon{border-color:var(--gold);color:var(--gold);animation:pulse 1s ease-in-out infinite}
+
+/* phones: title row, search row, then the covers; the rest goes in sheets and a bottom bar */
 @media (max-width: 560px){
-  /* the cog is not at the screen edge here, so the sheet cannot hang off
-     it; it comes up from the bottom of the screen instead */
-  .sheet{position:fixed;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));top:auto;width:auto;max-height:calc(100vh - 24px);overflow:auto}
-  body{padding-left:14px;padding-right:14px}
-  header{gap:12px;padding-bottom:14px}
-  nav{margin-left:0}
-  nav a{padding:9px 14px;letter-spacing:.1em;font-size:12px}
-  nav .cog{width:40px;height:40px}
-  .seg button{padding:7px 11px;letter-spacing:.08em}
+  body{padding:max(14px, env(safe-area-inset-top)) 14px calc(76px + env(safe-area-inset-bottom))}
+  header{gap:10px;margin-bottom:14px;padding-bottom:0;border-bottom:0}
+  .brand{display:flex;align-items:center;gap:12px}
+  h1{font-size:28px}
+  .strapline{font-size:11px;letter-spacing:.14em}
+  .strapline .mister{display:none}
+  .strapline .conn{margin-left:0}
+  /* the dot says connected; words only when something is going on */
+  .strapline .conn.quiet #statusText{display:none}
+  /* navigation is a bottom bar, in reach of a thumb */
+  nav{
+    position:fixed;left:0;right:0;bottom:0;z-index:5;margin:0;gap:0;
+    padding:6px 8px max(6px,env(safe-area-inset-bottom));
+    background:rgba(7,16,11,.96);border-top:1px solid var(--line);backdrop-filter:blur(10px);
+  }
+  nav a{flex:1;justify-content:center;padding:10px 4px;border-radius:8px;font-size:13px}
+  nav a[aria-current="page"]{background:transparent;color:var(--gold)}
+  nav .settings{flex:1;display:flex;justify-content:center}
+  nav .cog{width:40px;height:40px;margin:0;border:0;background:transparent}
+  .sheet{position:fixed;left:12px;right:12px;bottom:calc(64px + max(6px,env(safe-area-inset-bottom)));top:auto;width:auto;max-height:calc(100vh - 100px);overflow:auto}
+  /* now playing: the banner goes; the game itself heads the wall at full width */
+  .now{display:none}
+  .cab.hero{grid-column:1/-1}
+  .cab.hero .plate .title{font-size:22px}
+  .cab.hero .ribbon{
+    position:absolute;top:10px;left:10px;z-index:2;padding:4px 9px;border-radius:4px;
+    background:rgba(7,16,11,.9);border:1px solid var(--emerald-hot);
+    font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--emerald-hot);
+  }
+  /* search and the filter button share a row; the count is in the placeholder */
+  .searchrow{margin-bottom:10px}
   #search{padding:12px 16px 12px 44px;font-size:14px}
+  #search::placeholder{letter-spacing:0}
   .field kbd{display:none}
-  .filters{gap:10px}
-  .segs{margin-left:0}
+  .filterbtn{
+    display:inline-flex;align-items:center;justify-content:center;position:relative;width:48px;flex:none;
+    border:1px solid #1d3326;border-radius:14px;background:rgba(0,0,0,.25);color:var(--ash);cursor:pointer;
+  }
+  .filterbtn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+  .filterbtn[aria-expanded="true"],.filterbtn.on{color:var(--gold);border-color:var(--gold)}
+  .filterbtn.on::after{content:"";position:absolute;top:8px;right:8px;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+  .filterbtn.ask{border-color:var(--gold);box-shadow:0 0 0 3px rgba(216,181,74,.18)}
+  /* choices that are not the default show as chips; with defaults, nothing */
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .chips:empty{display:none}
+  .chip{
+    display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;
+    border:1px solid rgba(216,181,74,.5);background:rgba(216,181,74,.08);color:var(--bone);font-size:12px;font-family:inherit;cursor:pointer;
+  }
+  .chip b{font-weight:400;color:var(--gold)}
+  /* filters, in their sheet */
+  .fsheet .filters{margin:0;display:block}
+  .fsheet .count{margin-bottom:8px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ash)}
+  .fsheet .segs{display:grid;grid-template-columns:1fr;gap:8px;margin:0}
+  .fsheet .seg{justify-content:stretch}
+  .fsheet .seg button{flex:1;padding:9px 6px;letter-spacing:.02em;text-transform:none;font-size:13px}
+  .seglabel{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ash);margin:8px 0 -2px}
+  .fsheet .hint{margin:8px 0 0}
+  .fsheet .grouprow{margin:10px 0 0}
+  .fsheet .dropdown{width:100%}
+  .fsheet .dropdown select{flex:1;text-transform:none;letter-spacing:.02em;font-size:13px}
+  .copylink{text-transform:none;letter-spacing:.02em}
   body.compact .deck{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
   .deck{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+  body.large .deck{grid-template-columns:1fr;gap:18px}
+  body.large .plate .title{font-size:22px}
   .plate{padding:10px 10px 12px}
   .plate .title{font-size:17px}
   .plate .meta{font-size:10px;letter-spacing:.14em}
@@ -327,7 +446,7 @@ footer a{color:inherit}
 <header>
   <div class="brand">
     <h1><a href="./" id="home">Shmup <em>Deck</em></a></h1>
-    <div class="strapline">MiSTer FPGA &middot;
+    <div class="strapline"><span class="mister">MiSTer FPGA &middot;</span>
       <span class="conn" id="status"><span class="lamp" id="lamp"></span><span id="statusText">checking&hellip;</span></span></div>
   </div>
   <nav aria-label="Pages">
@@ -345,9 +464,14 @@ footer a{color:inherit}
         <p class="hint">Greyed out, with what each one needs.</p>
         <h3>Layout</h3>
         <div class="seg" role="group" aria-label="Layout">
-          <button data-density="comfortable" aria-pressed="true">Comfortable</button>
           <button data-density="compact" aria-pressed="false">Compact</button>
+          <button data-density="comfortable" aria-pressed="true">Comfortable</button>
+          <button data-density="large" aria-pressed="false">Large</button>
         </div>
+        <h3>Kiosk</h3>
+        <div class="switch"><span>Kiosk mode</span>
+          <button class="tog" id="kioskTog" role="switch" aria-checked="false"></button></div>
+        <p class="hint">Just the wall, full screen, kept awake. Flyers drift by when nobody touches it. To leave, hold the top left corner for two seconds.</p>
         <h3>Software</h3>
         <div class="switch"><span>Shmup Deck <span id="verNow"></span></span>
           <button class="btn" id="updBtn" hidden>Check for updates</button></div>
@@ -365,20 +489,28 @@ footer a{color:inherit}
     <input id="search" type="search" autocomplete="off" spellcheck="false" placeholder="Search games" aria-label="Search games">
     <kbd>/</kbd>
   </div>
+  <button class="filterbtn" id="filterBtn" aria-expanded="false" aria-controls="fsheet" aria-label="Filters" title="Filters">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M7 12h10M10 17h4"/></svg>
+  </button>
 </div>
+<div class="chips" id="chips" aria-label="Active filters"></div>
+<div class="sheet fsheet" id="fsheet" hidden></div>
 <div class="filters">
   <p class="count"><span id="count"></span><button class="copylink" id="copylink" hidden title="A link that opens just these games">Copy link</button></p>
   <div class="segs">
+    <span class="seglabel">Screen</span>
     <div class="seg" id="screenCtl" role="group" aria-label="Screen orientation" title="Which way the monitor is fitted; remembered on this device">
       <button data-screen="all" aria-pressed="true">All</button>
       <button data-screen="tate" aria-pressed="false">Tate</button>
       <button data-screen="yoko" aria-pressed="false">Yoko</button>
     </div>
+    <span class="seglabel">Show</span>
     <div class="seg" role="group" aria-label="Show">
       <button data-show="all" aria-pressed="true">All</button>
       <button data-show="favourites" aria-pressed="false" title="Games starred on this MiSTer">Faves</button>
       <button data-show="played" aria-pressed="false" title="Games that have been played on this MiSTer">Played</button>
     </div>
+    <span class="seglabel">Sort</span>
     <div class="seg" role="group" aria-label="Sort order">
       <button data-sort="az" aria-pressed="true">A&ndash;Z</button>
       <button data-sort="year" aria-pressed="false">Year</button>
@@ -400,6 +532,17 @@ footer a{color:inherit}
 </div>
 
 <main class="deck" id="deck"></main>
+<div class="exitspot" id="exitspot" aria-hidden="true"></div>
+<div class="nowfull" id="nowfull" hidden>
+  <div class="blur" id="nowBlur"></div>
+  <div class="pic" id="nowPic"></div>
+  <div class="caption"><span class="ribbon" id="nowRibbon">Now playing</span><span class="title" id="nowTitle"></span><span class="meta" id="nowMeta"></span><span class="tap" id="nowTap">Tap to browse</span></div>
+</div>
+<div class="attract" id="attract" hidden>
+  <div class="blur" id="attractBlur"></div>
+  <div class="pic" id="attractA"></div><div class="pic" id="attractB"></div>
+  <div class="caption"><span class="title" id="attractTitle"></span><span class="meta" id="attractMeta"></span></div>
+</div>
 
 <footer>tap a cab to launch &middot; only games ready to play on this MiSTer are shown, unless you switch on missing games in settings<br>
 flyer art is downloaded from public archives and belongs to its copyright holders</footer>
@@ -417,9 +560,11 @@ const LS = {
   group: "shmupdeck.group",
   missing: "shmupdeck.missing",
   density: "shmupdeck.density",
-  plays: "shmupdeck.plays"
+  plays: "shmupdeck.plays",
+  kiosk: "shmupdeck.kiosk"
 };
 const $ = s => document.querySelector(s);
+const PHONE = matchMedia("(max-width: 560px)");
 // Which way the cab or monitor is fitted. Set once, remembered after that.
 const screenPref = () => localStorage.getItem(LS.screen) || "all";
 const sortPref = () => localStorage.getItem(LS.sort) || "az";
@@ -621,7 +766,17 @@ function renderDeck() {
     ? (a, b) => (label.get(a) === OTHER) - (label.get(b) === OTHER) ||
                 label.get(a).localeCompare(label.get(b), "en", { sensitivity: "base" }) || cmp(a, b)
     : cmp);
-  deck.replaceChildren(...(grouped ? withDividers(shown, p, label) : shown.map(g => card(g, p[g.id] || 0))));
+  // phones: the running game heads the wall at full width, whatever the filters say
+  const heroGame = PHONE.matches && !PICK.length ? GAMES.find(g => g.id === NOW && ready(g)) : null;
+  const wall = heroGame ? shown.filter(g => g !== heroGame) : shown;
+  const cards = grouped ? withDividers(wall, p, label) : wall.map(g => card(g, p[g.id] || 0));
+  if (heroGame) {
+    const h = card(heroGame, p[heroGame.id] || 0);
+    h.classList.add("hero");
+    h.insertAdjacentHTML("afterbegin", '<span class="ribbon">Now playing</span>');
+    cards.unshift(h);
+  }
+  deck.replaceChildren(...cards);
   if (!shown.length) {
     const e = document.createElement("p");
     e.className = "empty";
@@ -645,7 +800,29 @@ function renderDeck() {
   $("#group").value = groupPref();
   $("#group").closest(".dropdown").classList.toggle("on", groupPref() !== "none");
   $("#missingTog").setAttribute("aria-checked", String(missingPref() === "show"));
+  $("#kioskTog").setAttribute("aria-checked", String(document.body.classList.contains("kiosk")));
   document.body.classList.toggle("compact", densityPref() === "compact");
+  document.body.classList.toggle("large", densityPref() === "large");
+  $("#search").placeholder = `Search ${GAMES.filter(g => showAll && listed(g) || ready(g)).length || ""} games`.replace("  ", " ");
+  renderChips(want, show, order);
+}
+
+/* phones: the choices that are not the default, each with a way back */
+const DEFAULTS = { [LS.screen]: "all", [LS.show]: "all", [LS.sort]: "az", [LS.group]: "none" };
+function renderChips(want, show, order) {
+  const chips = [];
+  if (want !== "all") chips.push([LS.screen, want === "tate" ? "Tate" : "Yoko"]);
+  if (show !== "all") chips.push([LS.show, show === "favourites" ? "Faves" : "Played"]);
+  if (order !== "az") chips.push([LS.sort, order === "year" ? "By year" : "By plays"]);
+  if (groupPref() !== "none") chips.push([LS.group, groupPref() === "dev" ? "By dev" : "By system"]);
+  $("#chips").replaceChildren(...chips.map(([key, text]) => {
+    const c = document.createElement("button");
+    c.className = "chip"; c.innerHTML = `${esc(text)} <b>&times;</b>`;
+    c.setAttribute("aria-label", `Remove ${text}`);
+    c.addEventListener("click", () => { localStorage.setItem(key, DEFAULTS[key]); renderDeck(); });
+    return c;
+  }));
+  $("#filterBtn").classList.toggle("on", chips.length > 0);
 }
 
 /* Which section each game goes in. Many boards ran a single shmup, and a
@@ -719,15 +896,116 @@ const gear = $("#gear"), sheet = $("#sheet");
 function openSettings(open) {
   sheet.hidden = !open;
   gear.setAttribute("aria-expanded", String(open));
+  if (open) openFilters(false);
 }
 gear.addEventListener("click", () => openSettings(sheet.hidden));
-document.addEventListener("click", e => { if (!e.target.closest(".settings")) openSettings(false); });
-document.addEventListener("keydown", e => { if (e.key === "Escape" && !sheet.hidden) openSettings(false); });
+document.addEventListener("click", e => {
+  if (!e.target.closest(".settings")) openSettings(false);
+  if (!e.target.closest("#fsheet, #filterBtn")) openFilters(false);
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") { openSettings(false); openFilters(false); } });
 // first visit: the one thing worth asking is which way the cab is fitted
 if (!localStorage.getItem(LS.screen)) {
   $("#screenCtl").classList.add("ask");
+  $("#filterBtn").classList.add("ask");
   $("#screenHint").hidden = false;
 }
+
+/* phones: the filter rows move into a sheet behind one button, and back
+   again if the window grows. The controls keep their listeners either way. */
+const fsheet = $("#fsheet"), filterBtn = $("#filterBtn");
+function openFilters(open) {
+  fsheet.hidden = !open;
+  filterBtn.setAttribute("aria-expanded", String(open));
+  if (open) { sheet.hidden = true; gear.setAttribute("aria-expanded", "false"); }
+}
+function placeFilters() {
+  const parts = [$(".filters"), $("#screenHint"), $(".grouprow")];
+  if (PHONE.matches) { fsheet.append(...parts); $("#chips").after($("#now")); }
+  else { deck.before(...parts); $(".searchrow").before($("#now")); openFilters(false); }
+}
+filterBtn.addEventListener("click", () => openFilters(fsheet.hidden));
+PHONE.addEventListener("change", placeFilters);
+placeFilters();
+
+/* ── kiosk ── */
+/* A tablet by the cab: nothing but the wall, the screen kept awake, flyers
+   drifting by when nobody has touched it for a minute. Switched on in
+   settings or with ?kiosk in the address; left by holding the top-left corner. */
+let wakeLock = null, attractTimer = null, attractCycle = null, attractOn = false;
+async function keepAwake() {
+  if (!navigator.wakeLock || wakeLock) return;
+  try { wakeLock = await navigator.wakeLock.request("screen"); wakeLock.addEventListener("release", () => { wakeLock = null; }); }
+  catch { /* not allowed here; the screen will sleep as usual */ }
+}
+function enterKiosk(fromTap) {
+  localStorage.setItem(LS.kiosk, "on");
+  document.body.classList.add("kiosk");
+  openSettings(false); openFilters(false);
+  keepAwake();
+  if (fromTap && document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(() => {});
+  armAttract();
+  renderDeck();
+}
+function leaveKiosk() {
+  localStorage.removeItem(LS.kiosk);
+  document.body.classList.remove("kiosk");
+  stopAttract(); clearTimeout(attractTimer);
+  if (wakeLock) wakeLock.release().catch(() => {});
+  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  if (new URLSearchParams(location.search).has("kiosk")) history.replaceState(null, "", location.pathname);
+  renderDeck();
+}
+$("#kioskTog").addEventListener("click", () => document.body.classList.contains("kiosk") ? leaveKiosk() : enterKiosk(true));
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && document.body.classList.contains("kiosk")) keepAwake();
+});
+// hold the corner for two seconds
+const spot = $("#exitspot");
+let holdTimer = null;
+spot.addEventListener("pointerdown", e => {
+  e.preventDefault(); spot.classList.add("holding");
+  holdTimer = setTimeout(() => { spot.classList.remove("holding"); leaveKiosk(); }, 2000);
+});
+for (const ev of ["pointerup", "pointercancel", "pointerleave"])
+  spot.addEventListener(ev, () => { clearTimeout(holdTimer); spot.classList.remove("holding"); });
+
+const ATTRACT_AFTER = 60_000, ATTRACT_EVERY = 8_000;
+function armAttract() {
+  clearTimeout(attractTimer);
+  if (document.body.classList.contains("kiosk") && !attractOn) attractTimer = setTimeout(startAttract, ATTRACT_AFTER);
+}
+let attractFlip = false, attractPool = [];
+function startAttract() {
+  attractPool = GAMES.filter(g => ready(g) && ART[g.id]).sort(() => Math.random() - 0.5);
+  if (!attractPool.length) return;
+  attractOn = true;
+  $("#attract").hidden = false;
+  nextAttract();
+  attractCycle = setInterval(nextAttract, ATTRACT_EVERY);
+}
+function nextAttract() {
+  const g = attractPool[Math.floor(Math.random() * attractPool.length)];
+  const show = $(attractFlip ? "#attractA" : "#attractB"), hide = $(attractFlip ? "#attractB" : "#attractA");
+  attractFlip = !attractFlip;
+  const img = new Image();
+  img.onload = () => {
+    show.style.backgroundImage = $("#attractBlur").style.backgroundImage = `url("art/${g.id}")`;
+    show.classList.add("on"); hide.classList.remove("on");
+    $("#attractTitle").textContent = g.title;
+    $("#attractMeta").textContent = `${g.dev} · ${g.year}` + (g.id === NOW ? " · now playing" : "");
+  };
+  img.src = `art/${g.id}`;
+}
+function stopAttract() {
+  clearInterval(attractCycle); attractOn = false;
+  $("#attract").hidden = true;
+  $("#attractA").classList.remove("on"); $("#attractB").classList.remove("on");
+}
+$("#attract").addEventListener("click", () => { stopAttract(); armAttract(); });
+for (const ev of ["pointerdown", "keydown", "scroll", "touchstart"])
+  document.addEventListener(ev, () => { if (!attractOn) armAttract(); }, { passive: true });
+if (localStorage.getItem(LS.kiosk) === "on" || new URLSearchParams(location.search).has("kiosk")) enterKiosk(false);
 
 /* Search is deliberately not remembered - unlike the cab's orientation, a
    query is about what you want right now, not how the machine is set up. */
@@ -775,10 +1053,55 @@ async function launch(g, el) {
     });
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     launched(g, el);
+    nowDismissed = null;            // this launch is news even if it is the same game
+    showNowFull(g, true);
   } catch {
     veil(el, "fail", "not found", 2600);
   }
 }
+
+/* ── the takeover ── */
+let nowShown = null, nowDismissed = null, nowPending = null, slowTimer = null;
+const takeover = () => PHONE.matches || document.body.classList.contains("kiosk");
+/* Two stages, both real: "launching" once the MiSTer has accepted the
+   request, "now playing" once its core-name file says the game is running,
+   which is what the status poll reports. */
+function showNowFull(g, launching) {
+  if (!g || !takeover()) return;
+  if (nowShown === g.id) { if (!launching) markRunning(); return; }
+  if (nowDismissed === g.id && !launching) return;
+  nowShown = g.id;
+  const pic = $("#nowPic");
+  pic.style.backgroundImage = $("#nowBlur").style.backgroundImage = ART[g.id] ? `url("art/${g.id}")` : "none";
+  $("#nowTitle").textContent = g.title;
+  $("#nowMeta").textContent = `${g.dev} · ${g.year}`;
+  $("#nowfull").hidden = false;
+  clearTimeout(slowTimer);
+  if (launching) {
+    nowPending = g.id;
+    $("#nowfull").classList.add("launching");
+    $("#nowRibbon").textContent = "Launching";
+    $("#nowTap").textContent = "Loading the core…";
+    // the MiSTer takes a few seconds; look more often than the usual poll
+    let tries = 0;
+    const quick = setInterval(() => { if (++tries > 12 || !nowPending) clearInterval(quick); else ping(); }, 1500);
+    slowTimer = setTimeout(() => { if (nowPending) $("#nowTap").textContent = "Taking a while… tap to browse"; }, 20000);
+  } else markRunning();
+}
+function markRunning() {
+  nowPending = null;
+  clearTimeout(slowTimer);
+  $("#nowfull").classList.remove("launching");
+  $("#nowRibbon").textContent = "Now playing";
+  $("#nowTap").textContent = "Tap to browse";
+}
+function hideNowFull(dismiss) {
+  if (dismiss) nowDismissed = nowShown;
+  nowShown = null; nowPending = null;
+  clearTimeout(slowTimer);
+  $("#nowfull").hidden = true;
+}
+$("#nowfull").addEventListener("click", () => hideNowFull(true));
 
 /* ── status ── */
 async function loadChecklist() {
@@ -855,6 +1178,7 @@ async function ping() {
       : u.state ? "Updating…"
       : u.available ? `Update ${u.latest} available`
       : "Connected";
+    $("#status").classList.toggle("quiet", txt.textContent === "Connected");
     // flyers that arrived since the page loaded
     if (artWasFetching && !s.art.fetching) renderDeck();
     artWasFetching = s.art.fetching;
@@ -867,6 +1191,8 @@ async function ping() {
       // move the highlight rather than rebuilding every card and its flyer
       for (const c of deck.querySelectorAll(".cab"))
         c.classList.toggle("playing", c.dataset.id === NOW);
+      if (PHONE.matches) renderDeck();
+      if (g) showNowFull(g, false); else if (!nowPending) hideNowFull(false);
       // a game starting or stopping is when the play history changes
       loadStats().then(() => { if (sortPref() === "played") renderDeck(); });
     }
