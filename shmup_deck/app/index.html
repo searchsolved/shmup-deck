@@ -525,9 +525,9 @@ footer a{color:inherit}
         <h3>Games</h3>
         <div class="switch"><span>Show games this MiSTer can't run yet</span>
           <button class="tog" id="missingTog" role="switch" aria-checked="false"></button></div>
-        <p class="hint">Greyed out, with what each one needs. Only games on cores Update All installs; a game on any other core appears once that core is on the card.</p>
+        <p class="hint">Shown greyed out, with what each one needs. Only games on cores that Update All installs; a game on any other core appears once that core is on the SD card.</p>
         <h3>Decks</h3>
-        <p class="hint">Your own lists of games, kept on the MiSTer and shareable as a link. They have a page of their own: Decks, in the navigation.</p>
+        <p class="hint">Your own lists of games, kept on the MiSTer and shareable as a link. Find them under Decks.</p>
         <h3>Layout</h3>
         <div class="seg" role="group" aria-label="Layout">
           <button data-density="compact" aria-pressed="false">Compact</button>
@@ -537,7 +537,7 @@ footer a{color:inherit}
         <div id="homeTip" hidden>
           <h3>Home screen</h3>
           <p class="hint ask" id="homeHow"></p>
-          <p class="hint">Full screen, its own icon, no browser bar, and it keeps pointing at this MiSTer.</p>
+          <p class="hint">Opens full screen with its own icon and no browser bar, and keeps pointing at this MiSTer.</p>
         </div>
         <h3>Kiosk</h3>
         <div class="switch"><span>Kiosk mode</span>
@@ -547,7 +547,7 @@ footer a{color:inherit}
           <select id="kioskDeck" class="kdeck" aria-label="What kiosk mode shows"><option value="">Whole wall</option></select></div>
         <div class="switch"><span>Marquee while playing</span>
           <button class="tog" id="marqueeTog" role="switch" aria-checked="true"></button></div>
-        <p class="hint">The running game's flyer stays up for as long as it runs; the flyers only drift by on the menu.</p>
+        <p class="hint">The running game's flyer stays up while it runs. The flyers only drift by on the menu.</p>
         <h3>Software</h3>
         <div class="switch"><span>Shmup Deck <span id="verNow"></span></span>
           <button class="btn" id="updBtn" hidden>Check for updates</button></div>
@@ -582,9 +582,9 @@ footer a{color:inherit}
 <div class="scrim" id="vscrim" hidden></div>
 <div class="sheet vsheet" id="vsheet" hidden>
   <h3 id="vtitle">Versions</h3>
-  <p class="hint">The version the cab launches for this game. It is remembered on the MiSTer.</p>
+  <p class="hint">Which version this card launches. The choice is kept on the MiSTer.</p>
   <div class="vlist" id="vlist"></div>
-  <button class="forget" id="vforget" hidden>Forget the choice, launch the first again</button>
+  <button class="forget" id="vforget" hidden>Forget the choice and go back to the first</button>
   <div class="krow"><button class="btn" id="vcancel">Cancel</button></div>
 </div>
 <div class="filters">
@@ -624,7 +624,7 @@ footer a{color:inherit}
     </div>
   </div>
 </div>
-<p class="hint" id="screenHint" hidden>Which way is your monitor fitted? Tate or yoko, set once; the deck remembers.</p>
+<p class="hint" id="screenHint" hidden>Which way is your monitor fitted? Choose once; the deck remembers.</p>
 <div class="grouprow">
   <label class="dropdown" title="Group the wall by developer or arcade system">
     <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>
@@ -669,7 +669,7 @@ footer a{color:inherit}
   <div class="caption"><span class="title" id="attractTitle"></span><span class="meta" id="attractMeta"></span></div>
 </div>
 
-<footer>tap a cab to launch &middot; only games ready to play on this MiSTer are shown, unless you switch on missing games in settings<br>
+<footer>tap a card to launch &middot; only games this MiSTer can run are shown, unless you switch on missing games in Settings<br>
 flyer art is downloaded from public archives and belongs to its copyright holders</footer>
 
 <script>

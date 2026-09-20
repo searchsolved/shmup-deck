@@ -150,10 +150,10 @@ footer{margin-top:40px;font-size:11px;letter-spacing:.18em;text-transform:upperc
 <h2 style="margin-top:0">Your decks</h2>
 <div class="top"><input id="name" placeholder="New deck name" maxlength="60" aria-label="New deck name"><button id="create">Create</button></div>
 <div class="grid" id="mine"></div>
-<p class="empty" id="none" hidden>No decks yet. Name one above, then tap games on the wall to fill it. A deck is a list you choose and order yourself, kept on the MiSTer and shareable as a link.</p>
+<p class="empty" id="none" hidden>No decks yet. Name one above, then tap games on the wall to fill it. A deck is a list of games you pick and order, kept on the MiSTer and shareable as a link.</p>
 
 <h2>Made for you</h2>
-<p class="chint">Built from what this MiSTer knows, fresh each day. Copy one to keep it as it is today and edit it.</p>
+<p class="chint">Made from what has been played on this MiSTer, refreshed each day. Copy one to keep it as it is today and edit it.</p>
 <div class="grid" id="auto"></div>
 
 <h2>Shared by others</h2>
@@ -171,7 +171,7 @@ footer{margin-top:40px;font-size:11px;letter-spacing:.18em;text-transform:upperc
   <div class="foot"><button class="btn" id="esave">Save</button><button class="quiet" id="ecancel">Cancel</button></div>
 </div>
 
-<footer>A deck opens on the wall, where you add games and share it as a link. Share with everyone sends it to the shared list through GitHub; fill in the author line, then propose the change.</footer>
+<footer>Open a deck to see it on the wall, add games to it, or copy its link. Share with everyone offers it to the shared list through GitHub: add your name on the author line, then propose the change.</footer>
 </div>
 <script>
 const $ = s => document.querySelector(s);
@@ -254,19 +254,19 @@ function autoDecks() {
   const byTitle = (a, b) => a.title.localeCompare(b.title, "en");
   const out = [];
   const played = ready.filter(g => STATS[g.id] && STATS[g.id].seconds > 0).sort((a, b) => STATS[b.id].seconds - STATS[a.id].seconds);
-  if (played.length) out.push({ name: "Most played here", note: "The games this cab has spent the most time in, longest first.", ids: played.slice(0, 20).map(g => g.id), cover: played[0].id });
+  if (played.length) out.push({ name: "Most played here", note: "The games with the most time played on this MiSTer, longest first.", ids: played.slice(0, 20).map(g => g.id), cover: played[0].id });
   const fresh = ready.filter(g => !STATS[g.id] || !STATS[g.id].launches).sort(byTitle);
-  if (fresh.length) out.push({ name: "Not played here yet", note: `${fresh.length} games ready on this MiSTer that nobody has started. Pick one.`, ids: fresh.slice(0, 200).map(g => g.id), cover: null });
+  if (fresh.length) out.push({ name: "Not played here yet", note: `${fresh.length} games this MiSTer can run that nobody has started yet. Pick one.`, ids: fresh.slice(0, 200).map(g => g.id), cover: null });
   if (ready.length >= 10) {
     const rnd = dailySeed(), pool = [...ready];
     for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
-    out.push({ name: "Tonight's ten", note: "Ten at random, the same ten on every phone in the house until midnight.", ids: pool.slice(0, 10).map(g => g.id), cover: pool[0].id });
+    out.push({ name: "Tonight's ten", note: "Ten games at random. Everyone in the house sees the same ten until midnight.", ids: pool.slice(0, 10).map(g => g.id), cover: pool[0].id });
   }
   const screen = localStorage.getItem("shmupdeck.screen") || "all";
   if (screen !== "all") {
     const other = screen === "tate" ? "yoko" : "tate";
     const hidden = ready.filter(g => g.orientation === other).sort(byTitle);
-    if (hidden.length) out.push({ name: `Hidden by your ${screen} filter`, note: `${hidden.length} ${other} games this cab can run that the wall is not showing you.`, ids: hidden.slice(0, 200).map(g => g.id), cover: null });
+    if (hidden.length) out.push({ name: `Hidden by your ${screen} filter`, note: `${hidden.length} ${other} games this MiSTer can run that your screen filter keeps off the wall.`, ids: hidden.slice(0, 200).map(g => g.id), cover: null });
   }
   return out;
 }
