@@ -78,6 +78,11 @@ h2{font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;font-weight:800
 .card .body{padding:12px 14px 14px}
 .card .name{font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;font-weight:700;font-size:21px;letter-spacing:.04em;text-transform:uppercase;line-height:1.1}
 .card .meta{font-size:12px;color:var(--ash);margin-top:4px}
+.card .tools{display:flex;gap:12px;margin-top:10px}
+.card .tools button{background:none;border:0;padding:0;color:var(--ash);font-family:inherit;font-size:12px;text-decoration:underline;cursor:pointer}
+.card .tools button:hover{color:var(--bone)}
+.card .tools button.danger:hover{color:#e0604f}
+.card input{width:100%;padding:6px 8px;border-radius:8px;border:1px solid var(--line);background:rgba(0,0,0,.3);color:var(--bone);font-family:inherit;font-size:14px}
 .empty{color:var(--ash);font-size:14px;line-height:1.6;max-width:520px}
 footer{margin-top:40px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#44523f;line-height:1.8}
 @media (max-width: 560px){ .grid{grid-template-columns:1fr 1fr;gap:10px} .strip{height:90px} .card .name{font-size:17px} }
@@ -112,11 +117,31 @@ function render(decks) {
   const grid = $("#mine");
   $("#none").hidden = decks.length > 0;
   grid.replaceChildren(...decks.map(d => {
-    const a = document.createElement("a");
-    a.className = "card"; a.href = `./?deck=${encodeURIComponent(d.id)}`;
+    const a = document.createElement("div");
+    a.className = "card";
     const cells = d.ids.slice(0, 4).map(id => GAMES[id] && ART[artId(GAMES[id])] ? `<div style="background-image:url('art/${artId(GAMES[id])}')"></div>` : "<div></div>");
     while (cells.length < 4) cells.push("<div></div>");
-    a.innerHTML = `<div class="strip">${cells.join("")}</div><div class="body"><div class="name">${esc(d.name)}</div><div class="meta">${d.ids.length} game${d.ids.length === 1 ? "" : "s"}</div></div>`;
+    a.innerHTML = `<a class="open" href="./?deck=${encodeURIComponent(d.id)}" style="display:block;color:inherit;text-decoration:none"><div class="strip">${cells.join("")}</div>
+      <div class="body"><div class="name">${esc(d.name)}</div><div class="meta">${d.ids.length} game${d.ids.length === 1 ? "" : "s"}</div></div></a>
+      <div class="body tools" style="padding-top:0"><button class="rename">Rename</button><button class="delete danger">Delete</button></div>`;
+    a.querySelector(".rename").addEventListener("click", async () => {
+      const name = a.querySelector(".name");
+      if (name.querySelector("input")) {
+        const v = name.querySelector("input").value.trim();
+        if (v && v !== d.name) await post({ deck: { ...d, name: v } });
+        return load();
+      }
+      name.innerHTML = `<input value="${esc(d.name)}" maxlength="60">`;
+      a.querySelector(".rename").textContent = "Save";
+      const inp = name.querySelector("input"); inp.focus(); inp.select();
+      inp.addEventListener("keydown", e => { if (e.key === "Enter") a.querySelector(".rename").click(); });
+    });
+    a.querySelector(".delete").addEventListener("click", async () => {
+      const btn = a.querySelector(".delete");
+      if (btn.textContent !== "Really delete") { btn.textContent = "Really delete"; setTimeout(() => { btn.textContent = "Delete"; }, 3000); return; }
+      await post({ delete: d.id });
+      load();
+    });
     return a;
   }));
 }
@@ -128,6 +153,10 @@ async function load() {
   ]);
   GAMES = Object.fromEntries(games.map(g => [g.id, g])); ART = art;
   render(decks.decks);
+}
+async function post(body) {
+  const r = await fetch("api/decks", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  return r.json();
 }
 $("#create").addEventListener("click", async () => {
   const name = $("#name").value.trim();

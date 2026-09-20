@@ -334,6 +334,7 @@ body.compact .plate .vers{display:none}
   display:flex;align-items:center;justify-content:center;background:var(--gold);color:#231c07;font-size:15px;font-weight:700;
 }
 body.adding .cab{cursor:copy}
+body.adding .cab .star{display:none}
 body.adding .cab.indeck{border-color:var(--gold)}
 .krow .forget{margin-top:0}
 
@@ -853,8 +854,8 @@ function card(g, played, showSystem) {
   star.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") toggleStar(e); });
   // a game that can't start opens its checklist entry instead
   b.addEventListener("click", e => {
-    if (e.target.closest(".star")) return;
     if (ADDING) { e.preventDefault(); toggleInDeck(g.id); return; }
+    if (e.target.closest(".star")) return;
     if (e.target.closest(".vers")) { e.preventDefault(); openVersions(g, b); return; }
     if (b._held) { b._held = false; return; }          // the long press already acted
     ok ? launch(g, b) : (location.href = `check.html?game=${encodeURIComponent(g.id)}`);
