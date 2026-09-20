@@ -193,6 +193,15 @@ body.compact .divider h2{font-size:20px}
   font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;
   font-weight:700;font-size:20px;letter-spacing:.05em;text-transform:uppercase;
 }
+.now .exit{
+  margin-left:auto;flex:none;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ash);
+  padding:6px 14px;font-family:inherit;font-size:12px;cursor:pointer;
+}
+.now .exit:hover{color:var(--bone);border-color:var(--ash)}
+.nowfull .exit{
+  display:inline-block;margin-top:22px;border:1px solid rgba(233,228,210,.4);border-radius:999px;background:rgba(0,0,0,.35);color:var(--bone);
+  padding:9px 18px;font-family:inherit;font-size:13px;cursor:pointer;
+}
 
 .deck{
   max-width:1080px;margin:0 auto;
@@ -558,6 +567,7 @@ footer a{color:inherit}
 </header>
 <div class="now" id="now" hidden>
   <span class="label">Now playing</span><span class="what" id="nowWhat"></span>
+  <button class="exit" id="nowExit" title="Load the MiSTer's own menu">Back to menu</button>
 </div>
 <div class="searchrow">
   <div class="field">
@@ -661,7 +671,7 @@ footer a{color:inherit}
 <div class="nowfull" id="nowfull" hidden>
   <div class="blur" id="nowBlur"></div>
   <div class="pic" id="nowPic"></div>
-  <div class="caption"><span class="ribbon" id="nowRibbon">Now playing</span><span class="title" id="nowTitle"></span><span class="meta" id="nowMeta"></span><span class="tap" id="nowTap">Tap to browse</span></div>
+  <div class="caption"><span class="ribbon" id="nowRibbon">Now playing</span><span class="title" id="nowTitle"></span><span class="meta" id="nowMeta"></span><span class="tap" id="nowTap">Tap to browse</span><button class="exit" id="nowFullExit">Back to MiSTer menu</button></div>
 </div>
 <div class="attract" id="attract" hidden>
   <div class="blur" id="attractBlur"></div>
@@ -1458,6 +1468,14 @@ function hideNowFull(dismiss) {
   $("#nowfull").hidden = true;
 }
 $("#nowfull").addEventListener("click", () => hideNowFull(true));
+/* back to the MiSTer's own menu: the same as the User button on the board */
+async function exitToMenu(e) {
+  e.stopPropagation();
+  try { await fetch("api/menu", { method: "POST" }); } catch {}
+  hideNowFull(true);
+}
+$("#nowExit").addEventListener("click", exitToMenu);
+$("#nowFullExit").addEventListener("click", exitToMenu);
 
 /* ── status ── */
 async function loadChecklist() {

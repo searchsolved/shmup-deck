@@ -87,6 +87,8 @@ two seconds to leave.
   the MiSTer.
 - To leave kiosk mode, hold the top left corner of the screen for two
   seconds. It glows while you hold.
+- **Back to menu**, on the Now playing banner and the full-screen flyer, loads
+  the MiSTer's own menu, the same as the User button on the board.
 - Games on cores Update All can't install never show as missing. They appear
   as soon as the core is on the card.
 

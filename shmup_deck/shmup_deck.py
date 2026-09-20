@@ -45,6 +45,7 @@ CMD = os.environ.get("SHMUP_CMD", "/dev/MiSTer_cmd")
 CACHE = os.environ.get("SHMUP_CACHE", os.path.join(HERE, "mra_index.json"))
 SEEN = CACHE[:-5] + "_seen.json"     # size, date and setname of every MRA read
 MGL_PATH = os.environ.get("SHMUP_MGL", "/tmp/shmup_deck.mgl")
+MENU_RBF = os.environ.get("SHMUP_MENU", "/media/fat/menu.rbf")
 CORENAME = os.environ.get("SHMUP_CORENAME", "/tmp/CORENAME")
 PLAYS = os.environ.get("SHMUP_PLAYS", os.path.join(HERE, "plays.json"))
 FAVS = os.environ.get("SHMUP_FAVS", os.path.join(HERE, "favourites.json"))   # pre-1.9; read once, then renamed
@@ -1158,6 +1159,12 @@ class Handler(SimpleHTTPRequestHandler):
                 if not UPDATER.start_install():
                     return self.send_json({"error": "already updating"}, 409)
                 return self.send_json({"ok": True, "installing": UPDATER.latest["version"]})
+            if self.path == "/api/menu":
+                # back to the MiSTer's own menu, for anyone without a User button to hand
+                if not os.path.exists(MENU_RBF):
+                    return self.send_json({"error": "menu core not found"}, 404)
+                send_command("load_core %s" % MENU_RBF)
+                return self.send_json({"ok": True})
             if self.path == "/api/rescan":
                 # {"full": true} re-reads every MRA instead of only changed ones
                 full = bool(self.read_json().get("full"))
