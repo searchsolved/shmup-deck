@@ -535,7 +535,7 @@ class Decks:
         self.decks = [self._clean(d, d) for d in self.decks]
 
     def _migrate(self):
-        if not os.path.exists(FAVS):
+        if not os.path.exists(FAVS) or any(d.get("id") == "favourites" for d in self.decks):
             return
         try:
             with open(FAVS) as f:
