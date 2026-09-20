@@ -154,6 +154,10 @@ footer{margin-top:40px;font-size:11px;letter-spacing:.18em;text-transform:upperc
 <div class="grid" id="mine"></div>
 <p class="empty" id="none" hidden>Only Favourites so far. Name a deck above, then tap games on the wall to fill it. A deck is a list you choose and order yourself, kept on the MiSTer and shareable as a link.</p>
 
+<h2>Automatic</h2>
+<p class="chint">Made on the spot from what this MiSTer knows. Save one to keep and edit it.</p>
+<div class="grid" id="auto"></div>
+
 <h2>Community</h2>
 <p class="chint" id="chint">Looking on GitHub&hellip;</p>
 <div class="grid" id="community"></div>
@@ -174,7 +178,7 @@ footer{margin-top:40px;font-size:11px;letter-spacing:.18em;text-transform:upperc
 <script>
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
-let GAMES = {}, ART = {}, READY = null, DECKS = [], CHECK_DONE = false;
+let GAMES = {}, ART = {}, READY = null, DECKS = [], CHECK_DONE = false, STATS = {};
 const artId = g => (g && g.art) || (g && g.id);
 const isReady = id => READY ? READY.has(id) : true;
 const post = body => fetch("api/decks", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }).then(r => r.json());
@@ -189,11 +193,11 @@ function strip(d) {
   return `<div class="strip">${cells.join("")}</div>`;
 }
 
-function tile(d, mine) {
+function tile(d, mine, auto) {
   const a = document.createElement("div");
   a.className = "card";
   const here = d.ids.filter(isReady).length;
-  const count = mine ? `${d.ids.length} game${d.ids.length === 1 ? "" : "s"}`
+  const count = mine || auto ? `${d.ids.length} game${d.ids.length === 1 ? "" : "s"}`
     : `${d.ids.length} game${d.ids.length === 1 ? "" : "s"}` + (READY ? ` · ${here} ready here` : "");
   a.innerHTML = `${mine ? `<a class="open" href="./?deck=${encodeURIComponent(d.id)}" style="display:block;color:inherit;text-decoration:none">` : "<div>"}
       ${strip(d)}
@@ -225,8 +229,9 @@ function tile(d, mine) {
     });
   } else {
     const sv = a.querySelector(".save");
-    const saved = () => DECKS.some(x => x.name === d.name && x.ids.join() === d.ids.filter(i => GAMES[i]).join());
+    const saved = () => !auto && DECKS.some(x => x.name === d.name && x.ids.join() === d.ids.filter(i => GAMES[i]).join());
     if (saved()) { sv.textContent = "Saved"; sv.classList.add("on"); sv.disabled = true; }
+    if (auto) a.querySelector(".preview").textContent = "Open";
     sv.addEventListener("click", async () => {
       sv.disabled = true;
       const r = await post({ deck: { name: d.name, note: d.note || "", ids: d.ids, cover: d.cover || null } });
@@ -239,6 +244,38 @@ function tile(d, mine) {
   return a;
 }
 
+/* Decks the MiSTer can write itself: from play history, what is installed
+   and what the phone's filters hide. Nothing is stored until Save. */
+function dailySeed() {
+  const day = new Date().toISOString().slice(0, 10);
+  let h = 0;
+  for (const c of day) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+  return () => { h = (h * 1664525 + 1013904223) >>> 0; return h / 4294967296; };
+}
+function autoDecks() {
+  const ready = Object.values(GAMES).filter(g => isReady(g.id));
+  const byTitle = (a, b) => a.title.localeCompare(b.title, "en");
+  const out = [];
+  const played = ready.filter(g => STATS[g.id] && STATS[g.id].seconds > 0).sort((a, b) => STATS[b.id].seconds - STATS[a.id].seconds);
+  if (played.length) out.push({ name: "Most played here", note: "The games this cab has spent the most time in, longest first.", ids: played.slice(0, 20).map(g => g.id), cover: played[0].id });
+  const fresh = ready.filter(g => !STATS[g.id] || !STATS[g.id].launches).sort(byTitle);
+  if (fresh.length) out.push({ name: "Not played here yet", note: `${fresh.length} games ready on this MiSTer that nobody has started. Pick one.`, ids: fresh.slice(0, 200).map(g => g.id), cover: null });
+  if (ready.length >= 10) {
+    const rnd = dailySeed(), pool = [...ready];
+    for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
+    out.push({ name: "Tonight's ten", note: "Ten at random, the same ten on every phone in the house until midnight.", ids: pool.slice(0, 10).map(g => g.id), cover: pool[0].id });
+  }
+  const screen = localStorage.getItem("shmupdeck.screen") || "all";
+  if (screen !== "all") {
+    const other = screen === "tate" ? "yoko" : "tate";
+    const hidden = ready.filter(g => g.orientation === other).sort(byTitle);
+    if (hidden.length) out.push({ name: `Hidden by your ${screen} filter`, note: `${hidden.length} ${other} games this cab can run that the wall is not showing you.`, ids: hidden.slice(0, 200).map(g => g.id), cover: null });
+  }
+  return out;
+}
+function renderAuto() {
+  $("#auto").replaceChildren(...autoDecks().map(d => tile(d, false, true)));
+}
 function renderMine() {
   $("#mine").replaceChildren(...DECKS.map(d => tile(d, true)));
   $("#none").hidden = DECKS.some(d => !d.builtin);
@@ -313,15 +350,17 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") esheet.hidde
 document.addEventListener("click", e => { if (!esheet.hidden && !e.target.closest("#esheet, .edit")) esheet.hidden = true; });
 
 async function load() {
-  const [games, art, decks, check] = await Promise.all([
+  const [games, art, decks, check, stats] = await Promise.all([
     fetch("games.json").then(r => r.json()),
     fetch("art.json").then(r => r.json()).catch(() => ({})),
     fetch("api/decks", { cache: "no-store" }).then(r => r.ok ? r.json() : { decks: [] }).catch(() => ({ decks: [] })),
-    fetch("api/checklist", { cache: "no-store" }).then(r => r.ok ? r.json() : null).catch(() => null)
+    fetch("api/checklist", { cache: "no-store" }).then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch("api/stats", { cache: "no-store" }).then(r => r.ok ? r.json() : null).catch(() => null)
   ]);
   GAMES = Object.fromEntries(games.map(g => [g.id, g])); ART = art; DECKS = decks.decks;
   if (check && check.some(c => c.mra)) READY = new Set(check.filter(c => c.state === "ready").map(c => c.id));
-  renderMine();
+  STATS = (stats && stats.games) || {};
+  renderMine(); renderAuto();
   if (!CHECK_DONE) { CHECK_DONE = true; loadCommunity(); }
   const want = new URLSearchParams(location.search).get("edit");
   if (want) {
