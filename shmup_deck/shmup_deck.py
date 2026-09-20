@@ -47,7 +47,7 @@ SEEN = CACHE[:-5] + "_seen.json"     # size, date and setname of every MRA read
 MGL_PATH = os.environ.get("SHMUP_MGL", "/tmp/shmup_deck.mgl")
 CORENAME = os.environ.get("SHMUP_CORENAME", "/tmp/CORENAME")
 PLAYS = os.environ.get("SHMUP_PLAYS", os.path.join(HERE, "plays.json"))
-FAVS = os.environ.get("SHMUP_FAVS", os.path.join(HERE, "favourites.json"))
+FAVS = os.environ.get("SHMUP_FAVS", os.path.join(HERE, "favourites.json"))   # pre-1.9; read once, then renamed
 VERSIONS_FILE = os.environ.get("SHMUP_VERSIONS", os.path.join(HERE, "versions.json"))
 DECKS_FILE = os.environ.get("SHMUP_DECKS", os.path.join(HERE, "decks.json"))
 
@@ -475,37 +475,6 @@ class Plays:
 PLAYED = Plays()
 
 
-class Favourites:
-    """The cab's own deck: game ids starred by anyone using it, kept on the
-    MiSTer so every phone and browser sees the same list."""
-
-    def __init__(self):
-        self.lock = threading.Lock()
-        self.ids = []
-        try:
-            with open(FAVS) as f:
-                self.ids = [i for i in json.load(f) if isinstance(i, str)]
-        except (OSError, ValueError):
-            pass
-
-    def get(self):
-        with self.lock:
-            return list(self.ids)
-
-    def set(self, gid, on):
-        with self.lock:
-            if on and gid not in self.ids:
-                self.ids.append(gid)
-            elif not on and gid in self.ids:
-                self.ids.remove(gid)
-            tmp = FAVS + ".tmp"
-            with open(tmp, "w") as f:
-                json.dump(self.ids, f)
-            os.replace(tmp, FAVS)
-            return list(self.ids)
-
-
-FAVOURITES = Favourites()
 
 
 class Versions:
@@ -544,7 +513,16 @@ VERSIONS = Versions()
 
 class Decks:
     """Named lists of games, kept on the MiSTer so every phone sees them.
-    A deck is {"id", "name", "ids": [game ids in order], "note"}."""
+
+    A deck is {"id", "name", "note", "ids": [game ids in order], "cover":
+    a game id or None, "created", "updated", "builtin"}. Favourites is the
+    built-in deck "favourites": the star on a card adds to it, it cannot be
+    deleted or renamed, and it comes first. Before 1.9 favourites lived in
+    their own file; that file is read once and renamed.
+    """
+
+    FAV = "favourites"
+    CAPS = {"name": 60, "note": 300, "ids": 200}
 
     def __init__(self):
         self.lock = threading.Lock()
@@ -554,27 +532,87 @@ class Decks:
                 self.decks = [d for d in json.load(f) if isinstance(d, dict) and d.get("id")]
         except (OSError, ValueError):
             pass
+        self._migrate()
+        self.decks = [self._clean(d, d) for d in self.decks]
+        self.decks.sort(key=lambda d: not d["builtin"])
+
+    def _migrate(self):
+        if any(d.get("id") == self.FAV for d in self.decks):
+            return
+        ids = []
+        try:
+            with open(FAVS) as f:
+                ids = [i for i in json.load(f) if isinstance(i, str)]
+        except (OSError, ValueError):
+            pass
+        self.decks.insert(0, {"id": self.FAV, "name": "Favourites", "builtin": True, "ids": ids, "note": "", "cover": None})
+        self._write()
+        try:
+            if os.path.exists(FAVS):
+                os.replace(FAVS, FAVS + ".migrated")
+        except OSError:
+            pass
+
+    def _clean(self, deck, existing):
+        """A saved deck: what was sent, over what was there, within the caps."""
+        known = {g["id"] for g in load_deck()}
+        old = existing or {}
+        now = int(time.time())
+        out = {"id": old.get("id") or deck.get("id") or "d%x" % int(time.time() * 1000)}
+        out["builtin"] = out["id"] == self.FAV
+        name = deck.get("name", old.get("name"))
+        out["name"] = "Favourites" if out["builtin"] else str(name or "Untitled")[:self.CAPS["name"]]
+        out["note"] = str(deck.get("note", old.get("note")) or "")[:self.CAPS["note"]]
+        ids = deck.get("ids", old.get("ids", []))
+        seen = set()
+        out["ids"] = [i for i in ids if isinstance(i, str) and i in known and not (i in seen or seen.add(i))][:self.CAPS["ids"]]
+        cover = deck.get("cover", old.get("cover"))
+        out["cover"] = cover if cover in out["ids"] else None
+        out["created"] = old.get("created") or now
+        out["updated"] = now if deck is not existing else old.get("updated") or now
+        return out
 
     def get(self):
         with self.lock:
             return [dict(d) for d in self.decks]
 
-    def save(self, deck):
-        """Add or replace a deck; a deck without an id is new."""
-        known = {g["id"] for g in load_deck()}
-        clean = {"id": deck.get("id") or "d%x" % int(time.time() * 1000),
-                 "name": str(deck.get("name") or "Untitled")[:60],
-                 "ids": [i for i in deck.get("ids", []) if i in known][:200],
-                 "note": str(deck.get("note") or "")[:300]}
+    def ids_of(self, did):
         with self.lock:
+            return next((list(d["ids"]) for d in self.decks if d["id"] == did), [])
+
+    def save(self, deck):
+        """Add or replace a deck; fields left out keep their old value."""
+        with self.lock:
+            existing = next((d for d in self.decks if d["id"] == deck.get("id")), None)
+            clean = self._clean(deck, existing)
             self.decks = [d for d in self.decks if d["id"] != clean["id"]] + [clean]
+            self.decks.sort(key=lambda d: not d["builtin"])
             self._write()
             return clean
 
+    def member(self, did, gid, on):
+        """Add or remove one game; the star's path, so it is atomic here."""
+        with self.lock:
+            deck = next((d for d in self.decks if d["id"] == did), None)
+            if not deck:
+                return None
+            if on and gid not in deck["ids"] and len(deck["ids"]) < self.CAPS["ids"]:
+                deck["ids"].append(gid)
+            elif not on and gid in deck["ids"]:
+                deck["ids"].remove(gid)
+            if deck["cover"] not in deck["ids"]:
+                deck["cover"] = None
+            deck["updated"] = int(time.time())
+            self._write()
+            return dict(deck)
+
     def delete(self, did):
         with self.lock:
+            if did == self.FAV:
+                return False
             self.decks = [d for d in self.decks if d["id"] != did]
             self._write()
+            return True
 
     def _write(self):
         tmp = DECKS_FILE + ".tmp"
@@ -987,7 +1025,8 @@ class Handler(SimpleHTTPRequestHandler):
         if self.path == "/api/stats":
             return self.send_json(PLAYED.snapshot())
         if self.path == "/api/favourites":
-            return self.send_json({"ids": FAVOURITES.get()})
+            # the favourites deck, in the shape pages before 1.9 expect
+            return self.send_json({"ids": DECKS.ids_of(Decks.FAV)})
         if self.path == "/api/decks":
             return self.send_json({"decks": DECKS.get()})
         if self.path.startswith("/api/versions?"):
@@ -1013,11 +1052,22 @@ class Handler(SimpleHTTPRequestHandler):
                     return self.send_json({"error": "not installed"}, 404)
                 return self.send_json({"ok": True, "path": path})
             if self.path == "/api/decks":
-                # {"deck": {...}} saves (new when it has no id); {"delete": id} removes
+                # {"deck": {...}} saves, new when it has no id, fields left out
+                # kept; {"delete": id} removes; {"member": {"deck", "id", "on"}}
+                # adds or removes one game
                 body = self.read_json()
                 if body.get("delete"):
-                    DECKS.delete(body["delete"])
+                    if not DECKS.delete(body["delete"]):
+                        return self.send_json({"error": "built in"}, 403)
                     return self.send_json({"decks": DECKS.get()})
+                if isinstance(body.get("member"), dict):
+                    m = body["member"]
+                    if not any(g["id"] == m.get("id") for g in load_deck()):
+                        return self.send_json({"error": "unknown game"}, 404)
+                    deck = DECKS.member(m.get("deck"), m["id"], bool(m.get("on")))
+                    if not deck:
+                        return self.send_json({"error": "unknown deck"}, 404)
+                    return self.send_json({"deck": deck, "decks": DECKS.get()})
                 if not isinstance(body.get("deck"), dict):
                     return self.send_json({"error": "no deck"}, 400)
                 saved = DECKS.save(body["deck"])
@@ -1037,7 +1087,8 @@ class Handler(SimpleHTTPRequestHandler):
                 gid = body.get("id")
                 if not any(g["id"] == gid for g in load_deck()):
                     return self.send_json({"error": "unknown game"}, 404)
-                return self.send_json({"ids": FAVOURITES.set(gid, bool(body.get("on")))})
+                DECKS.member(Decks.FAV, gid, bool(body.get("on")))
+                return self.send_json({"ids": DECKS.ids_of(Decks.FAV)})
             if self.path == "/api/update/check":
                 UPDATER.check()
                 return self.send_json(UPDATER.snapshot())
