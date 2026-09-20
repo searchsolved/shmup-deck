@@ -50,9 +50,8 @@ you tap it.
 
 ## Decks
 
-The star on a card adds it to Favourites, which is a deck: a list of games
-you chose, in the order you chose, kept on the MiSTer so every phone sees it.
-The Decks page makes more of them. Name one, then tap games on the wall to
+A deck is a list of games you chose, in the order you chose, kept on the
+MiSTer so every phone sees it. The Decks page is where they live. Name one, then tap games on the wall to
 fill it; open it there to add, share or rename it, or Edit on the Decks page
 to reorder, pick a cover flyer and write a line about it.
 

@@ -171,23 +171,7 @@ body.compact .divider h2{font-size:20px}
   border-radius:3px;font-size:9.5px;letter-spacing:.14em;color:#6d7a70;
 }
 .plate .plays{margin-left:auto;color:var(--emerald);font-size:10.5px;letter-spacing:.1em}
-/* the star: marks a favourite without launching */
-.cab .star{
-  position:absolute;top:8px;right:8px;z-index:3;width:34px;height:34px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(7,16,11,.7);color:rgba(233,228,210,.55);font-size:18px;line-height:1;
-  transition:color .15s, transform .15s;
-}
-.cab .star:hover{color:var(--gold);transform:scale(1.1)}
-.cab .star[aria-pressed="true"]{color:var(--gold)}
-.cab .star:focus-visible{outline:2px solid var(--emerald-hot)}
-body.compact .cab .star{width:28px;height:28px;font-size:15px;top:5px;right:5px}
 .count{display:flex;align-items:center;gap:12px;margin:0;font-size:13px;letter-spacing:.06em;text-transform:none;color:var(--ash)}
-.copylink{
-  border:1px solid var(--line);border-radius:999px;background:rgba(0,0,0,.25);color:var(--ash);
-  padding:5px 11px;font-family:inherit;font-size:12px;letter-spacing:.02em;cursor:pointer;
-}
-.copylink:hover{color:var(--bone)}
 .count{display:flex;align-items:center;gap:12px}
 .plate .plays + .orient{margin-left:8px}
 .lamp{width:8px;height:8px;border-radius:50%;background:currentColor;transition:box-shadow .3s}
@@ -343,7 +327,6 @@ body.compact .plate .vers{display:none}
   display:flex;align-items:center;justify-content:center;background:var(--gold);color:#231c07;font-size:15px;font-weight:700;
 }
 body.adding .cab{cursor:copy}
-body.adding .cab .star{display:none}
 body.adding .cab.indeck{border-color:var(--gold)}
 .krow .forget{margin-top:0}
 
@@ -501,7 +484,6 @@ body.kiosk .exitspot{display:block}
   .deckbar .dname{font-size:17px}
   .fsheet .dropdown{width:100%}
   .fsheet .dropdown select{flex:1;text-transform:none;letter-spacing:.02em;font-size:13px}
-  .copylink{text-transform:none;letter-spacing:.02em}
   body.compact .deck{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
   .deck{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
   body.large .deck{grid-template-columns:1fr;gap:18px}
@@ -597,7 +579,7 @@ footer a{color:inherit}
   <button class="forget" id="vforget" hidden>Forget the choice, launch the first again</button>
 </div>
 <div class="filters">
-  <p class="count"><span id="count"></span><button class="copylink" id="copylink" hidden title="A link that opens just these games">Copy link</button></p>
+  <p class="count"><span id="count"></span></p>
   <div class="segs">
     <span class="seglabel">Screen</span>
     <div class="seg" id="screenCtl" role="group" aria-label="Screen orientation" title="Which way the monitor is fitted; remembered on this device">
@@ -623,7 +605,6 @@ footer a{color:inherit}
     <span class="seglabel">Show</span>
     <div class="seg" role="group" aria-label="Show">
       <button data-show="all" aria-pressed="true">All</button>
-      <button data-show="favourites" aria-pressed="false" title="Games starred on this MiSTer">Faves</button>
       <button data-show="played" aria-pressed="false" title="Games that have been played on this MiSTer">Played</button>
     </div>
     <span class="seglabel">Sort</span>
@@ -709,7 +690,7 @@ const PHONE = matchMedia("(max-width: 560px)");
 // Which way the cab or monitor is fitted. Set once, remembered after that.
 const screenPref = () => localStorage.getItem(LS.screen) || "all";
 const sortPref = () => localStorage.getItem(LS.sort) || "az";
-const showPref = () => localStorage.getItem(LS.show) || "all";
+const showPref = () => { const v = localStorage.getItem(LS.show); return v === "played" ? v : "all"; };
 const groupPref = () => localStorage.getItem(LS.group) || "none";
 // which way a tate monitor is turned; MAME calls them ROT90 and ROT270
 const rotPref = () => localStorage.getItem(LS.rot) || "all";
@@ -740,25 +721,6 @@ let STATS = null;   // id -> { launches, seconds, last }
 
 /* Favourites live on the MiSTer, so they are the cab's rather than one
    phone's. An older service without them falls back to this browser. */
-/* Favourites is the built-in deck; the star adds to it. FAVS mirrors that
-   deck's ids once the decks have loaded. Without a reachable service the
-   stars fall back to this browser. */
-let FAVS = new Set(), FAVS_LOCAL = false;
-function favouritesFromDecks() {
-  const d = DECKS.find(x => x.id === "favourites");
-  if (d) { FAVS = new Set(d.ids); FAVS_LOCAL = false; return; }
-  FAVS_LOCAL = true;
-  try { FAVS = new Set(JSON.parse(localStorage.getItem(LS.favs)) || []); } catch { FAVS = new Set(); }
-}
-async function setFavourite(id, on) {
-  if (on) FAVS.add(id); else FAVS.delete(id);
-  if (FAVS_LOCAL) { localStorage.setItem(LS.favs, JSON.stringify([...FAVS])); return; }
-  try {
-    const r = await fetch("api/decks", { method: "POST", headers: { "Content-Type": "application/json" },
-                                         body: JSON.stringify({ member: { deck: "favourites", id, on } }) });
-    if (r.ok) { DECKS = (await r.json()).decks; favouritesFromDecks(); renderDeckList(); }
-  } catch { /* keep the optimistic change; it syncs on next load */ }
-}
 const plays = () => {
   if (STATS) return Object.fromEntries(Object.entries(STATS).map(([id, s]) => [id, s.seconds || s.launches]));
   try { return JSON.parse(localStorage.getItem(LS.plays)) || {}; } catch { return {}; }
@@ -874,12 +836,10 @@ function card(g, played, showSystem) {
   const ok = ready(g);
   b.className = "cab" + (g.id === NOW ? " playing" : "") + (ok ? "" : " missing");
   b.dataset.id = g.id;
-  const fav = FAVS.has(g.id);
   const nv = CHECK && CHECK[g.id] ? CHECK[g.id].versions || 0 : 0;
   const inDeck = ADDING && currentDeck() && currentDeck().ids.includes(g.id);
   if (inDeck) b.classList.add("indeck");
   b.innerHTML = `${inDeck ? `<span class="in">&#10003;</span>` : ""}${ok ? "" : `<span class="need">${NEEDS[CHECK && CHECK[g.id] ? CHECK[g.id].state : "mra"]}</span>`}
-    <span class="star" role="button" tabindex="0" aria-pressed="${fav}" aria-label="${fav ? "Remove from" : "Add to"} favourites">${fav ? "&#9733;" : "&#9734;"}</span>
     <div class="art" role="img" aria-label="${esc(g.title)} arcade flyer">
       <span class="stand-in">${esc(g.title)}</span>
       <div class="veil"><span></span></div></div>
@@ -892,22 +852,9 @@ function card(g, played, showSystem) {
         <span class="orient" title="${g.rotation === "cw" ? "Monitor turned clockwise" : g.rotation === "ccw" ? "Monitor turned anticlockwise" : ""}">${g.orientation}${g.rotation === "cw" ? " &#8635;" : g.rotation === "ccw" ? " &#8634;" : ""}</span></span>
     </div>`;
   paintArt(b.querySelector(".art"), g);
-  const star = b.querySelector(".star");
-  const toggleStar = e => {
-    e.stopPropagation(); e.preventDefault();
-    const on = !FAVS.has(g.id);
-    setFavourite(g.id, on);
-    star.setAttribute("aria-pressed", String(on)); star.innerHTML = on ? "&#9733;" : "&#9734;";
-    star.setAttribute("aria-label", `${on ? "Remove from" : "Add to"} favourites`);
-    // in the favourites view, unstarring a game takes it off the wall
-    if (!on && showPref() === "favourites") renderDeck();
-  };
-  star.addEventListener("click", toggleStar);
-  star.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") toggleStar(e); });
   // a game that can't start opens its checklist entry instead
   b.addEventListener("click", e => {
     if (ADDING) { e.preventDefault(); toggleInDeck(g.id); return; }
-    if (e.target.closest(".star")) return;
     if (e.target.closest(".vers")) { e.preventDefault(); openVersions(g, b); return; }
     if (b._held) { b._held = false; return; }          // the long press already acted
     ok ? launch(g, b) : (location.href = `check.html?game=${encodeURIComponent(g.id)}`);
@@ -963,7 +910,7 @@ function renderDeck() {
       // rotation only means anything on a turned monitor, so yoko games always pass
       .filter(g => rot === "all" || g.orientation !== "tate" || g.rotation === rot)
       .filter(hasRegion)
-      .filter(g => show === "all" || (show === "played" ? p[g.id] : FAVS.has(g.id)));
+      .filter(g => show === "all" || p[g.id]);
   const label = grouped ? groupLabels(shown, groupBy) : null;
   if (!list.length) shown.sort(grouped
     ? (a, b) => (label.get(a) === OTHER) - (label.get(b) === OTHER) ||
@@ -1003,7 +950,6 @@ function renderDeck() {
     const e = document.createElement("p");
     e.className = "empty";
     e.textContent = show === "played" && !query.length ? "Nothing played yet. Launch something!"
-      : show === "favourites" && !query.length ? "No favourites yet. Tap the star on a card to build your own deck."
       : CHECK || AVAIL ? "Nothing matches that." : "Looking for games on the MiSTer…";
     deck.replaceChildren(e);
   }
@@ -1011,11 +957,9 @@ function renderDeck() {
   const playedCount = shown.filter(g => p[g.id]).length;
   $("#count").textContent = showAll
     ? `${readyCount} of ${shown.length} ready`
-    : `${shown.length} ${show === "favourites" ? "favourite" : "game"}${shown.length === 1 ? "" : "s"}` +
+    : `${shown.length} game${shown.length === 1 ? "" : "s"}` +
       (show === "all" && playedCount ? ` · ${playedCount} played` : "");
-  $("#copylink").hidden = !(show === "favourites" && shown.length && !list.length);
   renderDeckBar(shown.length);
-  $("#copylink").dataset.ids = shown.map(g => g.id).join(",");
   for (const b of document.querySelectorAll(".seg button"))
     b.setAttribute("aria-pressed",
       String(b.dataset.screen === want || b.dataset.sort === order || b.dataset.show === show ||
@@ -1040,7 +984,7 @@ function renderChips(want, show, order, rot) {
   if (rot !== "all") chips.push([LS.rot, rot === "cw" ? "Clockwise" : "Anticlockwise"]);
   if (REGION !== "any") chips.push(["region", REGION_NAMES[REGION] || REGION]);
   if (currentDeck()) chips.push([LS.deck, `Deck: ${currentDeck().name}`]);
-  if (show !== "all") chips.push([LS.show, show === "favourites" ? "Faves" : "Played"]);
+  if (show !== "all") chips.push([LS.show, "Played"]);
   if (order !== "az") chips.push([LS.sort, order === "year" ? "By year" : "By plays"]);
   if (groupPref() !== "none") chips.push([LS.group, groupPref() === "dev" ? "By dev" : "By system"]);
   $("#chips").replaceChildren(...chips.map(([key, text]) => {
@@ -1097,13 +1041,6 @@ for (const b of document.querySelectorAll(".seg button")) {
     renderDeck();
   });
 }
-/* a link that opens exactly this list, for sharing or a home-screen shortcut */
-$("#copylink").addEventListener("click", async () => {
-  const url = `${location.origin}${location.pathname}?games=${$("#copylink").dataset.ids}&name=Favourites`;
-  try { await navigator.clipboard.writeText(url); $("#copylink").textContent = "Copied"; }
-  catch { $("#copylink").textContent = "Copy blocked"; }
-  setTimeout(() => { $("#copylink").textContent = "Copy link"; }, 2000);
-});
 // the logo is the home link; on the deck itself it clears the search and
 // goes back to the top, leaving the remembered choices alone
 $("#home").addEventListener("click", e => {
@@ -1335,7 +1272,6 @@ async function loadDecks() {
     const r = await fetch("api/decks", { cache: "no-store" });
     if (r.ok) DECKS = (await r.json()).decks;
   } catch { DECKS = []; }
-  favouritesFromDecks();
   if (DECK && !currentDeck()) { DECK = null; localStorage.removeItem(LS.deck); }
   renderDeckList();
 }
@@ -1382,7 +1318,6 @@ function renderDeckBar(n) {
     $("#dadd").classList.toggle("on", ADDING);
     $("#dnote").textContent = d.note || ""; $("#dnote").hidden = !d.note;
     $("#dedit").href = `decks.html?edit=${encodeURIComponent(d.id)}`;
-    $("#drenameBtn").hidden = !!d.builtin; $("#ddelete").hidden = !!d.builtin;
   }
   // a deck arriving by link, not yet on this MiSTer
   const fromLink = PICK.length && LINK_NAME && !DECKS.some(x => x.name === LINK_NAME && x.ids.join() === PICK.join());

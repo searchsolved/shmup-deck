@@ -516,13 +516,11 @@ class Decks:
     """Named lists of games, kept on the MiSTer so every phone sees them.
 
     A deck is {"id", "name", "note", "ids": [game ids in order], "cover":
-    a game id or None, "created", "updated", "builtin"}. Favourites is the
-    built-in deck "favourites": the star on a card adds to it, it cannot be
-    deleted or renamed, and it comes first. Before 1.9 favourites lived in
-    their own file; that file is read once and renamed.
+    a game id or None, "created", "updated"}. Before 1.9 there was a
+    separate favourites list; on first start it becomes an ordinary deck
+    called Favourites and its file is renamed.
     """
 
-    FAV = "favourites"
     CAPS = {"name": 60, "note": 300, "ids": 200}
 
     def __init__(self):
@@ -535,22 +533,20 @@ class Decks:
             pass
         self._migrate()
         self.decks = [self._clean(d, d) for d in self.decks]
-        self.decks.sort(key=lambda d: not d["builtin"])
 
     def _migrate(self):
-        if any(d.get("id") == self.FAV for d in self.decks):
+        if not os.path.exists(FAVS):
             return
-        ids = []
         try:
             with open(FAVS) as f:
                 ids = [i for i in json.load(f) if isinstance(i, str)]
         except (OSError, ValueError):
-            pass
-        self.decks.insert(0, {"id": self.FAV, "name": "Favourites", "builtin": True, "ids": ids, "note": "", "cover": None})
-        self._write()
+            ids = []
+        if ids:
+            self.decks.insert(0, {"id": "favourites", "name": "Favourites", "ids": ids, "note": "", "cover": None})
+            self._write()
         try:
-            if os.path.exists(FAVS):
-                os.replace(FAVS, FAVS + ".migrated")
+            os.replace(FAVS, FAVS + ".migrated")
         except OSError:
             pass
 
@@ -560,9 +556,7 @@ class Decks:
         old = existing or {}
         now = int(time.time())
         out = {"id": old.get("id") or deck.get("id") or "d%x" % int(time.time() * 1000)}
-        out["builtin"] = out["id"] == self.FAV
-        name = deck.get("name", old.get("name"))
-        out["name"] = "Favourites" if out["builtin"] else str(name or "Untitled")[:self.CAPS["name"]]
+        out["name"] = str(deck.get("name", old.get("name")) or "Untitled")[:self.CAPS["name"]]
         out["note"] = str(deck.get("note", old.get("note")) or "")[:self.CAPS["note"]]
         ids = deck.get("ids", old.get("ids", []))
         seen = set()
@@ -587,7 +581,6 @@ class Decks:
             existing = next((d for d in self.decks if d["id"] == deck.get("id")), None)
             clean = self._clean(deck, existing)
             self.decks = [d for d in self.decks if d["id"] != clean["id"]] + [clean]
-            self.decks.sort(key=lambda d: not d["builtin"])
             self._write()
             return clean
 
@@ -609,8 +602,6 @@ class Decks:
 
     def delete(self, did):
         with self.lock:
-            if did == self.FAV:
-                return False
             self.decks = [d for d in self.decks if d["id"] != did]
             self._write()
             return True
@@ -1095,9 +1086,6 @@ class Handler(SimpleHTTPRequestHandler):
             return self.send_json(checklist())
         if self.path == "/api/stats":
             return self.send_json(PLAYED.snapshot())
-        if self.path == "/api/favourites":
-            # the favourites deck, in the shape pages before 1.9 expect
-            return self.send_json({"ids": DECKS.ids_of(Decks.FAV)})
         if self.path == "/api/decks":
             return self.send_json({"decks": DECKS.get()})
         if self.path == "/api/settings":
@@ -1130,8 +1118,7 @@ class Handler(SimpleHTTPRequestHandler):
                 # adds or removes one game
                 body = self.read_json()
                 if body.get("delete"):
-                    if not DECKS.delete(body["delete"]):
-                        return self.send_json({"error": "built in"}, 403)
+                    DECKS.delete(body["delete"])
                     return self.send_json({"decks": DECKS.get()})
                 if isinstance(body.get("member"), dict):
                     m = body["member"]
@@ -1162,13 +1149,6 @@ class Handler(SimpleHTTPRequestHandler):
                 if setname and setname not in game.get("setnames", []):
                     return self.send_json({"error": "not a version of this game"}, 400)
                 return self.send_json({"id": gid, "chosen": VERSIONS.set(gid, setname)})
-            if self.path == "/api/favourites":
-                body = self.read_json()
-                gid = body.get("id")
-                if not any(g["id"] == gid for g in load_deck()):
-                    return self.send_json({"error": "unknown game"}, 404)
-                DECKS.member(Decks.FAV, gid, bool(body.get("on")))
-                return self.send_json({"ids": DECKS.ids_of(Decks.FAV)})
             if self.path == "/api/update/check":
                 UPDATER.check()
                 return self.send_json(UPDATER.snapshot())

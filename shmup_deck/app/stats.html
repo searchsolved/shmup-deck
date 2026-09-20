@@ -89,13 +89,6 @@ li:nth-child(1)::before{color:var(--gold)}
 li .t{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 li .s{font-size:11.5px;color:var(--ash);letter-spacing:.06em}
 li .v{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;color:var(--emerald-hot);white-space:nowrap}
-li .star{
-  width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  color:rgba(233,228,210,.4);font-size:17px;line-height:1;margin-right:-6px;
-}
-li .star:hover{color:var(--gold)}
-li .star[aria-pressed="true"]{color:var(--gold)}
-li .star:focus-visible{outline:2px solid var(--emerald-hot)}
 li .bar{
   position:absolute;left:42px;bottom:4px;height:2px;background:var(--emerald);opacity:.5;border-radius:1px;
 }
@@ -156,24 +149,8 @@ function list(el, rows, value, playing) {
     <li data-id="${esc(r.g.id)}" tabindex="0" role="button" aria-label="Launch ${esc(r.g.title)}">
       <span class="t">${esc(r.g.title)}${r.g.id === playing ? " <span class=\"s\">(playing now)</span>" : ""}</span>
       <span class="v">${value(r)}</span>
-      <span class="star" role="button" tabindex="0" aria-pressed="${FAVS.has(r.g.id)}" aria-label="Favourite">${FAVS.has(r.g.id) ? "&#9733;" : "&#9734;"}</span>
       <span class="bar" style="width:${(r.n / max) * 60}%"></span>
     </li>`).join("");
-  for (const st of el.querySelectorAll(".star")) {
-    const id = st.closest("li").dataset.id;
-    const toggle = async e => {
-      e.stopPropagation(); e.preventDefault();
-      const on = !FAVS.has(id);
-      if (on) FAVS.add(id); else FAVS.delete(id);
-      // the same game may sit in more than one list
-      for (const other of document.querySelectorAll(`li[data-id="${id}"] .star`)) {
-        other.setAttribute("aria-pressed", String(on)); other.innerHTML = on ? "&#9733;" : "&#9734;";
-      }
-      try { await fetch("api/favourites", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, on }) }); } catch {}
-    };
-    st.addEventListener("click", toggle);
-    st.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") toggle(e); });
-  }
   for (const li of el.querySelectorAll("li")) {
     li.addEventListener("click", () => launch(li));
     li.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); launch(li); } });
@@ -181,7 +158,6 @@ function list(el, rows, value, playing) {
 }
 
 /* Launch from the list. The value column shows what is happening for a moment. */
-let FAVS = new Set();
 async function launch(li) {
   if (li.classList.contains("busy")) return;
   const v = li.querySelector(".v"), was = v.textContent;
@@ -200,10 +176,8 @@ async function launch(li) {
 
 Promise.all([
   fetch("games.json").then(r => r.json()),
-  fetch("api/stats", { cache: "no-store" }).then(r => r.ok ? r.json() : null),
-  fetch("api/favourites", { cache: "no-store" }).then(r => r.ok ? r.json() : { ids: [] }).catch(() => ({ ids: [] }))
-]).then(([games, stats, favs]) => {
-  FAVS = new Set(favs.ids);
+  fetch("api/stats", { cache: "no-store" }).then(r => r.ok ? r.json() : null)
+]).then(([games, stats]) => {
   if (!stats) {
     $("#totals").innerHTML = `<p class="empty">This MiSTer's Shmup Deck is too old to keep stats. Run shmup_deck from the Scripts menu to update.</p>`;
     return;
