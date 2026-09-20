@@ -27,6 +27,8 @@ other service to install.
 - Time played and launches are counted on the MiSTer for every game, however
   it was started, with a stats page of your most played
 
+What changed in each version is in [CHANGELOG.md](CHANGELOG.md).
+
 ## Install
 
 1. Download [`shmup_deck.sh`](https://github.com/searchsolved/shmup-deck/releases/latest/download/shmup_deck.sh)
@@ -233,9 +235,11 @@ the mirror repo from it.
 
 ## Development
 
-`tools/release.sh 1.5.0 < notes.md` is the release checklist: it checks the
-version and a clean tree, rebuilds ROMS.md, benchmarks the build running on
-your MiSTer, packages `dist/` and publishes the GitHub release.
+`tools/release.sh 1.5.0` is the release checklist: it checks the version, a
+clean tree and an entry for the version in [CHANGELOG.md](CHANGELOG.md),
+rebuilds ROMS.md, benchmarks the build running on your MiSTer, packages
+`dist/` and publishes the GitHub release with the changelog entry as its
+notes. Write the changelog entry first; the script refuses to run without it.
 
 The benchmark, `tools/bench.py`, times a full rescan, watches the service
 idle on the menu for half an hour, then launches a game and watches it for as
