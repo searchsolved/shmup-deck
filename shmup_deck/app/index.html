@@ -501,6 +501,9 @@ footer a{color:inherit}
         <div class="switch"><span>Kiosk mode</span>
           <button class="tog" id="kioskTog" role="switch" aria-checked="false"></button></div>
         <p class="hint">Just the wall, full screen, kept awake. Flyers drift by when nobody touches it. To leave, hold the top left corner for two seconds.</p>
+        <div class="switch"><span>Marquee while playing</span>
+          <button class="tog" id="marqueeTog" role="switch" aria-checked="true"></button></div>
+        <p class="hint">The running game's flyer stays up for as long as it runs; the flyers only drift by on the menu.</p>
         <h3>Software</h3>
         <div class="switch"><span>Shmup Deck <span id="verNow"></span></span>
           <button class="btn" id="updBtn" hidden>Check for updates</button></div>
@@ -611,6 +614,7 @@ const LS = {
   density: "shmupdeck.density",
   plays: "shmupdeck.plays",
   kiosk: "shmupdeck.kiosk",
+  marquee: "shmupdeck.marquee",          // in kiosk, keep the running game's flyer up instead of the attract cycle
   kioskIntro: "shmupdeck.kioskintro",   // the leaving instructions have been read
   versHint: "shmupdeck.vershint"         // the versions hint has done its job
 };
@@ -1067,10 +1071,20 @@ for (const ev of ["pointerup", "pointercancel", "pointerleave"])
   spot.addEventListener(ev, () => { clearTimeout(holdTimer); spot.classList.remove("holding"); });
 
 const ATTRACT_AFTER = 60_000, ATTRACT_EVERY = 8_000;
+const marqueePref = () => localStorage.getItem(LS.marquee) !== "off";
 function armAttract() {
   clearTimeout(attractTimer);
+  // with a game running the takeover is the marquee; the cycle waits for the menu
+  if (NOW && marqueePref()) return;
   if (document.body.classList.contains("kiosk") && !attractOn) attractTimer = setTimeout(startAttract, ATTRACT_AFTER);
 }
+$("#marqueeTog").addEventListener("click", () => {
+  localStorage.setItem(LS.marquee, marqueePref() ? "off" : "on");
+  $("#marqueeTog").setAttribute("aria-checked", String(marqueePref()));
+  if (attractOn && NOW && marqueePref()) stopAttract();
+  armAttract();
+});
+$("#marqueeTog").setAttribute("aria-checked", String(marqueePref()));
 let attractFlip = false, attractPool = [];
 function startAttract() {
   attractPool = GAMES.filter(g => ready(g) && ART[artId(g)]).sort(() => Math.random() - 0.5);
@@ -1330,6 +1344,9 @@ async function ping() {
         c.classList.toggle("playing", c.dataset.id === NOW);
       if (PHONE.matches) renderDeck();
       if (g) showNowFull(g, false); else if (!nowPending) hideNowFull(false);
+      // a game starting ends the attract cycle; one ending lets it resume
+      if (g && attractOn && marqueePref()) stopAttract();
+      armAttract();
       // a game starting or stopping is when the play history changes
       loadStats().then(() => { if (sortPref() === "played") renderDeck(); });
     }
