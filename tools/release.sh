@@ -31,6 +31,8 @@ python3 -m py_compile shmup_deck/shmup_deck.py
 
 python3 tools/build_rom_list.py >/dev/null
 [ -z "$(git status --porcelain)" ] || { echo "ROMS.md changed; commit it and run again" >&2; exit 1; }
+# orientation and rotation come from MAME, never by eye
+python3 tools/check_orientation.py >/dev/null || { echo "a game's orientation disagrees with MAME; run tools/check_orientation.py" >&2; exit 1; }
 
 if [ $bench = 1 ]; then
   echo "== benchmark"
