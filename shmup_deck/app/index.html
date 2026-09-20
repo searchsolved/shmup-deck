@@ -294,6 +294,8 @@ body.compact .plate .vers{display:none}
 .vsheet .v .path{display:block;font-size:11px;color:var(--ash);margin-top:2px}
 .vsheet .forget{margin-top:10px;background:none;border:0;color:var(--ash);font-family:inherit;font-size:12px;cursor:pointer;text-decoration:underline}
 .vsheet .forget[hidden]{display:none}
+.krow{display:flex;align-items:center;gap:16px;margin-top:14px}
+.krow .forget{margin-top:0}
 
 /* developer dividers span the whole grid row */
 .divider{
@@ -514,7 +516,14 @@ footer a{color:inherit}
   </button>
 </div>
 <div class="chips" id="chips" aria-label="Active filters"></div>
+<p class="hint ask" id="versHint" hidden>Cards marked &ldquo;4 sets&rdquo; hold several versions of the game. Tap the mark, or hold the card, to choose which one launches.</p>
 <div class="sheet fsheet" id="fsheet" hidden></div>
+<div class="sheet vsheet" id="ksheet" hidden>
+  <h3>Kiosk mode</h3>
+  <p class="hint">Just the wall, full screen, kept awake. After a minute untouched the flyers drift by; a tap brings the wall back.</p>
+  <p class="hint ask">To leave, hold the top left corner of the screen for two seconds. The corner glows while you hold.</p>
+  <div class="krow"><button class="btn" id="kstart">Start kiosk</button><button class="forget" id="knot">Not now</button></div>
+</div>
 <div class="sheet vsheet" id="vsheet" hidden>
   <h3 id="vtitle">Versions</h3>
   <p class="hint">The version the cab launches for this game. It is remembered on the MiSTer.</p>
@@ -594,7 +603,9 @@ const LS = {
   missing: "shmupdeck.missing",
   density: "shmupdeck.density",
   plays: "shmupdeck.plays",
-  kiosk: "shmupdeck.kiosk"
+  kiosk: "shmupdeck.kiosk",
+  kioskIntro: "shmupdeck.kioskintro",   // the leaving instructions have been read
+  versHint: "shmupdeck.vershint"         // the versions hint has done its job
 };
 const $ = s => document.querySelector(s);
 const PHONE = matchMedia("(max-width: 560px)");
@@ -855,6 +866,8 @@ function renderDeck() {
   document.body.classList.toggle("compact", densityPref() === "compact");
   document.body.classList.toggle("large", densityPref() === "large");
   $("#search").placeholder = `Search ${GAMES.filter(g => showAll && listed(g) || ready(g)).length || ""} games`.replace("  ", " ");
+  // the versions hint shows once there is a marked card to point at, until the picker has been used
+  $("#versHint").hidden = !!localStorage.getItem(LS.versHint) || !deck.querySelector(".plate .vers");
   renderChips(want, show, order, rot);
 }
 
@@ -1009,7 +1022,16 @@ function leaveKiosk() {
   if (new URLSearchParams(location.search).has("kiosk")) history.replaceState(null, "", location.pathname);
   renderDeck();
 }
-$("#kioskTog").addEventListener("click", () => document.body.classList.contains("kiosk") ? leaveKiosk() : enterKiosk(true));
+const ksheet = $("#ksheet");
+$("#kioskTog").addEventListener("click", () => {
+  if (document.body.classList.contains("kiosk")) return leaveKiosk();
+  // the first time, say how to get out before going in
+  if (localStorage.getItem(LS.kioskIntro)) return enterKiosk(true);
+  openSettings(false); ksheet.hidden = false;
+});
+$("#kstart").addEventListener("click", () => { localStorage.setItem(LS.kioskIntro, "read"); ksheet.hidden = true; enterKiosk(true); });
+$("#knot").addEventListener("click", () => { ksheet.hidden = true; });
+document.addEventListener("click", e => { if (!ksheet.hidden && !e.target.closest("#ksheet, #kioskTog")) ksheet.hidden = true; });
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible" && document.body.classList.contains("kiosk")) keepAwake();
 });
@@ -1121,6 +1143,7 @@ const vsheet = $("#vsheet");
 let VGAME = null, VCARD = null;
 async function openVersions(g, card) {
   VGAME = g; VCARD = card;
+  localStorage.setItem(LS.versHint, "seen"); $("#versHint").hidden = true;
   $("#vtitle").textContent = `Versions of ${g.title}`;
   $("#vlist").innerHTML = `<p class="hint">Looking…</p>`;
   openSettings(false); openFilters(false);

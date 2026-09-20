@@ -60,6 +60,16 @@ is for a tablet by the cab: nothing but the wall, full screen, kept awake,
 flyers drifting by after a minute untouched. Hold the top left corner for
 two seconds to leave.
 
+## Tips
+
+- A card marked "4 sets" has several MRAs of that game on the card. Tap the
+  mark, or hold the card, to choose which one launches. The choice is kept on
+  the MiSTer.
+- To leave kiosk mode, hold the top left corner of the screen for two
+  seconds. It glows while you hold.
+- Games on cores Update All can't install never show as missing. They appear
+  as soon as the core is on the card.
+
 Shmup Deck checks GitHub for a newer release now and then. When one is out,
 a dot appears on the settings cog and the status line says so; open the
 settings sheet and tap **Update** to install it and restart. Your flyer art,
