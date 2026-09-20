@@ -1570,7 +1570,7 @@ $("#updBtn").addEventListener("click", async () => {
   ping();
 });
 
-let artWasFetching = false;
+let artWasFetching = false, firstStatus = true;
 async function ping() {
   const lamp = $("#lamp"), txt = $("#statusText");
   try {
@@ -1601,13 +1601,16 @@ async function ping() {
       for (const c of deck.querySelectorAll(".cab"))
         c.classList.toggle("playing", c.dataset.id === NOW);
       if (PHONE.matches) renderDeck();
-      if (g) showNowFull(g, false); else if (!nowPending) hideNowFull(false);
+      // a game already running when the page loads is old news, except to a kiosk marquee
+      if (g && (!firstStatus || document.body.classList.contains("kiosk"))) showNowFull(g, false);
+      else if (!g && !nowPending) hideNowFull(false);
       // a game starting ends the attract cycle; one ending lets it resume
       if (g && attractOn && marqueePref()) stopAttract();
       armAttract();
       // a game starting or stopping is when the play history changes
       loadStats().then(() => { if (sortPref() === "played") renderDeck(); });
     }
+    firstStatus = false;
   } catch {
     // the service is away for a few seconds while it restarts into a new version
     if (UPD.state) { lamp.className = "lamp"; $("#status").className = "conn busy"; txt.textContent = "Restarting…"; return; }
