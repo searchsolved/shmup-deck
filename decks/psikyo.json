@@ -1,0 +1,16 @@
+{
+ "name": "Psikyo",
+ "note": "Psikyo's shooters from Samurai Aces to Dragon Blaze, in release order.",
+ "ids": [
+  "samuraia",
+  "gunbird",
+  "s1945",
+  "tengai",
+  "s1945ii",
+  "gunbird2",
+  "s1945iii",
+  "dragnblz"
+ ],
+ "cover": "gunbird2",
+ "author": "Shmup Deck"
+}

@@ -1,0 +1,15 @@
+{
+ "name": "Raiden",
+ "note": "Seibu Kaihatsu's Raiden games in order, with Viper Phase 1, the first shooter on their SPI board, where it falls.",
+ "ids": [
+  "raiden",
+  "raiden2",
+  "raidendx",
+  "viprp1",
+  "rdft",
+  "rdft2",
+  "rfjet"
+ ],
+ "cover": "raiden2",
+ "author": "Shmup Deck"
+}

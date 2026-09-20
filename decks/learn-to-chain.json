@@ -1,13 +1,13 @@
 {
  "name": "Learn to chain",
- "note": "Cave's scoring in the order it was invented. Each game changes what a chain means, so the previous one is the lesson for the next.",
+ "note": "Cave's scoring systems in the order they appeared. Each game changes what a chain is, so each one is practice for the next.",
  "ids": [
   "ddonpach",
+  "guwange",
   "ddpdoj",
   "espgaluda",
-  "guwange",
   "ddpdfk"
  ],
  "cover": "ddpdoj",
- "author": "Lee Foot"
+ "author": "Shmup Deck"
 }

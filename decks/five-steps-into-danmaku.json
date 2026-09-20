@@ -1,0 +1,13 @@
+{
+ "name": "Five steps into danmaku",
+ "note": "Five Cave games, one idea each: DonPachi's laser, DoDonPachi's chain, Feveron's speed, ESP Ra.De.'s bullet reading, Ketsui's lock-on. Play them in this order.",
+ "ids": [
+  "donpachi",
+  "ddonpach",
+  "dfeveron",
+  "esprade",
+  "ketsui"
+ ],
+ "cover": "esprade",
+ "author": "Shmup Deck"
+}

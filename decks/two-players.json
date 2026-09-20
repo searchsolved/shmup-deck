@@ -1,6 +1,6 @@
 {
  "name": "Two players",
- "note": "Shooters that are better with someone beside you: shared bombs, shared scores, mutual blame.",
+ "note": "Shooters worth playing with someone next to you. All ten take two at once.",
  "ids": [
   "rdft",
   "rdft2",
@@ -14,5 +14,5 @@
   "raiden2"
  ],
  "cover": "progear",
- "author": "Lee Foot"
+ "author": "Shmup Deck"
 }

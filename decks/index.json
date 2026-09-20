@@ -1,9 +1,26 @@
 {
  "decks": [
   {
-   "slug": "bomb-and-survive",
-   "name": "Bomb and survive",
-   "note": "Games where the bomb button is the whole strategy. Hold nothing back.",
+   "slug": "after-toaplan",
+   "name": "After Toaplan",
+   "note": "Toaplan closed in 1994 and its programmers went on to Raizing and later Cave. Batsugun, then the Raizing games, then Yagawa's two Cave games.",
+   "ids": [
+    "batsugun",
+    "sstriker",
+    "kingdmgp",
+    "garegga",
+    "batrider",
+    "bbakraid",
+    "ibara",
+    "pinkswts"
+   ],
+   "cover": "garegga",
+   "author": "Shmup Deck"
+  },
+  {
+   "slug": "bomb-everything",
+   "name": "Bomb everything",
+   "note": "Older verticals where bombs are plentiful and saving them is a mistake.",
    "ids": [
     "batsugun",
     "raiden",
@@ -13,12 +30,30 @@
     "vimana"
    ],
    "cover": "batsugun",
-   "author": "Lee Foot"
+   "author": "Shmup Deck"
   },
   {
-   "slug": "cave-in-order",
-   "name": "Cave, in order",
-   "note": "Every Cave shooter the deck knows, oldest first. Watch the bullet patterns grow up.",
+   "slug": "easy-tate",
+   "name": "Easy tate",
+   "note": "Vertical shooters that are kind to a first credit, for getting used to the turned screen.",
+   "ids": [
+    "gunbird",
+    "samuraia",
+    "s1945",
+    "twinbee",
+    "xevious",
+    "1942",
+    "tdragon",
+    "donpachi",
+    "dfeveron"
+   ],
+   "cover": "gunbird",
+   "author": "Shmup Deck"
+  },
+  {
+   "slug": "every-cave-game",
+   "name": "Every Cave game",
+   "note": "Cave's own shooters, oldest first. Black Labels and arrange versions left out.",
    "ids": [
     "donpachi",
     "ddonpach",
@@ -26,8 +61,8 @@
     "esprade",
     "guwange",
     "progear",
-    "ketsui",
     "ddpdoj",
+    "ketsui",
     "espgaluda",
     "mushisam",
     "ibara",
@@ -41,12 +76,12 @@
     "ddpsdoj"
    ],
    "cover": "esprade",
-   "author": "Lee Foot"
+   "author": "Shmup Deck"
   },
   {
-   "slug": "danmaku-in-five-steps",
-   "name": "Danmaku in five steps",
-   "note": "One idea at a time: DonPachi teaches the laser, DoDonPachi the chain, Feveron speed, ESP Ra.De. bullet reading, Ketsui the lock-on. Play them in order.",
+   "slug": "five-steps-into-danmaku",
+   "name": "Five steps into danmaku",
+   "note": "Five Cave games, one idea each: DonPachi's laser, DoDonPachi's chain, Feveron's speed, ESP Ra.De.'s bullet reading, Ketsui's lock-on. Play them in this order.",
    "ids": [
     "donpachi",
     "ddonpach",
@@ -55,31 +90,12 @@
     "ketsui"
    ],
    "cover": "esprade",
-   "author": "Lee Foot"
+   "author": "Shmup Deck"
   },
   {
-   "slug": "first-hour-tate",
-   "name": "First hour on a tate cab",
-   "note": "Forgiving vertical shooters to learn the turned screen on. Nothing here punishes a first credit.",
-   "ids": [
-    "raiden",
-    "gunbird",
-    "s1945",
-    "twinbee",
-    "xevious",
-    "1942",
-    "tdragon",
-    "bioship",
-    "donpachi",
-    "dfeveron"
-   ],
-   "cover": "gunbird",
-   "author": "Lee Foot"
-  },
-  {
-   "slug": "konami-turned",
-   "name": "Konami on a turned screen",
-   "note": "Konami turned its monitors the other way from everyone else. All four are clockwise; a cab set up for Cave needs the core's flip option.",
+   "slug": "konami-tate",
+   "name": "Konami tate",
+   "note": "Five Konami verticals that turn the monitor clockwise, the other way from Cave and Toaplan. On a cab set up for those, use the core's flip option.",
    "ids": [
     "gyruss",
     "tp84",
@@ -88,43 +104,43 @@
     "ajax"
    ],
    "cover": "twinbee",
-   "author": "Lee Foot"
+   "author": "Shmup Deck"
   },
   {
    "slug": "learn-to-chain",
    "name": "Learn to chain",
-   "note": "Cave's scoring in the order it was invented. Each game changes what a chain means, so the previous one is the lesson for the next.",
+   "note": "Cave's scoring systems in the order they appeared. Each game changes what a chain is, so each one is practice for the next.",
    "ids": [
     "ddonpach",
+    "guwange",
     "ddpdoj",
     "espgaluda",
-    "guwange",
     "ddpdfk"
    ],
    "cover": "ddpdoj",
-   "author": "Lee Foot"
+   "author": "Shmup Deck"
   },
   {
-   "slug": "psikyo-in-order",
-   "name": "Psikyo, in order",
-   "note": "From Samurai Aces to Dragon Blaze. The bosses get bigger and the bullets get faster.",
+   "slug": "psikyo",
+   "name": "Psikyo",
+   "note": "Psikyo's shooters from Samurai Aces to Dragon Blaze, in release order.",
    "ids": [
     "samuraia",
     "gunbird",
     "s1945",
     "tengai",
-    "gunbird2",
     "s1945ii",
+    "gunbird2",
     "s1945iii",
     "dragnblz"
    ],
    "cover": "gunbird2",
-   "author": "Lee Foot"
+   "author": "Shmup Deck"
   },
   {
-   "slug": "the-raiden-line",
-   "name": "The Raiden line",
-   "note": "Seibu's series in order, with Viper Phase 1 as the cousin in between. The plasma laser bends more every time.",
+   "slug": "raiden",
+   "name": "Raiden",
+   "note": "Seibu Kaihatsu's Raiden games in order, with Viper Phase 1, the first shooter on their SPI board, where it falls.",
    "ids": [
     "raiden",
     "raiden2",
@@ -135,29 +151,28 @@
     "rfjet"
    ],
    "cover": "raiden2",
-   "author": "Lee Foot"
+   "author": "Shmup Deck"
   },
   {
-   "slug": "toaplan-diaspora",
-   "name": "The Toaplan diaspora",
-   "note": "Batsugun was the last Toaplan game; its staff went on to make Raizing's. One lineage, one deck.",
+   "slug": "raizing",
+   "name": "Raizing",
+   "note": "Everything Raizing made, in release order, including the two it made for Capcom as Eighting: Dimahoo and 1944.",
    "ids": [
-    "batsugun",
-    "garegga",
     "sstriker",
     "kingdmgp",
+    "garegga",
     "batrider",
     "bbakraid",
-    "ibara",
-    "pinkswts"
+    "dimahoo",
+    "1944"
    ],
    "cover": "garegga",
-   "author": "Lee Foot"
+   "author": "Shmup Deck"
   },
   {
-   "slug": "toaplan-essentials",
-   "name": "Toaplan essentials",
-   "note": "The house that built the genre's spine. Tiger Heli to Batsugun.",
+   "slug": "toaplan",
+   "name": "Toaplan",
+   "note": "Toaplan's vertical shooters in release order, Tiger Heli in 1985 to Batsugun in 1993.",
    "ids": [
     "tigerh",
     "alcon",
@@ -173,12 +188,12 @@
     "batsugun"
    ],
    "cover": "truxton",
-   "author": "Lee Foot"
+   "author": "Shmup Deck"
   },
   {
    "slug": "two-players",
    "name": "Two players",
-   "note": "Shooters that are better with someone beside you: shared bombs, shared scores, mutual blame.",
+   "note": "Shooters worth playing with someone next to you. All ten take two at once.",
    "ids": [
     "rdft",
     "rdft2",
@@ -192,7 +207,7 @@
     "raiden2"
    ],
    "cover": "progear",
-   "author": "Lee Foot"
+   "author": "Shmup Deck"
   }
  ]
 }

@@ -1,6 +1,6 @@
 {
- "name": "Cave, in order",
- "note": "Every Cave shooter the deck knows, oldest first. Watch the bullet patterns grow up.",
+ "name": "Every Cave game",
+ "note": "Cave's own shooters, oldest first. Black Labels and arrange versions left out.",
  "ids": [
   "donpachi",
   "ddonpach",
@@ -8,8 +8,8 @@
   "esprade",
   "guwange",
   "progear",
-  "ketsui",
   "ddpdoj",
+  "ketsui",
   "espgaluda",
   "mushisam",
   "ibara",
@@ -23,5 +23,5 @@
   "ddpsdoj"
  ],
  "cover": "esprade",
- "author": "Lee Foot"
+ "author": "Shmup Deck"
 }

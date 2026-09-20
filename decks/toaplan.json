@@ -1,6 +1,6 @@
 {
- "name": "Toaplan essentials",
- "note": "The house that built the genre's spine. Tiger Heli to Batsugun.",
+ "name": "Toaplan",
+ "note": "Toaplan's vertical shooters in release order, Tiger Heli in 1985 to Batsugun in 1993.",
  "ids": [
   "tigerh",
   "alcon",
@@ -16,5 +16,5 @@
   "batsugun"
  ],
  "cover": "truxton",
- "author": "Lee Foot"
+ "author": "Shmup Deck"
 }

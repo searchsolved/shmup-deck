@@ -1,0 +1,14 @@
+{
+ "name": "Bomb everything",
+ "note": "Older verticals where bombs are plentiful and saving them is a mistake.",
+ "ids": [
+  "batsugun",
+  "raiden",
+  "twincobr",
+  "truxton",
+  "tigerh",
+  "vimana"
+ ],
+ "cover": "batsugun",
+ "author": "Shmup Deck"
+}
