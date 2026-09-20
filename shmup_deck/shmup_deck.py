@@ -28,6 +28,7 @@ import subprocess
 import sys
 import threading
 import time
+import urllib.parse
 import urllib.request
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from xml.sax.saxutils import quoteattr
@@ -47,8 +48,9 @@ MGL_PATH = os.environ.get("SHMUP_MGL", "/tmp/shmup_deck.mgl")
 CORENAME = os.environ.get("SHMUP_CORENAME", "/tmp/CORENAME")
 PLAYS = os.environ.get("SHMUP_PLAYS", os.path.join(HERE, "plays.json"))
 FAVS = os.environ.get("SHMUP_FAVS", os.path.join(HERE, "favourites.json"))
+VERSIONS_FILE = os.environ.get("SHMUP_VERSIONS", os.path.join(HERE, "versions.json"))
 
-VERSION = "1.7.1"
+VERSION = "1.8.0"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
 PROGRAM = os.path.abspath(__file__)
 REPO = os.environ.get("SHMUP_REPO", "searchsolved/shmup-deck")
@@ -505,6 +507,54 @@ class Favourites:
 FAVOURITES = Favourites()
 
 
+class Versions:
+    """Which version of a game the cab launches: game id -> MAME set name,
+    chosen from the card's version list and kept on the MiSTer. A game with
+    no choice launches the first set of its card that is on the SD card."""
+
+    def __init__(self):
+        self.lock = threading.Lock()
+        self.chosen = {}
+        try:
+            with open(VERSIONS_FILE) as f:
+                self.chosen = {k: v for k, v in json.load(f).items() if isinstance(v, str)}
+        except (OSError, ValueError, AttributeError):
+            pass
+
+    def get(self, gid):
+        with self.lock:
+            return self.chosen.get(gid)
+
+    def set(self, gid, setname):
+        with self.lock:
+            if setname:
+                self.chosen[gid] = setname
+            else:
+                self.chosen.pop(gid, None)
+            tmp = VERSIONS_FILE + ".tmp"
+            with open(tmp, "w") as f:
+                json.dump(self.chosen, f)
+            os.replace(tmp, VERSIONS_FILE)
+            return self.chosen.get(gid)
+
+
+VERSIONS = Versions()
+
+
+def versions_of(game):
+    """Every version of a game on this MiSTer: one per set name of the card
+    that has an MRA, in the card's order, named after the MRA file."""
+    if game.get("platform") == "neogeo":
+        return []
+    out = []
+    with INDEX.lock:
+        for s in game.get("setnames", [game["id"]]):
+            path = INDEX.best.get(s)
+            if path:
+                out.append({"set": s, "path": path, "name": os.path.splitext(os.path.basename(path))[0]})
+    return out
+
+
 def fetch(url, timeout=30):
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(req, timeout=timeout) as r:
@@ -792,6 +842,7 @@ def checklist():
         entry["state"] = ("mra" if not path else "core" if not entry["core"]
                           else "roms" if entry["missing"] else "ready")
         entry["listed"] = entry["state"] == "ready" or core_is_standard(g.get("rbf", ""))
+        entry["versions"] = len(versions_of(g))
         out.append(entry)
     return out
 
@@ -805,7 +856,7 @@ def send_command(cmd):
         f.write(cmd + "\n")
 
 
-def launch(game):
+def launch(game, setname=None):
     if game.get("platform") == "neogeo":
         hit = NEO.resolve(game.get("setnames", [game["id"]]))
         if not hit:
@@ -823,7 +874,10 @@ def launch(game):
         LAST_LAUNCH.update(id=game["id"], core="neogeo")
         PLAYED.note_launch(game["id"])
         return os.path.join(root, rel)
-    path = INDEX.resolve(game.get("setnames", [game["id"]]))
+    # a version picked for this launch, else the one remembered for the game,
+    # else the first set on the card
+    found = {v["set"]: v["path"] for v in versions_of(game)}
+    path = found.get(setname) or found.get(VERSIONS.get(game["id"])) or INDEX.resolve(game.get("setnames", [game["id"]]))
     if not path:
         return None
     send_command("load_core %s" % path)
@@ -889,6 +943,12 @@ class Handler(SimpleHTTPRequestHandler):
             return self.send_json(PLAYED.snapshot())
         if self.path == "/api/favourites":
             return self.send_json({"ids": FAVOURITES.get()})
+        if self.path.startswith("/api/versions?"):
+            gid = urllib.parse.parse_qs(self.path.split("?", 1)[1]).get("id", [""])[0]
+            game = next((g for g in load_deck() if g["id"] == gid), None)
+            if not game:
+                return self.send_json({"error": "unknown game"}, 404)
+            return self.send_json({"id": gid, "versions": versions_of(game), "chosen": VERSIONS.get(gid)})
         if self.path.startswith("/art/"):
             return self.send_art(self.path[5:].split("?")[0])
         return super().do_GET()
@@ -896,14 +956,25 @@ class Handler(SimpleHTTPRequestHandler):
     def do_POST(self):
         try:
             if self.path == "/api/launch":
-                gid = self.read_json().get("id")
+                body = self.read_json()
+                gid = body.get("id")
                 game = next((g for g in load_deck() if g["id"] == gid), None)
                 if not game:
                     return self.send_json({"error": "unknown game"}, 404)
-                path = launch(game)
+                path = launch(game, body.get("set"))
                 if not path:
                     return self.send_json({"error": "not installed"}, 404)
                 return self.send_json({"ok": True, "path": path})
+            if self.path == "/api/version":
+                # {"id", "set"}: remember a version for the game; a null set forgets it
+                body = self.read_json()
+                gid, setname = body.get("id"), body.get("set")
+                game = next((g for g in load_deck() if g["id"] == gid), None)
+                if not game:
+                    return self.send_json({"error": "unknown game"}, 404)
+                if setname and setname not in game.get("setnames", []):
+                    return self.send_json({"error": "not a version of this game"}, 400)
+                return self.send_json({"id": gid, "chosen": VERSIONS.set(gid, setname)})
             if self.path == "/api/favourites":
                 body = self.read_json()
                 gid = body.get("id")

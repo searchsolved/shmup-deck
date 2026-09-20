@@ -54,7 +54,8 @@
    "cawing",
    "cawingr1",
    "cawingu",
-   "cawingur1"
+   "cawingur1",
+   "cawingjr"
   ],
   "rbf": "jtcps1",
   "roms": {
@@ -222,8 +223,6 @@
   "orientation": "tate",
   "setnames": [
    "dimahoo",
-   "dimahoo_1",
-   "dimahoo_2",
    "dimahoou",
    "dimahoud"
   ],
@@ -270,14 +269,14 @@
   "orientation": "yoko",
   "setnames": [
    "progear",
-   "progear_1",
    "progear_2",
    "progear_3",
    "progeara",
    "progearj",
    "progearjbl",
    "progearjd",
-   "progearud"
+   "progearud",
+   "progearu"
   ],
   "rbf": "jtcps2",
   "roms": {
@@ -403,7 +402,9 @@
   "setnames": [
    "lwings",
    "lwingsa",
-   "lwingsb"
+   "lwingsb",
+   "lwingsj",
+   "lwingsja"
   ],
   "rbf": "jtsectnz",
   "roms": {
@@ -493,7 +494,6 @@
   "orientation": "tate",
   "setnames": [
    "dfeveron",
-   "dfeveronnd",
    "feversos"
   ],
   "rbf": "cave",
@@ -594,7 +594,10 @@
   "system": "Konami Flak Attack",
   "orientation": "tate",
   "setnames": [
-   "mx5000"
+   "mx5000",
+   "mx5000r",
+   "flkatck",
+   "flkatcka"
   ],
   "rbf": "jtmx5k",
   "roms": {
@@ -636,7 +639,10 @@
   "system": "Konami Gradius III",
   "orientation": "yoko",
   "setnames": [
-   "gradius3"
+   "gradius3",
+   "gradius3j",
+   "gradius3ja",
+   "gradius3jas"
   ],
   "rbf": "jtgrad3",
   "roms": {
@@ -779,7 +785,8 @@
   "orientation": "tate",
   "setnames": [
    "airduelm72",
-   "airdueljm72"
+   "airdueljm72",
+   "airduelu"
   ],
   "rbf": "IremM72",
   "roms": {
@@ -879,7 +886,11 @@
   "system": "IGS PGM",
   "orientation": "tate",
   "setnames": [
-   "ddp3"
+   "ddp3",
+   "ddpdojp",
+   "ddpdoj",
+   "ddpdoja",
+   "ddpdojb"
   ],
   "rbf": "IGSPGM",
   "roms": {
@@ -1132,7 +1143,8 @@
   "system": "Sega System 16B",
   "orientation": "yoko",
   "setnames": [
-   "sdib"
+   "sdib",
+   "sdi"
   ],
   "rbf": "jts16b",
   "roms": {
@@ -1188,7 +1200,9 @@
   "system": "Tecmo Silkworm",
   "orientation": "yoko",
   "setnames": [
-   "silkworm"
+   "silkworm",
+   "silkwormg",
+   "silkwormp"
   ],
   "rbf": "Tecmo",
   "roms": {
@@ -1478,7 +1492,8 @@
   "orientation": "tate",
   "setnames": [
    "futari15",
-   "futari15a"
+   "futari15a",
+   "futari10"
   ],
   "rbf": "ikacore_CV1k",
   "roms": {
@@ -1533,7 +1548,8 @@
   "system": "Cave CV1000",
   "orientation": "tate",
   "setnames": [
-   "ddpdfk"
+   "ddpdfk",
+   "ddpdfk10"
   ],
   "rbf": "ikacore_CV1k",
   "roms": {
@@ -2287,7 +2303,8 @@
   "orientation": "tate",
   "setnames": [
    "legion",
-   "legionj2"
+   "legionj2",
+   "legionj"
   ],
   "rbf": "armedf",
   "roms": {
@@ -3098,7 +3115,9 @@
   "system": "Taito F3",
   "orientation": "tate",
   "setnames": [
-   "gseeker"
+   "gseeker",
+   "gseekerj",
+   "gseekeru"
   ],
   "rbf": "Rayforce",
   "roms": {
@@ -3119,7 +3138,8 @@
   "setnames": [
    "gunlock",
    "rayforce",
-   "rayforcej"
+   "rayforcej",
+   "gunlocko"
   ],
   "rbf": "Rayforce",
   "roms": {
@@ -3139,7 +3159,9 @@
   "orientation": "yoko",
   "setnames": [
    "dariusg",
-   "dariusgx"
+   "dariusgx",
+   "dariusgj",
+   "dariusgu"
   ],
   "rbf": "Rayforce",
   "roms": {
@@ -3157,7 +3179,8 @@
   "system": "Taito F3",
   "orientation": "tate",
   "setnames": [
-   "gekiridn"
+   "gekiridn",
+   "gekiridnj"
   ],
   "rbf": "Rayforce",
   "roms": {
@@ -3176,7 +3199,9 @@
   "system": "Taito F3",
   "orientation": "tate",
   "setnames": [
-   "tcobra2"
+   "tcobra2",
+   "tcobra2u",
+   "ktiger2"
   ],
   "rbf": "Rayforce",
   "roms": {
@@ -3217,7 +3242,9 @@
   "orientation": "yoko",
   "setnames": [
    "gdarius",
-   "gdarius2"
+   "gdarius2",
+   "gdariusj",
+   "gdariusu"
   ],
   "rbf": "XNZN1TaitoFX1B",
   "roms": {
@@ -3390,7 +3417,11 @@
   "orientation": "tate",
   "setnames": [
    "daioh",
-   "daioha"
+   "daioha",
+   "daiohc",
+   "daiohp",
+   "daiohp2",
+   "daiohp3"
   ],
   "rbf": "Seta",
   "roms": {
@@ -3690,7 +3721,8 @@
    "raidenj",
    "raidenk",
    "raident",
-   "raidenb"
+   "raidenb",
+   "raidenub"
   ],
   "rbf": "Raiden",
   "roms": {
@@ -3818,7 +3850,9 @@
    "rdftit",
    "rdftadia",
    "rdfts",
-   "rdftauge"
+   "rdftauge",
+   "rdftjb",
+   "rdftua"
   ],
   "rbf": "SeibuSPI",
   "roms": {
@@ -3870,7 +3904,8 @@
    "rfjetj",
    "rfjetu",
    "rfjeta",
-   "rfjett"
+   "rfjett",
+   "rfjetsa"
   ],
   "rbf": "SeibuSPI",
   "roms": {
@@ -4082,5 +4117,126 @@
    "shared": []
   },
   "rotation": "ccw"
+ },
+ {
+  "id": "ketikd",
+  "title": "Ketsui: IKD 2007 Special",
+  "dev": "Cave",
+  "year": 2007,
+  "core": "PGM",
+  "system": "IGS PGM",
+  "orientation": "tate",
+  "setnames": [
+   "ketikd"
+  ],
+  "rbf": "IGSPGM",
+  "roms": {
+   "zip": "ket",
+   "merged": "ket",
+   "shared": [
+    "pgm"
+   ],
+   "note": "The 2007 Cave Matsuri version. Its MRA is in the PGM core's _alternatives folder."
+  },
+  "art": "ketsui",
+  "rotation": "ccw"
+ },
+ {
+  "id": "ketarr",
+  "title": "Ketsui Arrange",
+  "dev": "Cave",
+  "year": 2014,
+  "core": "PGM",
+  "system": "IGS PGM",
+  "orientation": "tate",
+  "setnames": [
+   "ketarr",
+   "ketarr151",
+   "ketarr15",
+   "ketarr10",
+   "ketarrs151",
+   "ketarrs15",
+   "ketarrf"
+  ],
+  "rbf": "IGSPGM",
+  "roms": {
+   "zip": "ket",
+   "merged": "ket",
+   "shared": [
+    "pgm"
+   ],
+   "note": "A fan arrange version, 1.7 first. Its MRAs are in the PGM core's _alternatives folder."
+  },
+  "art": "ketsui",
+  "rotation": "ccw"
+ },
+ {
+  "id": "ddpdojblk",
+  "title": "DoDonPachi Dai-Ou-Jou Black Label",
+  "dev": "Cave",
+  "year": 2002,
+  "core": "PGM",
+  "system": "IGS PGM",
+  "orientation": "tate",
+  "setnames": [
+   "ddpdojblk",
+   "ddpdojblka",
+   "ddpdojblkb"
+  ],
+  "rbf": "IGSPGM",
+  "roms": {
+   "zip": "ddpdojblk",
+   "merged": "ddp3",
+   "shared": [
+    "pgm"
+   ],
+   "note": "Its MRA is in the PGM core's _alternatives folder."
+  },
+  "art": "ddpdoj",
+  "rotation": "ccw"
+ },
+ {
+  "id": "rsgunex",
+  "title": "Radiant Silvergun EX",
+  "dev": "Treasure",
+  "year": 1998,
+  "core": "ST-V",
+  "system": "Sega ST-V",
+  "orientation": "yoko",
+  "setnames": [
+   "rsgunex"
+  ],
+  "rbf": "ST-V",
+  "roms": {
+   "zip": "rsgun",
+   "merged": "rsgun",
+   "shared": [
+    "stvbios"
+   ],
+   "note": "trap15's patched release. The MRA comes from Arcade Offset, an optional Update All database."
+  },
+  "art": "rsgun"
+ },
+ {
+  "id": "progearrl",
+  "title": "Progear: Red Label, Halfway to Hell",
+  "dev": "Cave",
+  "year": 2016,
+  "core": "CPS2",
+  "system": "Capcom CPS2",
+  "orientation": "yoko",
+  "setnames": [
+   "progear_1"
+  ],
+  "rbf": "jtcps2",
+  "roms": {
+   "zip": "progear",
+   "merged": "progear",
+   "shared": [
+    "qsound"
+   ],
+   "note": "A second-loop rework by atrac17 and terminator2k2. The MRA comes from Arcade Offset, an optional Update All database."
+  },
+  "art": "progear"
  }
 ]

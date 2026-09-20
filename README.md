@@ -48,6 +48,13 @@ behind the button beside the search, and Deck, Stats, ROMs and Settings are a
 bar along the bottom. When a game starts, its flyer fills the screen until
 you tap it.
 
+When several MRAs of one game are on the card, regional sets, arrange
+versions, patched releases from Arcade Offset, the card says so. Tap the
+mark, or hold the card, to pick which one it launches; the choice is kept on
+the MiSTer. Versions that play like a different game, such as Ketsui's IKD
+2007 Special and Arrange, Dai-Ou-Jou Black Label, Radiant Silvergun EX and
+Progear Red Label, have cards of their own.
+
 **Kiosk mode**, switched on in Settings or by opening `http://shmupdeck.local/?kiosk`,
 is for a tablet by the cab: nothing but the wall, full screen, kept awake,
 flyers drifting by after a minute untouched. Hold the top left corner for

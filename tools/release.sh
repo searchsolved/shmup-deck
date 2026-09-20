@@ -44,7 +44,7 @@ fi
 echo "== package"
 rm -rf shmup_deck/__pycache__ tools/__pycache__
 rm -f dist/shmup_deck.zip
-zip -r -X dist/shmup_deck.zip shmup_deck -x "*/__pycache__/*" "*.DS_Store" "*/art/*" "*mra_index*.json" "*plays.json" "*favourites.json" >/dev/null
+zip -r -X dist/shmup_deck.zip shmup_deck -x "*/__pycache__/*" "*.DS_Store" "*/art/*" "*mra_index*.json" "*plays.json" "*favourites.json" "*versions.json" >/dev/null
 cp shmup_deck.sh dist/shmup_deck.sh
 unzip -l dist/shmup_deck.zip | tail -1
 

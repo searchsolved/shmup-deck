@@ -1,6 +1,6 @@
 # Supported games and ROMs
 
-Shmup Deck supports 195 games: 182 arcade games that run from MRA files and 13 Neo Geo games. This page lists the core and ROM files each one needs.
+Shmup Deck supports 200 games: 187 arcade games that run from MRA files and 13 Neo Geo games. This page lists the core and ROM files each one needs.
 
 To see what your own MiSTer is missing, open **http://shmupdeck.local/check.html** once Shmup Deck is installed. It checks every game for its MRA, core and ROM zips and can copy the missing zip names.
 
@@ -97,6 +97,9 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Giga Wing | 1999 | JOTEGO cores | `gigawing.zip` | same | `qsound.zip` |
 | Mars Matrix | 2000 | JOTEGO cores | `mmatrix.zip` | same | `qsound.zip` |
 | Progear | 2001 | JOTEGO cores | `progear.zip` | same | `qsound.zip` |
+| Progear: Red Label, Halfway to Hell * | 2016 | JOTEGO cores | `progear.zip` | same | `qsound.zip` |
+
+\* Progear: Red Label, Halfway to Hell: A second-loop rework by atrac17 and terminator2k2. The MRA comes from Arcade Offset, an optional Update All database..
 
 ### CV1000
 
@@ -254,9 +257,16 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
 | DoDonPachi Dai-Ou-Jou | 2002 | MiSTer main distribution | `ddp3.zip` | same | `pgm.zip` |
+| DoDonPachi Dai-Ou-Jou Black Label * | 2002 | MiSTer main distribution | `ddpdojblk.zip` | `ddp3.zip` | `pgm.zip` |
 | DoDonPachi II | 2001 | MiSTer main distribution | `ddp2.zip` | same | `pgm.zip` |
 | Espgaluda | 2003 | MiSTer main distribution | `espgal.zip` | same | `pgm.zip` |
 | Ketsui | 2002 | MiSTer main distribution | `ket.zip` | same | `pgm.zip` |
+| Ketsui Arrange * | 2014 | MiSTer main distribution | `ket.zip` | same | `pgm.zip` |
+| Ketsui: IKD 2007 Special * | 2007 | MiSTer main distribution | `ket.zip` | same | `pgm.zip` |
+
+\* Ketsui: IKD 2007 Special: The 2007 Cave Matsuri version. Its MRA is in the PGM core's _alternatives folder..
+\* Ketsui Arrange: A fan arrange version, 1.7 first. Its MRAs are in the PGM core's _alternatives folder..
+\* DoDonPachi Dai-Ou-Jou Black Label: Its MRA is in the PGM core's _alternatives folder..
 
 ### Psikyo
 
@@ -382,8 +392,11 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Cotton Boomerang | 1998 | MiSTer main distribution | `cottonbm.zip` | same | `stvbios.zip` |
 | Guardian Force | 1998 | MiSTer main distribution | `grdforce.zip` | same | `stvbios.zip` |
 | Radiant Silvergun | 1998 | MiSTer main distribution | `rsgun.zip` | same | `stvbios.zip` |
+| Radiant Silvergun EX * | 1998 | MiSTer main distribution | `rsgun.zip` | same | `stvbios.zip` |
 | Shienryu | 1997 | MiSTer main distribution | `shienryu.zip` | same | `stvbios.zip` |
 | Terra Diver | 1996 | MiSTer main distribution | `sokyugrt.zip` | same | `stvbios.zip` |
+
+\* Radiant Silvergun EX: trap15's patched release. The MRA comes from Arcade Offset, an optional Update All database..
 
 ### Taito
 
@@ -520,6 +533,7 @@ ddonpach.zip
 ddp2.zip
 ddp3.zip
 ddpdfk.zip
+ddpdojblk.zip
 ddpsdoj.zip
 deathsml.zip
 desertwr.zip

@@ -276,6 +276,24 @@ body.compact .cab .star{width:28px;height:28px;font-size:15px;top:5px;right:5px}
   font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--danger);
 }
 .cab.missing:hover,.cab.missing:focus-visible{border-color:var(--danger)}
+/* more than one MRA of this game is on the card: the mark opens the picker */
+.plate .vers{
+  padding:1px 6px;border:1px solid rgba(216,181,74,.45);border-radius:3px;
+  font-size:9.5px;letter-spacing:.12em;color:var(--gold);cursor:pointer;
+}
+.plate .vers:hover{background:var(--gold);color:#231c07}
+body.compact .plate .vers{display:none}
+.vsheet{position:fixed;left:50%;top:50%;right:auto;transform:translate(-50%,-50%);width:min(440px,calc(100vw - 28px));z-index:8}
+.vsheet .vlist{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+.vsheet .v{
+  display:flex;align-items:center;gap:10px;text-align:left;padding:10px 12px;border-radius:10px;
+  border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--bone);font-family:inherit;font-size:14px;cursor:pointer;
+}
+.vsheet .v:hover{border-color:var(--gold)}
+.vsheet .v .tick{flex:none;width:18px;color:var(--gold)}
+.vsheet .v .path{display:block;font-size:11px;color:var(--ash);margin-top:2px}
+.vsheet .forget{margin-top:10px;background:none;border:0;color:var(--ash);font-family:inherit;font-size:12px;cursor:pointer;text-decoration:underline}
+.vsheet .forget[hidden]{display:none}
 
 /* developer dividers span the whole grid row */
 .divider{
@@ -387,6 +405,7 @@ body.kiosk .exitspot{display:block}
   nav .settings{flex:1;display:flex;justify-content:center}
   nav .cog{width:40px;height:40px;margin:0;border:0;background:transparent}
   .sheet{position:fixed;left:12px;right:12px;bottom:calc(64px + max(6px,env(safe-area-inset-bottom)));top:auto;width:auto;max-height:calc(100vh - 100px);overflow:auto}
+  .vsheet{transform:none}
   /* now playing: the banner goes; the game itself heads the wall at full width */
   .now{display:none}
   .cab.hero{grid-column:1/-1}
@@ -496,6 +515,12 @@ footer a{color:inherit}
 </div>
 <div class="chips" id="chips" aria-label="Active filters"></div>
 <div class="sheet fsheet" id="fsheet" hidden></div>
+<div class="sheet vsheet" id="vsheet" hidden>
+  <h3 id="vtitle">Versions</h3>
+  <p class="hint">The version the cab launches for this game. It is remembered on the MiSTer.</p>
+  <div class="vlist" id="vlist"></div>
+  <button class="forget" id="vforget" hidden>Forget the choice, launch the first again</button>
+</div>
 <div class="filters">
   <p class="count"><span id="count"></span><button class="copylink" id="copylink" hidden title="A link that opens just these games">Copy link</button></p>
   <div class="segs">
@@ -663,17 +688,19 @@ const lazy = new IntersectionObserver(entries => {
   }
 }, { rootMargin: "600px 0px" });
 
+// a variant card can wear another game's flyer
+const artId = g => g.art || g.id;
 function paintArt(el, g) {
   el._game = g;
   lazy.observe(el);
 }
 
 function loadArt(el, g) {
-  const a = ART[g.id];
+  const a = ART[artId(g)];
   const img = new Image();
   img.onload = () => {
     const [sw, sh] = [img.naturalWidth, img.naturalHeight];
-    el.style.backgroundImage = `url("art/${g.id}")`;
+    el.style.backgroundImage = `url("art/${artId(g)}")`;
     el.classList.add("loaded");
     // a flyer that isn't card shaped (landscape, or much squarer) is shown
     // whole, centred on the card, rather than cropped or stretched
@@ -689,7 +716,7 @@ function loadArt(el, g) {
     el.style.backgroundPosition =
       `${sw === w ? 0 : (l / (sw - w)) * 100}% ${sh === h ? 0 : (t / (sh - h)) * 100}%`;
   };
-  img.src = `art/${g.id}`;
+  img.src = `art/${artId(g)}`;
 }
 
 /* ── render ── */
@@ -702,6 +729,7 @@ function card(g, played, showSystem) {
   b.className = "cab" + (g.id === NOW ? " playing" : "") + (ok ? "" : " missing");
   b.dataset.id = g.id;
   const fav = FAVS.has(g.id);
+  const nv = CHECK && CHECK[g.id] ? CHECK[g.id].versions || 0 : 0;
   b.innerHTML = `${ok ? "" : `<span class="need">${NEEDS[CHECK && CHECK[g.id] ? CHECK[g.id].state : "mra"]}</span>`}
     <span class="star" role="button" tabindex="0" aria-pressed="${fav}" aria-label="${fav ? "Remove from" : "Add to"} favourites">${fav ? "&#9733;" : "&#9734;"}</span>
     <div class="art" role="img" aria-label="${esc(g.title)} arcade flyer">
@@ -711,6 +739,7 @@ function card(g, played, showSystem) {
       <span class="title">${esc(g.title)}</span>
       <span class="meta">${esc(g.dev)} ${g.year}</span>
       <span class="meta"><span class="core">${esc(showSystem && g.system ? g.system : g.core)}</span>
+        ${ok && nv > 1 ? `<span class="vers" role="button" tabindex="0" title="Choose which version to launch">${nv} versions</span>` : ""}
         ${played ? `<span class="plays" title="${STATS && STATS[g.id] ? `${STATS[g.id].launches} launches` : `${played} launches from this device`}">${playedLabel(g.id)}</span>` : ""}
         <span class="orient" title="${g.rotation === "cw" ? "Monitor turned clockwise" : g.rotation === "ccw" ? "Monitor turned anticlockwise" : ""}">${g.orientation}${g.rotation === "cw" ? " &#8635;" : g.rotation === "ccw" ? " &#8634;" : ""}</span></span>
     </div>`;
@@ -730,8 +759,18 @@ function card(g, played, showSystem) {
   // a game that can't start opens its checklist entry instead
   b.addEventListener("click", e => {
     if (e.target.closest(".star")) return;
+    if (e.target.closest(".vers")) { e.preventDefault(); openVersions(g, b); return; }
+    if (b._held) { b._held = false; return; }          // the long press already acted
     ok ? launch(g, b) : (location.href = `check.html?game=${encodeURIComponent(g.id)}`);
   });
+  // holding a card is another way to the version picker, when there is one
+  if (nv > 1) {
+    let hold = null;
+    b.addEventListener("pointerdown", () => { hold = setTimeout(() => { b._held = true; openVersions(g, b); }, 550); });
+    for (const ev of ["pointerup", "pointercancel", "pointerleave", "pointermove"])
+      b.addEventListener(ev, () => clearTimeout(hold));
+    b.addEventListener("contextmenu", e => e.preventDefault());
+  }
   return b;
 }
 
@@ -991,7 +1030,7 @@ function armAttract() {
 }
 let attractFlip = false, attractPool = [];
 function startAttract() {
-  attractPool = GAMES.filter(g => ready(g) && ART[g.id]).sort(() => Math.random() - 0.5);
+  attractPool = GAMES.filter(g => ready(g) && ART[artId(g)]).sort(() => Math.random() - 0.5);
   if (!attractPool.length) return;
   attractOn = true;
   $("#attract").hidden = false;
@@ -1004,12 +1043,12 @@ function nextAttract() {
   attractFlip = !attractFlip;
   const img = new Image();
   img.onload = () => {
-    show.style.backgroundImage = $("#attractBlur").style.backgroundImage = `url("art/${g.id}")`;
+    show.style.backgroundImage = $("#attractBlur").style.backgroundImage = `url("art/${artId(g)}")`;
     show.classList.add("on"); hide.classList.remove("on");
     $("#attractTitle").textContent = g.title;
     $("#attractMeta").textContent = `${g.dev} · ${g.year}` + (g.id === NOW ? " · now playing" : "");
   };
-  img.src = `art/${g.id}`;
+  img.src = `art/${artId(g)}`;
 }
 function stopAttract() {
   clearInterval(attractCycle); attractOn = false;
@@ -1058,12 +1097,12 @@ function launched(g, el) {
   }
 }
 
-async function launch(g, el) {
+async function launch(g, el, set) {
   veil(el, "busy", "launching");
   try {
     const r = await fetch("api/launch", {
       method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: g.id })
+      body: JSON.stringify(set ? { id: g.id, set } : { id: g.id })
     });
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     launched(g, el);
@@ -1073,6 +1112,46 @@ async function launch(g, el) {
     veil(el, "fail", "not found", 2600);
   }
 }
+
+/* ── versions ── */
+/* Several MRAs of one game can be on the card: regional sets, arrange
+   versions, patched releases. The service lists them, the pick is kept on
+   the MiSTer, and the card launches that version from then on. */
+const vsheet = $("#vsheet");
+let VGAME = null, VCARD = null;
+async function openVersions(g, card) {
+  VGAME = g; VCARD = card;
+  $("#vtitle").textContent = `Versions of ${g.title}`;
+  $("#vlist").innerHTML = `<p class="hint">Looking…</p>`;
+  openSettings(false); openFilters(false);
+  vsheet.hidden = false;
+  try {
+    const d = await (await fetch(`api/versions?id=${encodeURIComponent(g.id)}`, { cache: "no-store" })).json();
+    const list = $("#vlist");
+    list.replaceChildren(...d.versions.map((v, i) => {
+      const b = document.createElement("button");
+      b.className = "v";
+      const on = d.chosen ? v.set === d.chosen : i === 0;
+      b.innerHTML = `<span class="tick">${on ? "&#10003;" : ""}</span><span>${esc(v.name)}<span class="path">${esc(v.set)}${!d.chosen && i === 0 ? " · default" : ""}</span></span>`;
+      b.addEventListener("click", async () => {
+        try { await fetch("api/version", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: g.id, set: v.set }) }); } catch {}
+        vsheet.hidden = true;
+        launch(g, card, v.set);
+      });
+      return b;
+    }));
+    $("#vforget").hidden = !d.chosen;
+  } catch {
+    $("#vlist").innerHTML = `<p class="hint">Could not reach the MiSTer.</p>`;
+  }
+}
+$("#vforget").addEventListener("click", async () => {
+  if (!VGAME) return;
+  try { await fetch("api/version", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: VGAME.id, set: null }) }); } catch {}
+  openVersions(VGAME, VCARD);
+});
+document.addEventListener("click", e => { if (!vsheet.hidden && !e.target.closest("#vsheet, .vers")) vsheet.hidden = true; });
+document.addEventListener("keydown", e => { if (e.key === "Escape") vsheet.hidden = true; });
 
 /* ── the takeover ── */
 let nowShown = null, nowDismissed = null, nowPending = null, slowTimer = null;
@@ -1086,7 +1165,7 @@ function showNowFull(g, launching) {
   if (nowDismissed === g.id && !launching) return;
   nowShown = g.id;
   const pic = $("#nowPic");
-  pic.style.backgroundImage = $("#nowBlur").style.backgroundImage = ART[g.id] ? `url("art/${g.id}")` : "none";
+  pic.style.backgroundImage = $("#nowBlur").style.backgroundImage = ART[artId(g)] ? `url("art/${artId(g)}")` : "none";
   $("#nowTitle").textContent = g.title;
   $("#nowMeta").textContent = `${g.dev} · ${g.year}`;
   $("#nowfull").hidden = false;

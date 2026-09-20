@@ -28,7 +28,8 @@ RAW = "https://raw.githubusercontent.com/mamedev/mame/master/src/mame/"
 UA = {"User-Agent": "ShmupDeck-check (+https://github.com/searchsolved/shmup-deck)"}
 GAME_LINE = r"^GAME\w*\(\s*\d+,\s*%s\s*,.*?(ROT0|ROT90|ROT180|ROT270|ORIENTATION_FLIP_[XY])"
 # games with no MAME set, or whose MAME set is not the board they run on here
-KNOWN = {"ddpsdoj": "ROT270", "akatana": "ROT0"}          # CV1000, not in MAME; Akai Katana is horizontal
+KNOWN = {"ddpsdoj": "ROT270", "akatana": "ROT0",         # CV1000, not in MAME; Akai Katana is horizontal
+         "rsgunex": "ROT0", "progearrl": "ROT0"}         # Arcade Offset patches; both games are horizontal
 
 
 def fetch(path):
