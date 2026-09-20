@@ -48,6 +48,20 @@ behind the button beside the search, and Deck, Stats, ROMs and Settings are a
 bar along the bottom. When a game starts, its flyer fills the screen until
 you tap it.
 
+## Decks
+
+The star on a card adds it to Favourites, which is a deck: a list of games
+you chose, in the order you chose, kept on the MiSTer so every phone sees it.
+The Decks page makes more of them. Name one, then tap games on the wall to
+fill it; open it there to add, share or rename it, or Edit on the Decks page
+to reorder, pick a cover flyer and write a line about it.
+
+Share a deck with the Share button. The link carries the whole deck, and
+anyone opening it on their own MiSTer gets a Save button. Decks other people
+have shared are listed on the Decks page under Community; add yours with a
+pull request to `decks/`, see the README there. Kiosk mode can be limited to
+one deck from Settings, or with `?kiosk=<deck id>`.
+
 When several MRAs of one game are on the card, regional sets, arrange
 versions, patched releases from Arcade Offset, the card says so. Tap the
 mark, or hold the card, to pick which one it launches; the choice is kept on

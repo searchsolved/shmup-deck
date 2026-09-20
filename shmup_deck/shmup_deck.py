@@ -51,7 +51,7 @@ FAVS = os.environ.get("SHMUP_FAVS", os.path.join(HERE, "favourites.json"))   # p
 VERSIONS_FILE = os.environ.get("SHMUP_VERSIONS", os.path.join(HERE, "versions.json"))
 DECKS_FILE = os.environ.get("SHMUP_DECKS", os.path.join(HERE, "decks.json"))
 
-VERSION = "1.8.1"
+VERSION = "1.9.0"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
 PROGRAM = os.path.abspath(__file__)
 REPO = os.environ.get("SHMUP_REPO", "searchsolved/shmup-deck")

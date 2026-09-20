@@ -72,12 +72,59 @@ h2{font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;font-weight:800
   overflow:hidden;transition:transform .2s,border-color .2s;
 }
 .card:hover{transform:translateY(-3px);border-color:var(--gold)}
-.strip{display:grid;grid-template-columns:repeat(4,1fr);height:120px;background:#0b1811}
+.strip{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;height:130px;background:#0b1811}
 .strip div{background:center/cover no-repeat #13241a;border-right:1px solid rgba(0,0,0,.4)}
 .strip div:last-child{border-right:0}
 .card .body{padding:12px 14px 14px}
 .card .name{font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;font-weight:700;font-size:21px;letter-spacing:.04em;text-transform:uppercase;line-height:1.1}
 .card .meta{font-size:12px;color:var(--ash);margin-top:4px}
+.card .note{font-size:12.5px;color:var(--ash);margin-top:6px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .builtin{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-left:8px}
+.card .author{font-size:11px;color:var(--ash);margin-top:6px}
+.card .tools button.on{color:var(--gold);text-decoration:none;border:1px solid var(--gold);border-radius:999px;padding:3px 10px}
+.chint{font-size:13px;color:var(--ash);margin:-4px 0 14px;line-height:1.5}
+.chint a{color:var(--gold)}
+/* the edit sheet: order, description, cover */
+.sheet{
+  position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:8;width:min(560px,calc(100vw - 28px));max-height:calc(100vh - 40px);overflow:auto;
+  padding:18px 18px 16px;border:1px solid var(--line);border-radius:14px;background:#0b1811;box-shadow:0 24px 60px -20px rgba(0,0,0,.9);
+}
+.sheet[hidden]{display:none}
+.sheet h3{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ash);margin:14px 0 8px}
+.sheet h3:first-child{margin-top:0}
+.sheet input,.sheet textarea{
+  width:100%;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:rgba(0,0,0,.3);color:var(--bone);font-family:inherit;font-size:14px;
+}
+.sheet textarea{min-height:64px;resize:vertical;line-height:1.4}
+.sheet input:disabled{opacity:.6}
+.sheet .count{font-size:11px;color:var(--ash);text-align:right;margin-top:3px}
+.rows{display:flex;flex-direction:column;gap:5px}
+.row{
+  display:flex;align-items:center;gap:10px;padding:6px 8px;border:1px solid var(--line);border-radius:10px;background:rgba(0,0,0,.25);
+}
+.row.drag{opacity:.4}
+.row.over{border-color:var(--gold)}
+.row .pic{width:34px;height:46px;border-radius:4px;background:center/cover no-repeat #13241a;flex:none}
+.row .t{flex:1;min-width:0;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .t small{display:block;font-size:11px;color:var(--ash)}
+.row button{
+  flex:none;width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:rgba(0,0,0,.3);color:var(--ash);font-family:inherit;font-size:13px;cursor:pointer;
+}
+.row button:hover{color:var(--bone);border-color:var(--gold)}
+.row button:disabled{opacity:.3;cursor:default}
+.row button.cover{width:auto;padding:0 9px;font-size:11px}
+.row button.cover.on{background:var(--gold);color:#231c07;border-color:var(--gold)}
+.row .grip{cursor:grab;color:#44523f;flex:none;font-size:16px}
+.sheet .foot{display:flex;gap:12px;align-items:center;margin-top:16px}
+.sheet .btn{
+  padding:8px 16px;border-radius:999px;border:1px solid var(--gold);background:transparent;color:var(--gold);font-family:inherit;font-size:13px;cursor:pointer;
+}
+.sheet .btn:hover{background:var(--gold);color:#231c07}
+.sheet .quiet{background:none;border:0;color:var(--ash);font-family:inherit;font-size:12px;text-decoration:underline;cursor:pointer}
+@media (max-width: 560px){
+  .sheet{left:12px;right:12px;bottom:calc(64px + max(6px,env(safe-area-inset-bottom)));top:auto;transform:none;width:auto;max-height:calc(100vh - 100px)}
+  .row .grip{display:none}
+}
 .card .tools{display:flex;gap:12px;margin-top:10px}
 .card .tools button{background:none;border:0;padding:0;color:var(--ash);font-family:inherit;font-size:12px;text-decoration:underline;cursor:pointer}
 .card .tools button:hover{color:var(--bone)}
@@ -103,66 +150,189 @@ footer{margin-top:40px;font-size:11px;letter-spacing:.18em;text-transform:upperc
 
 <div class="top"><input id="name" placeholder="New deck name" maxlength="60" aria-label="New deck name"><button id="create">Create</button></div>
 
+<h2>Mine</h2>
 <div class="grid" id="mine"></div>
-<p class="empty" id="none" hidden>No decks yet. Name one above, then tap games on the wall to fill it. A deck is a list you choose and order yourself, kept on the MiSTer and shareable as a link.</p>
+<p class="empty" id="none" hidden>Only Favourites so far. Name a deck above, then tap games on the wall to fill it. A deck is a list you choose and order yourself, kept on the MiSTer and shareable as a link.</p>
+
+<h2>Community</h2>
+<p class="chint" id="chint">Looking on GitHub&hellip;</p>
+<div class="grid" id="community"></div>
+
+<div class="sheet" id="esheet" hidden>
+  <h3 id="etitle">Edit deck</h3>
+  <input id="ename" maxlength="60" aria-label="Deck name" placeholder="Name">
+  <h3>Description</h3>
+  <textarea id="enote" maxlength="300" placeholder="What this deck is for, in a line or two"></textarea>
+  <div class="count" id="ecount">0 / 300</div>
+  <h3>Games, in order</h3>
+  <div class="rows" id="erows"></div>
+  <div class="foot"><button class="btn" id="esave">Save</button><button class="quiet" id="ecancel">Cancel</button></div>
+</div>
 
 <footer>A deck opens on the wall, where you add games, share it as a link, rename or delete it.</footer>
 </div>
 <script>
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
-let GAMES = {}, ART = {};
+let GAMES = {}, ART = {}, READY = null, DECKS = [], CHECK_DONE = false;
 const artId = g => (g && g.art) || (g && g.id);
-function render(decks) {
-  const grid = $("#mine");
-  $("#none").hidden = decks.length > 0;
-  grid.replaceChildren(...decks.map(d => {
-    const a = document.createElement("div");
-    a.className = "card";
-    const cells = d.ids.slice(0, 4).map(id => GAMES[id] && ART[artId(GAMES[id])] ? `<div style="background-image:url('art/${artId(GAMES[id])}')"></div>` : "<div></div>");
-    while (cells.length < 4) cells.push("<div></div>");
-    a.innerHTML = `<a class="open" href="./?deck=${encodeURIComponent(d.id)}" style="display:block;color:inherit;text-decoration:none"><div class="strip">${cells.join("")}</div>
-      <div class="body"><div class="name">${esc(d.name)}</div><div class="meta">${d.ids.length} game${d.ids.length === 1 ? "" : "s"}</div></div></a>
-      <div class="body tools" style="padding-top:0"><button class="rename">Rename</button><button class="delete danger">Delete</button></div>`;
-    a.querySelector(".rename").addEventListener("click", async () => {
+const isReady = id => READY ? READY.has(id) : true;
+const post = body => fetch("api/decks", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }).then(r => r.json());
+const COMMUNITY_URL = new URLSearchParams(location.search).get("community")
+  || "https://raw.githubusercontent.com/searchsolved/shmup-deck/main/decks/index.json";
+
+function strip(d) {
+  const first = d.cover && d.ids.includes(d.cover) ? d.cover : d.ids[0];
+  const order = first ? [first, ...d.ids.filter(i => i !== first)] : [];
+  const cells = order.slice(0, 4).map(id => GAMES[id] && ART[artId(GAMES[id])] ? `<div style="background-image:url('art/${artId(GAMES[id])}')"></div>` : "<div></div>");
+  while (cells.length < 4) cells.push("<div></div>");
+  return `<div class="strip">${cells.join("")}</div>`;
+}
+
+function tile(d, mine) {
+  const a = document.createElement("div");
+  a.className = "card";
+  const here = d.ids.filter(isReady).length;
+  const count = mine ? `${d.ids.length} game${d.ids.length === 1 ? "" : "s"}`
+    : `${d.ids.length} game${d.ids.length === 1 ? "" : "s"}` + (READY ? ` · ${here} ready here` : "");
+  a.innerHTML = `${mine ? `<a class="open" href="./?deck=${encodeURIComponent(d.id)}" style="display:block;color:inherit;text-decoration:none">` : "<div>"}
+      ${strip(d)}
+      <div class="body"><div class="name">${esc(d.name)}${d.builtin ? '<span class="builtin">built in</span>' : ""}</div>
+      <div class="meta">${count}</div>${d.note ? `<div class="note">${esc(d.note)}</div>` : ""}${d.author ? `<div class="author">by ${esc(d.author)}</div>` : ""}</div>
+    ${mine ? "</a>" : "</div>"}
+    <div class="body tools" style="padding-top:0">${mine
+      ? `<button class="edit">Edit</button>${d.builtin ? "" : `<button class="rename">Rename</button><button class="delete danger">Delete</button>`}`
+      : `<button class="save">Save to the MiSTer</button><button class="preview">Preview</button>`}</div>`;
+  if (mine) {
+    a.querySelector(".edit").addEventListener("click", () => openEdit(d));
+    const rn = a.querySelector(".rename");
+    if (rn) rn.addEventListener("click", async () => {
       const name = a.querySelector(".name");
       if (name.querySelector("input")) {
         const v = name.querySelector("input").value.trim();
-        if (v && v !== d.name) await post({ deck: { ...d, name: v } });
+        if (v && v !== d.name) await post({ deck: { id: d.id, name: v } });
         return load();
       }
       name.innerHTML = `<input value="${esc(d.name)}" maxlength="60">`;
-      a.querySelector(".rename").textContent = "Save";
+      rn.textContent = "Save";
       const inp = name.querySelector("input"); inp.focus(); inp.select();
-      inp.addEventListener("keydown", e => { if (e.key === "Enter") a.querySelector(".rename").click(); });
+      inp.addEventListener("keydown", e => { if (e.key === "Enter") rn.click(); });
     });
-    a.querySelector(".delete").addEventListener("click", async () => {
-      const btn = a.querySelector(".delete");
-      if (btn.textContent !== "Really delete") { btn.textContent = "Really delete"; setTimeout(() => { btn.textContent = "Delete"; }, 3000); return; }
-      await post({ delete: d.id });
-      load();
+    const del = a.querySelector(".delete");
+    if (del) del.addEventListener("click", async () => {
+      if (del.textContent !== "Really delete") { del.textContent = "Really delete"; setTimeout(() => { del.textContent = "Delete"; }, 3000); return; }
+      await post({ delete: d.id }); load();
     });
-    return a;
-  }));
+  } else {
+    const sv = a.querySelector(".save");
+    const saved = () => DECKS.some(x => x.name === d.name && x.ids.join() === d.ids.filter(i => GAMES[i]).join());
+    if (saved()) { sv.textContent = "Saved"; sv.classList.add("on"); sv.disabled = true; }
+    sv.addEventListener("click", async () => {
+      sv.disabled = true;
+      const r = await post({ deck: { name: d.name, note: d.note || "", ids: d.ids, cover: d.cover || null } });
+      DECKS = r.decks; renderMine(); sv.textContent = "Saved"; sv.classList.add("on");
+    });
+    a.querySelector(".preview").addEventListener("click", () => {
+      location.href = `./?games=${d.ids.join(",")}&name=${encodeURIComponent(d.name)}` + (d.note ? `&note=${encodeURIComponent(d.note)}` : "") + (d.cover ? `&cover=${encodeURIComponent(d.cover)}` : "");
+    });
+  }
+  return a;
 }
+
+function renderMine() {
+  $("#mine").replaceChildren(...DECKS.map(d => tile(d, true)));
+  $("#none").hidden = DECKS.some(d => !d.builtin);
+}
+
+async function loadCommunity() {
+  const hint = $("#chint");
+  try {
+    const r = await fetch(COMMUNITY_URL, { signal: AbortSignal.timeout(8000) });
+    if (!r.ok) throw new Error(r.status);
+    const list = (await r.json()).decks || [];
+    $("#community").replaceChildren(...list.map(d => tile(d, false)));
+    hint.innerHTML = list.length
+      ? `Decks other people have shared. Add yours with a pull request: <a href="https://github.com/searchsolved/shmup-deck/tree/main/decks">decks/ on GitHub</a>.`
+      : `None shared yet. Add yours with a pull request: <a href="https://github.com/searchsolved/shmup-deck/tree/main/decks">decks/ on GitHub</a>.`;
+  } catch {
+    hint.textContent = "Couldn't reach GitHub for the shared decks. They'll be here when the MiSTer's network can see it.";
+  }
+}
+
+/* ── the edit sheet: name, description, order, cover ── */
+const esheet = $("#esheet");
+let EDIT = null;          // {id, name, note, ids, cover, builtin} being edited
+function openEdit(d) {
+  EDIT = { id: d.id, name: d.name, note: d.note || "", ids: [...d.ids], cover: d.cover || null, builtin: !!d.builtin };
+  $("#etitle").textContent = d.builtin ? "Favourites" : "Edit deck";
+  $("#ename").value = d.name; $("#ename").disabled = !!d.builtin;
+  $("#enote").value = EDIT.note; $("#ecount").textContent = `${EDIT.note.length} / 300`;
+  renderRows();
+  esheet.hidden = false;
+}
+$("#enote").addEventListener("input", () => { $("#ecount").textContent = `${$("#enote").value.length} / 300`; });
+function move(i, to) {
+  if (to < 0 || to >= EDIT.ids.length) return;
+  const [x] = EDIT.ids.splice(i, 1); EDIT.ids.splice(to, 0, x); renderRows();
+}
+function renderRows() {
+  const rows = $("#erows");
+  rows.replaceChildren(...EDIT.ids.map((id, i) => {
+    const g = GAMES[id]; if (!g) return null;
+    const r = document.createElement("div");
+    r.className = "row"; r.draggable = true; r.dataset.i = i;
+    r.innerHTML = `<span class="grip" title="Drag to reorder">&#8942;</span>
+      <div class="pic" style="${ART[artId(g)] ? `background-image:url('art/${artId(g)}')` : ""}"></div>
+      <div class="t">${esc(g.title)}<small>${esc(g.dev)} ${g.year}</small></div>
+      <button class="cover${EDIT.cover === id ? " on" : ""}" title="Use this flyer for the deck">Cover</button>
+      <button class="up" title="Move up"${i === 0 ? " disabled" : ""}>&#8593;</button>
+      <button class="down" title="Move down"${i === EDIT.ids.length - 1 ? " disabled" : ""}>&#8595;</button>
+      <button class="rm" title="Remove from the deck">&#215;</button>`;
+    r.querySelector(".up").addEventListener("click", () => move(i, i - 1));
+    r.querySelector(".down").addEventListener("click", () => move(i, i + 1));
+    r.querySelector(".rm").addEventListener("click", () => { EDIT.ids.splice(i, 1); if (EDIT.cover === id) EDIT.cover = null; renderRows(); });
+    r.querySelector(".cover").addEventListener("click", () => { EDIT.cover = EDIT.cover === id ? null : id; renderRows(); });
+    // desktop: drag a row onto another
+    r.addEventListener("dragstart", e => { e.dataTransfer.setData("text/plain", String(i)); r.classList.add("drag"); });
+    r.addEventListener("dragend", () => r.classList.remove("drag"));
+    r.addEventListener("dragover", e => { e.preventDefault(); r.classList.add("over"); });
+    r.addEventListener("dragleave", () => r.classList.remove("over"));
+    r.addEventListener("drop", e => { e.preventDefault(); const from = +e.dataTransfer.getData("text/plain"); if (!isNaN(from)) move(from, i); });
+    return r;
+  }).filter(Boolean));
+  if (!EDIT.ids.length) rows.innerHTML = `<p class="empty">Nothing in it yet. Open the deck on the wall and tap Add games.</p>`;
+}
+$("#esave").addEventListener("click", async () => {
+  const deck = { id: EDIT.id, note: $("#enote").value.trim(), ids: EDIT.ids, cover: EDIT.cover };
+  if (!EDIT.builtin) deck.name = $("#ename").value.trim() || EDIT.name;
+  await post({ deck });
+  esheet.hidden = true; load();
+});
+$("#ecancel").addEventListener("click", () => { esheet.hidden = true; });
+document.addEventListener("keydown", e => { if (e.key === "Escape") esheet.hidden = true; });
+document.addEventListener("click", e => { if (!esheet.hidden && !e.target.closest("#esheet, .edit")) esheet.hidden = true; });
+
 async function load() {
-  const [games, art, decks] = await Promise.all([
+  const [games, art, decks, check] = await Promise.all([
     fetch("games.json").then(r => r.json()),
     fetch("art.json").then(r => r.json()).catch(() => ({})),
-    fetch("api/decks", { cache: "no-store" }).then(r => r.ok ? r.json() : { decks: [] }).catch(() => ({ decks: [] }))
+    fetch("api/decks", { cache: "no-store" }).then(r => r.ok ? r.json() : { decks: [] }).catch(() => ({ decks: [] })),
+    fetch("api/checklist", { cache: "no-store" }).then(r => r.ok ? r.json() : null).catch(() => null)
   ]);
-  GAMES = Object.fromEntries(games.map(g => [g.id, g])); ART = art;
-  render(decks.decks);
-}
-async function post(body) {
-  const r = await fetch("api/decks", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
-  return r.json();
+  GAMES = Object.fromEntries(games.map(g => [g.id, g])); ART = art; DECKS = decks.decks;
+  if (check && check.some(c => c.mra)) READY = new Set(check.filter(c => c.state === "ready").map(c => c.id));
+  renderMine();
+  if (!CHECK_DONE) { CHECK_DONE = true; loadCommunity(); }
+  const want = new URLSearchParams(location.search).get("edit");
+  if (want) {
+    history.replaceState(null, "", location.pathname);
+    const d = DECKS.find(x => x.id === want); if (d) openEdit(d);
+  }
 }
 $("#create").addEventListener("click", async () => {
   const name = $("#name").value.trim();
   if (!name) return $("#name").focus();
-  const r = await fetch("api/decks", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ deck: { name, ids: [] } }) });
-  const d = await r.json();
+  const d = await post({ deck: { name, ids: [] } });
   location.href = `./?deck=${encodeURIComponent(d.saved.id)}&add=1`;
 });
 $("#name").addEventListener("keydown", e => { if (e.key === "Enter") $("#create").click(); });
