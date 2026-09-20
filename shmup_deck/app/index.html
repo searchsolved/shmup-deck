@@ -492,6 +492,11 @@ footer a{color:inherit}
           <button data-density="comfortable" aria-pressed="true">Comfortable</button>
           <button data-density="large" aria-pressed="false">Large</button>
         </div>
+        <div id="homeTip" hidden>
+          <h3>Home screen</h3>
+          <p class="hint ask" id="homeHow"></p>
+          <p class="hint">Full screen, its own icon, no browser bar, and it keeps pointing at this MiSTer.</p>
+        </div>
         <h3>Kiosk</h3>
         <div class="switch"><span>Kiosk mode</span>
           <button class="tog" id="kioskTog" role="switch" aria-checked="false"></button></div>
@@ -995,6 +1000,20 @@ function placeFilters() {
 filterBtn.addEventListener("click", () => openFilters(fsheet.hidden));
 PHONE.addEventListener("change", placeFilters);
 placeFilters();
+
+/* Installed as a home-screen app the deck is full screen with its own icon.
+   Say how, on phones that have not done it yet. */
+(() => {
+  const ua = navigator.userAgent;
+  const installed = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+  const ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const android = /Android/.test(ua);
+  if (installed || !(ios || android)) return;
+  $("#homeHow").innerHTML = ios
+    ? "In Safari, tap Share, then <b>Add to Home Screen</b>."
+    : "In Chrome, open the menu, then <b>Add to Home screen</b> or <b>Install app</b>.";
+  $("#homeTip").hidden = false;
+})();
 
 /* ── kiosk ── */
 /* A tablet by the cab: nothing but the wall, the screen kept awake, flyers
