@@ -1,6 +1,6 @@
 {
  "_mirrors": [
-  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/e1fa60830cadabfd82aad9b502b46c4c20b2556d/"
+  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/26bca4a55b80482d0e25a1272b22d76b148dfc93/"
  ],
  "forgottn": {
   "url": "https://images.launchbox-app.com/da018d5c-cdc4-4d1e-939b-364e5bfe6889.jpg",
@@ -2544,6 +2544,32 @@
    0,
    850,
    1243
+  ]
+ },
+ "galmedes": {
+  "url": "https://images.launchbox-app.com/8ef695cb-aafd-4f9c-87f7-e0b2c473d921.jpg",
+  "size": [
+   707,
+   1000
+  ],
+  "crop": [
+   0,
+   0,
+   707,
+   1000
+  ]
+ },
+ "asuka": {
+  "url": "https://images.launchbox-app.com/de7b0a91-8dc4-4eb3-be92-0457bb151836.jpg",
+  "size": [
+   850,
+   1201
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1201
   ]
  }
 }

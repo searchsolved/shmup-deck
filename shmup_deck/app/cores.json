@@ -30,6 +30,11 @@
   "armedf": {
    "source": "coinop"
   },
+  "Asuka": {
+   "source": "github",
+   "url": "https://www.patreon.com/bazset/posts/asuka-asuka-1988-169899343",
+   "note": "Core and MRA from the author's Patreon post; no repository"
+  },
   "batrider_mister": {
    "source": "coinop"
   },
@@ -66,6 +71,11 @@
   },
   "fshark_mister": {
    "source": "coinop"
+  },
+  "Galmedes": {
+   "source": "github",
+   "url": "https://www.patreon.com/bazset/posts/galmedes-visco-169900687",
+   "note": "Core and MRA from the author's Patreon post; no repository"
   },
   "Gigandes": {
    "source": "github",

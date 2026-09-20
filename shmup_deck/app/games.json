@@ -3922,5 +3922,43 @@
    "merged": "earthjkr",
    "shared": []
   }
+ },
+ {
+  "id": "galmedes",
+  "title": "Galmedes",
+  "dev": "Visco",
+  "year": 1992,
+  "core": "Galmedes",
+  "system": "Taito Asuka",
+  "orientation": "tate",
+  "setnames": [
+   "galmedes"
+  ],
+  "rbf": "Galmedes",
+  "roms": {
+   "zip": "galmedes",
+   "merged": "galmedes",
+   "shared": []
+  }
+ },
+ {
+  "id": "asuka",
+  "title": "Asuka & Asuka",
+  "dev": "Taito",
+  "year": 1988,
+  "core": "Asuka",
+  "system": "Taito Asuka",
+  "orientation": "tate",
+  "setnames": [
+   "asuka",
+   "asukaj",
+   "asukaja"
+  ],
+  "rbf": "Asuka",
+  "roms": {
+   "zip": "asuka",
+   "merged": "asuka",
+   "shared": []
+  }
  }
 ]

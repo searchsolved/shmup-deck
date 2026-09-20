@@ -1,6 +1,6 @@
 # Supported games and ROMs
 
-Shmup Deck supports 193 games: 180 arcade games that run from MRA files and 13 Neo Geo games. This page lists the core and ROM files each one needs.
+Shmup Deck supports 195 games: 182 arcade games that run from MRA files and 13 Neo Geo games. This page lists the core and ROM files each one needs.
 
 To see what your own MiSTer is missing, open **http://shmupdeck.local/check.html** once Shmup Deck is installed. It checks every game for its MRA, core and ROM zips and can copy the missing zip names.
 
@@ -27,8 +27,10 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 
 | Core | Games | Repository | Notes |
 | --- | --- | --- | --- |
+| Asuka | 1 | [www.patreon.com/bazset](https://www.patreon.com/bazset/posts/asuka-asuka-1988-169899343) | Core and MRA from the author's Patreon post; no repository |
 | CV1000 | 14 | [ika-musume/ikacore_CV1k](https://github.com/ika-musume/ikacore_CV1k) | The repository has no core build or MRAs; builds come from the developer. MRAs for all games, including DoDonPachi SaiDaiOuJou and Akai Katana, are in [funkycochise/CV1K_Res](https://github.com/funkycochise/CV1K_Res) |
 | EarthJoker | 1 | [www.patreon.com/bazset](https://www.patreon.com/bazset/posts/u-n-defense-1993-169900198) | Core and MRA from the author's Patreon post; no repository |
+| Galmedes | 1 | [www.patreon.com/bazset](https://www.patreon.com/bazset/posts/galmedes-visco-169900687) | Core and MRA from the author's Patreon post; no repository |
 | Gigandes | 1 | [bazset/Gigandes-FPGA](https://github.com/bazset/Gigandes-FPGA) | Source only; the core build and MRA are on the author's Patreon |
 | MegaSystem 32 | 4 | [ppriest/Arcade-JalecoMS32_MiSTer](https://github.com/ppriest/Arcade-JalecoMS32_MiSTer) |  |
 | NMK16 | 19 | [kuzearcade/Arcade-NMK16_MiSTer](https://github.com/kuzearcade/Arcade-NMK16_MiSTer) |  |
@@ -44,6 +46,12 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | TwinHawk | 1 | [bazset/Twin-Hawk-FPGA](https://github.com/bazset/Twin-Hawk-FPGA) | MRAs in the repository; the core build is on the author's Patreon |
 
 ## Arcade games
+
+### Asuka
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Asuka & Asuka | 1988 | [GitHub](https://www.patreon.com/bazset/posts/asuka-asuka-1988-169899343) | `asuka.zip` | same |  |
 
 ### Capcom
 
@@ -123,6 +131,12 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
 | U.N. Defense Force: Earth Joker | 1993 | [GitHub](https://www.patreon.com/bazset/posts/u-n-defense-1993-169900198) | `earthjkr.zip` | same |  |
+
+### Galmedes
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Galmedes | 1992 | [GitHub](https://www.patreon.com/bazset/posts/galmedes-visco-169900687) | `galmedes.zip` | same |  |
 
 ### Gigandes
 
@@ -485,6 +499,7 @@ akatana.zip
 arbalest.zip
 armedf.zip
 aso.zip
+asuka.zip
 batrider.zip
 batsugun.zip
 batsugunsp.zip
@@ -534,6 +549,7 @@ fshark.zip
 futari15.zip
 futaribl.zip
 gallopm72.zip
+galmedes.zip
 gametngk.zip
 gdarius.zip
 gekiridn.zip
@@ -682,6 +698,7 @@ arbalest.zip
 arcadian.zip
 armedf.zip
 aso.zip
+asuka.zip
 batrider.zip
 batsugun.zip
 bbakraid.zip
@@ -729,6 +746,7 @@ forgottn.zip
 fshark.zip
 futari15.zip
 futaribl.zip
+galmedes.zip
 gametngk.zip
 gdarius2.zip
 gekiridn.zip
