@@ -1,0 +1,14 @@
+{
+ "name": "Bomb and survive",
+ "note": "Games where the bomb button is the whole strategy. Hold nothing back.",
+ "ids": [
+  "batsugun",
+  "raiden",
+  "twincobr",
+  "truxton",
+  "tigerh",
+  "vimana"
+ ],
+ "cover": "batsugun",
+ "author": "Lee Foot"
+}

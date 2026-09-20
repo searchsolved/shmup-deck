@@ -1,6 +1,21 @@
 {
  "decks": [
   {
+   "slug": "bomb-and-survive",
+   "name": "Bomb and survive",
+   "note": "Games where the bomb button is the whole strategy. Hold nothing back.",
+   "ids": [
+    "batsugun",
+    "raiden",
+    "twincobr",
+    "truxton",
+    "tigerh",
+    "vimana"
+   ],
+   "cover": "batsugun",
+   "author": "Lee Foot"
+  },
+  {
    "slug": "cave-in-order",
    "name": "Cave, in order",
    "note": "Every Cave shooter the deck knows, oldest first. Watch the bullet patterns grow up.",
@@ -29,6 +44,20 @@
    "author": "Lee Foot"
   },
   {
+   "slug": "danmaku-in-five-steps",
+   "name": "Danmaku in five steps",
+   "note": "One idea at a time: DonPachi teaches the laser, DoDonPachi the chain, Feveron speed, ESP Ra.De. bullet reading, Ketsui the lock-on. Play them in order.",
+   "ids": [
+    "donpachi",
+    "ddonpach",
+    "dfeveron",
+    "esprade",
+    "ketsui"
+   ],
+   "cover": "esprade",
+   "author": "Lee Foot"
+  },
+  {
    "slug": "first-hour-tate",
    "name": "First hour on a tate cab",
    "note": "Forgiving vertical shooters to learn the turned screen on. Nothing here punishes a first credit.",
@@ -45,6 +74,84 @@
     "dfeveron"
    ],
    "cover": "gunbird",
+   "author": "Lee Foot"
+  },
+  {
+   "slug": "konami-turned",
+   "name": "Konami on a turned screen",
+   "note": "Konami turned its monitors the other way from everyone else. All four are clockwise; a cab set up for Cave needs the core's flip option.",
+   "ids": [
+    "gyruss",
+    "tp84",
+    "twinbee",
+    "finalizr",
+    "ajax"
+   ],
+   "cover": "twinbee",
+   "author": "Lee Foot"
+  },
+  {
+   "slug": "learn-to-chain",
+   "name": "Learn to chain",
+   "note": "Cave's scoring in the order it was invented. Each game changes what a chain means, so the previous one is the lesson for the next.",
+   "ids": [
+    "ddonpach",
+    "ddpdoj",
+    "espgaluda",
+    "guwange",
+    "ddpdfk"
+   ],
+   "cover": "ddpdoj",
+   "author": "Lee Foot"
+  },
+  {
+   "slug": "psikyo-in-order",
+   "name": "Psikyo, in order",
+   "note": "From Samurai Aces to Dragon Blaze. The bosses get bigger and the bullets get faster.",
+   "ids": [
+    "samuraia",
+    "gunbird",
+    "s1945",
+    "tengai",
+    "gunbird2",
+    "s1945ii",
+    "s1945iii",
+    "dragnblz"
+   ],
+   "cover": "gunbird2",
+   "author": "Lee Foot"
+  },
+  {
+   "slug": "the-raiden-line",
+   "name": "The Raiden line",
+   "note": "Seibu's series in order, with Viper Phase 1 as the cousin in between. The plasma laser bends more every time.",
+   "ids": [
+    "raiden",
+    "raiden2",
+    "raidendx",
+    "viprp1",
+    "rdft",
+    "rdft2",
+    "rfjet"
+   ],
+   "cover": "raiden2",
+   "author": "Lee Foot"
+  },
+  {
+   "slug": "toaplan-diaspora",
+   "name": "The Toaplan diaspora",
+   "note": "Batsugun was the last Toaplan game; its staff went on to make Raizing's. One lineage, one deck.",
+   "ids": [
+    "batsugun",
+    "garegga",
+    "sstriker",
+    "kingdmgp",
+    "batrider",
+    "bbakraid",
+    "ibara",
+    "pinkswts"
+   ],
+   "cover": "garegga",
    "author": "Lee Foot"
   },
   {
@@ -66,6 +173,25 @@
     "batsugun"
    ],
    "cover": "truxton",
+   "author": "Lee Foot"
+  },
+  {
+   "slug": "two-players",
+   "name": "Two players",
+   "note": "Shooters that are better with someone beside you: shared bombs, shared scores, mutual blame.",
+   "ids": [
+    "rdft",
+    "rdft2",
+    "dimahoo",
+    "progear",
+    "gigawing",
+    "1944",
+    "ddonpach",
+    "batrider",
+    "esprade",
+    "raiden2"
+   ],
+   "cover": "progear",
    "author": "Lee Foot"
   }
  ]

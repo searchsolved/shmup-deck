@@ -1,0 +1,13 @@
+{
+ "name": "Konami on a turned screen",
+ "note": "Konami turned its monitors the other way from everyone else. All four are clockwise; a cab set up for Cave needs the core's flip option.",
+ "ids": [
+  "gyruss",
+  "tp84",
+  "twinbee",
+  "finalizr",
+  "ajax"
+ ],
+ "cover": "twinbee",
+ "author": "Lee Foot"
+}
