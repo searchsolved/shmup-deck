@@ -297,6 +297,7 @@ body.compact .plate .vers{display:none}
 .vsheet .forget{margin-top:10px;background:none;border:0;color:var(--ash);font-family:inherit;font-size:12px;cursor:pointer;text-decoration:underline}
 .vsheet .forget[hidden]{display:none}
 .krow{display:flex;align-items:center;gap:16px;margin-top:14px}
+.kdeck{max-width:55%;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--bone);font-family:inherit;font-size:13px}
 /* decks: named lists kept on the MiSTer */
 .deckrow{max-width:1080px;margin:0 auto 18px}
 .deckrow .decks{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
@@ -328,6 +329,14 @@ body.compact .plate .vers{display:none}
 .deckbar .dtools button.on{background:var(--gold);color:#231c07;border-color:var(--gold)}
 .deckbar .dtools button.danger:hover{border-color:var(--danger);color:var(--danger)}
 .deckbar input{padding:6px 10px;border-radius:999px;border:1px solid #1d3326;background:rgba(0,0,0,.25);color:var(--bone);font-family:inherit;font-size:13px}
+.deckbar .dnote{flex-basis:100%;font-size:13px;color:var(--ash);line-height:1.45}
+.deckbar .dnote[hidden]{display:none}
+.deckbar .dtools a.dedit{
+  display:inline-flex;align-items:center;padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.25);
+  color:var(--ash);font-size:12px;text-decoration:none;
+}
+.deckbar .dtools a.dedit:hover{color:var(--bone);border-color:var(--gold)}
+.deckbar .dtools [hidden]{display:none}
 /* adding to a deck: cards in it wear a tick */
 .cab .in{
   position:absolute;top:10px;left:10px;z-index:3;width:26px;height:26px;border-radius:50%;
@@ -369,7 +378,7 @@ body.adding .cab.indeck{border-color:var(--gold)}
   .cab.busy .veil span{animation:none}
 }
 /* ── kiosk: just the wall, for a tablet by the cab ── */
-body.kiosk header,body.kiosk .searchrow,body.kiosk .chips,body.kiosk .filters,body.kiosk .grouprow,
+body.kiosk header,body.kiosk .searchrow,body.kiosk .chips,body.kiosk .filters,body.kiosk .grouprow,body.kiosk .deckbar,
 body.kiosk #screenHint,body.kiosk footer{display:none}
 body.kiosk{padding:12px 12px calc(56px + env(safe-area-inset-bottom))}
 body.kiosk .deck{max-width:none;gap:14px;grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
@@ -545,6 +554,8 @@ footer a{color:inherit}
         <div class="switch"><span>Kiosk mode</span>
           <button class="tog" id="kioskTog" role="switch" aria-checked="false"></button></div>
         <p class="hint">Just the wall, full screen, kept awake. Flyers drift by when nobody touches it. To leave, hold the top left corner for two seconds.</p>
+        <div class="switch"><span>Kiosk shows</span>
+          <select id="kioskDeck" class="kdeck" aria-label="What kiosk mode shows"><option value="">Whole wall</option></select></div>
         <div class="switch"><span>Marquee while playing</span>
           <button class="tog" id="marqueeTog" role="switch" aria-checked="true"></button></div>
         <p class="hint">The running game's flyer stays up for as long as it runs; the flyers only drift by on the menu.</p>
@@ -576,6 +587,7 @@ footer a{color:inherit}
   <h3>Kiosk mode</h3>
   <p class="hint">Just the wall, full screen, kept awake. After a minute untouched the flyers drift by; a tap brings the wall back.</p>
   <p class="hint ask">To leave, hold the top left corner of the screen for two seconds. The corner glows while you hold.</p>
+  <div class="switch" style="margin-top:10px"><span>Show</span><select id="kioskDeck2" class="kdeck" aria-label="What kiosk mode shows"><option value="">Whole wall</option></select></div>
   <div class="krow"><button class="btn" id="kstart">Start kiosk</button><button class="forget" id="knot">Not now</button></div>
 </div>
 <div class="sheet vsheet" id="vsheet" hidden>
@@ -632,14 +644,17 @@ footer a{color:inherit}
   <input id="drename" hidden maxlength="60" aria-label="Deck name">
   <div class="dtools">
     <button id="dadd" title="Tap cards on the wall to add or remove them">Add games</button>
+    <a class="dedit" id="dedit" href="decks.html" title="Order, description and cover">Edit</a>
     <button id="dshare" title="A link that opens this deck anywhere">Share</button>
     <button id="drenameBtn">Rename</button>
     <button id="ddelete" class="danger">Delete</button>
     <button id="dclose">Close</button>
   </div>
+  <span class="dnote" id="dnote" hidden></span>
 </div>
 <div class="deckbar" id="linkbar" hidden>
   <span class="dname" id="lname"></span><span class="dcount" id="lcount"></span>
+  <span class="dnote" id="lnote" hidden></span>
   <div class="dtools"><button id="lsave" class="on">Save this deck to the MiSTer</button></div>
 </div>
 <main class="deck" id="deck"></main>
@@ -677,6 +692,7 @@ const LS = {
   marquee: "shmupdeck.marquee",          // in kiosk, keep the running game's flyer up instead of the attract cycle
   kioskIntro: "shmupdeck.kioskintro",   // the leaving instructions have been read
   deck: "shmupdeck.deck",                // the deck being viewed
+  kioskDeck: "shmupdeck.kioskdeck",      // kiosk on this device shows only this deck
   versHint: "shmupdeck.vershint"         // the versions hint has done its job
 };
 const $ = s => document.querySelector(s);
@@ -698,12 +714,13 @@ let STATS = null;   // id -> { launches, seconds, last }
 
 /* Favourites live on the MiSTer, so they are the cab's rather than one
    phone's. An older service without them falls back to this browser. */
+/* Favourites is the built-in deck; the star adds to it. FAVS mirrors that
+   deck's ids once the decks have loaded. Without a reachable service the
+   stars fall back to this browser. */
 let FAVS = new Set(), FAVS_LOCAL = false;
-async function loadFavourites() {
-  try {
-    const r = await fetch("api/favourites", { cache: "no-store" });
-    if (r.ok) { FAVS = new Set((await r.json()).ids); return; }
-  } catch { /* fall through */ }
+function favouritesFromDecks() {
+  const d = DECKS.find(x => x.id === "favourites");
+  if (d) { FAVS = new Set(d.ids); FAVS_LOCAL = false; return; }
   FAVS_LOCAL = true;
   try { FAVS = new Set(JSON.parse(localStorage.getItem(LS.favs)) || []); } catch { FAVS = new Set(); }
 }
@@ -711,9 +728,9 @@ async function setFavourite(id, on) {
   if (on) FAVS.add(id); else FAVS.delete(id);
   if (FAVS_LOCAL) { localStorage.setItem(LS.favs, JSON.stringify([...FAVS])); return; }
   try {
-    const r = await fetch("api/favourites", { method: "POST", headers: { "Content-Type": "application/json" },
-                                              body: JSON.stringify({ id, on }) });
-    if (r.ok) FAVS = new Set((await r.json()).ids);
+    const r = await fetch("api/decks", { method: "POST", headers: { "Content-Type": "application/json" },
+                                         body: JSON.stringify({ member: { deck: "favourites", id, on } }) });
+    if (r.ok) { DECKS = (await r.json()).decks; favouritesFromDecks(); renderDeckList(); }
   } catch { /* keep the optimistic change; it syncs on next load */ }
 }
 const plays = () => {
@@ -746,6 +763,10 @@ let GAMES = [];
 const PICK = (new URLSearchParams(location.search).get("games") || "")
   .split(",").map(s => s.trim()).filter(Boolean);
 const LINK_NAME = new URLSearchParams(location.search).get("name") || "";
+const LINK_NOTE = new URLSearchParams(location.search).get("note") || "";
+const LINK_COVER = new URLSearchParams(location.search).get("cover") || "";
+const deckLink = d => `${location.origin}${location.pathname}?games=${d.ids.join(",")}&name=${encodeURIComponent(d.name)}`
+  + (d.note ? `&note=${encodeURIComponent(d.note)}` : "") + (d.cover ? `&cover=${encodeURIComponent(d.cover)}` : "");
 /* Decks are named lists kept on the MiSTer. Viewing one shows its games in
    its order, like a ?games= link; adding to one turns card taps into
    membership toggles. */
@@ -755,7 +776,12 @@ if (PARAMS.has("deck")) { localStorage.setItem(LS.deck, DECK); history.replaceSt
 if (ADDING) document.body.classList.add("adding");
 const currentDeck = () => DECKS.find(d => d.id === DECK) || null;
 // what the wall is restricted to: the deck being viewed, else a ?games= link
-const picked = () => ADDING ? [] : DECK && currentDeck() ? currentDeck().ids : PICK;
+const kioskDeckIds = () => {
+  if (!document.body.classList.contains("kiosk")) return null;
+  const d = DECKS.find(x => x.id === localStorage.getItem(LS.kioskDeck));
+  return d ? d.ids : null;
+};
+const picked = () => ADDING ? [] : kioskDeckIds() || (DECK && currentDeck() ? currentDeck().ids : PICK);
 let ART = {};       // id -> { crop: [left, top, width, height], size: [w, h] }
 let AVAIL = null;   // id -> installed path; null until the first scan finishes
 let CHECK = null;   // id -> { state, missing }; state is "ready", "roms", "core" or "mra"
@@ -1044,7 +1070,7 @@ for (const b of document.querySelectorAll(".seg button")) {
 }
 /* a link that opens exactly this list, for sharing or a home-screen shortcut */
 $("#copylink").addEventListener("click", async () => {
-  const url = `${location.origin}${location.pathname}?games=${$("#copylink").dataset.ids}`;
+  const url = `${location.origin}${location.pathname}?games=${$("#copylink").dataset.ids}&name=Favourites`;
   try { await navigator.clipboard.writeText(url); $("#copylink").textContent = "Copied"; }
   catch { $("#copylink").textContent = "Copy blocked"; }
   setTimeout(() => { $("#copylink").textContent = "Copy link"; }, 2000);
@@ -1185,7 +1211,8 @@ $("#marqueeTog").addEventListener("click", () => {
 $("#marqueeTog").setAttribute("aria-checked", String(marqueePref()));
 let attractFlip = false, attractPool = [];
 function startAttract() {
-  attractPool = GAMES.filter(g => ready(g) && ART[artId(g)]).sort(() => Math.random() - 0.5);
+  const only = kioskDeckIds();
+  attractPool = GAMES.filter(g => ready(g) && ART[artId(g)] && (!only || only.includes(g.id))).sort(() => Math.random() - 0.5);
   if (!attractPool.length) return;
   attractOn = true;
   $("#attract").hidden = false;
@@ -1213,6 +1240,11 @@ function stopAttract() {
 $("#attract").addEventListener("click", () => { stopAttract(); armAttract(); });
 for (const ev of ["pointerdown", "keydown", "scroll", "touchstart"])
   document.addEventListener(ev, () => { if (!attractOn) armAttract(); }, { passive: true });
+// ?kiosk names a deck to show, or is bare for the whole wall
+if (new URLSearchParams(location.search).has("kiosk")) {
+  const want = new URLSearchParams(location.search).get("kiosk");
+  if (want) localStorage.setItem(LS.kioskDeck, want);      // a bare ?kiosk keeps whatever was chosen
+}
 if (localStorage.getItem(LS.kiosk) === "on" || new URLSearchParams(location.search).has("kiosk")) enterKiosk(false);
 
 /* Search is deliberately not remembered - unlike the cab's orientation, a
@@ -1274,6 +1306,7 @@ async function loadDecks() {
     const r = await fetch("api/decks", { cache: "no-store" });
     if (r.ok) DECKS = (await r.json()).decks;
   } catch { DECKS = []; }
+  favouritesFromDecks();
   if (DECK && !currentDeck()) { DECK = null; localStorage.removeItem(LS.deck); }
   renderDeckList();
 }
@@ -1296,7 +1329,20 @@ function viewDeck(id) {
   renderDeckList(); renderDeck();
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
-function renderDeckList() { /* the Decks page lists them */ }
+function renderDeckList() {
+  // the kiosk selectors, on the settings sheet and the intro; the Decks page lists decks
+  for (const sel of document.querySelectorAll(".kdeck")) {
+    const cur = localStorage.getItem(LS.kioskDeck) || "";
+    sel.replaceChildren(...[["", "Whole wall"], ...DECKS.map(d => [d.id, `${d.name} · ${d.ids.length}`])].map(([v, t]) => {
+      const o = document.createElement("option"); o.value = v; o.textContent = t; o.selected = v === cur; return o;
+    }));
+  }
+}
+for (const sel of document.querySelectorAll(".kdeck"))
+  sel.addEventListener("change", e => {
+    if (e.target.value) localStorage.setItem(LS.kioskDeck, e.target.value); else localStorage.removeItem(LS.kioskDeck);
+    renderDeckList(); renderDeck();
+  });
 function renderDeckBar(n) {
   const d = currentDeck();
   $("#deckbar").hidden = !d;
@@ -1305,11 +1351,19 @@ function renderDeckBar(n) {
     $("#dcount").textContent = ADDING ? "tap cards to add or remove" : `${d.ids.length} game${d.ids.length === 1 ? "" : "s"}`;
     $("#dadd").textContent = ADDING ? "Done" : "Add games";
     $("#dadd").classList.toggle("on", ADDING);
+    $("#dnote").textContent = d.note || ""; $("#dnote").hidden = !d.note;
+    $("#dedit").href = `decks.html?edit=${encodeURIComponent(d.id)}`;
+    $("#drenameBtn").hidden = !!d.builtin; $("#ddelete").hidden = !!d.builtin;
   }
   // a deck arriving by link, not yet on this MiSTer
   const fromLink = PICK.length && LINK_NAME && !DECKS.some(x => x.name === LINK_NAME && x.ids.join() === PICK.join());
   $("#linkbar").hidden = !fromLink;
-  if (fromLink) { $("#lname").textContent = LINK_NAME; $("#lcount").textContent = `${PICK.length} games, from a link`; }
+  if (fromLink) {
+    const here = PICK.filter(id => { const g = GAMES.find(x => x.id === id); return g && ready(g); }).length;
+    $("#lname").textContent = LINK_NAME;
+    $("#lcount").textContent = `${PICK.length} games from a link` + (CHECK || AVAIL ? `, ${here} ready here` : "");
+    $("#lnote").textContent = LINK_NOTE; $("#lnote").hidden = !LINK_NOTE;
+  }
 }
 async function toggleInDeck(gid) {
   const d = currentDeck();
@@ -1335,13 +1389,12 @@ $("#drenameBtn").addEventListener("click", () => {
 $("#drename").addEventListener("keydown", e => { if (e.key === "Enter") $("#drenameBtn").click(); });
 $("#dshare").addEventListener("click", async () => {
   const d = currentDeck(); if (!d) return;
-  const url = `${location.origin}${location.pathname}?games=${d.ids.join(",")}&name=${encodeURIComponent(d.name)}`;
-  try { await navigator.clipboard.writeText(url); $("#dshare").textContent = "Link copied"; }
+  try { await navigator.clipboard.writeText(deckLink(d)); $("#dshare").textContent = "Link copied"; }
   catch { $("#dshare").textContent = "Copy blocked"; }
   setTimeout(() => { $("#dshare").textContent = "Share"; }, 2000);
 });
 $("#lsave").addEventListener("click", async () => {
-  const saved = await saveDeck({ name: LINK_NAME, ids: PICK });
+  const saved = await saveDeck({ name: LINK_NAME, ids: PICK, note: LINK_NOTE, cover: LINK_COVER || null });
   localStorage.setItem(LS.deck, saved.id);
   location.href = location.pathname;           // reload without the link, viewing the saved deck
 });
@@ -1513,7 +1566,7 @@ async function ping() {
       NOW = s.now_playing;
       const g = GAMES.find(x => x.id === NOW);
       // a picked list is its own little wall; don't advertise something outside it
-      $("#now").hidden = !g || (PICK.length > 0 && !PICK.includes(g.id));
+      $("#now").hidden = !g || (picked().length > 0 && !picked().includes(g.id));
       if (g) $("#nowWhat").textContent = g.title;
       // move the highlight rather than rebuilding every card and its flyer
       for (const c of deck.querySelectorAll(".cab"))
@@ -1540,7 +1593,6 @@ Promise.all([
   GAMES = list; ART = art;
   renderDeck(); ping(); loadChecklist();
   loadStats().then(renderDeck);
-  loadFavourites().then(renderDeck);
   loadDecks().then(renderDeck);
   setInterval(ping, 5000);
 }).catch(() => { deck.innerHTML = `<p class="empty">Could not load games.json.</p>`; });
