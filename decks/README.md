@@ -5,7 +5,12 @@ on, Toaplan in release order, a friend's favourites. The decks in this
 folder appear on the Decks page of every Shmup Deck, with a button to save
 one to your own MiSTer.
 
-To share yours, add a file here by pull request:
+The easy way to share yours: on your own Decks page, tap **Share with
+everyone** under the deck. GitHub opens a new-file page with the deck already
+in it; add your name on the author line and press Propose changes. A check
+runs on the pull request, the owner merges it, and the index rebuilds itself.
+
+By hand, the same thing is a file here by pull request:
 
 ```
 decks/<slug>.json
@@ -24,7 +29,8 @@ decks/<slug>.json
   MiSTer, tap Share, and copy the ids out of the link.
 - `note` is optional, up to 300 characters. `cover` is optional, one of the
   ids; the first game otherwise. `author` is optional.
-- Up to 200 games. Names up to 60 characters.
+- Between 3 and 200 games. Names up to 60 characters. Nothing offensive in
+  the name, note or author; the check refuses it.
 
 Run `python3 tools/build_deck_index.py` before opening the pull request. It
 checks every file against the same rules the service applies and rewrites

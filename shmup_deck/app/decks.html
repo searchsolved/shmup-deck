@@ -54,7 +54,7 @@ nav a:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:2px}
   h1{font-size:28px}
 }
 
-.top{display:flex;gap:10px;align-items:center;margin:0 0 22px;max-width:520px}
+.top{display:flex;gap:10px;align-items:center;margin:0 0 16px;max-width:520px}
 .top input{
   flex:1;min-width:0;padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.25);
   color:var(--bone);font-family:inherit;font-size:15px;
@@ -148,17 +148,16 @@ footer{margin-top:40px;font-size:11px;letter-spacing:.18em;text-transform:upperc
   </nav>
 </header>
 
+<h2 style="margin-top:0">Your decks</h2>
 <div class="top"><input id="name" placeholder="New deck name" maxlength="60" aria-label="New deck name"><button id="create">Create</button></div>
-
-<h2>Mine</h2>
 <div class="grid" id="mine"></div>
 <p class="empty" id="none" hidden>Only Favourites so far. Name a deck above, then tap games on the wall to fill it. A deck is a list you choose and order yourself, kept on the MiSTer and shareable as a link.</p>
 
-<h2>Automatic</h2>
-<p class="chint">Made on the spot from what this MiSTer knows. Save one to keep and edit it.</p>
+<h2>Made for you</h2>
+<p class="chint">Built from what this MiSTer knows, fresh each day. Copy one to keep it as it is today and edit it.</p>
 <div class="grid" id="auto"></div>
 
-<h2>Community</h2>
+<h2>Shared by others</h2>
 <p class="chint" id="chint">Looking on GitHub&hellip;</p>
 <div class="grid" id="community"></div>
 
@@ -173,7 +172,7 @@ footer{margin-top:40px;font-size:11px;letter-spacing:.18em;text-transform:upperc
   <div class="foot"><button class="btn" id="esave">Save</button><button class="quiet" id="ecancel">Cancel</button></div>
 </div>
 
-<footer>A deck opens on the wall, where you add games, share it as a link, rename or delete it.</footer>
+<footer>A deck opens on the wall, where you add games and share it as a link. Share with everyone sends it to the shared list through GitHub; fill in the author line, then propose the change.</footer>
 </div>
 <script>
 const $ = s => document.querySelector(s);
@@ -199,14 +198,15 @@ function tile(d, mine, auto) {
   const here = d.ids.filter(isReady).length;
   const count = mine || auto ? `${d.ids.length} game${d.ids.length === 1 ? "" : "s"}`
     : `${d.ids.length} game${d.ids.length === 1 ? "" : "s"}` + (READY ? ` · ${here} ready here` : "");
-  a.innerHTML = `${mine ? `<a class="open" href="./?deck=${encodeURIComponent(d.id)}" style="display:block;color:inherit;text-decoration:none">` : "<div>"}
+  const open = mine ? `./?deck=${encodeURIComponent(d.id)}` : previewLink(d);
+  a.innerHTML = `<a class="open" href="${open}" style="display:block;color:inherit;text-decoration:none">
       ${strip(d)}
       <div class="body"><div class="name">${esc(d.name)}${d.builtin ? '<span class="builtin">built in</span>' : ""}</div>
       <div class="meta">${count}</div>${d.note ? `<div class="note">${esc(d.note)}</div>` : ""}${d.author ? `<div class="author">by ${esc(d.author)}</div>` : ""}</div>
-    ${mine ? "</a>" : "</div>"}
+    </a>
     <div class="body tools" style="padding-top:0">${mine
-      ? `<button class="edit">Edit</button>${d.builtin ? "" : `<button class="rename">Rename</button><button class="delete danger">Delete</button>`}`
-      : `<button class="save">Save here</button><button class="preview">Preview</button>`}</div>`;
+      ? `<button class="edit">Edit</button>${d.builtin ? "" : `<button class="rename">Rename</button><button class="publish">Share with everyone</button><button class="delete danger">Delete</button>`}`
+      : `<button class="save">Copy to your decks</button>`}</div>`;
   if (mine) {
     a.querySelector(".edit").addEventListener("click", () => openEdit(d));
     const rn = a.querySelector(".rename");
@@ -222,6 +222,8 @@ function tile(d, mine, auto) {
       const inp = name.querySelector("input"); inp.focus(); inp.select();
       inp.addEventListener("keydown", e => { if (e.key === "Enter") rn.click(); });
     });
+    const pub = a.querySelector(".publish");
+    if (pub) pub.addEventListener("click", () => { window.open(publishLink(d), "_blank"); });
     const del = a.querySelector(".delete");
     if (del) del.addEventListener("click", async () => {
       if (del.textContent !== "Really delete") { del.textContent = "Really delete"; setTimeout(() => { del.textContent = "Delete"; }, 3000); return; }
@@ -230,15 +232,11 @@ function tile(d, mine, auto) {
   } else {
     const sv = a.querySelector(".save");
     const saved = () => !auto && DECKS.some(x => x.name === d.name && x.ids.join() === d.ids.filter(i => GAMES[i]).join());
-    if (saved()) { sv.textContent = "Saved"; sv.classList.add("on"); sv.disabled = true; }
-    if (auto) a.querySelector(".preview").textContent = "Open";
+    if (saved()) { sv.textContent = "In your decks"; sv.classList.add("on"); sv.disabled = true; }
     sv.addEventListener("click", async () => {
       sv.disabled = true;
       const r = await post({ deck: { name: d.name, note: d.note || "", ids: d.ids, cover: d.cover || null } });
-      DECKS = r.decks; renderMine(); sv.textContent = "Saved"; sv.classList.add("on");
-    });
-    a.querySelector(".preview").addEventListener("click", () => {
-      location.href = `./?games=${d.ids.join(",")}&name=${encodeURIComponent(d.name)}` + (d.note ? `&note=${encodeURIComponent(d.note)}` : "") + (d.cover ? `&cover=${encodeURIComponent(d.cover)}` : "");
+      DECKS = r.decks; renderMine(); sv.textContent = "In your decks"; sv.classList.add("on");
     });
   }
   return a;
@@ -275,6 +273,15 @@ function autoDecks() {
 }
 function renderAuto() {
   $("#auto").replaceChildren(...autoDecks().map(d => tile(d, false, true)));
+}
+const previewLink = d => `./?games=${d.ids.join(",")}&name=${encodeURIComponent(d.name)}` + (d.note ? `&note=${encodeURIComponent(d.note)}` : "") + (d.cover ? `&cover=${encodeURIComponent(d.cover)}` : "");
+/* Sharing with everyone is a pull request to the repo's decks folder.
+   GitHub fills a new-file page from the address, so the deck arrives
+   ready to propose; a check on the repo validates it and the owner merges. */
+function publishLink(d) {
+  const slug = d.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40) || "deck";
+  const file = JSON.stringify({ name: d.name, note: d.note || "", ids: d.ids, cover: d.cover || null, author: "" }, null, 1) + "\n";
+  return `https://github.com/searchsolved/shmup-deck/new/main/decks?filename=${encodeURIComponent(slug + ".json")}&value=${encodeURIComponent(file)}`;
 }
 function renderMine() {
   $("#mine").replaceChildren(...DECKS.map(d => tile(d, true)));

@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Build decks/index.json, the list of shared decks the app shows.
 
-    python3 tools/build_deck_index.py
+    python3 tools/build_deck_index.py [--check]
+
+--check validates without writing, for a pull request whose author has
+not rebuilt the index.
 
 Every decks/<slug>.json is a deck someone has shared by pull request:
 
@@ -23,6 +26,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DECKS = ROOT / "decks"
 CAPS = {"name": 60, "note": 300, "ids": 200}
+MIN_GAMES = 3
+# words that fail a shared deck outright; the owner reads the rest
+BLOCKED = ("fuck", "shit", "cunt", "nigg", "fag", "retard", "nazi", "hitler", "rape", "porn")
 
 
 def main():
@@ -53,6 +59,11 @@ def main():
         if not isinstance(ids, list) or not ids:
             problems.append("ids must be a non-empty list")
             ids = []
+        if len(ids) < MIN_GAMES:
+            problems.append(f"a shared deck needs at least {MIN_GAMES} games")
+        text = (name + " " + str(d.get("note", "")) + " " + str(d.get("author", ""))).lower()
+        if any(w in text for w in BLOCKED):
+            problems.append("name, note or author contains a blocked word")
         unknown = [i for i in ids if i not in known]
         if unknown:
             problems.append("unknown ids: " + ", ".join(unknown))
@@ -73,8 +84,11 @@ def main():
         out.append({"slug": slug, "name": name, "note": str(d.get("note", "")), "ids": ids,
                     "cover": d.get("cover") or None, "author": str(d.get("author", ""))})
     out.sort(key=lambda d: d["name"].lower())
-    (DECKS / "index.json").write_text(json.dumps({"decks": out}, indent=1) + "\n")
-    print(f"decks/index.json: {len(out)} decks" + (f", {bad} rejected" if bad else ""))
+    if "--check" in sys.argv:
+        print(f"{len(out)} decks valid" + (f", {bad} rejected" if bad else ""))
+    else:
+        (DECKS / "index.json").write_text(json.dumps({"decks": out}, indent=1) + "\n")
+        print(f"decks/index.json: {len(out)} decks" + (f", {bad} rejected" if bad else ""))
     sys.exit(1 if bad else 0)
 
 
