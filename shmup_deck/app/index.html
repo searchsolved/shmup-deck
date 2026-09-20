@@ -514,7 +514,8 @@ footer a{color:inherit}
       <span class="conn" id="status"><span class="lamp" id="lamp"></span><span id="statusText">checking&hellip;</span></span></div>
   </div>
   <nav aria-label="Pages">
-    <a href="./" aria-current="page">Deck</a>
+    <a href="./" aria-current="page">Wall</a>
+    <a href="decks.html">Decks</a>
     <a href="stats.html">Stats</a>
     <a href="check.html">ROMs</a>
     <div class="settings">
@@ -527,7 +528,7 @@ footer a{color:inherit}
           <button class="tog" id="missingTog" role="switch" aria-checked="false"></button></div>
         <p class="hint">Greyed out, with what each one needs. Only games on cores Update All installs; a game on any other core appears once that core is on the card.</p>
         <h3>Decks</h3>
-        <p class="hint">Your own lists of games, kept on the MiSTer and shareable as a link. They live in the filter sheet, the button beside the search box.</p>
+        <p class="hint">Your own lists of games, kept on the MiSTer and shareable as a link. They have a page of their own: Decks, in the navigation.</p>
         <h3>Layout</h3>
         <div class="seg" role="group" aria-label="Layout">
           <button data-density="compact" aria-pressed="false">Compact</button>
@@ -619,16 +620,12 @@ footer a{color:inherit}
       <option value="none">No grouping</option>
       <option value="dev">By dev</option>
       <option value="system">By system</option>
+      <option value="decks">By deck</option>
     </select>
     <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
   </label>
 </div>
 
-<div class="deckrow" id="deckrow">
-  <span class="seglabel">Decks</span>
-  <div class="decks" id="decklist"></div>
-  <div class="newdeck"><input id="newdeck" placeholder="New deck name" maxlength="60" aria-label="New deck name"><button class="dk" id="newdeckBtn">Create</button></div>
-</div>
 <div class="deckbar" id="deckbar" hidden>
   <span class="dname" id="dname"></span><span class="dcount" id="dcount"></span>
   <input id="drename" hidden maxlength="60" aria-label="Deck name">
@@ -751,7 +748,10 @@ const LINK_NAME = new URLSearchParams(location.search).get("name") || "";
 /* Decks are named lists kept on the MiSTer. Viewing one shows its games in
    its order, like a ?games= link; adding to one turns card taps into
    membership toggles. */
-let DECKS = [], DECK = localStorage.getItem(LS.deck) || null, ADDING = false;
+const PARAMS = new URLSearchParams(location.search);
+let DECKS = [], DECK = PARAMS.get("deck") || localStorage.getItem(LS.deck) || null, ADDING = PARAMS.get("add") === "1";
+if (PARAMS.has("deck")) { localStorage.setItem(LS.deck, DECK); history.replaceState(null, "", location.pathname); }
+if (ADDING) document.body.classList.add("adding");
 const currentDeck = () => DECKS.find(d => d.id === DECK) || null;
 // what the wall is restricted to: the deck being viewed, else a ?games= link
 const picked = () => ADDING ? [] : DECK && currentDeck() ? currentDeck().ids : PICK;
@@ -900,7 +900,8 @@ function renderDeck() {
   const showAll = missingPref() === "show" && !!(CHECK || AVAIL);
   // a picked list keeps its own order, so it is never grouped
   const list = picked();
-  const groupBy = list.length ? null : { dev: "dev", system: "system" }[groupPref()];
+  const byDecks = !list.length && groupPref() === "decks" && DECKS.length > 0;
+  const groupBy = list.length || byDecks ? null : { dev: "dev", system: "system" }[groupPref()];
   const grouped = !!groupBy;
   const shown = list.length
     ? list.map(id => GAMES.find(g => g.id === id)).filter(g => g && (showAll && listed(g) || ready(g)) && matches(g, query))
@@ -923,6 +924,25 @@ function renderDeck() {
     h.classList.add("hero");
     h.insertAdjacentHTML("afterbegin", '<span class="ribbon">Now playing</span>');
     cards.unshift(h);
+  }
+  if (byDecks) {
+    // every deck as its own section, in the deck's order; games in no deck stay off the wall
+    const pool = new Set(shown.map(g => g.id));
+    cards.length = 0;
+    for (const d of DECKS) {
+      const gs = d.ids.map(id => GAMES.find(g => g.id === id)).filter(g => g && pool.has(g.id));
+      if (!gs.length) continue;
+      const dv = document.createElement("div");
+      dv.className = "divider";
+      dv.innerHTML = `<h2>${esc(d.name)}</h2><span>${gs.length} game${gs.length === 1 ? "" : "s"}</span>`;
+      cards.push(dv, ...gs.map(g => card(g, p[g.id] || 0)));
+    }
+    if (heroGame) {
+      const h = card(heroGame, p[heroGame.id] || 0);
+      h.classList.add("hero");
+      h.insertAdjacentHTML("afterbegin", '<span class="ribbon">Now playing</span>');
+      cards.unshift(h);
+    }
   }
   deck.replaceChildren(...cards);
   if (!shown.length) {
@@ -1074,7 +1094,7 @@ function openFilters(open) {
   if (open) { sheet.hidden = true; gear.setAttribute("aria-expanded", "false"); }
 }
 function placeFilters() {
-  const parts = [$(".filters"), $("#screenHint"), $(".grouprow"), $(".deckrow")];
+  const parts = [$(".filters"), $("#screenHint"), $(".grouprow")];
   if (PHONE.matches) { fsheet.append(...parts); $("#chips").after($("#now")); }
   else { deck.before(...parts); $(".searchrow").before($("#now")); openFilters(false); }
 }
@@ -1275,16 +1295,7 @@ function viewDeck(id) {
   renderDeckList(); renderDeck();
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
-function renderDeckList() {
-  const list = $("#decklist");
-  list.replaceChildren(...DECKS.map(d => {
-    const b = document.createElement("button");
-    b.className = "dk"; b.textContent = `${d.name} · ${d.ids.length}`;
-    b.setAttribute("aria-pressed", String(d.id === DECK));
-    b.addEventListener("click", () => viewDeck(d.id === DECK ? null : d.id));
-    return b;
-  }));
-}
+function renderDeckList() { /* the Decks page lists them */ }
 function renderDeckBar(n) {
   const d = currentDeck();
   $("#deckbar").hidden = !d;
@@ -1306,15 +1317,6 @@ async function toggleInDeck(gid) {
   await saveDeck({ ...d, ids });
   renderDeck();
 }
-$("#newdeckBtn").addEventListener("click", async () => {
-  const name = $("#newdeck").value.trim();
-  if (!name) return $("#newdeck").focus();
-  $("#newdeck").value = "";
-  const saved = await saveDeck({ name, ids: showPref() === "favourites" ? [...FAVS] : [] });
-  viewDeck(saved.id);
-  ADDING = !saved.ids.length; document.body.classList.toggle("adding", ADDING); renderDeck();
-});
-$("#newdeck").addEventListener("keydown", e => { if (e.key === "Enter") $("#newdeckBtn").click(); });
 $("#dadd").addEventListener("click", () => { ADDING = !ADDING; document.body.classList.toggle("adding", ADDING); renderDeck(); });
 $("#dclose").addEventListener("click", () => viewDeck(null));
 $("#ddelete").addEventListener("click", async () => {

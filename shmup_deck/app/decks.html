@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shmup Deck Decks</title>
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<style>
+:root{
+  --pit:#07100B;
+  --felt:#0C1A12;
+  --line:#1d3326;
+  --emerald:#2FAE6E;
+  --emerald-hot:#54E29A;
+  --gold:#D8B54A;
+  --bone:#E9E4D2;
+  --ash:#7d8a80;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--pit)}
+body{
+  background:radial-gradient(120% 70% at 50% -10%, #12291b 0%, var(--pit) 60%), var(--pit);
+  color:var(--bone);
+  font-family:"Avenir Next", Avenir, "Helvetica Neue", sans-serif;
+  min-height:100vh;
+  padding:max(20px, env(safe-area-inset-top)) 20px 48px;
+}
+a{color:var(--gold)}
+.wrap{max-width:1080px;margin:0 auto}
+header{margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+h1{
+  font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;
+  font-weight:800;font-size:clamp(34px,6vw,54px);
+  letter-spacing:.04em;text-transform:uppercase;line-height:.95;
+  color:var(--bone);
+}
+h1 em{font-style:normal;color:var(--emerald-hot)}
+h1 a{color:inherit;text-decoration:none}
+h1 a:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:4px;border-radius:4px}
+nav{margin-left:auto;display:flex;align-items:center;gap:6px}
+nav a{display:inline-flex;padding:12px 24px;border-radius:999px;color:var(--ash);text-decoration:none;font-size:14px;letter-spacing:.12em;text-transform:uppercase}
+nav a:hover{color:var(--bone)}
+nav a[aria-current="page"]{background:var(--gold);color:#231c07}
+nav a:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:2px}
+.strapline{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--ash)}
+@media (max-width: 560px){
+  body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+  header{padding-bottom:0;border-bottom:0}
+  nav{position:fixed;left:0;right:0;bottom:0;z-index:5;margin:0;gap:0;padding:6px 8px max(6px,env(safe-area-inset-bottom));background:rgba(7,16,11,.96);border-top:1px solid var(--line);backdrop-filter:blur(10px)}
+  nav a{flex:1;justify-content:center;padding:10px 4px;border-radius:8px;font-size:13px;letter-spacing:.02em;text-transform:none}
+  nav a[aria-current="page"]{background:transparent;color:var(--gold)}
+  h1{font-size:28px}
+}
+
+.top{display:flex;gap:10px;align-items:center;margin:0 0 22px;max-width:520px}
+.top input{
+  flex:1;min-width:0;padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.25);
+  color:var(--bone);font-family:inherit;font-size:15px;
+}
+.top input:focus{outline:2px solid var(--emerald);outline-offset:1px}
+.top button{
+  padding:12px 18px;border-radius:999px;border:1px solid var(--gold);background:transparent;color:var(--gold);
+  font-family:inherit;font-size:13px;cursor:pointer;white-space:nowrap;
+}
+.top button:hover{background:var(--gold);color:#231c07}
+h2{font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;font-weight:800;font-size:24px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:30px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.card{
+  display:block;text-decoration:none;color:var(--bone);border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.25);
+  overflow:hidden;transition:transform .2s,border-color .2s;
+}
+.card:hover{transform:translateY(-3px);border-color:var(--gold)}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);height:120px;background:#0b1811}
+.strip div{background:center/cover no-repeat #13241a;border-right:1px solid rgba(0,0,0,.4)}
+.strip div:last-child{border-right:0}
+.card .body{padding:12px 14px 14px}
+.card .name{font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;font-weight:700;font-size:21px;letter-spacing:.04em;text-transform:uppercase;line-height:1.1}
+.card .meta{font-size:12px;color:var(--ash);margin-top:4px}
+.empty{color:var(--ash);font-size:14px;line-height:1.6;max-width:520px}
+footer{margin-top:40px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#44523f;line-height:1.8}
+@media (max-width: 560px){ .grid{grid-template-columns:1fr 1fr;gap:10px} .strip{height:90px} .card .name{font-size:17px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="brand"><h1><a href="./" id="home">Shmup <em>Deck</em></a></h1>
+  <div class="strapline">MiSTer FPGA &middot; your decks</div></div>
+  <nav aria-label="Pages">
+    <a href="./">Wall</a>
+    <a href="decks.html" aria-current="page">Decks</a>
+    <a href="stats.html">Stats</a>
+    <a href="check.html">ROMs</a>
+  </nav>
+</header>
+
+<div class="top"><input id="name" placeholder="New deck name" maxlength="60" aria-label="New deck name"><button id="create">Create</button></div>
+
+<div class="grid" id="mine"></div>
+<p class="empty" id="none" hidden>No decks yet. Name one above, then tap games on the wall to fill it. A deck is a list you choose and order yourself, kept on the MiSTer and shareable as a link.</p>
+
+<footer>A deck opens on the wall, where you add games, share it as a link, rename or delete it.</footer>
+</div>
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+let GAMES = {}, ART = {};
+const artId = g => (g && g.art) || (g && g.id);
+function render(decks) {
+  const grid = $("#mine");
+  $("#none").hidden = decks.length > 0;
+  grid.replaceChildren(...decks.map(d => {
+    const a = document.createElement("a");
+    a.className = "card"; a.href = `./?deck=${encodeURIComponent(d.id)}`;
+    const cells = d.ids.slice(0, 4).map(id => GAMES[id] && ART[artId(GAMES[id])] ? `<div style="background-image:url('art/${artId(GAMES[id])}')"></div>` : "<div></div>");
+    while (cells.length < 4) cells.push("<div></div>");
+    a.innerHTML = `<div class="strip">${cells.join("")}</div><div class="body"><div class="name">${esc(d.name)}</div><div class="meta">${d.ids.length} game${d.ids.length === 1 ? "" : "s"}</div></div>`;
+    return a;
+  }));
+}
+async function load() {
+  const [games, art, decks] = await Promise.all([
+    fetch("games.json").then(r => r.json()),
+    fetch("art.json").then(r => r.json()).catch(() => ({})),
+    fetch("api/decks", { cache: "no-store" }).then(r => r.ok ? r.json() : { decks: [] }).catch(() => ({ decks: [] }))
+  ]);
+  GAMES = Object.fromEntries(games.map(g => [g.id, g])); ART = art;
+  render(decks.decks);
+}
+$("#create").addEventListener("click", async () => {
+  const name = $("#name").value.trim();
+  if (!name) return $("#name").focus();
+  const r = await fetch("api/decks", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ deck: { name, ids: [] } }) });
+  const d = await r.json();
+  location.href = `./?deck=${encodeURIComponent(d.saved.id)}&add=1`;
+});
+$("#name").addEventListener("keydown", e => { if (e.key === "Enter") $("#create").click(); });
+load();
+</script>
+</body>
+</html>
