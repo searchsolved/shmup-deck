@@ -18,7 +18,6 @@ digits and dashes. Exit status 1 on any problem, so it can gate a merge.
 import json
 import re
 import sys
-from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -74,7 +73,7 @@ def main():
         out.append({"slug": slug, "name": name, "note": str(d.get("note", "")), "ids": ids,
                     "cover": d.get("cover") or None, "author": str(d.get("author", ""))})
     out.sort(key=lambda d: d["name"].lower())
-    (DECKS / "index.json").write_text(json.dumps({"built": date.today().isoformat(), "decks": out}, indent=1) + "\n")
+    (DECKS / "index.json").write_text(json.dumps({"decks": out}, indent=1) + "\n")
     print(f"decks/index.json: {len(out)} decks" + (f", {bad} rejected" if bad else ""))
     sys.exit(1 if bad else 0)
 

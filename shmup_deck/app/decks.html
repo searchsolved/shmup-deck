@@ -79,7 +79,7 @@ h2{font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;font-weight:800
 .card .name{font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;font-weight:700;font-size:21px;letter-spacing:.04em;text-transform:uppercase;line-height:1.1}
 .card .meta{font-size:12px;color:var(--ash);margin-top:4px}
 .card .note{font-size:12.5px;color:var(--ash);margin-top:6px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.card .builtin{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-left:8px}
+.card .builtin{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-left:8px;white-space:nowrap}
 .card .author{font-size:11px;color:var(--ash);margin-top:6px}
 .card .tools button.on{color:var(--gold);text-decoration:none;border:1px solid var(--gold);border-radius:999px;padding:3px 10px}
 .chint{font-size:13px;color:var(--ash);margin:-4px 0 14px;line-height:1.5}
@@ -125,7 +125,7 @@ h2{font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;font-weight:800
   .sheet{left:12px;right:12px;bottom:calc(64px + max(6px,env(safe-area-inset-bottom)));top:auto;transform:none;width:auto;max-height:calc(100vh - 100px)}
   .row .grip{display:none}
 }
-.card .tools{display:flex;gap:12px;margin-top:10px}
+.card .tools{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap}
 .card .tools button{background:none;border:0;padding:0;color:var(--ash);font-family:inherit;font-size:12px;text-decoration:underline;cursor:pointer}
 .card .tools button:hover{color:var(--bone)}
 .card .tools button.danger:hover{color:#e0604f}
@@ -202,7 +202,7 @@ function tile(d, mine) {
     ${mine ? "</a>" : "</div>"}
     <div class="body tools" style="padding-top:0">${mine
       ? `<button class="edit">Edit</button>${d.builtin ? "" : `<button class="rename">Rename</button><button class="delete danger">Delete</button>`}`
-      : `<button class="save">Save to the MiSTer</button><button class="preview">Preview</button>`}</div>`;
+      : `<button class="save">Save here</button><button class="preview">Preview</button>`}</div>`;
   if (mine) {
     a.querySelector(".edit").addEventListener("click", () => openEdit(d));
     const rn = a.querySelector(".rename");
