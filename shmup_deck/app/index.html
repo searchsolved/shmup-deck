@@ -280,6 +280,10 @@ body.compact .plate .vers{display:none}
 .vsheet .v .path{display:block;font-size:11px;color:var(--ash);margin-top:2px}
 .vsheet .forget{margin-top:10px;background:none;border:0;color:var(--ash);font-family:inherit;font-size:12px;cursor:pointer;text-decoration:underline}
 .vsheet .forget[hidden]{display:none}
+/* behind the version picker: dims the wall and takes the tap that closes it,
+   so that tap never lands on another card */
+.scrim{position:fixed;inset:0;z-index:7;background:rgba(7,16,11,.6)}
+.scrim[hidden]{display:none}
 .krow{display:flex;align-items:center;gap:16px;margin-top:14px}
 .kdeck{max-width:55%;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--bone);font-family:inherit;font-size:13px}
 /* decks: named lists kept on the MiSTer */
@@ -572,11 +576,13 @@ footer a{color:inherit}
   <div class="switch" style="margin-top:10px"><span>Show</span><select id="kioskDeck2" class="kdeck" aria-label="What kiosk mode shows"><option value="">Whole wall</option></select></div>
   <div class="krow"><button class="btn" id="kstart">Start kiosk</button><button class="forget" id="knot">Not now</button></div>
 </div>
+<div class="scrim" id="vscrim" hidden></div>
 <div class="sheet vsheet" id="vsheet" hidden>
   <h3 id="vtitle">Versions</h3>
   <p class="hint">The version the cab launches for this game. It is remembered on the MiSTer.</p>
   <div class="vlist" id="vlist"></div>
   <button class="forget" id="vforget" hidden>Forget the choice, launch the first again</button>
+  <div class="krow"><button class="btn" id="vcancel">Cancel</button></div>
 </div>
 <div class="filters">
   <p class="count"><span id="count"></span></p>
@@ -1367,7 +1373,8 @@ $("#lsave").addEventListener("click", async () => {
 /* Several MRAs of one game can be on the card: regional sets, arrange
    versions, patched releases. The service lists them, the pick is kept on
    the MiSTer, and the card launches that version from then on. */
-const vsheet = $("#vsheet");
+const vsheet = $("#vsheet"), vscrim = $("#vscrim");
+const closeVersions = () => { vsheet.hidden = true; vscrim.hidden = true; };
 let VGAME = null, VCARD = null;
 async function openVersions(g, card) {
   VGAME = g; VCARD = card;
@@ -1375,7 +1382,7 @@ async function openVersions(g, card) {
   $("#vtitle").textContent = `Versions of ${g.title}`;
   $("#vlist").innerHTML = `<p class="hint">Looking…</p>`;
   openSettings(false); openFilters(false);
-  vsheet.hidden = false;
+  vsheet.hidden = false; vscrim.hidden = false;
   try {
     const d = await (await fetch(`api/versions?id=${encodeURIComponent(g.id)}`, { cache: "no-store" })).json();
     const list = $("#vlist");
@@ -1386,7 +1393,7 @@ async function openVersions(g, card) {
       b.innerHTML = `<span class="tick">${on ? "&#10003;" : ""}</span><span>${esc(v.name)}<span class="path">${esc(v.set)}${v.region ? " · " + (REGION_NAMES[v.region] || v.region) : ""}${!d.chosen && i === 0 ? " · default" : ""}</span></span>`;
       b.addEventListener("click", async () => {
         try { await fetch("api/version", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: g.id, set: v.set }) }); } catch {}
-        vsheet.hidden = true;
+        closeVersions();
         launch(g, card, v.set);
       });
       return b;
@@ -1401,8 +1408,10 @@ $("#vforget").addEventListener("click", async () => {
   try { await fetch("api/version", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: VGAME.id, set: null }) }); } catch {}
   openVersions(VGAME, VCARD);
 });
-document.addEventListener("click", e => { if (!vsheet.hidden && !e.target.closest("#vsheet, .vers")) vsheet.hidden = true; });
-document.addEventListener("keydown", e => { if (e.key === "Escape") vsheet.hidden = true; });
+$("#vcancel").addEventListener("click", closeVersions);
+vscrim.addEventListener("click", closeVersions);
+document.addEventListener("click", e => { if (!vsheet.hidden && !e.target.closest("#vsheet, .vers")) closeVersions(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeVersions(); });
 
 /* ── the takeover ── */
 let nowShown = null, nowDismissed = null, nowPending = null, slowTimer = null;
