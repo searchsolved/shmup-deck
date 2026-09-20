@@ -118,6 +118,9 @@ h1 a:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:4px;borde
 }
 .seg button[aria-pressed="true"]{background:var(--gold);color:#231c07}
 .seg button:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:-2px}
+/* inside a sheet the pill spans the sheet, so the choices share it evenly */
+.sheet .seg{justify-content:stretch}
+.sheet .seg button{flex:1;padding:9px 6px}
 /* settings: set once, remembered on this device */
 .settings{position:relative}
 .sheet{
