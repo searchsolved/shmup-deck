@@ -525,9 +525,9 @@ footer a{color:inherit}
         <h3>Games</h3>
         <div class="switch"><span>Show games this MiSTer can't run yet</span>
           <button class="tog" id="missingTog" role="switch" aria-checked="false"></button></div>
-        <p class="hint">Shown greyed out, with what each one needs. Only games on cores that Update All installs; a game on any other core appears once that core is on the SD card.</p>
+        <p class="hint">Shows unavailable games greyed out, with what's missing. Only covers cores installed by Update All. Games on other cores appear once the core is installed.</p>
         <h3>Decks</h3>
-        <p class="hint">Your own lists of games, kept on the MiSTer and shareable as a link. Find them under Decks.</p>
+        <p class="hint">Create your own game lists, saved on your MiSTer and shareable as a link. Manage them on the Decks page.</p>
         <h3>Layout</h3>
         <div class="seg" role="group" aria-label="Layout">
           <button data-density="compact" aria-pressed="false">Compact</button>
@@ -537,17 +537,17 @@ footer a{color:inherit}
         <div id="homeTip" hidden>
           <h3>Home screen</h3>
           <p class="hint ask" id="homeHow"></p>
-          <p class="hint">Opens full screen with its own icon and no browser bar, and keeps pointing at this MiSTer.</p>
+          <p class="hint">Adds an app icon and opens full screen without the browser bar.</p>
         </div>
         <h3>Kiosk</h3>
         <div class="switch"><span>Kiosk mode</span>
           <button class="tog" id="kioskTog" role="switch" aria-checked="false"></button></div>
-        <p class="hint">Just the wall, full screen, kept awake. Flyers drift by when nobody touches it. To leave, hold the top left corner for two seconds.</p>
+        <p class="hint">Full-screen display with the screen kept awake. Shows a flyer slideshow when idle. To exit, press and hold the top left corner for two seconds.</p>
         <div class="switch"><span>Kiosk shows</span>
           <select id="kioskDeck" class="kdeck" aria-label="What kiosk mode shows"><option value="">Whole wall</option></select></div>
         <div class="switch"><span>Marquee while playing</span>
           <button class="tog" id="marqueeTog" role="switch" aria-checked="true"></button></div>
-        <p class="hint">The running game's flyer stays up while it runs. The flyers only drift by on the menu.</p>
+        <p class="hint">Keeps the current game's flyer on screen while it's running. The slideshow only plays on the menu.</p>
         <h3>Software</h3>
         <div class="switch"><span>Shmup Deck <span id="verNow"></span></span>
           <button class="btn" id="updBtn" hidden>Check for updates</button></div>
@@ -570,40 +570,40 @@ footer a{color:inherit}
   </button>
 </div>
 <div class="chips" id="chips" aria-label="Active filters"></div>
-<p class="hint ask" id="versHint" hidden>Cards marked &ldquo;4 sets&rdquo; hold several versions of the game. Tap the mark, or hold the card, to choose which one launches.</p>
+<p class="hint ask" id="versHint" hidden>Cards marked &ldquo;4 sets&rdquo; have more than one version available. Tap the label, or press and hold the card, to choose which one to launch.</p>
 <div class="sheet fsheet" id="fsheet" hidden></div>
 <div class="sheet vsheet" id="ksheet" hidden>
   <h3>Kiosk mode</h3>
-  <p class="hint">Just the wall, full screen, kept awake. After a minute untouched the flyers drift by; a tap brings the wall back.</p>
-  <p class="hint ask">To leave, hold the top left corner of the screen for two seconds. The corner glows while you hold.</p>
+  <p class="hint">Full-screen display with the screen kept awake. After a minute of inactivity a flyer slideshow starts. Tap to return to the wall.</p>
+  <p class="hint ask">To exit, press and hold the top left corner of the screen for two seconds.</p>
   <div class="switch" style="margin-top:10px"><span>Show</span><select id="kioskDeck2" class="kdeck" aria-label="What kiosk mode shows"><option value="">Whole wall</option></select></div>
   <div class="krow"><button class="btn" id="kstart">Start kiosk</button><button class="forget" id="knot">Not now</button></div>
 </div>
 <div class="scrim" id="vscrim" hidden></div>
 <div class="sheet vsheet" id="vsheet" hidden>
   <h3 id="vtitle">Versions</h3>
-  <p class="hint">Which version this card launches. The choice is kept on the MiSTer.</p>
+  <p class="hint">Choose which version to launch. Your choice is saved on the MiSTer.</p>
   <div class="vlist" id="vlist"></div>
-  <button class="forget" id="vforget" hidden>Forget the choice and go back to the first</button>
+  <button class="forget" id="vforget" hidden>Reset to default</button>
   <div class="krow"><button class="btn" id="vcancel">Cancel</button></div>
 </div>
 <div class="filters">
   <p class="count"><span id="count"></span></p>
   <div class="segs">
     <span class="seglabel">Screen</span>
-    <div class="seg" id="screenCtl" role="group" aria-label="Screen orientation" title="Which way the monitor is fitted; remembered on this device">
+    <div class="seg" id="screenCtl" role="group" aria-label="Screen orientation" title="Monitor orientation. Saved on this device">
       <button data-screen="all" aria-pressed="true">All</button>
       <button data-screen="tate" aria-pressed="false">Tate</button>
       <button data-screen="yoko" aria-pressed="false">Yoko</button>
     </div>
     <span class="seglabel">Rotation</span>
-    <div class="seg" id="rotCtl" role="group" aria-label="Tate rotation" title="Which way the monitor is turned; a tate game turned the other way needs the core's flip option">
+    <div class="seg" id="rotCtl" role="group" aria-label="Tate rotation" title="Rotation direction of the monitor. Games rotated the other way need the core's flip option">
       <button data-rot="all" aria-pressed="true">Either</button>
       <button data-rot="ccw" aria-pressed="false" title="Anticlockwise, MAME ROT270: Cave, Raiden, Psikyo, Toaplan">&#8634; Anti</button>
       <button data-rot="cw" aria-pressed="false" title="Clockwise, MAME ROT90: most Konami and Namco">&#8635; Clock</button>
     </div>
     <span class="seglabel">Region</span>
-    <div class="seg" id="regionCtl" role="group" aria-label="Region" title="Games with a set from this region; the card launches that set. Kept on the MiSTer">
+    <div class="seg" id="regionCtl" role="group" aria-label="Region" title="Show games with a version from this region and launch that version. Saved on the MiSTer">
       <button data-region="any" aria-pressed="true">Any</button>
       <button data-region="japan" aria-pressed="false">Japan</button>
       <button data-region="world" aria-pressed="false">World</button>
@@ -614,7 +614,7 @@ footer a{color:inherit}
     <span class="seglabel">Show</span>
     <div class="seg" role="group" aria-label="Show">
       <button data-show="all" aria-pressed="true">All</button>
-      <button data-show="played" aria-pressed="false" title="Games that have been played on this MiSTer">Played</button>
+      <button data-show="played" aria-pressed="false" title="Games played on this MiSTer">Played</button>
     </div>
     <span class="seglabel">Sort</span>
     <div class="seg" role="group" aria-label="Sort order">
@@ -624,7 +624,7 @@ footer a{color:inherit}
     </div>
   </div>
 </div>
-<p class="hint" id="screenHint" hidden>Which way is your monitor fitted? Choose once; the deck remembers.</p>
+<p class="hint" id="screenHint" hidden>Select your monitor orientation. Your choice is saved on this device.</p>
 <div class="grouprow">
   <label class="dropdown" title="Group the wall by developer or arcade system">
     <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>
@@ -669,8 +669,8 @@ footer a{color:inherit}
   <div class="caption"><span class="title" id="attractTitle"></span><span class="meta" id="attractMeta"></span></div>
 </div>
 
-<footer>tap a card to launch &middot; only games this MiSTer can run are shown, unless you switch on missing games in Settings<br>
-flyer art is downloaded from public archives and belongs to its copyright holders</footer>
+<footer>tap a card to launch &middot; only games available on this MiSTer are shown; enable missing games in Settings to see the rest<br>
+flyer artwork is downloaded from public archives and remains the property of its copyright holders</footer>
 
 <script>
 /* The deck is defined in games.json: each entry names its MiSTer core, the
