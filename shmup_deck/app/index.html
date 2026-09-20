@@ -611,6 +611,15 @@ footer a{color:inherit}
       <button data-rot="ccw" aria-pressed="false" title="Anticlockwise, MAME ROT270: Cave, Raiden, Psikyo, Toaplan">&#8634; Anti</button>
       <button data-rot="cw" aria-pressed="false" title="Clockwise, MAME ROT90: most Konami and Namco">&#8635; Clock</button>
     </div>
+    <span class="seglabel">Region</span>
+    <div class="seg" id="regionCtl" role="group" aria-label="Region" title="Games with a set from this region; the card launches that set. Kept on the MiSTer">
+      <button data-region="any" aria-pressed="true">Any</button>
+      <button data-region="japan" aria-pressed="false">Japan</button>
+      <button data-region="world" aria-pressed="false">World</button>
+      <button data-region="usa" aria-pressed="false">USA</button>
+      <button data-region="europe" aria-pressed="false">Europe</button>
+      <button data-region="asia" aria-pressed="false">Asia</button>
+    </div>
     <span class="seglabel">Show</span>
     <div class="seg" role="group" aria-label="Show">
       <button data-show="all" aria-pressed="true">All</button>
@@ -704,6 +713,23 @@ const showPref = () => localStorage.getItem(LS.show) || "all";
 const groupPref = () => localStorage.getItem(LS.group) || "none";
 // which way a tate monitor is turned; MAME calls them ROT90 and ROT270
 const rotPref = () => localStorage.getItem(LS.rot) || "all";
+/* The region is the cab's, not the phone's: the MiSTer launches the set
+   from it, so it lives there and every phone sees the same choice. */
+let REGION = "any";
+const REGION_NAMES = { japan: "Japan", world: "World", usa: "USA", europe: "Europe", asia: "Asia" };
+async function loadSettings() {
+  try { const r = await fetch("api/settings", { cache: "no-store" }); if (r.ok) REGION = (await r.json()).region || "any"; } catch {}
+}
+async function setRegion(region) {
+  REGION = region;
+  try {
+    const r = await fetch("api/settings", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ region }) });
+    if (r.ok) REGION = (await r.json()).region || "any";
+  } catch {}
+  renderDeck();
+}
+// a game whose sets say nothing about a region has nothing to choose between, so it stays
+const hasRegion = g => REGION === "any" || !CHECK || !CHECK[g.id] || !(CHECK[g.id].regions || []).length || CHECK[g.id].regions.includes(REGION);
 const missingPref = () => localStorage.getItem(LS.missing) || "hide";
 const densityPref = () => localStorage.getItem(LS.density) || "comfortable";
 
@@ -936,6 +962,7 @@ function renderDeck() {
       .filter(g => (showAll && listed(g) || ready(g)) && (want === "all" || g.orientation === want) && matches(g, query))
       // rotation only means anything on a turned monitor, so yoko games always pass
       .filter(g => rot === "all" || g.orientation !== "tate" || g.rotation === rot)
+      .filter(hasRegion)
       .filter(g => show === "all" || (show === "played" ? p[g.id] : FAVS.has(g.id)));
   const label = grouped ? groupLabels(shown, groupBy) : null;
   if (!list.length) shown.sort(grouped
@@ -992,7 +1019,7 @@ function renderDeck() {
   for (const b of document.querySelectorAll(".seg button"))
     b.setAttribute("aria-pressed",
       String(b.dataset.screen === want || b.dataset.sort === order || b.dataset.show === show ||
-             b.dataset.density === densityPref() || b.dataset.rot === rot));
+             b.dataset.density === densityPref() || b.dataset.rot === rot || b.dataset.region === REGION));
   $("#group").value = groupPref();
   $("#group").closest(".dropdown").classList.toggle("on", groupPref() !== "none");
   $("#missingTog").setAttribute("aria-checked", String(missingPref() === "show"));
@@ -1011,6 +1038,7 @@ function renderChips(want, show, order, rot) {
   const chips = [];
   if (want !== "all") chips.push([LS.screen, want === "tate" ? "Tate" : "Yoko"]);
   if (rot !== "all") chips.push([LS.rot, rot === "cw" ? "Clockwise" : "Anticlockwise"]);
+  if (REGION !== "any") chips.push(["region", REGION_NAMES[REGION] || REGION]);
   if (currentDeck()) chips.push([LS.deck, `Deck: ${currentDeck().name}`]);
   if (show !== "all") chips.push([LS.show, show === "favourites" ? "Faves" : "Played"]);
   if (order !== "az") chips.push([LS.sort, order === "year" ? "By year" : "By plays"]);
@@ -1019,7 +1047,7 @@ function renderChips(want, show, order, rot) {
     const c = document.createElement("button");
     c.className = "chip"; c.innerHTML = `${esc(text)} <b>&times;</b>`;
     c.setAttribute("aria-label", `Remove ${text}`);
-    c.addEventListener("click", () => { if (key === LS.deck) return viewDeck(null); localStorage.setItem(key, DEFAULTS[key]); renderDeck(); });
+    c.addEventListener("click", () => { if (key === LS.deck) return viewDeck(null); if (key === "region") return setRegion("any"); localStorage.setItem(key, DEFAULTS[key]); renderDeck(); });
     return c;
   }));
   $("#filterBtn").classList.toggle("on", chips.length > 0);
@@ -1057,6 +1085,7 @@ function withDividers(games, p, label) {
 
 for (const b of document.querySelectorAll(".seg button")) {
   b.addEventListener("click", () => {
+    if (b.dataset.region) return setRegion(b.dataset.region);
     const [key, value] = b.dataset.sort ? [LS.sort, b.dataset.sort]
       : b.dataset.show ? [LS.show, b.dataset.show]
       // grouping buttons act like radio buttons that can also be switched off
@@ -1419,7 +1448,7 @@ async function openVersions(g, card) {
       const b = document.createElement("button");
       b.className = "v";
       const on = d.chosen ? v.set === d.chosen : i === 0;
-      b.innerHTML = `<span class="tick">${on ? "&#10003;" : ""}</span><span>${esc(v.name)}<span class="path">${esc(v.set)}${!d.chosen && i === 0 ? " · default" : ""}</span></span>`;
+      b.innerHTML = `<span class="tick">${on ? "&#10003;" : ""}</span><span>${esc(v.name)}<span class="path">${esc(v.set)}${v.region ? " · " + (REGION_NAMES[v.region] || v.region) : ""}${!d.chosen && i === 0 ? " · default" : ""}</span></span>`;
       b.addEventListener("click", async () => {
         try { await fetch("api/version", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: g.id, set: v.set }) }); } catch {}
         vsheet.hidden = true;
@@ -1594,6 +1623,7 @@ Promise.all([
   renderDeck(); ping(); loadChecklist();
   loadStats().then(renderDeck);
   loadDecks().then(renderDeck);
+  loadSettings().then(renderDeck);
   setInterval(ping, 5000);
 }).catch(() => { deck.innerHTML = `<p class="empty">Could not load games.json.</p>`; });
 </script>

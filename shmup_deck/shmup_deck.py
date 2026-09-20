@@ -50,6 +50,7 @@ PLAYS = os.environ.get("SHMUP_PLAYS", os.path.join(HERE, "plays.json"))
 FAVS = os.environ.get("SHMUP_FAVS", os.path.join(HERE, "favourites.json"))   # pre-1.9; read once, then renamed
 VERSIONS_FILE = os.environ.get("SHMUP_VERSIONS", os.path.join(HERE, "versions.json"))
 DECKS_FILE = os.environ.get("SHMUP_DECKS", os.path.join(HERE, "decks.json"))
+SETTINGS_FILE = os.environ.get("SHMUP_SETTINGS", os.path.join(HERE, "settings.json"))
 
 VERSION = "1.9.0"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
@@ -624,6 +625,67 @@ class Decks:
 DECKS = Decks()
 
 
+# Where a set is from, read from the MRA's name the way MAME words it:
+# "Raiden II (US, set 1)", "Ketsui (Japan)". A name that says nothing is
+# left without a region rather than guessed.
+REGIONS = {
+    "japan": ("japan",),
+    "world": ("world",),
+    "usa": ("usa", "us", "north america", "america"),
+    "europe": ("europe", "euro", "germany", "italy", "spain", "france", "uk", "great britain", "holland",
+               "netherlands", "switzerland", "portugal", "greece", "austria", "sweden", "denmark"),
+    "asia": ("asia", "korea", "hong kong", "taiwan", "china", "australia"),
+}
+REGION_WORDS = {w: r for r, ws in REGIONS.items() for w in ws}
+REGION_CHOICES = ("any",) + tuple(REGIONS)
+
+
+def region_of(name):
+    for group in re.findall(r"\(([^)]*)\)", name):
+        for part in group.split(","):
+            words = part.strip().lower()
+            # "US", "Hong Kong, set 2", "USA 010117": the region leads the part
+            for n in (3, 2, 1):
+                key = " ".join(words.split()[:n])
+                if key in REGION_WORDS:
+                    return REGION_WORDS[key]
+    return None
+
+
+class Settings:
+    """Cab-wide choices that the launch side must know, so they live here
+    rather than in a browser: for now, the region to prefer."""
+
+    def __init__(self):
+        self.lock = threading.Lock()
+        self.data = {}
+        try:
+            with open(SETTINGS_FILE) as f:
+                self.data = {k: v for k, v in json.load(f).items() if isinstance(v, str)}
+        except (OSError, ValueError, AttributeError):
+            pass
+
+    def get(self):
+        with self.lock:
+            return {"region": self.data.get("region", "any")}
+
+    def set(self, **kw):
+        with self.lock:
+            for k, v in kw.items():
+                if v is None or v == "any":
+                    self.data.pop(k, None)
+                else:
+                    self.data[k] = v
+            tmp = SETTINGS_FILE + ".tmp"
+            with open(tmp, "w") as f:
+                json.dump(self.data, f)
+            os.replace(tmp, SETTINGS_FILE)
+            return {"region": self.data.get("region", "any")}     # not get(): the lock is held
+
+
+SETTINGS = Settings()
+
+
 def versions_of(game):
     """Every version of a game on this MiSTer: one per set name of the card
     that has an MRA, in the card's order, named after the MRA file."""
@@ -634,7 +696,8 @@ def versions_of(game):
         for s in game.get("setnames", [game["id"]]):
             path = INDEX.best.get(s)
             if path:
-                out.append({"set": s, "path": path, "name": os.path.splitext(os.path.basename(path))[0]})
+                name = os.path.splitext(os.path.basename(path))[0]
+                out.append({"set": s, "path": path, "name": name, "region": region_of(name)})
     return out
 
 
@@ -907,6 +970,7 @@ def checklist():
                 entry["missing"] = [g.get("roms", {}).get("zip", g["id"])]
             entry["state"] = "ready" if entry["mra"] else "roms"
             entry["listed"] = True
+            entry["versions"], entry["regions"] = 1 if entry["mra"] else 0, []
             out.append(entry)
             continue
         path = INDEX.resolve(g.get("setnames", [g["id"]]))
@@ -925,7 +989,9 @@ def checklist():
         entry["state"] = ("mra" if not path else "core" if not entry["core"]
                           else "roms" if entry["missing"] else "ready")
         entry["listed"] = entry["state"] == "ready" or core_is_standard(g.get("rbf", ""))
-        entry["versions"] = len(versions_of(g))
+        vs = versions_of(g)
+        entry["versions"] = len(vs)
+        entry["regions"] = sorted({v["region"] for v in vs if v["region"]})
         out.append(entry)
     return out
 
@@ -959,8 +1025,13 @@ def launch(game, setname=None):
         return os.path.join(root, rel)
     # a version picked for this launch, else the one remembered for the game,
     # else the first set on the card
-    found = {v["set"]: v["path"] for v in versions_of(game)}
-    path = found.get(setname) or found.get(VERSIONS.get(game["id"])) or INDEX.resolve(game.get("setnames", [game["id"]]))
+    versions = versions_of(game)
+    found = {v["set"]: v["path"] for v in versions}
+    region = SETTINGS.get()["region"]
+    by_region = next((v["path"] for v in versions if v["region"] == region), None) if region != "any" else None
+    # this launch's set, else the one remembered for the game, else the
+    # cab's region, else the first set of the card
+    path = found.get(setname) or found.get(VERSIONS.get(game["id"])) or by_region or INDEX.resolve(game.get("setnames", [game["id"]]))
     if not path:
         return None
     send_command("load_core %s" % path)
@@ -1029,6 +1100,8 @@ class Handler(SimpleHTTPRequestHandler):
             return self.send_json({"ids": DECKS.ids_of(Decks.FAV)})
         if self.path == "/api/decks":
             return self.send_json({"decks": DECKS.get()})
+        if self.path == "/api/settings":
+            return self.send_json(SETTINGS.get())
         if self.path.startswith("/api/versions?"):
             gid = urllib.parse.parse_qs(self.path.split("?", 1)[1]).get("id", [""])[0]
             game = next((g for g in load_deck() if g["id"] == gid), None)
@@ -1072,6 +1145,13 @@ class Handler(SimpleHTTPRequestHandler):
                     return self.send_json({"error": "no deck"}, 400)
                 saved = DECKS.save(body["deck"])
                 return self.send_json({"saved": saved, "decks": DECKS.get()})
+            if self.path == "/api/settings":
+                # {"region": "japan"}; "any" or null clears it
+                body = self.read_json()
+                region = body.get("region")
+                if region is not None and region not in REGION_CHOICES:
+                    return self.send_json({"error": "unknown region"}, 400)
+                return self.send_json(SETTINGS.set(region=region))
             if self.path == "/api/version":
                 # {"id", "set"}: remember a version for the game; a null set forgets it
                 body = self.read_json()

@@ -62,6 +62,11 @@ have shared are listed on the Decks page under Community; add yours with a
 pull request to `decks/`, see the README there. Kiosk mode can be limited to
 one deck from Settings, or with `?kiosk=<deck id>`.
 
+Region, in the filters, is the cab's choice rather than the phone's: with
+Japan chosen, games that have a Japanese set show and launch that set, and
+games whose sets name no region stay as they are. A version picked on a
+card still wins.
+
 When several MRAs of one game are on the card, regional sets, arrange
 versions, patched releases from Arcade Offset, the card says so. Tap the
 mark, or hold the card, to pick which one it launches; the choice is kept on
