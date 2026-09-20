@@ -297,6 +297,44 @@ body.compact .plate .vers{display:none}
 .vsheet .forget{margin-top:10px;background:none;border:0;color:var(--ash);font-family:inherit;font-size:12px;cursor:pointer;text-decoration:underline}
 .vsheet .forget[hidden]{display:none}
 .krow{display:flex;align-items:center;gap:16px;margin-top:14px}
+/* decks: named lists kept on the MiSTer */
+.deckrow{max-width:1080px;margin:0 auto 18px}
+.deckrow .decks{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.deckrow .dk{
+  padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.25);
+  color:var(--ash);font-family:inherit;font-size:13px;cursor:pointer;
+}
+.deckrow .dk:hover{color:var(--bone)}
+.deckrow .dk[aria-pressed="true"]{background:var(--gold);color:#231c07;border-color:var(--gold)}
+.deckrow .newdeck{display:flex;gap:8px;align-items:center}
+.deckrow input{
+  flex:1;min-width:0;padding:8px 12px;border-radius:999px;border:1px solid #1d3326;background:rgba(0,0,0,.25);
+  color:var(--bone);font-family:inherit;font-size:13px;
+}
+.deckrow input:focus{outline:2px solid var(--emerald);outline-offset:1px}
+.deckbar{
+  max-width:1080px;margin:0 auto 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:10px 14px;border:1px solid rgba(216,181,74,.45);border-radius:10px;background:rgba(216,181,74,.06);
+}
+.deckbar[hidden]{display:none}
+.deckbar .dname{font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;font-weight:700;font-size:20px;letter-spacing:.04em;text-transform:uppercase}
+.deckbar .dcount{font-size:12px;color:var(--ash)}
+.deckbar .dtools{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.deckbar .dtools button{
+  padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.25);
+  color:var(--ash);font-family:inherit;font-size:12px;cursor:pointer;
+}
+.deckbar .dtools button:hover{color:var(--bone);border-color:var(--gold)}
+.deckbar .dtools button.on{background:var(--gold);color:#231c07;border-color:var(--gold)}
+.deckbar .dtools button.danger:hover{border-color:var(--danger);color:var(--danger)}
+.deckbar input{padding:6px 10px;border-radius:999px;border:1px solid #1d3326;background:rgba(0,0,0,.25);color:var(--bone);font-family:inherit;font-size:13px}
+/* adding to a deck: cards in it wear a tick */
+.cab .in{
+  position:absolute;top:10px;left:10px;z-index:3;width:26px;height:26px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;background:var(--gold);color:#231c07;font-size:15px;font-weight:700;
+}
+body.adding .cab{cursor:copy}
+body.adding .cab.indeck{border-color:var(--gold)}
 .krow .forget{margin-top:0}
 
 /* developer dividers span the whole grid row */
@@ -449,6 +487,8 @@ body.kiosk .exitspot{display:block}
   .seglabel{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ash);margin:8px 0 -2px}
   .fsheet .hint{margin:8px 0 0}
   .fsheet .grouprow{margin:10px 0 0}
+  .fsheet .deckrow{margin:12px 0 0}
+  .deckbar .dname{font-size:17px}
   .fsheet .dropdown{width:100%}
   .fsheet .dropdown select{flex:1;text-transform:none;letter-spacing:.02em;font-size:13px}
   .copylink{text-transform:none;letter-spacing:.02em}
@@ -582,6 +622,26 @@ footer a{color:inherit}
   </label>
 </div>
 
+<div class="deckrow" id="deckrow">
+  <span class="seglabel">Decks</span>
+  <div class="decks" id="decklist"></div>
+  <div class="newdeck"><input id="newdeck" placeholder="New deck name" maxlength="60" aria-label="New deck name"><button class="dk" id="newdeckBtn">Create</button></div>
+</div>
+<div class="deckbar" id="deckbar" hidden>
+  <span class="dname" id="dname"></span><span class="dcount" id="dcount"></span>
+  <input id="drename" hidden maxlength="60" aria-label="Deck name">
+  <div class="dtools">
+    <button id="dadd" title="Tap cards on the wall to add or remove them">Add games</button>
+    <button id="dshare" title="A link that opens this deck anywhere">Share</button>
+    <button id="drenameBtn">Rename</button>
+    <button id="ddelete" class="danger">Delete</button>
+    <button id="dclose">Close</button>
+  </div>
+</div>
+<div class="deckbar" id="linkbar" hidden>
+  <span class="dname" id="lname"></span><span class="dcount" id="lcount"></span>
+  <div class="dtools"><button id="lsave" class="on">Save this deck to the MiSTer</button></div>
+</div>
 <main class="deck" id="deck"></main>
 <div class="exitspot" id="exitspot" aria-hidden="true"></div>
 <div class="nowfull" id="nowfull" hidden>
@@ -616,6 +676,7 @@ const LS = {
   kiosk: "shmupdeck.kiosk",
   marquee: "shmupdeck.marquee",          // in kiosk, keep the running game's flyer up instead of the attract cycle
   kioskIntro: "shmupdeck.kioskintro",   // the leaving instructions have been read
+  deck: "shmupdeck.deck",                // the deck being viewed
   versHint: "shmupdeck.vershint"         // the versions hint has done its job
 };
 const $ = s => document.querySelector(s);
@@ -684,6 +745,14 @@ let GAMES = [];
    for sharing a favourites list or taking a tidy screenshot. */
 const PICK = (new URLSearchParams(location.search).get("games") || "")
   .split(",").map(s => s.trim()).filter(Boolean);
+const LINK_NAME = new URLSearchParams(location.search).get("name") || "";
+/* Decks are named lists kept on the MiSTer. Viewing one shows its games in
+   its order, like a ?games= link; adding to one turns card taps into
+   membership toggles. */
+let DECKS = [], DECK = localStorage.getItem(LS.deck) || null, ADDING = false;
+const currentDeck = () => DECKS.find(d => d.id === DECK) || null;
+// what the wall is restricted to: the deck being viewed, else a ?games= link
+const picked = () => ADDING ? [] : DECK && currentDeck() ? currentDeck().ids : PICK;
 let ART = {};       // id -> { crop: [left, top, width, height], size: [w, h] }
 let AVAIL = null;   // id -> installed path; null until the first scan finishes
 let CHECK = null;   // id -> { state, missing }; state is "ready", "roms", "core" or "mra"
@@ -752,7 +821,9 @@ function card(g, played, showSystem) {
   b.dataset.id = g.id;
   const fav = FAVS.has(g.id);
   const nv = CHECK && CHECK[g.id] ? CHECK[g.id].versions || 0 : 0;
-  b.innerHTML = `${ok ? "" : `<span class="need">${NEEDS[CHECK && CHECK[g.id] ? CHECK[g.id].state : "mra"]}</span>`}
+  const inDeck = ADDING && currentDeck() && currentDeck().ids.includes(g.id);
+  if (inDeck) b.classList.add("indeck");
+  b.innerHTML = `${inDeck ? `<span class="in">&#10003;</span>` : ""}${ok ? "" : `<span class="need">${NEEDS[CHECK && CHECK[g.id] ? CHECK[g.id].state : "mra"]}</span>`}
     <span class="star" role="button" tabindex="0" aria-pressed="${fav}" aria-label="${fav ? "Remove from" : "Add to"} favourites">${fav ? "&#9733;" : "&#9734;"}</span>
     <div class="art" role="img" aria-label="${esc(g.title)} arcade flyer">
       <span class="stand-in">${esc(g.title)}</span>
@@ -781,6 +852,7 @@ function card(g, played, showSystem) {
   // a game that can't start opens its checklist entry instead
   b.addEventListener("click", e => {
     if (e.target.closest(".star")) return;
+    if (ADDING) { e.preventDefault(); toggleInDeck(g.id); return; }
     if (e.target.closest(".vers")) { e.preventDefault(); openVersions(g, b); return; }
     if (b._held) { b._held = false; return; }          // the long press already acted
     ok ? launch(g, b) : (location.href = `check.html?game=${encodeURIComponent(g.id)}`);
@@ -825,22 +897,23 @@ function renderDeck() {
   // until the MiSTer has answered there is nothing to call missing
   const showAll = missingPref() === "show" && !!(CHECK || AVAIL);
   // a picked list keeps its own order, so it is never grouped
-  const groupBy = PICK.length ? null : { dev: "dev", system: "system" }[groupPref()];
+  const list = picked();
+  const groupBy = list.length ? null : { dev: "dev", system: "system" }[groupPref()];
   const grouped = !!groupBy;
-  const shown = PICK.length
-    ? PICK.map(id => GAMES.find(g => g.id === id)).filter(g => g && (showAll && listed(g) || ready(g)) && matches(g, query))
+  const shown = list.length
+    ? list.map(id => GAMES.find(g => g.id === id)).filter(g => g && (showAll && listed(g) || ready(g)) && matches(g, query))
     : GAMES
       .filter(g => (showAll && listed(g) || ready(g)) && (want === "all" || g.orientation === want) && matches(g, query))
       // rotation only means anything on a turned monitor, so yoko games always pass
       .filter(g => rot === "all" || g.orientation !== "tate" || g.rotation === rot)
       .filter(g => show === "all" || (show === "played" ? p[g.id] : FAVS.has(g.id)));
   const label = grouped ? groupLabels(shown, groupBy) : null;
-  if (!PICK.length) shown.sort(grouped
+  if (!list.length) shown.sort(grouped
     ? (a, b) => (label.get(a) === OTHER) - (label.get(b) === OTHER) ||
                 label.get(a).localeCompare(label.get(b), "en", { sensitivity: "base" }) || cmp(a, b)
     : cmp);
   // phones: the running game heads the wall at full width, whatever the filters say
-  const heroGame = PHONE.matches && !PICK.length ? GAMES.find(g => g.id === NOW && ready(g)) : null;
+  const heroGame = PHONE.matches && !list.length && !ADDING ? GAMES.find(g => g.id === NOW && ready(g)) : null;
   const wall = heroGame ? shown.filter(g => g !== heroGame) : shown;
   const cards = grouped ? withDividers(wall, p, label) : wall.map(g => card(g, p[g.id] || 0));
   if (heroGame) {
@@ -864,7 +937,8 @@ function renderDeck() {
     ? `${readyCount} of ${shown.length} ready`
     : `${shown.length} ${show === "favourites" ? "favourite" : "game"}${shown.length === 1 ? "" : "s"}` +
       (show === "all" && playedCount ? ` · ${playedCount} played` : "");
-  $("#copylink").hidden = !(show === "favourites" && shown.length && !PICK.length);
+  $("#copylink").hidden = !(show === "favourites" && shown.length && !list.length);
+  renderDeckBar(shown.length);
   $("#copylink").dataset.ids = shown.map(g => g.id).join(",");
   for (const b of document.querySelectorAll(".seg button"))
     b.setAttribute("aria-pressed",
@@ -888,6 +962,7 @@ function renderChips(want, show, order, rot) {
   const chips = [];
   if (want !== "all") chips.push([LS.screen, want === "tate" ? "Tate" : "Yoko"]);
   if (rot !== "all") chips.push([LS.rot, rot === "cw" ? "Clockwise" : "Anticlockwise"]);
+  if (currentDeck()) chips.push([LS.deck, `Deck: ${currentDeck().name}`]);
   if (show !== "all") chips.push([LS.show, show === "favourites" ? "Faves" : "Played"]);
   if (order !== "az") chips.push([LS.sort, order === "year" ? "By year" : "By plays"]);
   if (groupPref() !== "none") chips.push([LS.group, groupPref() === "dev" ? "By dev" : "By system"]);
@@ -895,7 +970,7 @@ function renderChips(want, show, order, rot) {
     const c = document.createElement("button");
     c.className = "chip"; c.innerHTML = `${esc(text)} <b>&times;</b>`;
     c.setAttribute("aria-label", `Remove ${text}`);
-    c.addEventListener("click", () => { localStorage.setItem(key, DEFAULTS[key]); renderDeck(); });
+    c.addEventListener("click", () => { if (key === LS.deck) return viewDeck(null); localStorage.setItem(key, DEFAULTS[key]); renderDeck(); });
     return c;
   }));
   $("#filterBtn").classList.toggle("on", chips.length > 0);
@@ -997,7 +1072,7 @@ function openFilters(open) {
   if (open) { sheet.hidden = true; gear.setAttribute("aria-expanded", "false"); }
 }
 function placeFilters() {
-  const parts = [$(".filters"), $("#screenHint"), $(".grouprow")];
+  const parts = [$(".filters"), $("#screenHint"), $(".grouprow"), $(".deckrow")];
   if (PHONE.matches) { fsheet.append(...parts); $("#chips").after($("#now")); }
   else { deck.before(...parts); $(".searchrow").before($("#now")); openFilters(false); }
 }
@@ -1169,6 +1244,102 @@ async function launch(g, el, set) {
     veil(el, "fail", "not found", 2600);
   }
 }
+
+/* ── decks ── */
+async function loadDecks() {
+  try {
+    const r = await fetch("api/decks", { cache: "no-store" });
+    if (r.ok) DECKS = (await r.json()).decks;
+  } catch { DECKS = []; }
+  if (DECK && !currentDeck()) { DECK = null; localStorage.removeItem(LS.deck); }
+  renderDeckList();
+}
+async function saveDeck(deck) {
+  const r = await fetch("api/decks", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ deck }) });
+  const d = await r.json();
+  DECKS = d.decks;
+  renderDeckList();
+  return d.saved;
+}
+async function deleteDeck(id) {
+  const r = await fetch("api/decks", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ delete: id }) });
+  DECKS = (await r.json()).decks;
+  renderDeckList();
+}
+function viewDeck(id) {
+  DECK = id; ADDING = false; document.body.classList.remove("adding");
+  if (id) localStorage.setItem(LS.deck, id); else localStorage.removeItem(LS.deck);
+  openFilters(false);
+  renderDeckList(); renderDeck();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+function renderDeckList() {
+  const list = $("#decklist");
+  list.replaceChildren(...DECKS.map(d => {
+    const b = document.createElement("button");
+    b.className = "dk"; b.textContent = `${d.name} · ${d.ids.length}`;
+    b.setAttribute("aria-pressed", String(d.id === DECK));
+    b.addEventListener("click", () => viewDeck(d.id === DECK ? null : d.id));
+    return b;
+  }));
+}
+function renderDeckBar(n) {
+  const d = currentDeck();
+  $("#deckbar").hidden = !d;
+  if (d) {
+    $("#dname").textContent = d.name;
+    $("#dcount").textContent = ADDING ? "tap cards to add or remove" : `${d.ids.length} game${d.ids.length === 1 ? "" : "s"}`;
+    $("#dadd").textContent = ADDING ? "Done" : "Add games";
+    $("#dadd").classList.toggle("on", ADDING);
+  }
+  // a deck arriving by link, not yet on this MiSTer
+  const fromLink = PICK.length && LINK_NAME && !DECKS.some(x => x.name === LINK_NAME && x.ids.join() === PICK.join());
+  $("#linkbar").hidden = !fromLink;
+  if (fromLink) { $("#lname").textContent = LINK_NAME; $("#lcount").textContent = `${PICK.length} games, from a link`; }
+}
+async function toggleInDeck(gid) {
+  const d = currentDeck();
+  if (!d) return;
+  const ids = d.ids.includes(gid) ? d.ids.filter(i => i !== gid) : [...d.ids, gid];
+  await saveDeck({ ...d, ids });
+  renderDeck();
+}
+$("#newdeckBtn").addEventListener("click", async () => {
+  const name = $("#newdeck").value.trim();
+  if (!name) return $("#newdeck").focus();
+  $("#newdeck").value = "";
+  const saved = await saveDeck({ name, ids: showPref() === "favourites" ? [...FAVS] : [] });
+  viewDeck(saved.id);
+  ADDING = !saved.ids.length; document.body.classList.toggle("adding", ADDING); renderDeck();
+});
+$("#newdeck").addEventListener("keydown", e => { if (e.key === "Enter") $("#newdeckBtn").click(); });
+$("#dadd").addEventListener("click", () => { ADDING = !ADDING; document.body.classList.toggle("adding", ADDING); renderDeck(); });
+$("#dclose").addEventListener("click", () => viewDeck(null));
+$("#ddelete").addEventListener("click", async () => {
+  const d = currentDeck(); if (!d) return;
+  if ($("#ddelete").textContent !== "Really delete") { $("#ddelete").textContent = "Really delete"; setTimeout(() => { $("#ddelete").textContent = "Delete"; }, 3000); return; }
+  await deleteDeck(d.id); viewDeck(null);
+});
+$("#drenameBtn").addEventListener("click", () => {
+  const d = currentDeck(); if (!d) return;
+  const inp = $("#drename");
+  if (inp.hidden) { inp.hidden = false; inp.value = d.name; $("#dname").hidden = true; inp.focus(); $("#drenameBtn").textContent = "Save"; return; }
+  inp.hidden = true; $("#dname").hidden = false; $("#drenameBtn").textContent = "Rename";
+  const name = inp.value.trim(); if (name && name !== d.name) saveDeck({ ...d, name }).then(renderDeck);
+});
+$("#drename").addEventListener("keydown", e => { if (e.key === "Enter") $("#drenameBtn").click(); });
+$("#dshare").addEventListener("click", async () => {
+  const d = currentDeck(); if (!d) return;
+  const url = `${location.origin}${location.pathname}?games=${d.ids.join(",")}&name=${encodeURIComponent(d.name)}`;
+  try { await navigator.clipboard.writeText(url); $("#dshare").textContent = "Link copied"; }
+  catch { $("#dshare").textContent = "Copy blocked"; }
+  setTimeout(() => { $("#dshare").textContent = "Share"; }, 2000);
+});
+$("#lsave").addEventListener("click", async () => {
+  const saved = await saveDeck({ name: LINK_NAME, ids: PICK });
+  localStorage.setItem(LS.deck, saved.id);
+  location.href = location.pathname;           // reload without the link, viewing the saved deck
+});
 
 /* ── versions ── */
 /* Several MRAs of one game can be on the card: regional sets, arrange
@@ -1365,6 +1536,7 @@ Promise.all([
   renderDeck(); ping(); loadChecklist();
   loadStats().then(renderDeck);
   loadFavourites().then(renderDeck);
+  loadDecks().then(renderDeck);
   setInterval(ping, 5000);
 }).catch(() => { deck.innerHTML = `<p class="empty">Could not load games.json.</p>`; });
 </script>

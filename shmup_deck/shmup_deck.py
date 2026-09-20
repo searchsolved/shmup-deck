@@ -49,6 +49,7 @@ CORENAME = os.environ.get("SHMUP_CORENAME", "/tmp/CORENAME")
 PLAYS = os.environ.get("SHMUP_PLAYS", os.path.join(HERE, "plays.json"))
 FAVS = os.environ.get("SHMUP_FAVS", os.path.join(HERE, "favourites.json"))
 VERSIONS_FILE = os.environ.get("SHMUP_VERSIONS", os.path.join(HERE, "versions.json"))
+DECKS_FILE = os.environ.get("SHMUP_DECKS", os.path.join(HERE, "decks.json"))
 
 VERSION = "1.8.1"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
@@ -541,6 +542,50 @@ class Versions:
 VERSIONS = Versions()
 
 
+class Decks:
+    """Named lists of games, kept on the MiSTer so every phone sees them.
+    A deck is {"id", "name", "ids": [game ids in order], "note"}."""
+
+    def __init__(self):
+        self.lock = threading.Lock()
+        self.decks = []
+        try:
+            with open(DECKS_FILE) as f:
+                self.decks = [d for d in json.load(f) if isinstance(d, dict) and d.get("id")]
+        except (OSError, ValueError):
+            pass
+
+    def get(self):
+        with self.lock:
+            return [dict(d) for d in self.decks]
+
+    def save(self, deck):
+        """Add or replace a deck; a deck without an id is new."""
+        known = {g["id"] for g in load_deck()}
+        clean = {"id": deck.get("id") or "d%x" % int(time.time() * 1000),
+                 "name": str(deck.get("name") or "Untitled")[:60],
+                 "ids": [i for i in deck.get("ids", []) if i in known][:200],
+                 "note": str(deck.get("note") or "")[:300]}
+        with self.lock:
+            self.decks = [d for d in self.decks if d["id"] != clean["id"]] + [clean]
+            self._write()
+            return clean
+
+    def delete(self, did):
+        with self.lock:
+            self.decks = [d for d in self.decks if d["id"] != did]
+            self._write()
+
+    def _write(self):
+        tmp = DECKS_FILE + ".tmp"
+        with open(tmp, "w") as f:
+            json.dump(self.decks, f)
+        os.replace(tmp, DECKS_FILE)
+
+
+DECKS = Decks()
+
+
 def versions_of(game):
     """Every version of a game on this MiSTer: one per set name of the card
     that has an MRA, in the card's order, named after the MRA file."""
@@ -943,6 +988,8 @@ class Handler(SimpleHTTPRequestHandler):
             return self.send_json(PLAYED.snapshot())
         if self.path == "/api/favourites":
             return self.send_json({"ids": FAVOURITES.get()})
+        if self.path == "/api/decks":
+            return self.send_json({"decks": DECKS.get()})
         if self.path.startswith("/api/versions?"):
             gid = urllib.parse.parse_qs(self.path.split("?", 1)[1]).get("id", [""])[0]
             game = next((g for g in load_deck() if g["id"] == gid), None)
@@ -965,6 +1012,16 @@ class Handler(SimpleHTTPRequestHandler):
                 if not path:
                     return self.send_json({"error": "not installed"}, 404)
                 return self.send_json({"ok": True, "path": path})
+            if self.path == "/api/decks":
+                # {"deck": {...}} saves (new when it has no id); {"delete": id} removes
+                body = self.read_json()
+                if body.get("delete"):
+                    DECKS.delete(body["delete"])
+                    return self.send_json({"decks": DECKS.get()})
+                if not isinstance(body.get("deck"), dict):
+                    return self.send_json({"error": "no deck"}, 400)
+                saved = DECKS.save(body["deck"])
+                return self.send_json({"saved": saved, "decks": DECKS.get()})
             if self.path == "/api/version":
                 # {"id", "set"}: remember a version for the game; a null set forgets it
                 body = self.read_json()
