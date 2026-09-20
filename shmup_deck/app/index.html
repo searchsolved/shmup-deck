@@ -505,6 +505,12 @@ footer a{color:inherit}
       <button data-screen="tate" aria-pressed="false">Tate</button>
       <button data-screen="yoko" aria-pressed="false">Yoko</button>
     </div>
+    <span class="seglabel">Rotation</span>
+    <div class="seg" id="rotCtl" role="group" aria-label="Tate rotation" title="Which way the monitor is turned; a tate game turned the other way needs the core's flip option">
+      <button data-rot="all" aria-pressed="true">Either</button>
+      <button data-rot="ccw" aria-pressed="false" title="Anticlockwise, MAME ROT270: Cave, Raiden, Psikyo, Toaplan">&#8634; Anti</button>
+      <button data-rot="cw" aria-pressed="false" title="Clockwise, MAME ROT90: most Konami and Namco">&#8635; Clock</button>
+    </div>
     <span class="seglabel">Show</span>
     <div class="seg" role="group" aria-label="Show">
       <button data-show="all" aria-pressed="true">All</button>
@@ -559,6 +565,7 @@ const LS = {
   show: "shmupdeck.show",
   favs: "shmupdeck.favs",
   group: "shmupdeck.group",
+  rot: "shmupdeck.rot",
   missing: "shmupdeck.missing",
   density: "shmupdeck.density",
   plays: "shmupdeck.plays",
@@ -571,6 +578,8 @@ const screenPref = () => localStorage.getItem(LS.screen) || "all";
 const sortPref = () => localStorage.getItem(LS.sort) || "az";
 const showPref = () => localStorage.getItem(LS.show) || "all";
 const groupPref = () => localStorage.getItem(LS.group) || "none";
+// which way a tate monitor is turned; MAME calls them ROT90 and ROT270
+const rotPref = () => localStorage.getItem(LS.rot) || "all";
 const missingPref = () => localStorage.getItem(LS.missing) || "hide";
 const densityPref = () => localStorage.getItem(LS.density) || "comfortable";
 
@@ -703,7 +712,7 @@ function card(g, played, showSystem) {
       <span class="meta">${esc(g.dev)} ${g.year}</span>
       <span class="meta"><span class="core">${esc(showSystem && g.system ? g.system : g.core)}</span>
         ${played ? `<span class="plays" title="${STATS && STATS[g.id] ? `${STATS[g.id].launches} launches` : `${played} launches from this device`}">${playedLabel(g.id)}</span>` : ""}
-        <span class="orient">${g.orientation}</span></span>
+        <span class="orient" title="${g.rotation === "cw" ? "Monitor turned clockwise" : g.rotation === "ccw" ? "Monitor turned anticlockwise" : ""}">${g.orientation}${g.rotation === "cw" ? " &#8635;" : g.rotation === "ccw" ? " &#8634;" : ""}</span></span>
     </div>`;
   paintArt(b.querySelector(".art"), g);
   const star = b.querySelector(".star");
@@ -748,7 +757,7 @@ function matches(g, query) {
 }
 
 function renderDeck() {
-  const want = screenPref(), order = sortPref(), p = plays();
+  const want = screenPref(), order = sortPref(), p = plays(), rot = rotPref();
   const query = ($("#search").value || "").split(/\s+/).map(squash).filter(Boolean);
   const cmp = order === "played" ? SORTS.played(p) : SORTS[order] || byTitle;
   const show = showPref();
@@ -761,6 +770,8 @@ function renderDeck() {
     ? PICK.map(id => GAMES.find(g => g.id === id)).filter(g => g && (showAll && listed(g) || ready(g)) && matches(g, query))
     : GAMES
       .filter(g => (showAll && listed(g) || ready(g)) && (want === "all" || g.orientation === want) && matches(g, query))
+      // rotation only means anything on a turned monitor, so yoko games always pass
+      .filter(g => rot === "all" || g.orientation !== "tate" || g.rotation === rot)
       .filter(g => show === "all" || (show === "played" ? p[g.id] : FAVS.has(g.id)));
   const label = grouped ? groupLabels(shown, groupBy) : null;
   if (!PICK.length) shown.sort(grouped
@@ -797,7 +808,7 @@ function renderDeck() {
   for (const b of document.querySelectorAll(".seg button"))
     b.setAttribute("aria-pressed",
       String(b.dataset.screen === want || b.dataset.sort === order || b.dataset.show === show ||
-             b.dataset.density === densityPref()));
+             b.dataset.density === densityPref() || b.dataset.rot === rot));
   $("#group").value = groupPref();
   $("#group").closest(".dropdown").classList.toggle("on", groupPref() !== "none");
   $("#missingTog").setAttribute("aria-checked", String(missingPref() === "show"));
@@ -805,14 +816,15 @@ function renderDeck() {
   document.body.classList.toggle("compact", densityPref() === "compact");
   document.body.classList.toggle("large", densityPref() === "large");
   $("#search").placeholder = `Search ${GAMES.filter(g => showAll && listed(g) || ready(g)).length || ""} games`.replace("  ", " ");
-  renderChips(want, show, order);
+  renderChips(want, show, order, rot);
 }
 
 /* phones: the choices that are not the default, each with a way back */
-const DEFAULTS = { [LS.screen]: "all", [LS.show]: "all", [LS.sort]: "az", [LS.group]: "none" };
-function renderChips(want, show, order) {
+const DEFAULTS = { [LS.screen]: "all", [LS.show]: "all", [LS.sort]: "az", [LS.group]: "none", [LS.rot]: "all" };
+function renderChips(want, show, order, rot) {
   const chips = [];
   if (want !== "all") chips.push([LS.screen, want === "tate" ? "Tate" : "Yoko"]);
+  if (rot !== "all") chips.push([LS.rot, rot === "cw" ? "Clockwise" : "Anticlockwise"]);
   if (show !== "all") chips.push([LS.show, show === "favourites" ? "Faves" : "Played"]);
   if (order !== "az") chips.push([LS.sort, order === "year" ? "By year" : "By plays"]);
   if (groupPref() !== "none") chips.push([LS.group, groupPref() === "dev" ? "By dev" : "By system"]);
@@ -862,6 +874,7 @@ for (const b of document.querySelectorAll(".seg button")) {
       : b.dataset.show ? [LS.show, b.dataset.show]
       // grouping buttons act like radio buttons that can also be switched off
       : b.dataset.density ? [LS.density, b.dataset.density]
+      : b.dataset.rot ? [LS.rot, b.dataset.rot]
       : [LS.screen, b.dataset.screen];
     localStorage.setItem(key, value);
     if (b.dataset.screen) { $("#screenCtl").classList.remove("ask"); $("#screenHint").hidden = true; }
