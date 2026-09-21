@@ -1427,7 +1427,7 @@ document.addEventListener("click", e => { if (!vsheet.hidden && !e.target.closes
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeVersions(); });
 
 /* ── the takeover ── */
-let nowShown = null, nowDismissed = null, nowPending = null, slowTimer = null;
+let nowShown = null, nowDismissed = null, nowPending = null, slowTimer = null, NOW_SET = null;
 const takeover = () => PHONE.matches || document.body.classList.contains("kiosk");
 /* Two stages, both real: "launching" once the MiSTer has accepted the
    request, "now playing" once its core-name file says the game is running,
@@ -1455,6 +1455,9 @@ function showNowFull(g, launching) {
   } else markRunning();
 }
 function markRunning() {
+  // the set that loaded, when it is not the card's first: Gradius II under a Vulcan Venture card
+  const g = GAMES.find(x => x.id === nowShown);
+  if (g && NOW_SET && nowShown === NOW) $("#nowMeta").textContent = `${NOW_SET} · ${g.year}`;
   nowPending = null;
   clearTimeout(slowTimer);
   $("#nowfull").classList.remove("launching");
@@ -1556,12 +1559,13 @@ async function ping() {
     // flyers that arrived since the page loaded
     if (artWasFetching && !s.art.fetching) renderDeck();
     artWasFetching = s.art.fetching;
+    NOW_SET = s.now_playing_set || null;
     if (s.now_playing !== NOW) {
       NOW = s.now_playing;
       const g = GAMES.find(x => x.id === NOW);
       // a picked list is its own little wall; don't advertise something outside it
       $("#now").hidden = !g || (picked().length > 0 && !picked().includes(g.id));
-      if (g) $("#nowWhat").textContent = g.title;
+      if (g) $("#nowWhat").textContent = NOW_SET ? `${g.title} · ${NOW_SET}` : g.title;
       // move the highlight rather than rebuilding every card and its flyer
       for (const c of deck.querySelectorAll(".cab"))
         c.classList.toggle("playing", c.dataset.id === NOW);

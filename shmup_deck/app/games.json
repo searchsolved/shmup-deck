@@ -15,7 +15,9 @@
    "forgottnua",
    "forgottnuaa",
    "forgottnuc",
-   "forgottnue"
+   "forgottnue",
+   "lostwrld",
+   "lostwrldo"
   ],
   "rbf": "jtcps1",
   "roms": {
@@ -33,7 +35,9 @@
   "system": "Capcom CPS1",
   "orientation": "yoko",
   "setnames": [
-   "unsquad"
+   "unsquad",
+   "area88",
+   "area88r"
   ],
   "rbf": "jtcps1",
   "roms": {
@@ -55,7 +59,8 @@
    "cawingr1",
    "cawingu",
    "cawingur1",
-   "cawingjr"
+   "cawingjr",
+   "cawingj"
   ],
   "rbf": "jtcps1",
   "roms": {
@@ -123,7 +128,8 @@
    "ecofghtrd",
    "ecofghtrh",
    "ecofghtru",
-   "ecofghtru1"
+   "ecofghtru1",
+   "uecology"
   ],
   "rbf": "jtcps2",
   "roms": {
@@ -224,7 +230,8 @@
   "setnames": [
    "dimahoo",
    "dimahoou",
-   "dimahoud"
+   "dimahoud",
+   "gmahou"
   ],
   "rbf": "jtcps2",
   "roms": {
@@ -341,7 +348,8 @@
   "system": "Capcom Exed Exes",
   "orientation": "tate",
   "setnames": [
-   "exedexes"
+   "exedexes",
+   "savgbees"
   ],
   "rbf": "jtexed",
   "roms": {
@@ -516,7 +524,8 @@
    "esprade",
    "esprade_fp",
    "espradej",
-   "espradej_fp"
+   "espradej_fp",
+   "espradejo"
   ],
   "rbf": "cave",
   "roms": {
@@ -555,7 +564,8 @@
   "system": "Konami Gyruss",
   "orientation": "tate",
   "setnames": [
-   "gyruss"
+   "gyruss",
+   "gyrussce"
   ],
   "rbf": "Gyruss",
   "roms": {
@@ -575,7 +585,8 @@
   "orientation": "tate",
   "setnames": [
    "ajax",
-   "ajaxj"
+   "ajaxj",
+   "typhoon"
   ],
   "rbf": "jtajax",
   "roms": {
@@ -642,7 +653,8 @@
    "gradius3",
    "gradius3j",
    "gradius3ja",
-   "gradius3jas"
+   "gradius3jas",
+   "gradius3a"
   ],
   "rbf": "jtgrad3",
   "roms": {
@@ -748,7 +760,8 @@
   "orientation": "yoko",
   "setnames": [
    "xmultiplm72",
-   "xmultiplm72inv"
+   "xmultiplm72inv",
+   "xmultipl"
   ],
   "rbf": "IremM72",
   "roms": {
@@ -766,7 +779,9 @@
   "system": "Irem M72",
   "orientation": "yoko",
   "setnames": [
-   "dbreedjm72"
+   "dbreedjm72",
+   "dbreedm72",
+   "dbreed"
   ],
   "rbf": "IremM72",
   "roms": {
@@ -786,7 +801,8 @@
   "setnames": [
    "airduelm72",
    "airdueljm72",
-   "airduelu"
+   "airduelu",
+   "airduel"
   ],
   "rbf": "IremM72",
   "roms": {
@@ -805,7 +821,9 @@
   "system": "Irem M72",
   "orientation": "yoko",
   "setnames": [
-   "gallopm72"
+   "gallopm72",
+   "cosmccop",
+   "gallop"
   ],
   "rbf": "IremM72",
   "roms": {
@@ -844,7 +862,24 @@
   "system": "IGS PGM",
   "orientation": "tate",
   "setnames": [
-   "ddp2"
+   "ddp2",
+   "ddp2101",
+   "ddp2100",
+   "ddp2hk",
+   "ddp2101hk",
+   "ddp2100hk",
+   "ddp2k",
+   "ddp2101k",
+   "ddp2100k",
+   "ddp2j",
+   "ddp2101j",
+   "ddp2100j",
+   "ddp2t",
+   "ddp2101t",
+   "ddp2100t",
+   "ddp2c",
+   "ddp2101c",
+   "ddp2100c"
   ],
   "rbf": "IGSPGM",
   "roms": {
@@ -865,7 +900,10 @@
   "system": "IGS PGM",
   "orientation": "tate",
   "setnames": [
-   "ket"
+   "ket",
+   "ket1",
+   "keta",
+   "ketb"
   ],
   "rbf": "IGSPGM",
   "roms": {
@@ -1144,7 +1182,9 @@
   "orientation": "yoko",
   "setnames": [
    "sdib",
-   "sdi"
+   "sdi",
+   "sdia",
+   "defense"
   ],
   "rbf": "jts16b",
   "roms": {
@@ -1162,7 +1202,10 @@
   "system": "Toaplan Slap Fight",
   "orientation": "tate",
   "setnames": [
-   "slapfighb1"
+   "slapfighb1",
+   "alcon",
+   "slapfigh",
+   "slapfigha"
   ],
   "rbf": "SlapFight",
   "roms": {
@@ -1181,7 +1224,8 @@
   "system": "Tecmo Silkworm",
   "orientation": "tate",
   "setnames": [
-   "gemini"
+   "gemini",
+   "geminij"
   ],
   "rbf": "Tecmo",
   "roms": {
@@ -1202,7 +1246,8 @@
   "setnames": [
    "silkworm",
    "silkwormg",
-   "silkwormp"
+   "silkwormp",
+   "silkwormj"
   ],
   "rbf": "Tecmo",
   "roms": {
@@ -1221,7 +1266,8 @@
   "orientation": "yoko",
   "setnames": [
    "stratof",
-   "raiga"
+   "raiga",
+   "raigaa"
   ],
   "rbf": "jtgaiden",
   "roms": {
@@ -1306,7 +1352,11 @@
    "xevious3",
    "xevious4",
    "xevious5",
-   "xevioush"
+   "xevioush",
+   "xeviousa",
+   "xeviousb",
+   "xeviousc",
+   "xeviousd"
   ],
   "rbf": "xevious",
   "roms": {
@@ -1330,7 +1380,9 @@
   "orientation": "tate",
   "setnames": [
    "samuraia",
-   "samuraiak"
+   "samuraiak",
+   "sngkace",
+   "sngkacea"
   ],
   "rbf": "Psikyo",
   "roms": {
@@ -1349,7 +1401,9 @@
   "system": "Psikyo 68EC020",
   "orientation": "tate",
   "setnames": [
-   "gunbird"
+   "gunbird",
+   "gunbirdk",
+   "gunbirdj"
   ],
   "rbf": "Psikyo",
   "roms": {
@@ -1368,7 +1422,8 @@
   "system": "Psikyo 68EC020",
   "orientation": "yoko",
   "setnames": [
-   "tengai"
+   "tengai",
+   "tengaij"
   ],
   "rbf": "Psikyo",
   "roms": {
@@ -1748,7 +1803,9 @@
   "orientation": "tate",
   "setnames": [
    "fshark",
-   "hishouza"
+   "hishouza",
+   "skyshark",
+   "skysharka"
   ],
   "rbf": "fshark_mister",
   "roms": {
@@ -1773,7 +1830,8 @@
    "samesame",
    "fireshrkd",
    "fireshrkdh",
-   "samesamenh"
+   "samesamenh",
+   "samesamecn"
   ],
   "rbf": "vimana",
   "roms": {
@@ -1817,7 +1875,8 @@
    "outzoneh",
    "outzonea",
    "outzoneb",
-   "outzonecv"
+   "outzonecv",
+   "outzonec"
   ],
   "rbf": "zerowing_20240404",
   "roms": {
@@ -1943,7 +2002,8 @@
    "salamandj",
    "lifefrce",
    "spclone",
-   "spcloneo"
+   "spcloneo",
+   "salamandt"
   ],
   "rbf": "Salamander",
   "roms": {
@@ -2044,7 +2104,8 @@
   "setnames": [
    "inthunt",
    "inthuntu",
-   "kaiteids"
+   "kaiteids",
+   "inthuntk"
   ],
   "rbf": "IremM92",
   "roms": {
@@ -2243,7 +2304,8 @@
   "setnames": [
    "terracre",
    "terracreo",
-   "terracrea"
+   "terracrea",
+   "terracren"
   ],
   "rbf": "terracresta",
   "roms": {
@@ -2284,7 +2346,8 @@
   "setnames": [
    "terraf",
    "terrafj",
-   "terrafu"
+   "terrafu",
+   "terrafua"
   ],
   "rbf": "armedf",
   "roms": {
@@ -2324,7 +2387,8 @@
   "orientation": "tate",
   "setnames": [
    "aso",
-   "alphamis"
+   "alphamis",
+   "arian"
   ],
   "rbf": "SNK_TripleZ80",
   "roms": {
@@ -2343,7 +2407,8 @@
   "system": "Sega System 1",
   "orientation": "tate",
   "setnames": [
-   "raflesia"
+   "raflesia",
+   "raflesiau"
   ],
   "rbf": "segasys1",
   "roms": {
@@ -2383,7 +2448,9 @@
   "system": "Toaplan Slap Fight",
   "orientation": "tate",
   "setnames": [
-   "tigerhb1"
+   "tigerhb1",
+   "tigerh",
+   "tigerhj"
   ],
   "rbf": "SlapFight",
   "roms": {
@@ -3722,7 +3789,8 @@
    "raidenk",
    "raident",
    "raidenb",
-   "raidenub"
+   "raidenub",
+   "raidenua"
   ],
   "rbf": "Raiden",
   "roms": {
@@ -3852,7 +3920,9 @@
    "rdfts",
    "rdftauge",
    "rdftjb",
-   "rdftua"
+   "rdftua",
+   "rdftam",
+   "rdftadi"
   ],
   "rbf": "SeibuSPI",
   "roms": {
@@ -3881,7 +3951,9 @@
    "rdft2aa",
    "rdft2it",
    "rdft2s",
-   "rdft2t"
+   "rdft2t",
+   "rdft2us",
+   "rdft22kc"
   ],
   "rbf": "SeibuSPI",
   "roms": {
@@ -3905,7 +3977,9 @@
    "rfjetu",
    "rfjeta",
    "rfjett",
-   "rfjetsa"
+   "rfjetsa",
+   "rfjets",
+   "rfjet2kc"
   ],
   "rbf": "SeibuSPI",
   "roms": {

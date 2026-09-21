@@ -2,6 +2,13 @@
 
 Every release of Shmup Deck, newest first. The GitHub release for each version carries the same notes at greater length. `tools/release.sh` reads the notes for a release from this file, so a version cannot be published without an entry here.
 
+## 1.10.2 (2026-09-21)
+
+- Regional sets: 74 more set names on 39 cards, so a Japanese version with a different title is found and launched. Area 88 under U.N. Squadron, U.S. Navy under Carrier Air Wing, Lost Worlds under Forgotten Worlds, Sengoku Ace under Samurai Aces and so on. Fixes the rest of #7.
+- Now playing names the set that loaded when it is not the card's first one, so Gradius II shows as such under the Vulcan Venture card.
+- Region reads the short forms organised sets use, such as JP, W and EU.
+- Back to menu: a button on the Now playing banner and the full-screen flyer loads the MiSTer's own menu, the same as the User button on the board.
+
 ## 1.10.1 (2026-09-20)
 
 - The version picker has a Cancel button and a dimmed background, so closing it never launches the card underneath.

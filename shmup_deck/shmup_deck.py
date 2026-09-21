@@ -53,7 +53,7 @@ VERSIONS_FILE = os.environ.get("SHMUP_VERSIONS", os.path.join(HERE, "versions.js
 DECKS_FILE = os.environ.get("SHMUP_DECKS", os.path.join(HERE, "decks.json"))
 SETTINGS_FILE = os.environ.get("SHMUP_SETTINGS", os.path.join(HERE, "settings.json"))
 
-VERSION = "1.10.1"
+VERSION = "1.10.2"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
 PROGRAM = os.path.abspath(__file__)
 REPO = os.environ.get("SHMUP_REPO", "searchsolved/shmup-deck")
@@ -398,6 +398,26 @@ def now_playing():
     return None
 
 
+def now_playing_set():
+    """The running set's MRA name when it is not the card's first set: the
+    Japanese version of a game whose card carries the World title, say.
+    None when the card's own title says it all."""
+    try:
+        with open(CORENAME) as f:
+            name = f.read().strip()
+    except OSError:
+        return None
+    for g in load_deck():
+        sets = g.get("setnames", [g["id"]])
+        if g.get("platform") != "neogeo" and name in sets:
+            if name == sets[0]:
+                return None
+            with INDEX.lock:
+                path = INDEX.best.get(name)
+            return os.path.splitext(os.path.basename(path))[0] if path else name
+    return None
+
+
 class Plays:
     """Launches and time played per game, kept on the MiSTer.
 
@@ -620,13 +640,15 @@ DECKS = Decks()
 # Where a set is from, read from the MRA's name the way MAME words it:
 # "Raiden II (US, set 1)", "Ketsui (Japan)". A name that says nothing is
 # left without a region rather than guessed.
+# The long forms are MAME's; the short ones are how organised sets abbreviate
+# them: "(JP, Resale)", "(W, 901990)", "(EU)".
 REGIONS = {
-    "japan": ("japan",),
-    "world": ("world",),
+    "japan": ("japan", "jp", "jpn"),
+    "world": ("world", "w", "wld"),
     "usa": ("usa", "us", "north america", "america"),
-    "europe": ("europe", "euro", "germany", "italy", "spain", "france", "uk", "great britain", "holland",
+    "europe": ("europe", "euro", "eu", "eur", "germany", "italy", "spain", "france", "uk", "great britain", "holland",
                "netherlands", "switzerland", "portugal", "greece", "austria", "sweden", "denmark"),
-    "asia": ("asia", "korea", "hong kong", "taiwan", "china", "australia"),
+    "asia": ("asia", "korea", "kr", "hong kong", "hk", "taiwan", "tw", "china", "cn", "australia"),
 }
 REGION_WORDS = {w: r for r, ws in REGIONS.items() for w in ws}
 REGION_CHOICES = ("any",) + tuple(REGIONS)
@@ -1080,6 +1102,7 @@ class Handler(SimpleHTTPRequestHandler):
                 "art": {"fetching": ART.fetching, "done": ART.done, "total": ART.total,
                         "failed": ART.failed},
                 "now_playing": now_playing(),
+                "now_playing_set": now_playing_set(),
                 "update": UPDATER.snapshot()})
         if self.path == "/api/available":
             return self.send_json({g["id"]: resolve_game(g) for g in load_deck()})
