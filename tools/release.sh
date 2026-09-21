@@ -46,6 +46,8 @@ python3 tools/build_deck_index.py >/dev/null || { echo "a shared deck in decks/ 
 [ -z "$(git status --porcelain)" ] || { echo "decks/index.json changed; commit it and run again" >&2; exit 1; }
 # orientation and rotation come from MAME, never by eye
 python3 tools/check_orientation.py >/dev/null || { echo "a game's orientation disagrees with MAME; run tools/check_orientation.py" >&2; exit 1; }
+# and every card carries all of its game's MAME sets, or a regional version is never found
+python3 tools/check_sets.py >/dev/null || { echo "a card lacks MAME sets; run tools/check_sets.py" >&2; exit 1; }
 
 if [ $bench = 1 ]; then
   echo "== benchmark"
