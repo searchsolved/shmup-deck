@@ -1,6 +1,6 @@
 # Supported games and ROMs
 
-Shmup Deck supports 200 games: 187 arcade games that run from MRA files and 13 Neo Geo games. This page lists the core and ROM files each one needs.
+Shmup Deck supports 205 games: 192 arcade games that run from MRA files and 13 Neo Geo games. This page lists the core and ROM files each one needs.
 
 To see what your own MiSTer is missing, open **http://shmupdeck.local/check.html** once Shmup Deck is installed. It checks every game for its MRA, core and ROM zips and can copy the missing zip names.
 
@@ -29,6 +29,8 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | --- | --- | --- | --- |
 | Asuka | 1 | [www.patreon.com/bazset](https://www.patreon.com/bazset/posts/asuka-asuka-1988-169899343) | Core and MRA from the author's Patreon post; no repository |
 | CV1000 | 14 | [ika-musume/ikacore_CV1k](https://github.com/ika-musume/ikacore_CV1k) | The repository has no core build or MRAs; builds come from the developer. MRAs for all games, including DoDonPachi SaiDaiOuJou and Akai Katana, are in [funkycochise/CV1K_Res](https://github.com/funkycochise/CV1K_Res) |
+| Darius | 1 | [rmonic79/Arcade-Darius_MiSTer](https://github.com/rmonic79/Arcade-Darius_MiSTer) | Core and MRAs in the repository's releases folder |
+| Darius II | 1 | [rmonic79/Arcade-Darius2NinjaWarriors_MiSTer](https://github.com/rmonic79/Arcade-Darius2NinjaWarriors_MiSTer) | Core and MRAs in the repository's releases folder; The Ninja Warriors shares it |
 | EarthJoker | 1 | [www.patreon.com/bazset](https://www.patreon.com/bazset/posts/u-n-defense-1993-169900198) | Core and MRA from the author's Patreon post; no repository |
 | Galmedes | 1 | [www.patreon.com/bazset](https://www.patreon.com/bazset/posts/galmedes-visco-169900687) | Core and MRA from the author's Patreon post; no repository |
 | Gigandes | 1 | [bazset/Gigandes-FPGA](https://github.com/bazset/Gigandes-FPGA) | Source only; the core build and MRA are on the author's Patreon |
@@ -42,7 +44,7 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | SetaDowntown | 3 | [ppriest/Arcade-Seta_MiSTer](https://github.com/ppriest/Arcade-Seta_MiSTer) | Core and MRAs in the repository's releases folder; a separate core from Seta, for the Downtown board |
 | Taito F3 | 5 | [spacestate1/Arcade-taitoF3_MiSTer](https://github.com/spacestate1/Arcade-taitoF3_MiSTer) |  |
 | Taito FX-1B | 2 | [XelaNotPu/ZN1-TaitoFX1B_MiSTer](https://github.com/XelaNotPu/ZN1-TaitoFX1B_MiSTer) |  |
-| Toaplan | 2 | [TheJesusFish/Arcade-Batsugun_MiSTer](https://github.com/TheJesusFish/Arcade-Batsugun_MiSTer) | The repository has MRAs but no core build |
+| Toaplan | 4 | [TheJesusFish/Slop-Core](https://github.com/TheJesusFish/Slop-Core) | Core and MRAs in the repository's _Arcade folder |
 | TwinHawk | 1 | [bazset/Twin-Hawk-FPGA](https://github.com/bazset/Twin-Hawk-FPGA) | MRAs in the repository; the core build is on the author's Patreon |
 
 ## Arcade games
@@ -69,6 +71,7 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
+| Air Gallet | 1996 | MiSTer main distribution | `agallet.zip` | same |  |
 | Dangun Feveron | 1998 | MiSTer main distribution | `dfeveron.zip` | `feversos.zip` |  |
 | DoDonPachi | 1997 | MiSTer main distribution | `ddonpach.zip` | same |  |
 | DonPachi | 1995 | MiSTer main distribution | `donpachi.zip` | same |  |
@@ -122,6 +125,18 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 
 \* DoDonPachi SaiDaiOuJou: Removed from MAME after 0.238; use a 0.238 or older set. The MRA is not in the core author's releases; get it from funkycochise/CV1K_Res.
 \* Akai Katana: Removed from MAME after 0.238; use a 0.238 or older set. The MRA is not in the core author's releases; get it from funkycochise/CV1K_Res.
+
+### Darius
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Darius | 1986 | [GitHub](https://github.com/rmonic79/Arcade-Darius_MiSTer) | `darius.zip` | same |  |
+
+### Darius II
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Darius II | 1989 | [GitHub](https://github.com/rmonic79/Arcade-Darius2NinjaWarriors_MiSTer) | `darius2.zip` | same |  |
 
 ### Data East
 
@@ -448,11 +463,13 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
-| Batsugun | 1993 | [GitHub](https://github.com/TheJesusFish/Arcade-Batsugun_MiSTer) | `batsugun.zip` | same |  |
-| Batsugun Special Version | 1994 | [GitHub](https://github.com/TheJesusFish/Arcade-Batsugun_MiSTer) | `batsugunsp.zip` | `batsugun.zip` |  |
+| Batsugun | 1993 | [GitHub](https://github.com/TheJesusFish/Slop-Core) | `batsugun.zip` | same |  |
+| Batsugun Special Version | 1994 | [GitHub](https://github.com/TheJesusFish/Slop-Core) | `batsugunsp.zip` | `batsugun.zip` |  |
+| Dogyuun | 1992 | [GitHub](https://github.com/TheJesusFish/Slop-Core) | `dogyuun.zip` | same |  |
 | Dr. Toppel's Adventure | 1987 | JOTEGO cores | `drtoppel.zip` | same |  |
 | Fire Shark | 1989 | Coin-Op Collection | `fireshrk.zip` | same |  |
 | Flying Shark | 1987 | Coin-Op Collection | `fshark.zip` | same |  |
+| Grind Stormer | 1992 | [GitHub](https://github.com/TheJesusFish/Slop-Core) | `grindstm.zip` | same |  |
 | Hellfire | 1989 | Coin-Op Collection | `hellfire.zip` | same |  |
 | Insector X | 1989 | JOTEGO cores | `insectx.zip` | same |  |
 | Out Zone | 1990 | Coin-Op Collection | `outzone.zip` | same |  |
@@ -505,6 +522,7 @@ One per line, for filtering a download. Non-merged or split set:
 1944.zip
 19xx.zip
 acrobatm.zip
+agallet.zip
 airattck.zip
 airduelm72.zip
 ajax.zip
@@ -527,6 +545,8 @@ cotton2.zip
 cottonbm.zip
 cyvern.zip
 daioh.zip
+darius.zip
+darius2.zip
 dariusg.zip
 dbreedjm72.zip
 ddonpach.zip
@@ -540,6 +560,7 @@ desertwr.zip
 dfeveron.zip
 dfkbl.zip
 dimahoo.zip
+dogyuun.zip
 donpachi.zip
 dragnblz.zip
 drtoppel.zip
@@ -575,6 +596,7 @@ gradius3.zip
 gratia.zip
 grdforce.zip
 grdnstrm.zip
+grindstm.zip
 gseeker.zip
 gunbird.zip
 gunbird2.zip
@@ -702,6 +724,7 @@ Merged set:
 1944.zip
 19xx.zip
 acrobatm.zip
+agallet.zip
 airass.zip
 airattck.zip
 airduel.zip
@@ -727,6 +750,8 @@ cotton2.zip
 cottonbm.zip
 cyvern.zip
 daioh.zip
+darius.zip
+darius2.zip
 dariusg.zip
 dbreed.zip
 ddonpach.zip
@@ -738,6 +763,7 @@ deathsml.zip
 desertwr.zip
 dfkbl.zip
 dimahoo.zip
+dogyuun.zip
 donpachi.zip
 dragnblz.zip
 drtoppel.zip
@@ -771,6 +797,7 @@ gradius3.zip
 gratia.zip
 grdforce.zip
 grdnstrm.zip
+grindstm.zip
 gseeker.zip
 gunbird.zip
 gunbird2.zip

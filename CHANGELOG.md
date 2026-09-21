@@ -2,6 +2,12 @@
 
 Every release of Shmup Deck, newest first. The GitHub release for each version carries the same notes at greater length. `tools/release.sh` reads the notes for a release from this file, so a version cannot be published without an entry here.
 
+## 1.10.3 (2026-09-21)
+
+- Five more games: Air Gallet, Darius, Darius II, Dogyuun and Grind Stormer, with their regional sets (Akuu Gallet, V-Five and the rest). From #8.
+- Air Gallet runs on the CaveBanpresto core in the main distribution. Darius and Darius II use rmonic79's cores; Dogyuun and Grind Stormer use TheJesusFish's Slop-Core. Games on cores outside Update All appear once the core is installed.
+- Batsugun's core link now points to Slop-Core, which has the core build.
+
 ## 1.10.2 (2026-09-21)
 
 - Regional sets: 74 more set names on 39 cards, so a Japanese version with a different title is found and launched. Area 88 under U.N. Squadron, U.S. Navy under Carrier Air Wing, Lost Worlds under Forgotten Worlds, Sengoku Ace under Samurai Aces and so on. Fixes the rest of #7.

@@ -4312,5 +4312,119 @@
    "note": "A second-loop rework by atrac17 and terminator2k2. The MRA comes from Arcade Offset, an optional Update All database."
   },
   "art": "progear"
+ },
+ {
+  "id": "agallet",
+  "title": "Air Gallet",
+  "dev": "Gazelle",
+  "year": 1996,
+  "core": "Cave",
+  "system": "Cave 68000",
+  "orientation": "tate",
+  "setnames": [
+   "agallet",
+   "agalletu",
+   "agalletj",
+   "agalletk",
+   "agallett",
+   "agalleth",
+   "agalleta",
+   "agalletau",
+   "agalletaj",
+   "agalletak",
+   "agalletat",
+   "agalletah"
+  ],
+  "rbf": "CaveBanpresto",
+  "roms": {
+   "zip": "agallet",
+   "merged": "agallet",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "darius",
+  "title": "Darius",
+  "dev": "Taito",
+  "year": 1986,
+  "core": "Darius",
+  "system": "Taito Darius",
+  "orientation": "yoko",
+  "setnames": [
+   "darius",
+   "dariusu",
+   "dariusj",
+   "dariuso",
+   "dariuse"
+  ],
+  "rbf": "Darius",
+  "roms": {
+   "zip": "darius",
+   "merged": "darius",
+   "shared": []
+  }
+ },
+ {
+  "id": "darius2",
+  "title": "Darius II",
+  "dev": "Taito",
+  "year": 1989,
+  "core": "Darius II",
+  "system": "Taito Ninja Warriors",
+  "orientation": "yoko",
+  "setnames": [
+   "darius2"
+  ],
+  "rbf": "Darius2NinjaWarriors",
+  "roms": {
+   "zip": "darius2",
+   "merged": "darius2",
+   "shared": []
+  }
+ },
+ {
+  "id": "dogyuun",
+  "title": "Dogyuun",
+  "dev": "Toaplan",
+  "year": 1992,
+  "core": "Toaplan",
+  "system": "Toaplan 2",
+  "orientation": "tate",
+  "setnames": [
+   "dogyuun",
+   "dogyuuna",
+   "dogyuunb",
+   "dogyuunt",
+   "dogyuunto"
+  ],
+  "rbf": "Dogyuun",
+  "roms": {
+   "zip": "dogyuun",
+   "merged": "dogyuun",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "grindstm",
+  "title": "Grind Stormer",
+  "dev": "Toaplan",
+  "year": 1992,
+  "core": "Toaplan",
+  "system": "Toaplan 2",
+  "orientation": "tate",
+  "setnames": [
+   "grindstm",
+   "grindstma",
+   "vfive"
+  ],
+  "rbf": "GrindStormer",
+  "roms": {
+   "zip": "grindstm",
+   "merged": "grindstm",
+   "shared": []
+  },
+  "rotation": "ccw"
  }
 ]

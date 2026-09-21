@@ -53,7 +53,7 @@ VERSIONS_FILE = os.environ.get("SHMUP_VERSIONS", os.path.join(HERE, "versions.js
 DECKS_FILE = os.environ.get("SHMUP_DECKS", os.path.join(HERE, "decks.json"))
 SETTINGS_FILE = os.environ.get("SHMUP_SETTINGS", os.path.join(HERE, "settings.json"))
 
-VERSION = "1.10.2"
+VERSION = "1.10.3"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
 PROGRAM = os.path.abspath(__file__)
 REPO = os.environ.get("SHMUP_REPO", "searchsolved/shmup-deck")

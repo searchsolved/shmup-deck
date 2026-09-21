@@ -40,8 +40,8 @@
   },
   "Batsugun": {
    "source": "github",
-   "url": "https://github.com/TheJesusFish/Arcade-Batsugun_MiSTer",
-   "note": "The repository has MRAs but no core build"
+   "url": "https://github.com/TheJesusFish/Slop-Core",
+   "note": "Core and MRAs in the repository's _Arcade folder"
   },
   "bbakraid_mister": {
    "source": "coinop"
@@ -60,6 +60,21 @@
   },
   "cobracom_mister": {
    "source": "coinop"
+  },
+  "Darius": {
+   "source": "github",
+   "url": "https://github.com/rmonic79/Arcade-Darius_MiSTer",
+   "note": "Core and MRAs in the repository's releases folder"
+  },
+  "Darius2NinjaWarriors": {
+   "source": "github",
+   "url": "https://github.com/rmonic79/Arcade-Darius2NinjaWarriors_MiSTer",
+   "note": "Core and MRAs in the repository's releases folder; The Ninja Warriors shares it"
+  },
+  "Dogyuun": {
+   "source": "github",
+   "url": "https://github.com/TheJesusFish/Slop-Core",
+   "note": "Core and MRAs in the repository's _Arcade folder"
   },
   "EarthJoker": {
    "source": "github",
@@ -81,6 +96,11 @@
    "source": "github",
    "url": "https://github.com/bazset/Gigandes-FPGA",
    "note": "Source only; the core build and MRA are on the author's Patreon"
+  },
+  "GrindStormer": {
+   "source": "github",
+   "url": "https://github.com/TheJesusFish/Slop-Core",
+   "note": "Core and MRAs in the repository's _Arcade folder"
   },
   "Gyruss": {
    "source": "official"

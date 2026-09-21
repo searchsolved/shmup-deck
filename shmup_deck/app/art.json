@@ -1,6 +1,6 @@
 {
  "_mirrors": [
-  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/26bca4a55b80482d0e25a1272b22d76b148dfc93/"
+  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/d3406bc5f84fd5acf137aea6de76b9cdf9a1d5ad/"
  ],
  "forgottn": {
   "url": "https://images.launchbox-app.com/da018d5c-cdc4-4d1e-939b-364e5bfe6889.jpg",
@@ -2570,6 +2570,71 @@
    0,
    850,
    1201
+  ]
+ },
+ "agallet": {
+  "url": "https://images.launchbox-app.com/414b6f67-035b-46cf-ad0b-fe10bd4bc61a.jpg",
+  "size": [
+   549,
+   789
+  ],
+  "crop": [
+   0,
+   0,
+   549,
+   789
+  ]
+ },
+ "darius": {
+  "url": "https://images.launchbox-app.com/cb7f6e9a-e2e7-45b3-a00f-e34ab9ed9610.png",
+  "size": [
+   1192,
+   1672
+  ],
+  "crop": [
+   54,
+   82,
+   1085,
+   1561
+  ]
+ },
+ "darius2": {
+  "url": "https://images.launchbox-app.com/darius2.png",
+  "size": [
+   850,
+   1196
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1196
+  ]
+ },
+ "dogyuun": {
+  "url": "https://images.launchbox-app.com/2d0157d0-a926-4100-9f7e-8d6d7e1ae678.jpg",
+  "size": [
+   575,
+   820
+  ],
+  "crop": [
+   0,
+   0,
+   575,
+   820
+  ]
+ },
+ "grindstm": {
+  "url": "https://images.launchbox-app.com/a0fe247d-45f9-41f0-96b1-51432ad8863f.jpg",
+  "size": [
+   1471,
+   1987
+  ],
+  "crop": [
+   0,
+   0,
+   1471,
+   1987
   ]
  }
 }
