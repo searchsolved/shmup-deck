@@ -3,194 +3,147 @@
 ![Shmup Deck: a flyer wall for your shoot 'em ups on the MiSTer FPGA](docs/banner.jpg)
 
 A flyer-wall launcher for shoot 'em ups on the MiSTer FPGA. Open it on your
-phone, tap a flyer, and the MiSTer loads the game.
-
-It runs on the MiSTer itself. There is nothing to host, no PC involved and no
-other service to install.
+phone, tap a flyer, and the MiSTer loads the game. It runs on the MiSTer
+itself: nothing to host, no PC, no other service to install.
 
 ![Shmup Deck trailer: DoDonPachi sprites, the flyer wall, and tapping a flyer to launch the game](docs/deck.gif)
 
-- 178 auto-scrolling shooters, mostly from 1985 onwards, across Toaplan, Cave,
-  CV1000, Capcom CPS1/CPS2, PGM, Psikyo, Raizing, Konami, Irem, NMK, Taito F3,
-  Seta, Sega ST-V, Neo Geo and more
-- Only games actually installed on your SD card are shown
-- Star games to build your own favourites deck, kept on the MiSTer so every
-  phone sees the same one; a Copy link button gives a URL that opens just those
-- Show all, favourites or played; sort by name, year or most played; group by
-  developer or arcade system; search by title, developer or system
-- Screen: which way the monitor is fitted (tate or yoko), asked on the first
-  visit and remembered; settings for showing games the MiSTer can't run yet
-  and a compact layout
-- Shows what is playing right now
-- A ROM checklist page shows what each game still needs on your MiSTer: the
-  MRA, the core or the ROM zips
-- Time played and launches are counted on the MiSTer for every game, however
-  it was started, with a stats page of your most played
+- 205 shooters on 64 arcade boards: Toaplan, Cave, CV1000, CPS1/CPS2, PGM,
+  Psikyo, Raizing, Konami, Irem, NMK, Taito, Seta, Sega ST-V, Neo Geo and more
+- Only games installed on your SD card show, unless you ask to see the rest
+- Filter by screen (tate or yoko) and region; sort by name, year or plays;
+  group by developer, board or deck; search by title, developer or board
+- Decks: your own lists of games, shareable by link, plus a community set
+- Launch counts and time played for every game, however it was started
+- A ROM checklist of what each game still needs: the MRA, the core or the zips
+- Kiosk mode for a tablet by the cab
 
-What changed in each version is in [CHANGELOG.md](CHANGELOG.md).
+Release notes are in [CHANGELOG.md](CHANGELOG.md).
 
 ## Install
 
 1. Download [`shmup_deck.sh`](https://github.com/searchsolved/shmup-deck/releases/latest/download/shmup_deck.sh)
-   and copy it to the `Scripts` folder on your SD card.
-2. On the MiSTer, open the Scripts menu and run `shmup_deck`.
-3. On your phone, open **http://shmupdeck.local** and add it to your home
-   screen if you like.
+   to the `Scripts` folder on your SD card.
+2. On the MiSTer, run `shmup_deck` from the Scripts menu.
+3. On your phone, open **http://shmupdeck.local** and add it to your home screen.
 
-The address stays the same even when your router gives the MiSTer a new IP.
-If `shmupdeck.local` doesn't load on your network, the script also shows the
-numbered address, like `http://192.168.1.50:8190`, which always works.
+If `shmupdeck.local` doesn't resolve on your network, use the numbered address
+the script shows, such as `http://192.168.1.50:8190`.
 
 The first start scans your arcade folders and downloads the flyer art, which
-takes a few minutes. Games appear as soon as the scan finishes and flyers fill
-in as they arrive.
+takes a few minutes. Games appear when the scan finishes; flyers fill in as
+they arrive.
 
-On a phone the deck is a title, a search box and the covers; the filters sit
-behind the button beside the search, and Deck, Stats, ROMs and Settings are a
-bar along the bottom. When a game starts, its flyer fills the screen until
-you tap it.
+**Updating:** when a new release is out, a dot appears on the settings cog.
+Tap **Update** in Settings, or run `shmup_deck` from the Scripts menu again.
+Flyers, play history, decks and settings are kept.
 
-## Decks
+**Removing:** run `shmup_deck.sh uninstall` over SSH. Files live in
+`/media/fat/Scripts/.config/shmup_deck/`.
 
-A deck is a list of games you chose, in the order you chose, kept on the
-MiSTer so every phone sees it. The Decks page is where they live. Name one, then tap games on the wall to
-fill it; open it there to add, share or rename it, or Edit on the Decks page
-to reorder, pick a cover flyer and write a line about it.
+## Using it
 
-Share a deck with the Share button. The link carries the whole deck, and
-anyone opening it on their own MiSTer gets a Save button. Decks other people
-have shared are listed on the Decks page under Community; add yours with a
-pull request to `decks/`, see the README there. Kiosk mode can be limited to
-one deck from Settings, or with `?kiosk=<deck id>`.
+- **Settings are kept on the MiSTer**, so every phone sees the same decks,
+  region and play counts. Screen orientation is asked on the first visit and
+  kept per device.
+- **Region** is the cab's choice: with Japan picked, games with a Japanese set
+  show and launch that set.
+- **Several versions:** a card marked "4 sets" has several MRAs of that game.
+  Tap the mark, or hold the card, to choose which one launches. Versions that
+  play differently, such as Dai-Ou-Jou Black Label or Progear Red Label, have
+  their own cards.
+- **Now playing** shows on the wall, and the flyer fills the screen until you
+  tap it. **Back to menu** returns the MiSTer to its own menu, like the User
+  button.
 
-Region, in the filters, is the cab's choice rather than the phone's: with
-Japan chosen, games that have a Japanese set show and launch that set, and
-games whose sets name no region stay as they are. A version picked on a
-card still wins.
+### Decks
 
-When several MRAs of one game are on the card, regional sets, arrange
-versions, patched releases from Arcade Offset, the card says so. Tap the
-mark, or hold the card, to pick which one it launches; the choice is kept on
-the MiSTer. Versions that play like a different game, such as Ketsui's IKD
-2007 Special and Arrange, Dai-Ou-Jou Black Label, Radiant Silvergun EX and
-Progear Red Label, have cards of their own.
+A deck is a list of games in the order you choose. Create one on the Decks
+page, then tap games on the wall to add them; Edit reorders it, sets a cover
+flyer and a description. **Share** makes a link that carries the whole deck,
+and anyone opening it on their own MiSTer can save it. The Decks page also has
+automatic decks (most played, not played yet, tonight's ten) and community
+decks; to add yours, open a pull request to [`decks/`](decks/).
 
-**Kiosk mode**, switched on in Settings or by opening `http://shmupdeck.local/?kiosk`,
-is for a tablet by the cab: nothing but the wall, full screen, kept awake,
-flyers drifting by after a minute untouched. Hold the top left corner for
-two seconds to leave.
+### Kiosk mode
 
-## Tips
-
-- A card marked "4 sets" has several MRAs of that game on the card. Tap the
-  mark, or hold the card, to choose which one launches. The choice is kept on
-  the MiSTer.
-- To leave kiosk mode, hold the top left corner of the screen for two
-  seconds. It glows while you hold.
-- **Back to menu**, on the Now playing banner and the full-screen flyer, loads
-  the MiSTer's own menu, the same as the User button on the board.
-- Games on cores Update All can't install never show as missing. They appear
-  as soon as the core is on the card.
-
-Shmup Deck checks GitHub for a newer release now and then. When one is out,
-a dot appears on the settings cog and the status line says so; open the
-settings sheet and tap **Update** to install it and restart. Your flyer art,
-play history and favourites stay as they are. Running `shmup_deck` from the
-Scripts menu does the same thing, and the script updates itself too.
-
-To remove it from startup, run `shmup_deck.sh uninstall` over SSH. Files live
-in `/media/fat/Scripts/.config/shmup_deck/`.
+For a tablet by the cab: only the wall, full screen, kept awake, with flyers
+drifting by when idle. Turn it on in Settings or open
+`http://shmupdeck.local/?kiosk`; limit it to one deck with
+`?kiosk=<deck id>`. Hold the top left corner for two seconds to leave.
 
 ## Requirements
 
 - A MiSTer with network access
-- Arcade MRAs and ROMs for the games you want. MRAs can be anywhere under
-  `_Arcade` or another top-level `_` folder, on the SD card or a USB drive, in
-  any folder layout including organised sets
-- For Neo Geo games: the Neo Geo core and games in `games/NeoGeo` (on the SD
-  card or a USB drive, subfolders are fine)
+- MRAs and ROMs for the games you want. MRAs can be anywhere under `_Arcade`
+  or any other top-level `_` folder, on the SD card or a USB drive, in any
+  folder layout
 - The cores for those games
+- For Neo Geo: the Neo Geo core and games in `games/NeoGeo`
 
-[ROMS.md](ROMS.md) lists every supported game with its core, where to get the
-core and the ROM zips it needs. On the MiSTer itself,
-**http://shmupdeck.local/check.html** checks all of this against your SD card.
+[ROMS.md](ROMS.md) lists every game with its core, where to get it and the ROM
+zips it needs. **http://shmupdeck.local/check.html** checks all of this against
+your SD card. Games on cores that Update All doesn't distribute never show as
+missing; they appear once you install the core.
 
-Some games run on cores that Update All doesn't distribute (they're listed in
-ROMS.md). The app never reports those as missing: they appear only once you've
-installed the core yourself, so nothing in the app points at a core Update All
-can't provide.
+Shmup Deck contains no ROMs, MRAs or cores.
 
 ### Neo Geo formats
 
 | Format | Status |
 | --- | --- |
-| `.neo` files, e.g. `Blazing Star (blazstar).neo` or `blazstar.neo` | Tested |
-| Darksoft sets as a folder or zip named by setname, e.g. `blazstar/` | Detected, not yet tested; reports welcome |
-| MAME zips with your own `romsets.xml` | Detected, not yet tested; reports welcome |
+| `.neo` files, e.g. `blazstar.neo` or `Blazing Star (blazstar).neo` | Tested |
+| Darksoft sets as a folder or zip named by setname | Detected, untested; reports welcome |
+| MAME zips with your own `romsets.xml` | Detected, untested; reports welcome |
 
-Neo Geo games are launched through a generated MGL file. The MiSTer reports
-only "NEOGEO" while one is running, so "Now playing" shows the last Neo Geo
-game launched from the deck.
-
-Shmup Deck contains no ROMs, MRAs or cores.
+Neo Geo games launch through a generated MGL file. The MiSTer only reports
+"NEOGEO" while one runs, so Now playing shows the last Neo Geo game launched
+from the deck.
 
 ## How it works
 
 `shmup_deck.py` is a small Python service using only the standard library that
 ships with the MiSTer. It:
 
-- reads the MAME setname inside every `.mra` in the top-level `_` folders of
-  the SD card and USB drives (`_Arcade`, and any others such as a quick-launch
-  `_CAVE CV1000`), so
-  games are matched exactly (Gunbird is never confused with Gunbird 2) and
-  your folder names don't matter
+- reads the MAME setname inside every `.mra` in the top-level `_` folders, so
+  games match exactly (Gunbird is never mistaken for Gunbird 2) whatever your
+  folders are called
 - prefers the plain release over alternatives, bootlegs, free play edits and
-  duplicates in sorting folders
-- launches by writing `load_core <path>` to `/dev/MiSTer_cmd`, the MiSTer's own
-  command interface
-- serves the web app on port 80 (if free) and port 8190
-- answers mDNS lookups for `shmupdeck.local` itself, since the MiSTer image
-  has no Avahi (start it with `--name` to use a different name)
+  duplicates
+- launches by writing `load_core <path>` to `/dev/MiSTer_cmd`
+- serves the app on port 80 (if free) and 8190
+- answers mDNS for `shmupdeck.local` itself, since the MiSTer image has no
+  Avahi (`--name` sets a different name)
 
-## Resource usage
+### Resource usage
 
-Measured on 1.4.3 on a DE10-Nano (492 MB total on the ARM side) across three
-phases: over an hour idle on the menu, a full rescan, then ten minutes with a
-game running.
+Baseline measured on 1.4.3 on a DE10-Nano (492 MB RAM on the ARM side), with
+30,681 MRAs on the card.
 
 | | Idle (menu) | During rescan | After rescan | Game running |
 |---|---|---|---|---|
 | Memory | 14 MB | 25 MB peak | 18 MB | 18 MB |
 | CPU (one core) | 0.1% | about 90%, at low priority | 0.1% | 0.08% |
 
-Memory stays under 25 MB and CPU under 1% except while a rescan runs.
+A full rescan takes 45 to 90 seconds at nice 10, so the MiSTer's own work comes
+first. It runs on first start, when a drive or folder is added, or on request.
+Otherwise the service polls a file every few seconds. Every release is
+benchmarked against this baseline (see Development).
 
-- **Rescan:** 45 to 90 seconds for 30,000 MRAs, at low priority (nice 10) so
-  the MiSTer's own work comes first. It runs on first start, when you add a
-  drive or folder, or on request. In steady state the service does nothing but
-  poll a file every few seconds.
-- **Network:** fetches flyer art once (18 MB in total, from GitHub), then
-  nothing.
+### Flyer art
 
-These numbers are checked before every release; see Development below.
+Flyers are not in this repository. Each is downloaded once on first start,
+about 20 MB in total, and stored on your SD card. They come from
+[shmup-deck-art](https://github.com/searchsolved/shmup-deck-art), a mirror of
+the original scans cut to size, pinned in `art.json`. If the mirror is down,
+the original is fetched from its source: the
+[libretro thumbnails](https://github.com/libretro-thumbnails/MAME), LaunchBox,
+The Arcade Flyer Archive, arcadeartwork.org, Wikipedia or archive.org. All
+flyer artwork belongs to its copyright holders.
 
-## Flyer art
-
-Flyer art is not included in this repository. On first start each flyer is
-downloaded once, a couple of seconds apart, and stored on your SD card. They
-come from [shmup-deck-art](https://github.com/searchsolved/shmup-deck-art), a
-mirror of the original scans cut and sized for the cards (about 100 KB each),
-pinned to a snapshot in `art.json`. If the mirror is unavailable, the original
-scan is fetched from its source instead: the
-[libretro thumbnails](https://github.com/libretro-thumbnails/MAME) archive,
-LaunchBox, The Arcade Flyer Archive, arcadeartwork.org, Wikipedia or archive.org.
-All flyer artwork belongs to its respective copyright holders.
-
-If a flyer can't be downloaded, its card shows the game title instead.
-
-A few games have no portrait flyer scan anywhere I could find, so their best
-available art is shown whole on the card. [FLYERS_WANTED.md](FLYERS_WANTED.md)
-lists them; links to better scans are very welcome.
+A card with no flyer shows the game title. A few games have no portrait flyer
+anywhere I could find; [FLYERS_WANTED.md](FLYERS_WANTED.md) lists them, and
+links to better scans are welcome.
 
 ## Adding games
 
@@ -211,45 +164,50 @@ Games are listed in `shmup_deck/app/games.json`:
 }
 ```
 
-`setnames` lists the MAME sets that count as this game, preferred first.
-`orientation` is which way the monitor is fitted for it. `system` is the
-arcade board it runs on, used for grouping. `rbf` is the core the
-game's MRA names, and `cores.json` says where that core comes from. `roms` is
-the zip from a non-merged set, the zip a merged set keeps it in, and any BIOS
-or chip zips it shares with other games. After adding games, run
-`python3 tools/build_rom_list.py` to rebuild ROMS.md. Flyer sources go in
-`shmup_deck/app/art.json`; `tools/build_art_manifest.py` works out each
-flyer's crop from a downloaded scan, and `tools/build_art_mirror.py` rebuilds
-the mirror repo from it.
+- `setnames`: the MAME sets that count as this game, preferred first
+- `orientation`: which way the monitor is fitted for it
+- `system`: the arcade board, used for grouping
+- `rbf`: the core the MRA names; `cores.json` says where it comes from
+- `roms`: the non-merged zip, the merged zip that holds it, and any shared
+  BIOS or chip zips
+
+Then run `python3 tools/build_rom_list.py` to rebuild ROMS.md. Flyer sources go
+in `shmup_deck/app/art.json`; `tools/build_art_manifest.py` works out each
+crop and `tools/build_art_mirror.py` rebuilds the mirror.
 
 ## API
 
 | Method | Path | |
 | --- | --- | --- |
-| GET | `/api/status` | scan and art progress, version, now playing |
+| GET | `/api/status` | version, scan and art progress, now playing, update state |
 | GET | `/api/available` | game id to installed MRA path (null if missing) |
 | GET | `/api/checklist` | per game: ready, or the missing MRA, core or ROM zips |
-| GET | `/api/stats` | launches, seconds played and last played per game, and what is running |
-| GET | `/api/favourites` | `{"ids": [...]}` |
-| POST | `/api/favourites` | `{"id": "gunbird", "on": true}`; returns the list |
-| POST | `/api/launch` | `{"id": "gunbird"}` |
-| POST | `/api/rescan` | rescan for MRAs after adding games; only new or changed files are read, `{"full": true}` reads them all |
+| GET | `/api/stats` | launches, seconds played and last played per game |
+| GET | `/api/decks` | all decks |
+| GET | `/api/settings` | region |
+| GET | `/api/versions?id=<id>` | installed versions of a game and the chosen one |
+| POST | `/api/launch` | `{"id": "gunbird"}`, optionally `"set"` |
+| POST | `/api/decks` | `{"deck": {...}}` saves, `{"delete": id}` removes, `{"member": {"deck", "id", "on"}}` adds or removes a game |
+| POST | `/api/settings` | `{"region": "japan"}`; `"any"` or null clears it |
+| POST | `/api/version` | `{"id", "set"}` remembers a version; a null set forgets it |
+| POST | `/api/rescan` | rescan MRAs; only changed files unless `{"full": true}` |
+| POST | `/api/update/check` | check GitHub for a newer release |
+| POST | `/api/update` | install the newer release and restart |
+| POST | `/api/menu` | load the MiSTer menu |
 
 ## Development
 
-`tools/release.sh 1.5.0` is the release checklist: it checks the version, a
-clean tree and an entry for the version in [CHANGELOG.md](CHANGELOG.md),
-rebuilds ROMS.md, benchmarks the build running on your MiSTer, packages
-`dist/` and publishes the GitHub release with the changelog entry as its
-notes. Write the changelog entry first; the script refuses to run without it.
+`tools/release.sh <version>` is the release checklist. It checks the version, a
+clean tree and a [CHANGELOG.md](CHANGELOG.md) entry (write that first, or it
+refuses to run), rebuilds ROMS.md, benchmarks the build running on your MiSTer,
+packages `dist/` and publishes the GitHub release with the changelog entry as
+notes.
 
-The benchmark, `tools/bench.py`, times a full rescan, watches the service
-idle on the menu for half an hour, then launches a game and watches it for as
-long again while the game runs, reporting memory and CPU for each. It compares
-the numbers with `tools/bench_baseline.json`, the figures from the last
-release, and fails the release on a regression: memory up by more than a
-quarter, CPU over 1% of a core idle or in-game, or a rescan half again as slow.
-Run it with `--save` to make the current numbers the new baseline.
+`tools/bench.py` times a full rescan, then watches the service idle on the menu
+and with a game running, 30 minutes each by default. It fails the release if,
+against `tools/bench_baseline.json`, memory rises by more than a quarter, CPU
+passes 1% of a core, or a rescan is half again as slow. `--save` makes the
+current numbers the new baseline.
 
 ## License
 
