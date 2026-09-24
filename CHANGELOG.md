@@ -2,6 +2,11 @@
 
 Every release of Shmup Deck, newest first. The GitHub release for each version carries the same notes at greater length. `tools/release.sh` reads the notes for a release from this file, so a version cannot be published without an entry here.
 
+## 1.11.0 (2026-09-24)
+
+- New display font: the title, headings, deck names and Now playing use Press Start 2P, bundled with the app so it works offline and looks the same on every phone.
+- Back to menu is now optional and off by default. Switch it on in Settings under Games; the choice is kept per device.
+
 ## 1.10.3 (2026-09-21)
 
 - Five more games: Air Gallet, Darius, Darius II, Dogyuun and Grind Stormer, with their regional sets (Akuu Gallet, V-Five and the rest). From #8.

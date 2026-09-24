@@ -53,8 +53,8 @@ Flyers, play history, decks and settings are kept.
   play differently, such as Dai-Ou-Jou Black Label or Progear Red Label, have
   their own cards.
 - **Now playing** shows on the wall, and the flyer fills the screen until you
-  tap it. **Back to menu** returns the MiSTer to its own menu, like the User
-  button.
+  tap it. An optional **Back to menu** button (off by default, in Settings)
+  returns the MiSTer to its own menu, like the User button.
 
 ### Decks
 
@@ -215,3 +215,7 @@ MIT. See [LICENSE](LICENSE).
 
 The rocket favicon is from [Twemoji](https://github.com/jdecked/twemoji),
 licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+The display font is [Press Start 2P](https://github.com/google/fonts/tree/main/ofl/pressstart2p)
+by CodeMan38, licensed under the SIL Open Font License 1.1
+(`shmup_deck/app/fonts/OFL.txt`).

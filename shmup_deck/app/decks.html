@@ -8,6 +8,8 @@
 <link rel="icon" href="icons/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="icons/icon-180.png">
 <style>
+/* display type: Press Start 2P (SIL OFL, fonts/OFL.txt), bundled so it works offline */
+@font-face{font-family:"Press Start 2P";src:url("fonts/PressStart2P-Regular.ttf") format("truetype");font-display:swap}
 :root{
   --pit:#07100B;
   --felt:#0C1A12;
@@ -31,12 +33,12 @@ a{color:var(--gold)}
 .wrap{max-width:1080px;margin:0 auto}
 header{margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 h1{
-  font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;
-  font-weight:800;font-size:clamp(34px,6vw,54px);
-  letter-spacing:.04em;text-transform:uppercase;line-height:.95;
-  color:var(--bone);
+  font-family:"Press Start 2P","Courier New",monospace;
+  font-weight:400;font-size:clamp(18px,3.4vw,30px);
+  letter-spacing:0;text-transform:uppercase;line-height:1.2;
+  color:var(--gold);text-shadow:0 3px 0 #6b5516;
 }
-h1 em{font-style:normal;color:var(--emerald-hot)}
+h1 em{font-style:normal;color:inherit}
 h1 a{color:inherit;text-decoration:none}
 h1 a:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:4px;border-radius:4px}
 nav{margin-left:auto;display:flex;align-items:center;gap:6px}
@@ -65,7 +67,7 @@ nav a:focus-visible{outline:2px solid var(--emerald-hot);outline-offset:2px}
   font-family:inherit;font-size:13px;cursor:pointer;white-space:nowrap;
 }
 .top button:hover{background:var(--gold);color:#231c07}
-h2{font-family:"Avenir Next Condensed","Arial Narrow",sans-serif;font-weight:800;font-size:24px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:30px 0 12px}
+h2{font-family:"Press Start 2P","Courier New",monospace;font-weight:400;font-size:16px;line-height:1.4;letter-spacing:0;text-transform:uppercase;color:var(--gold);margin:30px 0 12px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
 .card{
   display:block;text-decoration:none;color:var(--bone);border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.25);
