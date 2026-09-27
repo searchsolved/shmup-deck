@@ -9,7 +9,7 @@
 # Steps, each of which stops the release if it fails:
 #   1. VERSION in shmup_deck.py matches, CHANGELOG.md has the version, no
 #      uncommitted changes
-#   2. ROMS.md is current
+#   2. ROMS.md is current, and the art mirror art.json pins is on GitHub
 #   3. tools/bench.py against the MiSTer (the new build must already be
 #      running there, installed with shmup_deck.sh); --skip-bench for a
 #      docs-only release
@@ -48,6 +48,8 @@ python3 tools/build_deck_index.py >/dev/null || { echo "a shared deck in decks/ 
 python3 tools/check_orientation.py >/dev/null || { echo "a game's orientation disagrees with MAME; run tools/check_orientation.py" >&2; exit 1; }
 # and every card carries all of its game's MAME sets, or a regional version is never found
 python3 tools/check_sets.py >/dev/null || { echo "a card lacks MAME sets; run tools/check_sets.py" >&2; exit 1; }
+# the art snapshot art.json pins must be on GitHub, or the release ships with no flyers
+python3 tools/check_art_mirror.py || { echo "the pinned art mirror is not live; push shmup-deck-art first" >&2; exit 1; }
 
 if [ $bench = 1 ]; then
   echo "== benchmark"
