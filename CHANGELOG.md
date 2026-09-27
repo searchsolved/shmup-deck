@@ -2,6 +2,11 @@
 
 Every release of Shmup Deck, newest first. The GitHub release for each version carries the same notes at greater length. `tools/release.sh` reads the notes for a release from this file, so a version cannot be published without an entry here.
 
+## 1.11.1 (2026-09-27)
+
+- Four more games on ppriest's new Konami GX core: Fantastic Journey (Gokujou Parodius), Twin Bee Yahhoo! (Magical Twin Bee), Salamander 2 and Sexy Parodius, with their regional sets. The core is a work-in-progress beta outside Update All, so these cards appear once it is installed. Every game also needs konamigx.zip.
+- RayStorm now finds its regional sets (Ver 2.05O, 2.05A and 2.05J).
+
 ## 1.11.0 (2026-09-24)
 
 - New display font: the title, headings, deck names and Now playing use Press Start 2P, bundled with the app so it works offline and looks the same on every phone.

@@ -3287,7 +3287,10 @@
   "system": "Taito FX-1B",
   "orientation": "yoko",
   "setnames": [
-   "raystorm"
+   "raystorm",
+   "raystormo",
+   "raystormu",
+   "raystormj"
   ],
   "rbf": "XNZN1TaitoFX1B",
   "roms": {
@@ -4426,5 +4429,90 @@
    "shared": []
   },
   "rotation": "ccw"
+ },
+ {
+  "id": "fantjour",
+  "title": "Fantastic Journey",
+  "dev": "Konami",
+  "year": 1994,
+  "core": "Konami",
+  "system": "Konami GX",
+  "orientation": "yoko",
+  "setnames": [
+   "fantjour",
+   "fantjoura",
+   "gokuparo"
+  ],
+  "rbf": "KonamiGX",
+  "roms": {
+   "zip": "fantjour",
+   "merged": "fantjour",
+   "shared": [
+    "konamigx"
+   ]
+  }
+ },
+ {
+  "id": "tbyahhoo",
+  "title": "Twin Bee Yahhoo!",
+  "dev": "Konami",
+  "year": 1995,
+  "core": "Konami",
+  "system": "Konami GX",
+  "orientation": "yoko",
+  "setnames": [
+   "tbyahhoo",
+   "mtwinbee"
+  ],
+  "rbf": "KonamiGX",
+  "roms": {
+   "zip": "tbyahhoo",
+   "merged": "tbyahhoo",
+   "shared": [
+    "konamigx"
+   ]
+  }
+ },
+ {
+  "id": "salmndr2",
+  "title": "Salamander 2",
+  "dev": "Konami",
+  "year": 1996,
+  "core": "Konami",
+  "system": "Konami GX",
+  "orientation": "yoko",
+  "setnames": [
+   "salmndr2",
+   "salmndr2a"
+  ],
+  "rbf": "KonamiGX",
+  "roms": {
+   "zip": "salmndr2",
+   "merged": "salmndr2",
+   "shared": [
+    "konamigx"
+   ]
+  }
+ },
+ {
+  "id": "sexyparo",
+  "title": "Sexy Parodius",
+  "dev": "Konami",
+  "year": 1996,
+  "core": "Konami",
+  "system": "Konami GX",
+  "orientation": "yoko",
+  "setnames": [
+   "sexyparo",
+   "sexyparoa"
+  ],
+  "rbf": "KonamiGX",
+  "roms": {
+   "zip": "sexyparo",
+   "merged": "sexyparo",
+   "shared": [
+    "konamigx"
+   ]
+  }
  }
 ]

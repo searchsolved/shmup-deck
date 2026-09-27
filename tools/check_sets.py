@@ -24,7 +24,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from check_orientation import GAMES, driver_map, expected, fetch  # noqa: E402
 
 GAME_LINE = re.compile(
-    r'^\s*GAME[A-Z_]*\(\s*\d{4}\??,\s*(\w+),\s*(\w*),\s*[\w<>]+,\s*[\w<>]+,\s*[\w<>]+,\s*[\w<>]+,\s*(ROT\d+|ORIENTATION_[A-Z_]+),\s*"([^"]*)",\s*"([^"]*)"',
+    r'^\s*GAME[A-Z_]*\(\s*\d{4}\??,\s*(\w+),\s*(\w*),\s*[\w<>]+,\s*[\w<>]+,\s*[\w<>]+,\s*[\w<>]+,\s*(ROT\d+|ORIENTATION_[A-Z_]+),\s*"([^"]*)",\s*"([^"]*)"(.*)$',
     re.M)
 LEAVE_OUT = ("hack", "bootleg", "prototype", "homebrew")
 # sets of the same parent that are not versions of the card's game
@@ -39,7 +39,9 @@ def game_lines(drivers, sets):
     for path in sorted({drivers[s] for s in sets if s in drivers}):
         for m in GAME_LINE.finditer(fetch(path)):
             s, p = m.group(1), m.group(2)
-            out[s] = (s if p in ("0", "") else p, m.group(5), m.group(4), expected(m.group(3))[0])
+            # a BIOS root (Konami GX's "System GX") is marked in the flags, not the name
+            name = m.group(5) + (" BIOS" if "MACHINE_IS_BIOS_ROOT" in m.group(6) else "")
+            out[s] = (s if p in ("0", "") else p, name, m.group(4), expected(m.group(3))[0])
     return out
 
 

@@ -1,6 +1,6 @@
 {
  "_mirrors": [
-  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/d3406bc5f84fd5acf137aea6de76b9cdf9a1d5ad/"
+  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/963402c3bef4ba968a9dfba4430964c40b642d88/"
  ],
  "forgottn": {
   "url": "https://images.launchbox-app.com/da018d5c-cdc4-4d1e-939b-364e5bfe6889.jpg",
@@ -2635,6 +2635,58 @@
    0,
    1471,
    1987
+  ]
+ },
+ "salmndr2": {
+  "url": "https://images.launchbox-app.com/7cc0bf38-7561-47bb-a62e-72a8219b600a.jpg",
+  "size": [
+   1280,
+   1797
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1797
+  ]
+ },
+ "sexyparo": {
+  "url": "https://images.launchbox-app.com/17bb6ecd-8bf6-42ae-b817-d145ee5fff00.jpg",
+  "size": [
+   500,
+   709
+  ],
+  "crop": [
+   0,
+   0,
+   500,
+   709
+  ]
+ },
+ "fantjour": {
+  "url": "https://images.launchbox-app.com/19eec08c-495e-46b3-ab03-6214b72929cf.jpg",
+  "size": [
+   801,
+   1136
+  ],
+  "crop": [
+   0,
+   0,
+   801,
+   1136
+  ]
+ },
+ "tbyahhoo": {
+  "url": "https://images.launchbox-app.com/a026f67a-bf1f-4117-8a3a-cb0e7b6015b8.jpg",
+  "size": [
+   707,
+   1000
+  ],
+  "crop": [
+   0,
+   0,
+   707,
+   984
   ]
  }
 }

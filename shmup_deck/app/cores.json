@@ -189,6 +189,11 @@
   "kingdmgp_mister": {
    "source": "coinop"
   },
+  "KonamiGX": {
+   "source": "github",
+   "url": "https://github.com/ppriest/Arcade-KonamiGX_MiSTer",
+   "note": "Core and MRAs in the repository's releases folder; a work-in-progress beta. Every game also needs konamigx.zip"
+  },
   "NeoGeo": {
    "source": "official"
   },

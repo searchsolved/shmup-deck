@@ -1,6 +1,6 @@
 # Supported games and ROMs
 
-Shmup Deck supports 205 games: 192 arcade games that run from MRA files and 13 Neo Geo games. This page lists the core and ROM files each one needs.
+Shmup Deck supports 209 games: 196 arcade games that run from MRA files and 13 Neo Geo games. This page lists the core and ROM files each one needs.
 
 To see what your own MiSTer is missing, open **http://shmupdeck.local/check.html** once Shmup Deck is installed. It checks every game for its MRA, core and ROM zips and can copy the missing zip names.
 
@@ -34,6 +34,7 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | EarthJoker | 1 | [www.patreon.com/bazset](https://www.patreon.com/bazset/posts/u-n-defense-1993-169900198) | Core and MRA from the author's Patreon post; no repository |
 | Galmedes | 1 | [www.patreon.com/bazset](https://www.patreon.com/bazset/posts/galmedes-visco-169900687) | Core and MRA from the author's Patreon post; no repository |
 | Gigandes | 1 | [bazset/Gigandes-FPGA](https://github.com/bazset/Gigandes-FPGA) | Source only; the core build and MRA are on the author's Patreon |
+| Konami | 4 | [ppriest/Arcade-KonamiGX_MiSTer](https://github.com/ppriest/Arcade-KonamiGX_MiSTer) | Core and MRAs in the repository's releases folder; a work-in-progress beta. Every game also needs konamigx.zip |
 | MegaSystem 32 | 4 | [ppriest/Arcade-JalecoMS32_MiSTer](https://github.com/ppriest/Arcade-JalecoMS32_MiSTer) |  |
 | NMK16 | 19 | [kuzearcade/Arcade-NMK16_MiSTer](https://github.com/kuzearcade/Arcade-NMK16_MiSTer) |  |
 | Raiden | 1 | [rmonic79/Arcade-Raiden_MiSTer](https://github.com/rmonic79/Arcade-Raiden_MiSTer) | Core and MRAs in the repository's releases folder |
@@ -173,13 +174,17 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
 | Ajax | 1987 | JOTEGO cores | `ajax.zip` | same |  |
+| Fantastic Journey | 1994 | [GitHub](https://github.com/ppriest/Arcade-KonamiGX_MiSTer) | `fantjour.zip` | same | `konamigx.zip` |
 | Finalizer | 1985 | MiSTer main distribution | `finalizr.zip` | same |  |
 | Gradius | 1985 | MiSTer main distribution | `gradius.zip` | `nemesis.zip` |  |
 | Gradius III * | 1989 | JOTEGO cores | `gradius3.zip` | same | `jtbeta.zip` |
 | MX5000 | 1987 | JOTEGO cores | `mx5000.zip` | same |  |
 | Parodius Da! | 1990 | JOTEGO cores | `parodius.zip` | same |  |
 | Salamander | 1986 | MiSTer main distribution | `salamand.zip` | same |  |
+| Salamander 2 | 1996 | [GitHub](https://github.com/ppriest/Arcade-KonamiGX_MiSTer) | `salmndr2.zip` | same | `konamigx.zip` |
+| Sexy Parodius | 1996 | [GitHub](https://github.com/ppriest/Arcade-KonamiGX_MiSTer) | `sexyparo.zip` | same | `konamigx.zip` |
 | Thunder Cross | 1988 | JOTEGO cores | `thunderx.zip` | same |  |
+| Twin Bee Yahhoo! | 1995 | [GitHub](https://github.com/ppriest/Arcade-KonamiGX_MiSTer) | `tbyahhoo.zip` | same | `konamigx.zip` |
 | TwinBee | 1985 | MiSTer main distribution | `twinbee.zip` | same |  |
 | Vulcan Venture | 1988 | JOTEGO cores | `vulcan.zip` | same |  |
 
@@ -574,6 +579,7 @@ espgal2.zip
 esprade.zip
 exedexes.zip
 extrmatn.zip
+fantjour.zip
 fantzn2.zip
 fantzone.zip
 finalizr.zip
@@ -615,6 +621,7 @@ insectx.zip
 inthunt.zip
 ket.zip
 kingdmgp.zip
+konamigx.zip
 legion.zip
 lethalth.zip
 lwings.zip
@@ -659,11 +666,13 @@ s1945.zip
 s1945ii.zip
 s1945iii.zip
 salamand.zip
+salmndr2.zip
 samuraia.zip
 sbomber.zip
 sdib.zip
 sectionz.zip
 sengekis.zip
+sexyparo.zip
 shienryu.zip
 sidearms.zip
 silkworm.zip
@@ -679,6 +688,7 @@ stmblade.zip
 strahl.zip
 stratof.zip
 stvbios.zip
+tbyahhoo.zip
 tcobra2.zip
 tdragon.zip
 tdragon2.zip
@@ -777,6 +787,7 @@ espgal2.zip
 esprade.zip
 exedexes.zip
 extrmatn.zip
+fantjour.zip
 fantzn2.zip
 fantzone.zip
 feversos.zip
@@ -816,6 +827,7 @@ insectx.zip
 inthunt.zip
 ket.zip
 kingdmgp.zip
+konamigx.zip
 legion.zip
 lethalth.zip
 lwings.zip
@@ -860,11 +872,13 @@ s1945.zip
 s1945ii.zip
 s1945iii.zip
 salamand.zip
+salmndr2.zip
 samuraia.zip
 sbomber.zip
 sdi.zip
 sectionz.zip
 sengekis.zip
+sexyparo.zip
 shienryu.zip
 sidearms.zip
 silkworm.zip
@@ -879,6 +893,7 @@ stmblade.zip
 strahl.zip
 stratof.zip
 stvbios.zip
+tbyahhoo.zip
 tcobra2.zip
 tdragon.zip
 tdragon2.zip
