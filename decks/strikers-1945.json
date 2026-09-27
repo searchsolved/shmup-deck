@@ -1,0 +1,12 @@
+{
+ "name": "Strikers 1945",
+ "note": "Psikyo's Strikers 1945 games. Plus is the Neo Geo game based on II.",
+ "ids": [
+  "s1945",
+  "s1945ii",
+  "s1945iii",
+  "s1945p"
+ ],
+ "cover": "s1945ii",
+ "author": "Shmup Deck"
+}

@@ -1,0 +1,12 @@
+{
+ "name": "Darius",
+ "note": "Taito's Darius games in release order.",
+ "ids": [
+  "darius",
+  "darius2",
+  "dariusg",
+  "gdarius"
+ ],
+ "cover": "dariusg",
+ "author": "Shmup Deck"
+}

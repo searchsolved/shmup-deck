@@ -1,0 +1,14 @@
+{
+ "name": "Irem",
+ "note": "Irem's shooters from R-Type to In the Hunt, in release order.",
+ "ids": [
+  "rtype",
+  "imgfight",
+  "rtype2",
+  "xmultipl",
+  "rtypeleo",
+  "inthunt"
+ ],
+ "cover": "rtype",
+ "author": "Shmup Deck"
+}

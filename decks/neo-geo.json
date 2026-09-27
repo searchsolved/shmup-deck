@@ -1,0 +1,21 @@
+{
+ "name": "Neo Geo shooters",
+ "note": "Every Neo Geo shooter in the deck, oldest first. All horizontal.",
+ "ids": [
+  "gpilots",
+  "alpham2",
+  "lresort",
+  "viewpoin",
+  "androdun",
+  "sonicwi2",
+  "zedblade",
+  "pulstar",
+  "sonicwi3",
+  "blazstar",
+  "preisle2",
+  "s1945p",
+  "ctomaday"
+ ],
+ "cover": "blazstar",
+ "author": "Shmup Deck"
+}

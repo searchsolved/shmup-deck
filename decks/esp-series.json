@@ -1,0 +1,11 @@
+{
+ "name": "ESP series",
+ "note": "Cave's ESP games in release order: ESP Ra.De., then the two Espgaludas.",
+ "ids": [
+  "esprade",
+  "espgaluda",
+  "espgal2"
+ ],
+ "cover": "espgaluda",
+ "author": "Shmup Deck"
+}

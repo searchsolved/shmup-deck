@@ -1,0 +1,16 @@
+{
+ "name": "Gradius and Parodius",
+ "note": "Konami's Gradius games and the Parodius games that parody them, in release order. Vulcan Venture is Gradius II.",
+ "ids": [
+  "gradius",
+  "salamand",
+  "vulcan",
+  "gradius3",
+  "parodius",
+  "fantjour",
+  "salmndr2",
+  "sexyparo"
+ ],
+ "cover": "gradius",
+ "author": "Shmup Deck"
+}

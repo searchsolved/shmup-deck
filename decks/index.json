@@ -1,6 +1,20 @@
 {
  "decks": [
   {
+   "slug": "194x",
+   "name": "194X",
+   "note": "Capcom's 194X series in release order. 1944 was developed by Eighting.",
+   "ids": [
+    "1942",
+    "1943",
+    "1941",
+    "19xx",
+    "1944"
+   ],
+   "cover": "1943",
+   "author": "Shmup Deck"
+  },
+  {
    "slug": "after-toaplan",
    "name": "After Toaplan",
    "note": "Toaplan closed in 1994 and its programmers went on to Raizing and later Cave. Batsugun, then the Raizing games, then Yagawa's two Cave games.",
@@ -15,6 +29,20 @@
     "pinkswts"
    ],
    "cover": "garegga",
+   "author": "Shmup Deck"
+  },
+  {
+   "slug": "black-labels",
+   "name": "Black Labels",
+   "note": "Cave's Black Label editions: revised versions of games already in the deck.",
+   "ids": [
+    "ddpdojblk",
+    "ibarablk",
+    "futaribl",
+    "dsmbl",
+    "dfkbl"
+   ],
+   "cover": "dfkbl",
    "author": "Shmup Deck"
   },
   {
@@ -33,6 +61,36 @@
    "author": "Shmup Deck"
   },
   {
+   "slug": "darius",
+   "name": "Darius",
+   "note": "Taito's Darius games in release order.",
+   "ids": [
+    "darius",
+    "darius2",
+    "dariusg",
+    "gdarius"
+   ],
+   "cover": "dariusg",
+   "author": "Shmup Deck"
+  },
+  {
+   "slug": "dodonpachi",
+   "name": "DoDonPachi",
+   "note": "Every DonPachi game in the deck in release order, Black Labels included. DoDonPachi II was made by IGS, not Cave.",
+   "ids": [
+    "donpachi",
+    "ddonpach",
+    "ddp2",
+    "ddpdoj",
+    "ddpdojblk",
+    "ddpdfk",
+    "dfkbl",
+    "ddpsdoj"
+   ],
+   "cover": "ddonpach",
+   "author": "Shmup Deck"
+  },
+  {
    "slug": "easy-tate",
    "name": "Easy tate",
    "note": "Vertical shooters that are kind to a first credit, for getting used to the turned screen.",
@@ -48,6 +106,18 @@
     "dfeveron"
    ],
    "cover": "gunbird",
+   "author": "Shmup Deck"
+  },
+  {
+   "slug": "esp-series",
+   "name": "ESP series",
+   "note": "Cave's ESP games in release order: ESP Ra.De., then the two Espgaludas.",
+   "ids": [
+    "esprade",
+    "espgaluda",
+    "espgal2"
+   ],
+   "cover": "espgaluda",
    "author": "Shmup Deck"
   },
   {
@@ -93,6 +163,38 @@
    "author": "Shmup Deck"
   },
   {
+   "slug": "gradius-and-parodius",
+   "name": "Gradius and Parodius",
+   "note": "Konami's Gradius games and the Parodius games that parody them, in release order. Vulcan Venture is Gradius II.",
+   "ids": [
+    "gradius",
+    "salamand",
+    "vulcan",
+    "gradius3",
+    "parodius",
+    "fantjour",
+    "salmndr2",
+    "sexyparo"
+   ],
+   "cover": "gradius",
+   "author": "Shmup Deck"
+  },
+  {
+   "slug": "irem",
+   "name": "Irem",
+   "note": "Irem's shooters from R-Type to In the Hunt, in release order.",
+   "ids": [
+    "rtype",
+    "imgfight",
+    "rtype2",
+    "xmultipl",
+    "rtypeleo",
+    "inthunt"
+   ],
+   "cover": "rtype",
+   "author": "Shmup Deck"
+  },
+  {
    "slug": "konami-tate",
    "name": "Konami tate",
    "note": "Five Konami verticals that turn the monitor clockwise, the other way from Cave and Toaplan. On a cab set up for those, use the core's flip option.",
@@ -118,6 +220,40 @@
     "ddpdfk"
    ],
    "cover": "ddpdoj",
+   "author": "Shmup Deck"
+  },
+  {
+   "slug": "mushihime-sama",
+   "name": "Mushihime-Sama",
+   "note": "Cave's Mushihime-Sama games. Futari 1.5 is the revised version of Futari.",
+   "ids": [
+    "mushisam",
+    "futari15",
+    "futaribl"
+   ],
+   "cover": "mushisam",
+   "author": "Shmup Deck"
+  },
+  {
+   "slug": "neo-geo",
+   "name": "Neo Geo shooters",
+   "note": "Every Neo Geo shooter in the deck, oldest first. All horizontal.",
+   "ids": [
+    "gpilots",
+    "alpham2",
+    "lresort",
+    "viewpoin",
+    "androdun",
+    "sonicwi2",
+    "zedblade",
+    "pulstar",
+    "sonicwi3",
+    "blazstar",
+    "preisle2",
+    "s1945p",
+    "ctomaday"
+   ],
+   "cover": "blazstar",
    "author": "Shmup Deck"
   },
   {
@@ -167,6 +303,19 @@
     "1944"
    ],
    "cover": "garegga",
+   "author": "Shmup Deck"
+  },
+  {
+   "slug": "strikers-1945",
+   "name": "Strikers 1945",
+   "note": "Psikyo's Strikers 1945 games. Plus is the Neo Geo game based on II.",
+   "ids": [
+    "s1945",
+    "s1945ii",
+    "s1945iii",
+    "s1945p"
+   ],
+   "cover": "s1945ii",
    "author": "Shmup Deck"
   },
   {
