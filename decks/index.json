@@ -17,7 +17,7 @@
   {
    "slug": "after-toaplan",
    "name": "After Toaplan",
-   "note": "Toaplan closed in 1994 and its programmers went on to Raizing and later Cave. Batsugun, then the Raizing games, then Yagawa's two Cave games.",
+   "note": "When Toaplan closed in 1994, its staff went to Cave and Raizing. This deck follows the Raizing line: Batsugun, the Raizing games, then the two games Shinobu Yagawa made after moving to Cave.",
    "ids": [
     "batsugun",
     "sstriker",
@@ -34,7 +34,7 @@
   {
    "slug": "black-labels",
    "name": "Black Labels",
-   "note": "Cave's Black Label editions: revised versions of games already in the deck.",
+   "note": "Cave's Black Label editions: revised versions of games already in Shmup Deck.",
    "ids": [
     "ddpdojblk",
     "ibarablk",
@@ -43,21 +43,6 @@
     "dfkbl"
    ],
    "cover": "dfkbl",
-   "author": "Shmup Deck"
-  },
-  {
-   "slug": "bomb-everything",
-   "name": "Bomb everything",
-   "note": "Older verticals where bombs are plentiful and saving them is a mistake.",
-   "ids": [
-    "batsugun",
-    "raiden",
-    "twincobr",
-    "truxton",
-    "tigerh",
-    "vimana"
-   ],
-   "cover": "batsugun",
    "author": "Shmup Deck"
   },
   {
@@ -76,7 +61,7 @@
   {
    "slug": "dodonpachi",
    "name": "DoDonPachi",
-   "note": "Every DonPachi game in the deck in release order, Black Labels included. DoDonPachi II was made by IGS, not Cave.",
+   "note": "Every DonPachi game in Shmup Deck in release order, Black Labels included. DoDonPachi II was made by IGS, not Cave.",
    "ids": [
     "donpachi",
     "ddonpach",
@@ -93,7 +78,7 @@
   {
    "slug": "easy-tate",
    "name": "Easy tate",
-   "note": "Vertical shooters that are kind to a first credit, for getting used to the turned screen.",
+   "note": "Forgiving vertical shooters to start on while you get used to a rotated screen.",
    "ids": [
     "gunbird",
     "samuraia",
@@ -151,7 +136,7 @@
   {
    "slug": "five-steps-into-danmaku",
    "name": "Five steps into danmaku",
-   "note": "Five Cave games, one idea each: DonPachi's laser, DoDonPachi's chain, Feveron's speed, ESP Ra.De.'s bullet reading, Ketsui's lock-on. Play them in this order.",
+   "note": "Five Cave games, each built around one idea: DonPachi's laser, DoDonPachi's chain, Dangun Feveron's speed, ESP Ra.De.'s dense bullet patterns and Ketsui's lock-on. Play them in this order.",
    "ids": [
     "donpachi",
     "ddonpach",
@@ -165,7 +150,7 @@
   {
    "slug": "gradius-and-parodius",
    "name": "Gradius and Parodius",
-   "note": "Konami's Gradius games and the Parodius games that parody them, in release order. Vulcan Venture is Gradius II.",
+   "note": "Konami's Gradius games and their Parodius spin-offs, in release order. Vulcan Venture is Gradius II.",
    "ids": [
     "gradius",
     "salamand",
@@ -237,7 +222,7 @@
   {
    "slug": "neo-geo",
    "name": "Neo Geo shooters",
-   "note": "Every Neo Geo shooter in the deck, oldest first. All horizontal.",
+   "note": "Every Neo Geo shooter in Shmup Deck, oldest first. All play on a horizontal screen.",
    "ids": [
     "gpilots",
     "alpham2",
@@ -276,7 +261,7 @@
   {
    "slug": "raiden",
    "name": "Raiden",
-   "note": "Seibu Kaihatsu's Raiden games in order, with Viper Phase 1, the first shooter on their SPI board, where it falls.",
+   "note": "Seibu Kaihatsu's Raiden games in release order. Viper Phase 1 sits in its release slot because it was the first shooter on the SPI board the Raiden Fighters games used.",
    "ids": [
     "raiden",
     "raiden2",
@@ -292,7 +277,7 @@
   {
    "slug": "raizing",
    "name": "Raizing",
-   "note": "Everything Raizing made, in release order, including the two it made for Capcom as Eighting: Dimahoo and 1944.",
+   "note": "Raizing's shooters in release order, plus the two Eighting made for Capcom: Dimahoo and 1944.",
    "ids": [
     "sstriker",
     "kingdmgp",
@@ -321,7 +306,7 @@
   {
    "slug": "toaplan",
    "name": "Toaplan",
-   "note": "Toaplan's vertical shooters in release order, Tiger Heli in 1985 to Batsugun in 1993.",
+   "note": "Toaplan's shooters in release order, from Tiger Heli in 1985 to Batsugun in 1993.",
    "ids": [
     "tigerh",
     "alcon",
@@ -342,7 +327,7 @@
   {
    "slug": "two-players",
    "name": "Two players",
-   "note": "Shooters worth playing with someone next to you. All ten take two at once.",
+   "note": "Ten shooters that two people can play at the same time.",
    "ids": [
     "rdft",
     "rdft2",
