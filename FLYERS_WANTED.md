@@ -5,8 +5,10 @@ These games use the best art found so far, shown whole on the card. A portrait s
 | Game | Current art |
 | --- | --- |
 | Daioh | US flyer, squarer than a card; no Japanese flyer found |
+| Dragon Saber | Landscape flyer |
 | Guardian Storm | US flyer, squarer than a card |
 | Koutetsu Yousai Strahl | Landscape flyer |
+| Ordyne | Landscape flyer |
 | Rezon | Landscape flyer |
 | Spectrum 2000 | Landscape instruction sheet, not a flyer |
 | Stagger I | Red Hawk export flyer, squarer than a card; no Stagger I flyer found |

@@ -194,6 +194,11 @@
    "url": "https://github.com/ppriest/Arcade-KonamiGX_MiSTer",
    "note": "Core and MRAs in the repository's releases folder; a work-in-progress beta. Every game also needs konamigx.zip"
   },
+  "NamcoS2_STD": {
+   "source": "github",
+   "url": "https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer",
+   "note": "Core and MRAs in the repository's releases folder; in development. Every game also needs namcoc65.zip"
+  },
   "NeoGeo": {
    "source": "official"
   },

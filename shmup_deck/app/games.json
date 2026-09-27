@@ -4514,5 +4514,96 @@
     "konamigx"
    ]
   }
+ },
+ {
+  "id": "ordyne",
+  "title": "Ordyne",
+  "dev": "Namco",
+  "year": 1988,
+  "core": "Namco",
+  "system": "Namco System 2",
+  "orientation": "yoko",
+  "setnames": [
+   "ordyne",
+   "ordyneje",
+   "ordynej"
+  ],
+  "rbf": "NamcoS2_STD",
+  "roms": {
+   "zip": "ordyne",
+   "merged": "ordyne",
+   "shared": [
+    "namcoc65"
+   ]
+  }
+ },
+ {
+  "id": "phelios",
+  "title": "Phelios",
+  "dev": "Namco",
+  "year": 1988,
+  "core": "Namco",
+  "system": "Namco System 2",
+  "orientation": "tate",
+  "setnames": [
+   "phelios",
+   "pheliosj"
+  ],
+  "rbf": "NamcoS2_STD",
+  "roms": {
+   "zip": "phelios",
+   "merged": "phelios",
+   "shared": [
+    "namcoc65"
+   ],
+   "note": "On first launch the game stops at a warning screen; press 1P Start. Open the MiSTer menu once it is running (or use Save NVRAM) and the core keeps the setting, so it only happens once"
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "burnforc",
+  "title": "Burning Force",
+  "dev": "Namco",
+  "year": 1989,
+  "core": "Namco",
+  "system": "Namco System 2",
+  "orientation": "yoko",
+  "setnames": [
+   "burnforc",
+   "burnforco"
+  ],
+  "rbf": "NamcoS2_STD",
+  "roms": {
+   "zip": "burnforc",
+   "merged": "burnforc",
+   "shared": [
+    "namcoc65"
+   ],
+   "note": "On first launch the game stops at a warning screen; press 1P Start. Open the MiSTer menu once it is running (or use Save NVRAM) and the core keeps the setting, so it only happens once"
+  }
+ },
+ {
+  "id": "dsaber",
+  "title": "Dragon Saber",
+  "dev": "Namco",
+  "year": 1990,
+  "core": "Namco",
+  "system": "Namco System 2",
+  "orientation": "tate",
+  "setnames": [
+   "dsaber",
+   "dsabera",
+   "dsaberj"
+  ],
+  "rbf": "NamcoS2_STD",
+  "roms": {
+   "zip": "dsaber",
+   "merged": "dsaber",
+   "shared": [
+    "namcoc65"
+   ],
+   "note": "On first launch the game stops at a warning screen; press 1P Start. Open the MiSTer menu once it is running (or use Save NVRAM) and the core keeps the setting, so it only happens once"
+  },
+  "rotation": "cw"
  }
 ]

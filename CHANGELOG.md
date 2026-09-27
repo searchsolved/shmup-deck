@@ -2,6 +2,10 @@
 
 Every release of Shmup Deck, newest first. The GitHub release for each version carries the same notes at greater length. `tools/release.sh` reads the notes for a release from this file, so a version cannot be published without an entry here.
 
+## 1.11.2 (2026-09-27)
+
+- Four Namco System 2 shooters on kuzearcade's new core: Ordyne, Phelios, Burning Force and Dragon Saber, with their regional sets. The core is in development and outside Update All, so these cards appear once it is installed. Every game also needs namcoc65.zip.
+
 ## 1.11.1 (2026-09-27)
 
 - Four more games on ppriest's new Konami GX core: Fantastic Journey (Gokujou Parodius), Twin Bee Yahhoo! (Magical Twin Bee), Salamander 2 and Sexy Parodius, with their regional sets. The core is a work-in-progress beta outside Update All, so these cards appear once it is installed. Every game also needs konamigx.zip.

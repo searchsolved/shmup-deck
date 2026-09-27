@@ -1,6 +1,6 @@
 # Supported games and ROMs
 
-Shmup Deck supports 209 games: 196 arcade games that run from MRA files and 13 Neo Geo games. This page lists the core and ROM files each one needs.
+Shmup Deck supports 213 games: 200 arcade games that run from MRA files and 13 Neo Geo games. This page lists the core and ROM files each one needs.
 
 To see what your own MiSTer is missing, open **http://shmupdeck.local/check.html** once Shmup Deck is installed. It checks every game for its MRA, core and ROM zips and can copy the missing zip names.
 
@@ -37,6 +37,7 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Konami | 4 | [ppriest/Arcade-KonamiGX_MiSTer](https://github.com/ppriest/Arcade-KonamiGX_MiSTer) | Core and MRAs in the repository's releases folder; a work-in-progress beta. Every game also needs konamigx.zip |
 | MegaSystem 32 | 4 | [ppriest/Arcade-JalecoMS32_MiSTer](https://github.com/ppriest/Arcade-JalecoMS32_MiSTer) |  |
 | NMK16 | 19 | [kuzearcade/Arcade-NMK16_MiSTer](https://github.com/kuzearcade/Arcade-NMK16_MiSTer) |  |
+| Namco | 4 | [kuzearcade/Arcade-NamcoSystem2_MiSTer](https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer) | Core and MRAs in the repository's releases folder; in development. Every game also needs namcoc65.zip |
 | Raiden | 1 | [rmonic79/Arcade-Raiden_MiSTer](https://github.com/rmonic79/Arcade-Raiden_MiSTer) | Core and MRAs in the repository's releases folder |
 | Raiden2 | 2 | [rmonic79/Arcade-Raiden2_MiSTer](https://github.com/rmonic79/Arcade-Raiden2_MiSTer) | Core and MRAs in the repository's releases folder; Raiden II and Raiden DX share it |
 | SKNS | 2 | [srg320/Arcade-SKNS_MiSTer](https://github.com/srg320/Arcade-SKNS_MiSTer) | Core and MRAs in the repository's releases folder; every game also needs skns.zip, the system BIOS |
@@ -237,7 +238,15 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
+| Burning Force * | 1989 | [GitHub](https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer) | `burnforc.zip` | same | `namcoc65.zip` |
+| Dragon Saber * | 1990 | [GitHub](https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer) | `dsaber.zip` | same | `namcoc65.zip` |
 | Dragon Spirit | 1987 | JOTEGO cores | `dspirit.zip` | same |  |
+| Ordyne | 1988 | [GitHub](https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer) | `ordyne.zip` | same | `namcoc65.zip` |
+| Phelios * | 1988 | [GitHub](https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer) | `phelios.zip` | same | `namcoc65.zip` |
+
+\* Phelios: On first launch the game stops at a warning screen; press 1P Start. Open the MiSTer menu once it is running (or use Save NVRAM) and the core keeps the setting, so it only happens once.
+\* Burning Force: On first launch the game stops at a warning screen; press 1P Start. Open the MiSTer menu once it is running (or use Save NVRAM) and the core keeps the setting, so it only happens once.
+\* Dragon Saber: On first launch the game stops at a warning screen; press 1P Start. Open the MiSTer menu once it is running (or use Save NVRAM) and the core keeps the setting, so it only happens once.
 
 ### Nichibutsu
 
@@ -543,6 +552,7 @@ bbakraid.zip
 bgaregga.zip
 bioship.zip
 blkheart.zip
+burnforc.zip
 cawing.zip
 cobracom.zip
 coh1000t.zip
@@ -569,6 +579,7 @@ dogyuun.zip
 donpachi.zip
 dragnblz.zip
 drtoppel.zip
+dsaber.zip
 dsmbl.zip
 dspirit.zip
 earthjkr.zip
@@ -639,12 +650,15 @@ mysticri.zip
 namco50.zip
 namco51.zip
 namco54.zip
+namcoc65.zip
 neobattl.zip
 nmk004.zip
+ordyne.zip
 outzone.zip
 p47aces.zip
 parodius.zip
 pgm.zip
+phelios.zip
 pinkswts.zip
 progear.zip
 qsound.zip
@@ -752,6 +766,7 @@ bbakraid.zip
 bgaregga.zip
 bioship.zip
 blkheart.zip
+burnforc.zip
 cawing.zip
 cobracom.zip
 coh1000t.zip
@@ -777,6 +792,7 @@ dogyuun.zip
 donpachi.zip
 dragnblz.zip
 drtoppel.zip
+dsaber.zip
 dsmbl.zip
 dspirit.zip
 earthjkr.zip
@@ -845,13 +861,16 @@ mysticri.zip
 namco50.zip
 namco51.zip
 namco54.zip
+namcoc65.zip
 nemesis.zip
 neobattl.zip
 nmk004.zip
+ordyne.zip
 outzone.zip
 p47aces.zip
 parodius.zip
 pgm.zip
+phelios.zip
 pinkswts.zip
 progear.zip
 qsound.zip

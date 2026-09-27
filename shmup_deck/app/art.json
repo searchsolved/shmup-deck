@@ -1,6 +1,6 @@
 {
  "_mirrors": [
-  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/963402c3bef4ba968a9dfba4430964c40b642d88/"
+  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/898f88ddcce02408ae04b0b19bffe52c2b435e68/"
  ],
  "forgottn": {
   "url": "https://images.launchbox-app.com/da018d5c-cdc4-4d1e-939b-364e5bfe6889.jpg",
@@ -2688,5 +2688,61 @@
    707,
    984
   ]
+ },
+ "ordyne": {
+  "url": "https://images.launchbox-app.com/3b77a0bf-4300-4638-8cf7-f39999f20fc4.jpg",
+  "size": [
+   1838,
+   1280
+  ],
+  "crop": [
+   0,
+   0,
+   1838,
+   1280
+  ],
+  "fit": "contain",
+  "upgrade": "Landscape flyer"
+ },
+ "phelios": {
+  "url": "https://images.launchbox-app.com/66c2525c-e573-4c77-8f0f-ddc7a0444555.jpg",
+  "size": [
+   1280,
+   1801
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1801
+  ]
+ },
+ "burnforc": {
+  "url": "https://images.launchbox-app.com/e80b538f-a729-4f0c-a732-15bcc375836d.jpg",
+  "size": [
+   1280,
+   1802
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1802
+  ]
+ },
+ "dsaber": {
+  "url": "https://images.launchbox-app.com/1933dfc2-354f-4324-b09d-b70d0d778ea5.jpg",
+  "size": [
+   1280,
+   898
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   898
+  ],
+  "fit": "contain",
+  "upgrade": "Landscape flyer"
  }
 }
