@@ -1,6 +1,6 @@
 {
  "_mirrors": [
-  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/898f88ddcce02408ae04b0b19bffe52c2b435e68/"
+  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/a4c916a52da98488a2e71abd2ce9d15c267c3f99/"
  ],
  "forgottn": {
   "url": "https://images.launchbox-app.com/da018d5c-cdc4-4d1e-939b-364e5bfe6889.jpg",
@@ -2744,5 +2744,96 @@
   ],
   "fit": "contain",
   "upgrade": "Landscape flyer"
+ },
+ "lastday": {
+  "url": "https://images.launchbox-app.com/r2_c6f21db4-85fd-42ab-a862-a093dd5bd922.jpg",
+  "size": [
+   1800,
+   2400
+  ],
+  "crop": [
+   0,
+   0,
+   1800,
+   2400
+  ]
+ },
+ "gulfstrm": {
+  "url": "https://images.launchbox-app.com/d2adef69-5872-424c-97df-c47a8c673fe7.jpg",
+  "size": [
+   996,
+   1400
+  ],
+  "crop": [
+   0,
+   0,
+   996,
+   1373
+  ]
+ },
+ "pollux": {
+  "url": "https://images.launchbox-app.com/4e131264-cadd-43f2-a148-c269c516dfb5.jpg",
+  "size": [
+   1280,
+   1817
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1817
+  ]
+ },
+ "flytiger": {
+  "url": "https://images.launchbox-app.com/02c9c282-211c-49ca-b03a-70cb92f48c38.jpg",
+  "size": [
+   1596,
+   2160
+  ],
+  "crop": [
+   0,
+   0,
+   1596,
+   2160
+  ]
+ },
+ "bluehawk": {
+  "url": "https://images.launchbox-app.com/r2_aa9c71ed-f143-47c9-97f0-22de8c4ffa0d.jpg",
+  "size": [
+   850,
+   1238
+  ],
+  "crop": [
+   24,
+   21,
+   826,
+   1202
+  ]
+ },
+ "superx": {
+  "url": "https://images.launchbox-app.com/r2_cc76bb4e-10f6-48b5-b28b-e50ccec114f1.jpg",
+  "size": [
+   2131,
+   2800
+  ],
+  "crop": [
+   0,
+   0,
+   2131,
+   2800
+  ]
+ },
+ "rshark": {
+  "url": "https://images.launchbox-app.com/e8c0da62-b433-41a3-bca7-b3cb0f622a3d.jpg",
+  "size": [
+   974,
+   1278
+  ],
+  "crop": [
+   60,
+   0,
+   853,
+   1159
+  ]
  }
 }

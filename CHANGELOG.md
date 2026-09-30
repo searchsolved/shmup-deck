@@ -2,6 +2,10 @@
 
 Every release of Shmup Deck, newest first. The GitHub release for each version carries the same notes at greater length. `tools/release.sh` reads the notes for a release from this file, so a version cannot be published without an entry here.
 
+## 1.11.3 (2026-09-30)
+
+- Seven Dooyong shooters on the new Dooyong core: The Last Day, Gulf Storm, Pollux, Flying Tiger, Blue Hawk, Super-X and R-Shark, with their regional sets (Chulgyeok D-Day and the rest). The core is outside Update All (github.com/searchsolved/Arcade-Dooyong_MiSTer), so these cards appear once it is installed.
+
 ## 1.11.2 (2026-09-27)
 
 - Four Namco System 2 shooters on kuzearcade's new core: Ordyne, Phelios, Burning Force and Dragon Saber, with their regional sets. The core is in development and outside Update All, so these cards appear once it is installed. Every game also needs namcoc65.zip.

@@ -4605,5 +4605,152 @@
    "note": "On first launch the game stops at a warning screen; press 1P Start. Open the MiSTer menu once it is running (or use Save NVRAM) and the core keeps the setting, so it only happens once"
   },
   "rotation": "cw"
+ },
+ {
+  "id": "lastday",
+  "title": "The Last Day",
+  "dev": "Dooyong",
+  "year": 1990,
+  "core": "Dooyong",
+  "system": "Dooyong",
+  "orientation": "tate",
+  "setnames": [
+   "lastday",
+   "lastdaya",
+   "ddaydoo"
+  ],
+  "rbf": "dooyong",
+  "roms": {
+   "zip": "lastday",
+   "merged": "lastday",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "gulfstrm",
+  "title": "Gulf Storm",
+  "dev": "Dooyong",
+  "year": 1991,
+  "core": "Dooyong",
+  "system": "Dooyong",
+  "orientation": "tate",
+  "setnames": [
+   "gulfstrm",
+   "gulfstrma",
+   "gulfstrmb",
+   "gulfstrmm",
+   "gulfstrmk"
+  ],
+  "rbf": "dooyong",
+  "roms": {
+   "zip": "gulfstrm",
+   "merged": "gulfstrm",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "pollux",
+  "title": "Pollux",
+  "dev": "Dooyong",
+  "year": 1991,
+  "core": "Dooyong",
+  "system": "Dooyong",
+  "orientation": "tate",
+  "setnames": [
+   "pollux",
+   "polluxa",
+   "polluxa2",
+   "polluxn"
+  ],
+  "rbf": "dooyong",
+  "roms": {
+   "zip": "pollux",
+   "merged": "pollux",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "flytiger",
+  "title": "Flying Tiger",
+  "dev": "Dooyong",
+  "year": 1992,
+  "core": "Dooyong",
+  "system": "Dooyong",
+  "orientation": "tate",
+  "setnames": [
+   "flytiger",
+   "flytigera"
+  ],
+  "rbf": "dooyong",
+  "roms": {
+   "zip": "flytiger",
+   "merged": "flytiger",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "bluehawk",
+  "title": "Blue Hawk",
+  "dev": "Dooyong",
+  "year": 1993,
+  "core": "Dooyong",
+  "system": "Dooyong",
+  "orientation": "tate",
+  "setnames": [
+   "bluehawk",
+   "bluehawkn",
+   "bluehawkna"
+  ],
+  "rbf": "dooyong",
+  "roms": {
+   "zip": "bluehawk",
+   "merged": "bluehawk",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "superx",
+  "title": "Super-X",
+  "dev": "Dooyong",
+  "year": 1994,
+  "core": "Dooyong",
+  "system": "Dooyong",
+  "orientation": "tate",
+  "setnames": [
+   "superx",
+   "superxm"
+  ],
+  "rbf": "dooyong",
+  "roms": {
+   "zip": "superx",
+   "merged": "superx",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "rshark",
+  "title": "R-Shark",
+  "dev": "Dooyong",
+  "year": 1995,
+  "core": "Dooyong",
+  "system": "Dooyong",
+  "orientation": "tate",
+  "setnames": [
+   "rshark",
+   "rsharka"
+  ],
+  "rbf": "dooyong",
+  "roms": {
+   "zip": "rshark",
+   "merged": "rshark",
+   "shared": []
+  },
+  "rotation": "ccw"
  }
 ]
