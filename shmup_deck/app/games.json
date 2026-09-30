@@ -556,26 +556,6 @@
   "rotation": "ccw"
  },
  {
-  "id": "gyruss",
-  "title": "Gyruss",
-  "dev": "Konami",
-  "year": 1983,
-  "core": "Gyruss",
-  "system": "Konami Gyruss",
-  "orientation": "tate",
-  "setnames": [
-   "gyruss",
-   "gyrussce"
-  ],
-  "rbf": "Gyruss",
-  "roms": {
-   "zip": "gyruss",
-   "merged": "gyruss",
-   "shared": []
-  },
-  "rotation": "cw"
- },
- {
   "id": "ajax",
   "title": "Ajax",
   "dev": "Konami",

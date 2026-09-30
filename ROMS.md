@@ -1,6 +1,6 @@
 # Supported games and ROMs
 
-Shmup Deck supports 295 games: 281 arcade games that run from MRA files and 14 Neo Geo games. This page lists the core and ROM files each one needs.
+Shmup Deck supports 294 games: 280 arcade games that run from MRA files and 14 Neo Geo games. This page lists the core and ROM files each one needs.
 
 To see what your own MiSTer is missing, open **http://shmupdeck.local/check.html** once Shmup Deck is installed. It checks every game for its MRA, core and ROM zips and can copy the missing zip names.
 
@@ -224,12 +224,6 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
 | Gulf War II | 1991 | MiSTer main distribution | `gulfwar2.zip` | same |  |
-
-### Gyruss
-
-| Game | Year | Core source | Zip | Merged set zip | Also needs |
-| --- | --- | --- | --- | --- | --- |
-| Gyruss | 1983 | MiSTer main distribution | `gyruss.zip` | same |  |
 
 ### Hyper Duel
 
@@ -897,7 +891,6 @@ gunnail.zip
 gunsmoke.zip
 guwange.zip
 gyrodine.zip
-gyruss.zip
 hachamf.zip
 hamaway.zip
 hellfire.zip
@@ -1194,7 +1187,6 @@ gunnail.zip
 gunsmoke.zip
 guwange.zip
 gyrodine.zip
-gyruss.zip
 hachamf.zip
 hamaway.zip
 hellfire.zip

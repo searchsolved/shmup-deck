@@ -279,11 +279,10 @@
   {
    "slug": "konami-tate",
    "name": "Konami tate",
-   "note": "Ten Konami verticals that turn the monitor clockwise, the other way from Cave and Toaplan. On a cab set up for those, use the core's flip option.",
+   "note": "Nine Konami verticals that turn the monitor clockwise, the other way from Cave and Toaplan. On a cab set up for those, use the core's flip option.",
    "ids": [
     "scramble",
     "scobra",
-    "gyruss",
     "tp84",
     "twinbee",
     "finalizr",

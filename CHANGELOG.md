@@ -2,6 +2,10 @@
 
 Every release of Shmup Deck, newest first. The GitHub release for each version carries the same notes at greater length. `tools/release.sh` reads the notes for a release from this file, so a version cannot be published without an entry here.
 
+## 1.12.2 (2026-09-30)
+
+- Gyruss is gone: it is a tube shooter rather than a scrolling one, and the deck keeps to scrolling shooters. The Konami tate deck now has nine games.
+
 ## 1.12.1 (2026-09-30)
 
 - Eight new shared decks: Early scrollers, Namco, Jaleco, Kaneko boards, Aero Fighters, Taito, Capcom and TwinBee.
