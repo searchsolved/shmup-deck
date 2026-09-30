@@ -1,0 +1,23 @@
+{
+ "name": "Early scrollers",
+ "note": "Scrolling shooters from 1981 to 1984, oldest first: Scramble and Super Cobra, the Zaxxons, Xevious and the games that followed it.",
+ "ids": [
+  "scramble",
+  "scobra",
+  "cavenger",
+  "vanguard",
+  "zaxxon",
+  "szaxxon",
+  "xevious",
+  "starjack",
+  "vastar",
+  "1942",
+  "vulgus",
+  "futspy",
+  "gyrodine",
+  "starforc",
+  "sxevious"
+ ],
+ "cover": "xevious",
+ "author": "Shmup Deck"
+}

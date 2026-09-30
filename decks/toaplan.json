@@ -1,6 +1,6 @@
 {
  "name": "Toaplan",
- "note": "Toaplan's shooters in release order, from Tiger Heli in 1985 to Batsugun in 1993.",
+ "note": "Toaplan's shooters by year, from Tiger Heli in 1985 to Batsugun in 1993. Twin Hawk was made by Toaplan and released by Taito.",
  "ids": [
   "tigerh",
   "alcon",
@@ -9,10 +9,14 @@
   "truxton",
   "hellfire",
   "zerowing",
-  "outzone",
+  "twinhawk",
   "fireshrk",
+  "outzone",
   "vimana",
   "truxton2",
+  "dogyuun",
+  "fixeight",
+  "grindstm",
   "batsugun"
  ],
  "cover": "truxton",

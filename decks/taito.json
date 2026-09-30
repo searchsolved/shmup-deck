@@ -1,0 +1,27 @@
+{
+ "name": "Taito",
+ "note": "Taito's own shooters, oldest first. The Darius games also have a deck of their own.",
+ "ids": [
+  "darius",
+  "tokio",
+  "extrmatn",
+  "asuka",
+  "chukatai",
+  "darius2",
+  "insectx",
+  "masterw",
+  "megablst",
+  "ashura",
+  "gunfront",
+  "metalb",
+  "gseeker",
+  "gunlock",
+  "ryujin",
+  "dariusg",
+  "gekiridn",
+  "raystorm",
+  "gdarius"
+ ],
+ "cover": "metalb",
+ "author": "Shmup Deck"
+}

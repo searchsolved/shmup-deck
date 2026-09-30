@@ -1,0 +1,25 @@
+{
+ "name": "Capcom",
+ "note": "Capcom's shooters, oldest first, from 1942 to 19XX.",
+ "ids": [
+  "1942",
+  "vulgus",
+  "exedexes",
+  "gunsmoke",
+  "sectionz",
+  "legendos",
+  "sidearms",
+  "1943",
+  "1943kai",
+  "forgottn",
+  "lastduel",
+  "unsquad",
+  "1941",
+  "cawing",
+  "varth",
+  "ecofghtr",
+  "19xx"
+ ],
+ "cover": "1943",
+ "author": "Shmup Deck"
+}

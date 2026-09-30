@@ -1,0 +1,14 @@
+{
+ "name": "Kaneko boards",
+ "note": "Shooters on Kaneko hardware, oldest first. Blaze On and Wing Force were published by Atlus, and Sand Scorpion was made by Face.",
+ "ids": [
+  "blazeon",
+  "explbrkr",
+  "sandscrp",
+  "wingforc",
+  "sengekis",
+  "cyvern"
+ ],
+ "cover": "explbrkr",
+ "author": "Shmup Deck"
+}

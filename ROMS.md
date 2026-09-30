@@ -1,6 +1,6 @@
 # Supported games and ROMs
 
-Shmup Deck supports 296 games: 282 arcade games that run from MRA files and 14 Neo Geo games. This page lists the core and ROM files each one needs.
+Shmup Deck supports 295 games: 281 arcade games that run from MRA files and 14 Neo Geo games. This page lists the core and ROM files each one needs.
 
 To see what your own MiSTer is missing, open **http://shmupdeck.local/check.html** once Shmup Deck is installed. It checks every game for its MRA, core and ROM zips and can copy the missing zip names.
 
@@ -45,7 +45,7 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | MegaSystem 32 | 4 | [ppriest/Arcade-JalecoMS32_MiSTer](https://github.com/ppriest/Arcade-JalecoMS32_MiSTer) |  |
 | NMK | 1 | [kuzearcade/Arcade-NMKBP964_MiSTer](https://github.com/kuzearcade/Arcade-NMKBP964_MiSTer) | Core and MRAs in the repository's releases folder |
 | NMK16 | 19 | [kuzearcade/Arcade-NMK16_MiSTer](https://github.com/kuzearcade/Arcade-NMK16_MiSTer) |  |
-| Namco | 4 | [kuzearcade/Arcade-NamcoSystem2_MiSTer](https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer) | Core and MRAs in the repository's releases folder; in development. Every game also needs namcoc65.zip |
+| Namco | 3 | [kuzearcade/Arcade-NamcoSystem2_MiSTer](https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer) | Core and MRAs in the repository's releases folder; in development. Every game also needs namcoc65.zip |
 | Namco NA-1 | 1 | [OngoGablogian/MiSTer_Ongo](https://github.com/OngoGablogian/MiSTer_Ongo) |  |
 | Namco System 11 | 1 | [OngoGablogian/MiSTer_Ongo](https://github.com/OngoGablogian/MiSTer_Ongo) |  |
 | Raiden | 1 | [rmonic79/Arcade-Raiden_MiSTer](https://github.com/rmonic79/Arcade-Raiden_MiSTer) | Core and MRAs in the repository's releases folder |
@@ -349,7 +349,6 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
 | Blast Off | 1989 | JOTEGO cores | `blastoff.zip` | same |  |
-| Burning Force * | 1989 | [GitHub](https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer) | `burnforc.zip` | same | `namcoc65.zip` |
 | Dangerous Seed | 1989 | JOTEGO cores | `dangseed.zip` | same |  |
 | Dragon Saber * | 1990 | [GitHub](https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer) | `dsaber.zip` | same | `namcoc65.zip` |
 | Dragon Spirit | 1987 | JOTEGO cores | `dspirit.zip` | same |  |
@@ -359,7 +358,6 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Sky Kid Deluxe | 1986 | JOTEGO cores | `skykiddx.zip` | same |  |
 
 \* Phelios: On first launch the game stops at a warning screen; press 1P Start. Open the MiSTer menu once it is running (or use Save NVRAM) and the core keeps the setting, so it only happens once.
-\* Burning Force: On first launch the game stops at a warning screen; press 1P Start. Open the MiSTer menu once it is running (or use Save NVRAM) and the core keeps the setting, so it only happens once.
 \* Dragon Saber: On first launch the game stops at a warning screen; press 1P Start. Open the MiSTer menu once it is running (or use Save NVRAM) and the core keeps the setting, so it only happens once.
 
 ### Namco NA-1
@@ -809,7 +807,6 @@ blkheart.zip
 bluehawk.zip
 boogwinga.zip
 brvblade.zip
-burnforc.zip
 cairblad.zip
 cavenger.zip
 cawing.zip
@@ -1111,7 +1108,6 @@ blswhstl.zip
 bluehawk.zip
 boogwinga.zip
 brvblade.zip
-burnforc.zip
 cairblad.zip
 cavenger.zip
 cawing.zip

@@ -1,0 +1,20 @@
+{
+ "name": "Namco",
+ "note": "Namco's shooters, oldest first, from Xevious to Xevious 3D/G.",
+ "ids": [
+  "xevious",
+  "sxevious",
+  "skykiddx",
+  "dspirit",
+  "ordyne",
+  "phelios",
+  "blastoff",
+  "dangseed",
+  "dsaber",
+  "pistoldm",
+  "fghtatck",
+  "xevi3dg"
+ ],
+ "cover": "dspirit",
+ "author": "Shmup Deck"
+}

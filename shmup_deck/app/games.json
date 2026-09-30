@@ -4561,28 +4561,6 @@
   "rotation": "cw"
  },
  {
-  "id": "burnforc",
-  "title": "Burning Force",
-  "dev": "Namco",
-  "year": 1989,
-  "core": "Namco",
-  "system": "Namco System 2",
-  "orientation": "yoko",
-  "setnames": [
-   "burnforc",
-   "burnforco"
-  ],
-  "rbf": "NamcoS2_STD",
-  "roms": {
-   "zip": "burnforc",
-   "merged": "burnforc",
-   "shared": [
-    "namcoc65"
-   ],
-   "note": "On first launch the game stops at a warning screen; press 1P Start. Open the MiSTer menu once it is running (or use Save NVRAM) and the core keeps the setting, so it only happens once"
-  }
- },
- {
   "id": "dsaber",
   "title": "Dragon Saber",
   "dev": "Namco",

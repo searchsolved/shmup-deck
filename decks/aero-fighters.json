@@ -1,0 +1,12 @@
+{
+ "name": "Aero Fighters",
+ "note": "Video System's Aero Fighters games, called Sonic Wings in Japan, in release order, plus Aero Fighters Special.",
+ "ids": [
+  "aerofgt",
+  "sonicwi2",
+  "sonicwi3",
+  "aerofgts"
+ ],
+ "cover": "sonicwi2",
+ "author": "Shmup Deck"
+}

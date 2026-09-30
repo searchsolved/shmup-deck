@@ -2,6 +2,13 @@
 
 Every release of Shmup Deck, newest first. The GitHub release for each version carries the same notes at greater length. `tools/release.sh` reads the notes for a release from this file, so a version cannot be published without an entry here.
 
+## 1.12.1 (2026-09-30)
+
+- Eight new shared decks: Early scrollers, Namco, Jaleco, Kaneko boards, Aero Fighters, Taito, Capcom and TwinBee.
+- Twinkle Star Sprites joins the Neo Geo deck. The Toaplan deck adds Twin Hawk, Dogyuun, FixEight and Grind Stormer, and Konami tate adds Scramble, Super Cobra, MX5000, Lightning Fighters and Detana!! TwinBee.
+- Burning Force is gone: it is a 3D rail shooter, and the deck keeps to scrolling shooters.
+- Card-shaped flyers for Future Spy, Gun & Frontier, Turbo Force and Zaxxon.
+
 ## 1.12.0 (2026-09-30)
 
 - 76 more shooters, 296 in all. Every forced-scrolling shooter with a MiSTer core is now in the deck, with its regional sets. Among them: Hyper Duel, Twinkle Star Sprites, Xexex, Detana!! TwinBee, Thunder Force AC, Aero Fighters, Turbo Force, Gun & Frontier, Mega Blast, Thunder Cross II, Lightning Fighters, P-47, Saint Dragon, E.D.F., Cybattler, Prehistoric Isle in 1930, Vapor Trail, Boogie Wings, Sol Divide, Mazinger Z, Master of Weapon, Last Duel, Gun.Smoke, 1943 Kai, Cotton, Sonic Boom, Zaxxon, Scramble, Super Cobra, Star Force, Super Xevious and Star Soldier: Vanishing Earth.

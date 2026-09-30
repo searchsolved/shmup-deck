@@ -1,0 +1,11 @@
+{
+ "name": "TwinBee",
+ "note": "Konami's TwinBee arcade games in release order.",
+ "ids": [
+  "twinbee",
+  "blswhstl",
+  "tbyahhoo"
+ ],
+ "cover": "blswhstl",
+ "author": "Shmup Deck"
+}

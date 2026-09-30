@@ -15,6 +15,19 @@
    "author": "Shmup Deck"
   },
   {
+   "slug": "aero-fighters",
+   "name": "Aero Fighters",
+   "note": "Video System's Aero Fighters games, called Sonic Wings in Japan, in release order, plus Aero Fighters Special.",
+   "ids": [
+    "aerofgt",
+    "sonicwi2",
+    "sonicwi3",
+    "aerofgts"
+   ],
+   "cover": "sonicwi2",
+   "author": "Shmup Deck"
+  },
+  {
    "slug": "after-toaplan",
    "name": "After Toaplan",
    "note": "When Toaplan closed in 1994, its staff went to Cave and Raizing. This deck follows the Raizing line: Batsugun, the Raizing games, then the two games Shinobu Yagawa made after moving to Cave.",
@@ -46,6 +59,32 @@
    "author": "Shmup Deck"
   },
   {
+   "slug": "capcom",
+   "name": "Capcom",
+   "note": "Capcom's shooters, oldest first, from 1942 to 19XX.",
+   "ids": [
+    "1942",
+    "vulgus",
+    "exedexes",
+    "gunsmoke",
+    "sectionz",
+    "legendos",
+    "sidearms",
+    "1943",
+    "1943kai",
+    "forgottn",
+    "lastduel",
+    "unsquad",
+    "1941",
+    "cawing",
+    "varth",
+    "ecofghtr",
+    "19xx"
+   ],
+   "cover": "1943",
+   "author": "Shmup Deck"
+  },
+  {
    "slug": "darius",
    "name": "Darius",
    "note": "Taito's Darius games in release order.",
@@ -73,6 +112,30 @@
     "ddpsdoj"
    ],
    "cover": "ddonpach",
+   "author": "Shmup Deck"
+  },
+  {
+   "slug": "early-scrollers",
+   "name": "Early scrollers",
+   "note": "Scrolling shooters from 1981 to 1984, oldest first: Scramble and Super Cobra, the Zaxxons, Xevious and the games that followed it.",
+   "ids": [
+    "scramble",
+    "scobra",
+    "cavenger",
+    "vanguard",
+    "zaxxon",
+    "szaxxon",
+    "xevious",
+    "starjack",
+    "vastar",
+    "1942",
+    "vulgus",
+    "futspy",
+    "gyrodine",
+    "starforc",
+    "sxevious"
+   ],
+   "cover": "xevious",
    "author": "Shmup Deck"
   },
   {
@@ -180,15 +243,54 @@
    "author": "Shmup Deck"
   },
   {
+   "slug": "jaleco",
+   "name": "Jaleco",
+   "note": "Jaleco's shooters, oldest first: the Mega System 1 games, then Mega System 32. Chimera Beast is an unreleased prototype.",
+   "ids": [
+    "p47",
+    "plusalph",
+    "stdragon",
+    "edf",
+    "chimerab",
+    "cybattlr",
+    "desertwr",
+    "p47aces",
+    "gametngk",
+    "gratia"
+   ],
+   "cover": "p47",
+   "author": "Shmup Deck"
+  },
+  {
+   "slug": "kaneko-boards",
+   "name": "Kaneko boards",
+   "note": "Shooters on Kaneko hardware, oldest first. Blaze On and Wing Force were published by Atlus, and Sand Scorpion was made by Face.",
+   "ids": [
+    "blazeon",
+    "explbrkr",
+    "sandscrp",
+    "wingforc",
+    "sengekis",
+    "cyvern"
+   ],
+   "cover": "explbrkr",
+   "author": "Shmup Deck"
+  },
+  {
    "slug": "konami-tate",
    "name": "Konami tate",
-   "note": "Five Konami verticals that turn the monitor clockwise, the other way from Cave and Toaplan. On a cab set up for those, use the core's flip option.",
+   "note": "Ten Konami verticals that turn the monitor clockwise, the other way from Cave and Toaplan. On a cab set up for those, use the core's flip option.",
    "ids": [
+    "scramble",
+    "scobra",
     "gyruss",
     "tp84",
     "twinbee",
     "finalizr",
-    "ajax"
+    "ajax",
+    "mx5000",
+    "lgtnfght",
+    "blswhstl"
    ],
    "cover": "twinbee",
    "author": "Shmup Deck"
@@ -220,6 +322,27 @@
    "author": "Shmup Deck"
   },
   {
+   "slug": "namco",
+   "name": "Namco",
+   "note": "Namco's shooters, oldest first, from Xevious to Xevious 3D/G.",
+   "ids": [
+    "xevious",
+    "sxevious",
+    "skykiddx",
+    "dspirit",
+    "ordyne",
+    "phelios",
+    "blastoff",
+    "dangseed",
+    "dsaber",
+    "pistoldm",
+    "fghtatck",
+    "xevi3dg"
+   ],
+   "cover": "dspirit",
+   "author": "Shmup Deck"
+  },
+  {
    "slug": "neo-geo",
    "name": "Neo Geo shooters",
    "note": "Every Neo Geo shooter in Shmup Deck, oldest first. All play on a horizontal screen.",
@@ -233,6 +356,7 @@
     "zedblade",
     "pulstar",
     "sonicwi3",
+    "twinspri",
     "blazstar",
     "preisle2",
     "s1945p",
@@ -304,9 +428,37 @@
    "author": "Shmup Deck"
   },
   {
+   "slug": "taito",
+   "name": "Taito",
+   "note": "Taito's own shooters, oldest first. The Darius games also have a deck of their own.",
+   "ids": [
+    "darius",
+    "tokio",
+    "extrmatn",
+    "asuka",
+    "chukatai",
+    "darius2",
+    "insectx",
+    "masterw",
+    "megablst",
+    "ashura",
+    "gunfront",
+    "metalb",
+    "gseeker",
+    "gunlock",
+    "ryujin",
+    "dariusg",
+    "gekiridn",
+    "raystorm",
+    "gdarius"
+   ],
+   "cover": "metalb",
+   "author": "Shmup Deck"
+  },
+  {
    "slug": "toaplan",
    "name": "Toaplan",
-   "note": "Toaplan's shooters in release order, from Tiger Heli in 1985 to Batsugun in 1993.",
+   "note": "Toaplan's shooters by year, from Tiger Heli in 1985 to Batsugun in 1993. Twin Hawk was made by Toaplan and released by Taito.",
    "ids": [
     "tigerh",
     "alcon",
@@ -315,13 +467,29 @@
     "truxton",
     "hellfire",
     "zerowing",
-    "outzone",
+    "twinhawk",
     "fireshrk",
+    "outzone",
     "vimana",
     "truxton2",
+    "dogyuun",
+    "fixeight",
+    "grindstm",
     "batsugun"
    ],
    "cover": "truxton",
+   "author": "Shmup Deck"
+  },
+  {
+   "slug": "twinbee",
+   "name": "TwinBee",
+   "note": "Konami's TwinBee arcade games in release order.",
+   "ids": [
+    "twinbee",
+    "blswhstl",
+    "tbyahhoo"
+   ],
+   "cover": "blswhstl",
    "author": "Shmup Deck"
   },
   {
