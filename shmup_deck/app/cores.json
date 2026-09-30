@@ -24,9 +24,20 @@
    "name": "MeatCores",
    "note": "not distributed through Update All; the deck lists these games only when the core is already installed",
    "standard": false
+  },
+  "ongo": {
+   "name": "MiSTer_Ongo",
+   "note": "a third-party downloader database (github.com/OngoGablogian/MiSTer_Ongo), not part of Update All; the deck lists these games only when the core is already installed",
+   "standard": false
   }
  },
  "cores": {
+  "Aleck64": {
+   "source": "official"
+  },
+  "alpha68k": {
+   "source": "coinop"
+  },
   "armedf": {
    "source": "coinop"
   },
@@ -47,6 +58,12 @@
    "source": "coinop"
   },
   "bgaregga_mister": {
+   "source": "coinop"
+  },
+  "BoogieWings": {
+   "source": "official"
+  },
+  "boogwing_mister": {
    "source": "coinop"
   },
   "BubSysROM": {
@@ -71,6 +88,12 @@
    "url": "https://github.com/rmonic79/Arcade-Darius2NinjaWarriors_MiSTer",
    "note": "Core and MRAs in the repository's releases folder; The Ninja Warriors shares it"
   },
+  "dblewing": {
+   "source": "coinop"
+  },
+  "deco16": {
+   "source": "official"
+  },
   "Dogyuun": {
    "source": "github",
    "url": "https://github.com/TheJesusFish/Slop-Core",
@@ -86,11 +109,29 @@
    "url": "https://www.patreon.com/bazset/posts/u-n-defense-1993-169900198",
    "note": "Core and MRA from the author's Patreon post; no repository"
   },
+  "ffblswhstl": {
+   "source": "github",
+   "url": "https://github.com/jlrh/konami-fpga",
+   "note": "Core and MRA in the repository's releases and cores/blswhstl folders"
+  },
+  "ffxexex": {
+   "source": "github",
+   "url": "https://github.com/jlrh/konami-fpga",
+   "note": "Core and MRA in the repository's releases and cores/xexex folders"
+  },
   "Finalizer": {
    "source": "official"
   },
+  "FixEight": {
+   "source": "github",
+   "url": "https://github.com/TheJesusFish/Slop-Core",
+   "note": "Core and MRAs in the repository's _Arcade folder"
+  },
   "fshark_mister": {
    "source": "coinop"
+  },
+  "galivan": {
+   "source": "official"
   },
   "Galmedes": {
    "source": "github",
@@ -107,7 +148,13 @@
    "url": "https://github.com/TheJesusFish/Slop-Core",
    "note": "Core and MRAs in the repository's _Arcade folder"
   },
+  "GulfWarII": {
+   "source": "official"
+  },
   "Gyruss": {
+   "source": "official"
+  },
+  "hyprduel": {
    "source": "official"
   },
   "IGSPGM": {
@@ -129,6 +176,11 @@
   },
   "IremM92": {
    "source": "official"
+  },
+  "JalecoMS1BCD": {
+   "source": "github",
+   "url": "https://github.com/kuzearcade/Arcade-JalecoMS1BCD_MiSTer",
+   "note": "Core and MRAs in the repository's releases folder"
   },
   "JalecoMS32": {
    "source": "github",
@@ -164,6 +216,12 @@
   "jtgrad3": {
    "source": "jotego"
   },
+  "jtgunsmk": {
+   "source": "jotego"
+  },
+  "jtkarnov": {
+   "source": "jotego"
+  },
   "jtkiwi": {
    "source": "jotego"
   },
@@ -173,10 +231,16 @@
   "jtparoda": {
    "source": "jotego"
   },
+  "jtriders": {
+   "source": "jotego"
+  },
   "jts16": {
    "source": "jotego"
   },
   "jts16b": {
+   "source": "jotego"
+  },
+  "jts18": {
    "source": "jotego"
   },
   "jtsarms": {
@@ -188,8 +252,19 @@
   "jtshouse": {
    "source": "jotego"
   },
+  "jtthundr": {
+   "source": "jotego"
+  },
+  "jttmnt": {
+   "source": "jotego"
+  },
   "jttwin16": {
    "source": "jotego"
+  },
+  "Kaneko16": {
+   "source": "github",
+   "url": "https://github.com/alphanu1/kaneko16-mister",
+   "note": "Core and MRAs in the repository's releases folder"
   },
   "kingdmgp_mister": {
    "source": "coinop"
@@ -199,6 +274,47 @@
    "url": "https://github.com/ppriest/Arcade-KonamiGX_MiSTer",
    "note": "Core and MRAs in the repository's releases folder; a work-in-progress beta. Every game also needs konamigx.zip"
   },
+  "kuze_JalecoMS1BCD": {
+   "source": "ongo",
+   "url": "https://github.com/OngoGablogian/MiSTer_Ongo"
+  },
+  "kuze_NMKBP964": {
+   "source": "ongo",
+   "url": "https://github.com/OngoGablogian/MiSTer_Ongo"
+  },
+  "kuze_SandScrp": {
+   "source": "ongo",
+   "url": "https://github.com/OngoGablogian/MiSTer_Ongo"
+  },
+  "Kyugo": {
+   "source": "official"
+  },
+  "ladybug": {
+   "source": "official"
+  },
+  "lastduel": {
+   "source": "ongo",
+   "url": "https://github.com/OngoGablogian/MiSTer_Ongo"
+  },
+  "Meathax_SegaSystem24": {
+   "source": "ongo",
+   "url": "https://github.com/OngoGablogian/MiSTer_Ongo"
+  },
+  "Meathax_SSV": {
+   "source": "ongo",
+   "url": "https://github.com/OngoGablogian/MiSTer_Ongo"
+  },
+  "Meathax_Suna8bit": {
+   "source": "ongo",
+   "url": "https://github.com/OngoGablogian/MiSTer_Ongo"
+  },
+  "megasys1_a": {
+   "source": "coinop"
+  },
+  "Namco_NA1_NA2": {
+   "source": "ongo",
+   "url": "https://github.com/OngoGablogian/MiSTer_Ongo"
+  },
   "NamcoS2_STD": {
    "source": "github",
    "url": "https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer",
@@ -206,6 +322,9 @@
   },
   "NeoGeo": {
    "source": "official"
+  },
+  "nextspace": {
+   "source": "coinop"
   },
   "NMK16_Afega": {
    "source": "github",
@@ -223,11 +342,23 @@
    "source": "github",
    "url": "https://github.com/kuzearcade/Arcade-NMK16_MiSTer"
   },
+  "NMKBP964": {
+   "source": "github",
+   "url": "https://github.com/kuzearcade/Arcade-NMKBP964_MiSTer",
+   "note": "Core and MRAs in the repository's releases folder"
+  },
+  "prehisle": {
+   "source": "coinop"
+  },
   "Psikyo": {
    "source": "official"
   },
   "PsikyoSH2": {
    "source": "official"
+  },
+  "pspike": {
+   "source": "ongo",
+   "url": "https://github.com/OngoGablogian/MiSTer_Ongo"
   },
   "Raiden": {
    "source": "github",
@@ -246,8 +377,19 @@
   "Salamander": {
    "source": "official"
   },
+  "SandScrp": {
+   "source": "github",
+   "url": "https://github.com/kuzearcade/Arcade-SandScrp_MiSTer",
+   "note": "Core and MRAs in the repository's releases folder"
+  },
+  "scramble": {
+   "source": "official"
+  },
   "segasys1": {
    "source": "official"
+  },
+  "SegaSystem24": {
+   "source": "meatcores"
   },
   "SeibuSPI": {
    "source": "github",
@@ -268,10 +410,16 @@
    "url": "https://github.com/srg320/Arcade-SKNS_MiSTer",
    "note": "Core and MRAs in the repository's releases folder; every game also needs skns.zip, the system BIOS"
   },
+  "SkySmasher": {
+   "source": "official"
+  },
   "SlapFight": {
    "source": "official"
   },
   "SMS": {
+   "source": "official"
+  },
+  "SNK6502": {
    "source": "official"
   },
   "SNK_TripleZ80": {
@@ -285,6 +433,26 @@
   },
   "ST-V": {
    "source": "official"
+  },
+  "starforce": {
+   "source": "official"
+  },
+  "Suna8bit": {
+   "source": "meatcores"
+  },
+  "SYSTEM11": {
+   "source": "ongo",
+   "url": "https://github.com/OngoGablogian/MiSTer_Ongo"
+  },
+  "SystemC2": {
+   "source": "github",
+   "url": "https://github.com/Mezzow/Arcade-SystemC2_MiSTer",
+   "note": "Core and MRAs in the repository's releases folder"
+  },
+  "TaitoB": {
+   "source": "github",
+   "url": "https://github.com/Mezzow/Arcade-TaitoB_MiSTer",
+   "note": "Core and MRAs in the repository's releases folder"
   },
   "TaitoF2": {
    "source": "official"
@@ -309,15 +477,31 @@
    "url": "https://github.com/bazset/Twin-Hawk-FPGA",
    "note": "MRAs in the repository; the core build is on the author's Patreon"
   },
+  "UPLFramebuffer": {
+   "source": "official"
+  },
+  "vaportra_mister": {
+   "source": "coinop"
+  },
+  "Vastar": {
+   "source": "official"
+  },
   "vimana": {
    "source": "coinop"
   },
   "xevious": {
    "source": "official"
   },
+  "XNZN1": {
+   "source": "ongo",
+   "url": "https://github.com/OngoGablogian/MiSTer_Ongo"
+  },
   "XNZN1TaitoFX1B": {
    "source": "github",
    "url": "https://github.com/XelaNotPu/ZN1-TaitoFX1B_MiSTer"
+  },
+  "zaxxon": {
+   "source": "official"
   },
   "zerowing_20240404": {
    "source": "coinop"

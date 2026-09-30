@@ -53,7 +53,7 @@ VERSIONS_FILE = os.environ.get("SHMUP_VERSIONS", os.path.join(HERE, "versions.js
 DECKS_FILE = os.environ.get("SHMUP_DECKS", os.path.join(HERE, "decks.json"))
 SETTINGS_FILE = os.environ.get("SHMUP_SETTINGS", os.path.join(HERE, "settings.json"))
 
-VERSION = "1.11.3"
+VERSION = "1.12.0"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
 PROGRAM = os.path.abspath(__file__)
 REPO = os.environ.get("SHMUP_REPO", "searchsolved/shmup-deck")
@@ -934,6 +934,13 @@ def core_present(rbf, cores):
                c == "arcade-" + want or c.startswith("arcade-" + want + "_") for c in cores)
 
 
+def card_rbfs(game):
+    """The core names a card's MRAs may load. "rbf" is the usual one;
+    "rbf_alt" lists the names other collections ship the same core under
+    (MiSTer_Ongo prefixes kuzearcade's cores with kuze_, for example)."""
+    return [game.get("rbf", "")] + game.get("rbf_alt", [])
+
+
 def needed_zips(game):
     """ROM zips a game needs, as groups where any one zip will do.
 
@@ -993,16 +1000,16 @@ def checklist():
             home = arcade_root(path)
             if home not in cores:
                 cores[home] = listing([os.path.join(home, "cores")], ".rbf")
-            entry["core"] = core_present(g.get("rbf", ""), cores[home])
+            entry["core"] = any(core_present(r, cores[home]) for r in card_rbfs(g))
         else:
             if ARCADE not in cores:
                 cores[ARCADE] = listing([os.path.join(ARCADE, "cores")], ".rbf")
-            entry["core"] = core_present(g.get("rbf", ""), cores[ARCADE])
+            entry["core"] = any(core_present(r, cores[ARCADE]) for r in card_rbfs(g))
         entry["missing"] = [" or ".join(grp) for grp in needed_zips(g)
                             if not any(z.lower() in zips for z in grp)]
         entry["state"] = ("mra" if not path else "core" if not entry["core"]
                           else "roms" if entry["missing"] else "ready")
-        entry["listed"] = entry["state"] == "ready" or core_is_standard(g.get("rbf", ""))
+        entry["listed"] = entry["state"] == "ready" or any(core_is_standard(r) for r in card_rbfs(g))
         vs = versions_of(g)
         entry["versions"] = len(vs)
         entry["regions"] = sorted({v["region"] for v in vs if v["region"]})

@@ -2,6 +2,13 @@
 
 Every release of Shmup Deck, newest first. The GitHub release for each version carries the same notes at greater length. `tools/release.sh` reads the notes for a release from this file, so a version cannot be published without an entry here.
 
+## 1.12.0 (2026-09-30)
+
+- 76 more shooters, 296 in all. Every forced-scrolling shooter with a MiSTer core is now in the deck, with its regional sets. Among them: Hyper Duel, Twinkle Star Sprites, Xexex, Detana!! TwinBee, Thunder Force AC, Aero Fighters, Turbo Force, Gun & Frontier, Mega Blast, Thunder Cross II, Lightning Fighters, P-47, Saint Dragon, E.D.F., Cybattler, Prehistoric Isle in 1930, Vapor Trail, Boogie Wings, Sol Divide, Mazinger Z, Master of Weapon, Last Duel, Gun.Smoke, 1943 Kai, Cotton, Sonic Boom, Zaxxon, Scramble, Super Cobra, Star Force, Super Xevious and Star Soldier: Vanishing Earth.
+- Games on the official, JOTEGO and Coin-Op Collection cores show as usual. Games on cores outside Update All (kuzearcade, Mezzow, alphanu1, jlrh, Slop-Core and the MiSTer_Ongo database) appear once the core is installed.
+- A card now recognises a core under the other names collections ship it as, so E.D.F. is found whether its core came from kuzearcade or from MiSTer_Ongo.
+- Flyers for 71 of the new games. Landscape flyers and ones shaped differently from a card are shown whole.
+
 ## 1.11.3 (2026-09-30)
 
 - Seven Dooyong shooters on the new Dooyong core: The Last Day, Gulf Storm, Pollux, Flying Tiger, Blue Hawk, Super-X and R-Shark, with their regional sets (Chulgyeok D-Day and the rest). The core is outside Update All (github.com/searchsolved/Arcade-Dooyong_MiSTer), so these cards appear once it is installed.

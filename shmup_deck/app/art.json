@@ -1,6 +1,6 @@
 {
  "_mirrors": [
-  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/a4c916a52da98488a2e71abd2ce9d15c267c3f99/"
+  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/c358ac8b437b3523c81bce93fec84c79283749f1/"
  ],
  "forgottn": {
   "url": "https://images.launchbox-app.com/da018d5c-cdc4-4d1e-939b-364e5bfe6889.jpg",
@@ -2835,5 +2835,968 @@
    853,
    1159
   ]
+ },
+ "1943kai": {
+  "url": "https://images.launchbox-app.com/30374167-3e2c-4715-9830-f3c0a09fdec1.jpg",
+  "size": [
+   800,
+   1008
+  ],
+  "crop": [
+   4,
+   0,
+   759,
+   977
+  ],
+  "fit": "contain",
+  "upgrade": "Flyer squarer than a card, shown whole"
+ },
+ "4dwarrio": {
+  "url": "https://images.launchbox-app.com/r2_df453fce-f524-4d97-a8c8-5751f13976fa.jpg",
+  "size": [
+   1830,
+   2400
+  ],
+  "crop": [
+   0,
+   0,
+   1830,
+   2400
+  ],
+  "fit": "contain",
+  "upgrade": "Flyer squarer than a card, shown whole"
+ },
+ "aerofgt": {
+  "url": "https://images.launchbox-app.com/d5a1cb05-6427-4dbf-9788-99797fcd4170.jpg",
+  "size": [
+   850,
+   1099
+  ],
+  "crop": [
+   43,
+   41,
+   766,
+   998
+  ],
+  "fit": "contain",
+  "upgrade": "Flyer squarer than a card, shown whole"
+ },
+ "aerofgts": {
+  "url": "https://images.launchbox-app.com/ad7f5c0d-6a31-44d2-aa66-1a37388ed4c5.jpg",
+  "size": [
+   1643,
+   2322
+  ],
+  "crop": [
+   0,
+   0,
+   1643,
+   2322
+  ]
+ },
+ "airwolf": {
+  "url": "https://images.launchbox-app.com/b93c1c4b-4bf8-43f8-ae2b-3c48c715ebfd.jpg",
+  "size": [
+   1280,
+   1800
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1800
+  ]
+ },
+ "ashura": {
+  "url": "https://images.launchbox-app.com/0d92c354-0941-47dc-9e8c-576ab137bfdd.jpg",
+  "size": [
+   1280,
+   1806
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1806
+  ]
+ },
+ "blazeon": {
+  "url": "https://images.launchbox-app.com/6d698196-f574-4640-ab50-1126e6827248.jpg",
+  "size": [
+   850,
+   1214
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1214
+  ]
+ },
+ "cairblad": {
+  "url": "https://images.launchbox-app.com/a7694a48-fe7d-418c-ae47-2d59202f2a93.jpg",
+  "size": [
+   821,
+   1080
+  ],
+  "crop": [
+   0,
+   0,
+   821,
+   1080
+  ]
+ },
+ "chukatai": {
+  "url": "https://images.launchbox-app.com/7b12deff-8ec5-404c-ba9f-977a2ff6ab57.jpg",
+  "size": [
+   850,
+   1202
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1202
+  ]
+ },
+ "cavenger": {
+  "url": "https://images.launchbox-app.com/884c1710-0891-4c37-bcfc-7f9f23193a1f.jpg",
+  "size": [
+   1220,
+   1567
+  ],
+  "crop": [
+   0,
+   0,
+   1220,
+   1567
+  ],
+  "fit": "contain",
+  "upgrade": "Flyer squarer than a card, shown whole"
+ },
+ "cotton": {
+  "url": "https://images.launchbox-app.com/be35dd96-917f-43e9-9872-3fa65b2f087a.jpg",
+  "size": [
+   850,
+   1182
+  ],
+  "crop": [
+   0,
+   0,
+   848,
+   1182
+  ]
+ },
+ "cybattlr": {
+  "url": "https://images.launchbox-app.com/5465d232-5093-4260-ba8a-a930de1f878a.jpg",
+  "size": [
+   850,
+   1202
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1202
+  ]
+ },
+ "dangseed": {
+  "url": "https://images.launchbox-app.com/4d9705df-5d85-411a-a896-0e410cc352eb.jpg",
+  "size": [
+   850,
+   1206
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1206
+  ]
+ },
+ "dblewing": {
+  "url": "https://images.launchbox-app.com/r2_72c402b4-fb77-4294-827b-95aed495d6fe.jpg",
+  "size": [
+   2426,
+   3500
+  ],
+  "crop": [
+   0,
+   0,
+   2426,
+   3500
+  ]
+ },
+ "edf": {
+  "url": "https://images.launchbox-app.com/1e18af49-c61c-4dd2-8b32-e9bb0b9d8b3e.jpg",
+  "size": [
+   1280,
+   1809
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1809
+  ]
+ },
+ "explbrkr": {
+  "url": "https://images.launchbox-app.com/60ee596d-8f9e-47ab-883a-d4c56afd93c5.jpg",
+  "size": [
+   850,
+   1210
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1210
+  ]
+ },
+ "fghtatck": {
+  "url": "https://images.launchbox-app.com/12ca449e-7574-4dbc-a6ee-fd51ea1d3890.jpg",
+  "size": [
+   850,
+   1187
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1187
+  ]
+ },
+ "fixeight": {
+  "url": "https://images.launchbox-app.com/23c44e3d-7484-4608-83d1-400d6aa7a0b0.jpg",
+  "size": [
+   1875,
+   2660
+  ],
+  "crop": [
+   0,
+   0,
+   1875,
+   2660
+  ]
+ },
+ "futspy": {
+  "url": "https://images.launchbox-app.com/a3881d88-1fca-4732-a54f-d9b53e8dfc04.jpg",
+  "size": [
+   1280,
+   1653
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1653
+  ],
+  "fit": "contain",
+  "upgrade": "Flyer squarer than a card, shown whole"
+ },
+ "gulfwar2": {
+  "url": "https://images.launchbox-app.com/950ff663-0f47-4275-849d-90988ecf7035.jpg",
+  "size": [
+   1280,
+   1666
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1666
+  ],
+  "fit": "contain",
+  "upgrade": "Flyer squarer than a card, shown whole"
+ },
+ "gunfront": {
+  "url": "https://images.launchbox-app.com/c423c807-9edc-4d46-a9f6-bdf2108526ab.png",
+  "size": [
+   1157,
+   1497
+  ],
+  "crop": [
+   0,
+   0,
+   1157,
+   1465
+  ],
+  "fit": "contain",
+  "upgrade": "Flyer squarer than a card, shown whole"
+ },
+ "gunsmoke": {
+  "url": "https://images.launchbox-app.com/2ec9c3ec-b4e9-4f9d-876b-6c69d72bbbf5.jpg",
+  "size": [
+   1280,
+   1803
+  ],
+  "crop": [
+   25,
+   11,
+   1234,
+   1772
+  ]
+ },
+ "gyrodine": {
+  "url": "https://images.launchbox-app.com/f5645696-f23e-4423-9514-404b8899e225.jpg",
+  "size": [
+   400,
+   650
+  ],
+  "crop": [
+   0,
+   0,
+   400,
+   650
+  ],
+  "fit": "contain",
+  "upgrade": "Flyer taller than a card, shown whole"
+ },
+ "hamaway": {
+  "url": "https://images.launchbox-app.com/88984dea-4e40-4a7e-872b-ca93447d5eb8.png",
+  "size": [
+   800,
+   1200
+  ],
+  "crop": [
+   0,
+   0,
+   800,
+   1200
+  ]
+ },
+ "hyprduel": {
+  "url": "https://images.launchbox-app.com/cc9c1e21-bc76-4d7d-aafa-cb61d8d3b870.jpg",
+  "size": [
+   1062,
+   1386
+  ],
+  "crop": [
+   0,
+   0,
+   1062,
+   1386
+  ],
+  "fit": "contain",
+  "upgrade": "Flyer squarer than a card, shown whole"
+ },
+ "lastduel": {
+  "url": "https://images.launchbox-app.com/03f96031-72ab-459b-8181-8ef453e4bed5.jpg",
+  "size": [
+   1280,
+   1704
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1704
+  ]
+ },
+ "lgtnfght": {
+  "url": "https://images.launchbox-app.com/dd303cee-38e3-49b9-a82d-b57ff8b21bd3.jpg",
+  "size": [
+   850,
+   1196
+  ],
+  "crop": [
+   8,
+   0,
+   840,
+   1196
+  ]
+ },
+ "macrossp": {
+  "url": "https://images.launchbox-app.com/1ceeb4d8-92ff-4ad0-9adf-ed3e9fc21584.jpg",
+  "size": [
+   2018,
+   2894
+  ],
+  "crop": [
+   0,
+   0,
+   2018,
+   2894
+  ]
+ },
+ "masterw": {
+  "url": "https://images.launchbox-app.com/6159c8c9-3b80-422d-a896-9a64b4b9284d.jpg",
+  "size": [
+   715,
+   1130
+  ],
+  "crop": [
+   0,
+   0,
+   715,
+   1115
+  ],
+  "fit": "contain",
+  "upgrade": "Flyer taller than a card, shown whole"
+ },
+ "mazinger": {
+  "url": "https://images.launchbox-app.com/1b06f4c6-4f50-494f-8fd1-47d5bc5de9bb.jpg",
+  "size": [
+   850,
+   1208
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1204
+  ]
+ },
+ "megablst": {
+  "url": "https://images.launchbox-app.com/e60a7acd-0d7b-4f72-aeed-ba02ee9928ce.jpg",
+  "size": [
+   1182,
+   1671
+  ],
+  "crop": [
+   0,
+   0,
+   1182,
+   1671
+  ]
+ },
+ "omegaf": {
+  "url": "https://images.launchbox-app.com/dc97ccaa-bc03-4271-b306-91707443b4c6.jpg",
+  "size": [
+   1280,
+   1649
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1649
+  ],
+  "fit": "contain",
+  "upgrade": "Flyer squarer than a card, shown whole"
+ },
+ "p47": {
+  "url": "https://images.launchbox-app.com/3b6c8bc0-f250-4935-b5ff-48c6b6e45b78.jpg",
+  "size": [
+   1280,
+   1797
+  ],
+  "crop": [
+   0,
+   31,
+   1280,
+   1766
+  ]
+ },
+ "pistoldm": {
+  "url": "https://images.launchbox-app.com/6461a7e4-e014-438d-a0c2-4240b889a1f4.jpg",
+  "size": [
+   850,
+   1203
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1180
+  ]
+ },
+ "plusalph": {
+  "url": "https://images.launchbox-app.com/e83eb64f-93e6-4626-bd37-bbf2e8497894.jpg",
+  "size": [
+   1280,
+   1809
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1809
+  ]
+ },
+ "prehisle": {
+  "url": "https://images.launchbox-app.com/c8686a3a-f8e3-4307-bf10-17f6d95bd626.jpg",
+  "size": [
+   1190,
+   1670
+  ],
+  "crop": [
+   0,
+   0,
+   1190,
+   1670
+  ]
+ },
+ "ryujin": {
+  "url": "https://images.launchbox-app.com/25981774-76db-4a93-87a5-8a8195f3ebd1.jpg",
+  "size": [
+   1647,
+   2336
+  ],
+  "crop": [
+   0,
+   0,
+   1647,
+   2336
+  ]
+ },
+ "srdmissn": {
+  "url": "https://images.launchbox-app.com/d5a3f783-9dbd-4384-8907-6c3eacbdae6a.png",
+  "size": [
+   558,
+   800
+  ],
+  "crop": [
+   0,
+   0,
+   558,
+   800
+  ]
+ },
+ "stdragon": {
+  "url": "https://images.launchbox-app.com/dc6eb5e0-ed6b-4a2c-838c-30687a866931.jpg",
+  "size": [
+   1280,
+   1814
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1814
+  ]
+ },
+ "sandscrp": {
+  "url": "https://images.launchbox-app.com/2b12e374-e9fb-4255-95d7-2463bb6a42e0.jpg",
+  "size": [
+   850,
+   1200
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1197
+  ]
+ },
+ "scramble": {
+  "url": "https://images.launchbox-app.com/614cee59-feeb-445d-988a-c909dfc39a5b.jpg",
+  "size": [
+   1280,
+   1804
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1804
+  ]
+ },
+ "sspirits": {
+  "url": "https://images.launchbox-app.com/0516ff00-dc35-4efd-a516-eae5f0580e63.jpg",
+  "size": [
+   1186,
+   1673
+  ],
+  "crop": [
+   0,
+   0,
+   1186,
+   1673
+  ]
+ },
+ "skyadvnt": {
+  "url": "https://images.launchbox-app.com/4c791dee-b1b9-4662-adc2-66e3db63278b.jpg",
+  "size": [
+   1192,
+   1667
+  ],
+  "crop": [
+   0,
+   0,
+   1192,
+   1667
+  ]
+ },
+ "skysmash": {
+  "url": "https://images.launchbox-app.com/946bc03f-b3ec-4dd8-b7b6-e5f682e25694.jpg",
+  "size": [
+   1280,
+   1815
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1717
+  ]
+ },
+ "skysoldr": {
+  "url": "https://images.launchbox-app.com/7a9c95fe-7f64-46b5-8a6d-043b8dfe3dd1.jpg",
+  "size": [
+   1194,
+   1674
+  ],
+  "crop": [
+   0,
+   0,
+   1194,
+   1674
+  ]
+ },
+ "soldivid": {
+  "url": "https://images.launchbox-app.com/a7f2f8bd-ab20-4556-a94e-07702e9e8e2a.jpg",
+  "size": [
+   1280,
+   1796
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1796
+  ]
+ },
+ "sonicbom": {
+  "url": "https://images.launchbox-app.com/bc3f6bca-0463-4ee2-b784-0a69a1b26a9b.jpg",
+  "size": [
+   1280,
+   1808
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1808
+  ]
+ },
+ "starforc": {
+  "url": "https://images.launchbox-app.com/dc61fc2b-b19e-42ab-ac10-0b6e50b9d56f.jpg",
+  "size": [
+   1192,
+   1671
+  ],
+  "crop": [
+   0,
+   0,
+   1192,
+   1671
+  ]
+ },
+ "starjack": {
+  "url": "https://images.launchbox-app.com/44113c52-c4c3-41bd-96c9-5cf3a0bd8141.jpg",
+  "size": [
+   1280,
+   1647
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1647
+  ],
+  "fit": "contain",
+  "upgrade": "Flyer squarer than a card, shown whole"
+ },
+ "scobra": {
+  "url": "https://images.launchbox-app.com/d8a94a12-218c-47a4-8dda-bc71dd22a236.jpg",
+  "size": [
+   1225,
+   1575
+  ],
+  "crop": [
+   0,
+   0,
+   1225,
+   1575
+  ],
+  "fit": "contain",
+  "upgrade": "Flyer squarer than a card, shown whole"
+ },
+ "szaxxon": {
+  "url": "https://images.launchbox-app.com/cb15d517-75e9-400b-9c1c-18c0fc2c7a95.jpg",
+  "size": [
+   850,
+   1124
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1124
+  ]
+ },
+ "thndrx2": {
+  "url": "https://images.launchbox-app.com/1d4fa0c6-e94b-4c2a-974d-7d9a7788be89.png",
+  "size": [
+   1280,
+   1803
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1803
+  ]
+ },
+ "tfrceac": {
+  "url": "https://images.launchbox-app.com/8accae51-4813-4711-b21e-5c6460f64ae6.jpg",
+  "size": [
+   1280,
+   1801
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1774
+  ]
+ },
+ "tndrcade": {
+  "url": "https://images.launchbox-app.com/f2e32df2-3b73-45bc-869c-0ef041752bc7.jpg",
+  "size": [
+   1280,
+   1789
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1789
+  ]
+ },
+ "tnextspc": {
+  "url": "https://images.launchbox-app.com/2f889139-2cba-4128-95de-821efe46ea30.jpg",
+  "size": [
+   712,
+   1000
+  ],
+  "crop": [
+   0,
+   0,
+   712,
+   1000
+  ]
+ },
+ "turbofrc": {
+  "url": "https://images.launchbox-app.com/2e2af7cf-ef73-4856-b21c-f5ff14cd53d9.jpg",
+  "size": [
+   1280,
+   1642
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1642
+  ],
+  "fit": "contain",
+  "upgrade": "Flyer squarer than a card, shown whole"
+ },
+ "dangar": {
+  "url": "https://images.launchbox-app.com/bab074e7-156b-41b9-9012-58fbd5d0f316.jpg",
+  "size": [
+   1280,
+   1792
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1775
+  ]
+ },
+ "vanguard": {
+  "url": "https://images.launchbox-app.com/d2dac8af-56b9-4a1d-982f-7214acea0948.jpg",
+  "size": [
+   1192,
+   1674
+  ],
+  "crop": [
+   0,
+   0,
+   1192,
+   1674
+  ]
+ },
+ "vaportra": {
+  "url": "https://images.launchbox-app.com/c59f5bed-1ff5-4a9c-ada0-44808cdcd534.jpg",
+  "size": [
+   1280,
+   1648
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1648
+  ],
+  "fit": "contain",
+  "upgrade": "Flyer squarer than a card, shown whole"
+ },
+ "vastar": {
+  "url": "https://images.launchbox-app.com/b907f0e4-eb68-4c89-9749-83acc6a12413.jpg",
+  "size": [
+   1463,
+   2048
+  ],
+  "crop": [
+   48,
+   46,
+   1365,
+   1974
+  ]
+ },
+ "wingforc": {
+  "url": "https://images.launchbox-app.com/4c8659d5-4b8d-459e-9bd7-50df2ac12634.jpg",
+  "size": [
+   706,
+   952
+  ],
+  "crop": [
+   0,
+   0,
+   706,
+   952
+  ]
+ },
+ "wndrplnt": {
+  "url": "https://images.launchbox-app.com/ae32ff1e-b979-401c-a178-7e3087eebd2a.jpg",
+  "size": [
+   1280,
+   1809
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1809
+  ]
+ },
+ "xevi3dg": {
+  "url": "https://images.launchbox-app.com/ee25c1bf-9895-44d0-bf18-d48aa577f08f.jpg",
+  "size": [
+   1280,
+   1793
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1793
+  ]
+ },
+ "xexex": {
+  "url": "https://images.launchbox-app.com/d4bf4b02-7d14-415f-b837-a6316f0b2eae.jpg",
+  "size": [
+   1280,
+   1798
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1798
+  ]
+ },
+ "zaxxon": {
+  "url": "https://images.launchbox-app.com/115bb1cd-d736-42b6-847c-4acc5162c623.jpg",
+  "size": [
+   1280,
+   1650
+  ],
+  "crop": [
+   0,
+   0,
+   1280,
+   1650
+  ],
+  "fit": "contain",
+  "upgrade": "Flyer squarer than a card, shown whole"
+ },
+ "blswhstl": {
+  "url": "https://images.launchbox-app.com/677ef5e9-d5ce-4a3a-8952-23b77f9a46e6.jpg",
+  "size": [
+   850,
+   1193
+  ],
+  "crop": [
+   0,
+   0,
+   850,
+   1193
+  ]
+ },
+ "twinspri": {
+  "url": "https://images.launchbox-app.com/r2_f3293ac8-e983-4c2d-94f4-a0756bbddda8.jpg",
+  "size": [
+   1728,
+   2432
+  ],
+  "crop": [
+   0,
+   0,
+   1728,
+   2432
+  ]
+ },
+ "blastoff": {
+  "url": "https://images.launchbox-app.com/d4eb29b5-b66a-4158-9546-a915e1660b7d.jpg",
+  "size": [
+   1203,
+   850
+  ],
+  "crop": [
+   0,
+   0,
+   1203,
+   850
+  ],
+  "fit": "contain",
+  "upgrade": "Landscape flyer"
+ },
+ "boogwing": {
+  "url": "https://images.launchbox-app.com/447b37ac-cdb0-4f5a-981b-95fa36f36b2d.png",
+  "size": [
+   1204,
+   848
+  ],
+  "crop": [
+   0,
+   0,
+   1204,
+   848
+  ],
+  "fit": "contain",
+  "upgrade": "Landscape flyer"
+ },
+ "brvblade": {
+  "url": "https://images.launchbox-app.com/5a05ad10-d1b3-4324-a298-b8b573a5c927.jpg",
+  "size": [
+   3508,
+   2470
+  ],
+  "crop": [
+   0,
+   0,
+   3508,
+   2470
+  ],
+  "fit": "contain",
+  "upgrade": "Landscape flyer"
+ },
+ "sxevious": {
+  "url": "https://images.launchbox-app.com/r2_ba61b40d-d6a1-431e-b882-182e81c3c576.jpg",
+  "size": [
+   1498,
+   1050
+  ],
+  "crop": [
+   0,
+   0,
+   1498,
+   1050
+  ],
+  "fit": "contain",
+  "upgrade": "Landscape flyer"
  }
 }

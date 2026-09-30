@@ -1,6 +1,6 @@
 # Supported games and ROMs
 
-Shmup Deck supports 220 games: 207 arcade games that run from MRA files and 13 Neo Geo games. This page lists the core and ROM files each one needs.
+Shmup Deck supports 296 games: 282 arcade games that run from MRA files and 14 Neo Geo games. This page lists the core and ROM files each one needs.
 
 To see what your own MiSTer is missing, open **http://shmupdeck.local/check.html** once Shmup Deck is installed. It checks every game for its MRA, core and ROM zips and can copy the missing zip names.
 
@@ -29,28 +29,56 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | --- | --- | --- | --- |
 | Asuka | 1 | [www.patreon.com/bazset](https://www.patreon.com/bazset/posts/asuka-asuka-1988-169899343) | Core and MRA from the author's Patreon post; no repository |
 | CV1000 | 14 | [ika-musume/ikacore_CV1k](https://github.com/ika-musume/ikacore_CV1k) | The repository has no core build or MRAs; builds come from the developer. MRAs for all games, including DoDonPachi SaiDaiOuJou and Akai Katana, are in [funkycochise/CV1K_Res](https://github.com/funkycochise/CV1K_Res) |
+| Capcom | 1 | [OngoGablogian/MiSTer_Ongo](https://github.com/OngoGablogian/MiSTer_Ongo) |  |
 | Darius | 1 | [rmonic79/Arcade-Darius_MiSTer](https://github.com/rmonic79/Arcade-Darius_MiSTer) | Core and MRAs in the repository's releases folder |
 | Darius II | 1 | [rmonic79/Arcade-Darius2NinjaWarriors_MiSTer](https://github.com/rmonic79/Arcade-Darius2NinjaWarriors_MiSTer) | Core and MRAs in the repository's releases folder; The Ninja Warriors shares it |
 | Dooyong | 7 | [searchsolved/Arcade-Dooyong_MiSTer](https://github.com/searchsolved/Arcade-Dooyong_MiSTer) | Core and MRAs in the repository's releases folder; one core runs all the Dooyong games |
 | EarthJoker | 1 | [www.patreon.com/bazset](https://www.patreon.com/bazset/posts/u-n-defense-1993-169900198) | Core and MRA from the author's Patreon post; no repository |
 | Galmedes | 1 | [www.patreon.com/bazset](https://www.patreon.com/bazset/posts/galmedes-visco-169900687) | Core and MRA from the author's Patreon post; no repository |
 | Gigandes | 1 | [bazset/Gigandes-FPGA](https://github.com/bazset/Gigandes-FPGA) | Source only; the core build and MRA are on the author's Patreon |
+| Kaneko | 1 | [kuzearcade/Arcade-SandScrp_MiSTer](https://github.com/kuzearcade/Arcade-SandScrp_MiSTer) | Core and MRAs in the repository's releases folder |
+| Kaneko16 | 3 | [alphanu1/kaneko16-mister](https://github.com/alphanu1/kaneko16-mister) | Core and MRAs in the repository's releases folder |
+| Konami | 1 | [jlrh/konami-fpga](https://github.com/jlrh/konami-fpga) | Core and MRA in the repository's releases and cores/blswhstl folders |
+| Konami | 1 | [jlrh/konami-fpga](https://github.com/jlrh/konami-fpga) | Core and MRA in the repository's releases and cores/xexex folders |
 | Konami | 4 | [ppriest/Arcade-KonamiGX_MiSTer](https://github.com/ppriest/Arcade-KonamiGX_MiSTer) | Core and MRAs in the repository's releases folder; a work-in-progress beta. Every game also needs konamigx.zip |
+| Mega System 1 | 3 | [kuzearcade/Arcade-JalecoMS1BCD_MiSTer](https://github.com/kuzearcade/Arcade-JalecoMS1BCD_MiSTer) | Core and MRAs in the repository's releases folder |
 | MegaSystem 32 | 4 | [ppriest/Arcade-JalecoMS32_MiSTer](https://github.com/ppriest/Arcade-JalecoMS32_MiSTer) |  |
+| NMK | 1 | [kuzearcade/Arcade-NMKBP964_MiSTer](https://github.com/kuzearcade/Arcade-NMKBP964_MiSTer) | Core and MRAs in the repository's releases folder |
 | NMK16 | 19 | [kuzearcade/Arcade-NMK16_MiSTer](https://github.com/kuzearcade/Arcade-NMK16_MiSTer) |  |
 | Namco | 4 | [kuzearcade/Arcade-NamcoSystem2_MiSTer](https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer) | Core and MRAs in the repository's releases folder; in development. Every game also needs namcoc65.zip |
+| Namco NA-1 | 1 | [OngoGablogian/MiSTer_Ongo](https://github.com/OngoGablogian/MiSTer_Ongo) |  |
+| Namco System 11 | 1 | [OngoGablogian/MiSTer_Ongo](https://github.com/OngoGablogian/MiSTer_Ongo) |  |
 | Raiden | 1 | [rmonic79/Arcade-Raiden_MiSTer](https://github.com/rmonic79/Arcade-Raiden_MiSTer) | Core and MRAs in the repository's releases folder |
 | Raiden2 | 2 | [rmonic79/Arcade-Raiden2_MiSTer](https://github.com/rmonic79/Arcade-Raiden2_MiSTer) | Core and MRAs in the repository's releases folder; Raiden II and Raiden DX share it |
 | SKNS | 2 | [srg320/Arcade-SKNS_MiSTer](https://github.com/srg320/Arcade-SKNS_MiSTer) | Core and MRAs in the repository's releases folder; every game also needs skns.zip, the system BIOS |
+| Sega System 24 | 1 | [OngoGablogian/MiSTer_Ongo](https://github.com/OngoGablogian/MiSTer_Ongo) |  |
 | SeibuSPI | 4 | [zakk4223/Arcade-SeibuSPI_MiSTer](https://github.com/zakk4223/Arcade-SeibuSPI_MiSTer) | Core and MRAs in the repository's releases folder; an early core, the author describes it as unvalidated against hardware |
 | Seta | 8 | [ppriest/Arcade-Seta_MiSTer](https://github.com/ppriest/Arcade-Seta_MiSTer) |  |
-| SetaDowntown | 3 | [ppriest/Arcade-Seta_MiSTer](https://github.com/ppriest/Arcade-Seta_MiSTer) | Core and MRAs in the repository's releases folder; a separate core from Seta, for the Downtown board |
+| SetaDowntown | 4 | [ppriest/Arcade-Seta_MiSTer](https://github.com/ppriest/Arcade-Seta_MiSTer) | Core and MRAs in the repository's releases folder; a separate core from Seta, for the Downtown board |
+| SunA | 1 | [OngoGablogian/MiSTer_Ongo](https://github.com/OngoGablogian/MiSTer_Ongo) |  |
+| System C2 | 1 | [Mezzow/Arcade-SystemC2_MiSTer](https://github.com/Mezzow/Arcade-SystemC2_MiSTer) | Core and MRAs in the repository's releases folder |
+| Taito B | 3 | [Mezzow/Arcade-TaitoB_MiSTer](https://github.com/Mezzow/Arcade-TaitoB_MiSTer) | Core and MRAs in the repository's releases folder |
 | Taito F3 | 5 | [spacestate1/Arcade-taitoF3_MiSTer](https://github.com/spacestate1/Arcade-taitoF3_MiSTer) |  |
 | Taito FX-1B | 2 | [XelaNotPu/ZN1-TaitoFX1B_MiSTer](https://github.com/XelaNotPu/ZN1-TaitoFX1B_MiSTer) |  |
-| Toaplan | 4 | [TheJesusFish/Slop-Core](https://github.com/TheJesusFish/Slop-Core) | Core and MRAs in the repository's _Arcade folder |
+| Toaplan | 5 | [TheJesusFish/Slop-Core](https://github.com/TheJesusFish/Slop-Core) | Core and MRAs in the repository's _Arcade folder |
 | TwinHawk | 1 | [bazset/Twin-Hawk-FPGA](https://github.com/bazset/Twin-Hawk-FPGA) | MRAs in the repository; the core build is on the author's Patreon |
+| Video System | 2 | [OngoGablogian/MiSTer_Ongo](https://github.com/OngoGablogian/MiSTer_Ongo) |  |
+| ZN-1 | 2 | [OngoGablogian/MiSTer_Ongo](https://github.com/OngoGablogian/MiSTer_Ongo) |  |
 
 ## Arcade games
+
+### Aleck64
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Star Soldier: Vanishing Earth | 1998 | MiSTer main distribution | `starsldr.zip` | same | `aleck64.zip` |
+
+### Alpha 68K
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Sky Adventure | 1989 | Coin-Op Collection | `skyadvnt.zip` | same |  |
+| Sky Soldiers | 1988 | Coin-Op Collection | `skysoldr.zip` | same |  |
 
 ### Asuka
 
@@ -64,7 +92,10 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | --- | --- | --- | --- | --- | --- |
 | 1942 | 1984 | JOTEGO cores | `1942.zip` | same |  |
 | 1943 | 1987 | JOTEGO cores | `1943.zip` | same |  |
+| 1943 Kai: Midway Kaisen | 1987 | JOTEGO cores | `1943kai.zip` | same |  |
 | Exed Exes | 1985 | JOTEGO cores | `exedexes.zip` | same |  |
+| Gun.Smoke | 1985 | JOTEGO cores | `gunsmoke.zip` | same |  |
+| Last Duel | 1988 | [GitHub](https://github.com/OngoGablogian/MiSTer_Ongo) | `lastduel.zip` | same |  |
 | Legendary Wings | 1986 | JOTEGO cores | `lwings.zip` | same |  |
 | Section Z | 1985 | JOTEGO cores | `sectionz.zip` | same |  |
 | Side Arms | 1986 | JOTEGO cores | `sidearms.zip` | same |  |
@@ -81,6 +112,7 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | ESP Ra.De. | 1998 | MiSTer main distribution | `esprade.zip` | same |  |
 | Guwange | 1999 | MiSTer main distribution | `guwange.zip` | same |  |
 | Hotdog Storm | 1996 | MiSTer main distribution | `hotdogst.zip` | same |  |
+| Mazinger Z | 1994 | MiSTer main distribution | `mazinger.zip` | same |  |
 
 ### CPS1
 
@@ -145,7 +177,11 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
+| Boogie Wings | 1992 | MiSTer main distribution | `boogwinga.zip` | same |  |
 | Cobra-Command | 1988 | Coin-Op Collection | `cobracom.zip` | same |  |
+| Double Wings | 1993 | Coin-Op Collection | `dblewingb.zip` | `dblewing.zip` |  |
+| Vapor Trail | 1989 | MiSTer main distribution | `vaportra.zip` | same |  |
+| Wonder Planet | 1987 | JOTEGO cores | `wndrplnt.zip` | same |  |
 
 ### Dooyong
 
@@ -165,6 +201,12 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | --- | --- | --- | --- | --- | --- |
 | U.N. Defense Force: Earth Joker | 1993 | [GitHub](https://www.patreon.com/bazset/posts/u-n-defense-1993-169900198) | `earthjkr.zip` | same |  |
 
+### Galivan
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| UFO Robo Dangar | 1986 | MiSTer main distribution | `dangar.zip` | same |  |
+
 ### Galmedes
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
@@ -177,32 +219,76 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | --- | --- | --- | --- | --- | --- |
 | Gigandes | 1989 | [GitHub](https://github.com/bazset/Gigandes-FPGA) | `gigandes.zip` | same |  |
 
+### Gulf War II
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Gulf War II | 1991 | MiSTer main distribution | `gulfwar2.zip` | same |  |
+
 ### Gyruss
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
 | Gyruss | 1983 | MiSTer main distribution | `gyruss.zip` | same |  |
 
+### Hyper Duel
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Hyper Duel | 1993 | MiSTer main distribution | `hyprduel.zip` | same |  |
+
+### Kaneko
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Sand Scorpion | 1992 | [GitHub](https://github.com/kuzearcade/Arcade-SandScrp_MiSTer) | `sandscrp.zip` | same |  |
+
+### Kaneko16
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Blaze On | 1992 | [GitHub](https://github.com/alphanu1/kaneko16-mister) | `blazeonj.zip` | `blazeon.zip` |  |
+| Explosive Breaker | 1992 | [GitHub](https://github.com/alphanu1/kaneko16-mister) | `explbrkr.zip` | same |  |
+| Wing Force | 1993 | [GitHub](https://github.com/alphanu1/kaneko16-mister) | `wingforc.zip` | same |  |
+
 ### Konami
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
 | Ajax | 1987 | JOTEGO cores | `ajax.zip` | same |  |
+| Detana!! TwinBee | 1991 | [GitHub](https://github.com/jlrh/konami-fpga) | `detatwin.zip` | `blswhstl.zip` |  |
 | Fantastic Journey | 1994 | [GitHub](https://github.com/ppriest/Arcade-KonamiGX_MiSTer) | `fantjour.zip` | same | `konamigx.zip` |
 | Finalizer | 1985 | MiSTer main distribution | `finalizr.zip` | same |  |
 | Gradius | 1985 | MiSTer main distribution | `gradius.zip` | `nemesis.zip` |  |
 | Gradius III * | 1989 | JOTEGO cores | `gradius3.zip` | same | `jtbeta.zip` |
+| Lightning Fighters | 1990 | JOTEGO cores | `lgtnfght.zip` | same |  |
 | MX5000 | 1987 | JOTEGO cores | `mx5000.zip` | same |  |
 | Parodius Da! | 1990 | JOTEGO cores | `parodius.zip` | same |  |
 | Salamander | 1986 | MiSTer main distribution | `salamand.zip` | same |  |
 | Salamander 2 | 1996 | [GitHub](https://github.com/ppriest/Arcade-KonamiGX_MiSTer) | `salmndr2.zip` | same | `konamigx.zip` |
 | Sexy Parodius | 1996 | [GitHub](https://github.com/ppriest/Arcade-KonamiGX_MiSTer) | `sexyparo.zip` | same | `konamigx.zip` |
 | Thunder Cross | 1988 | JOTEGO cores | `thunderx.zip` | same |  |
+| Thunder Cross II | 1991 | JOTEGO cores | `thndrx2.zip` | same |  |
 | Twin Bee Yahhoo! | 1995 | [GitHub](https://github.com/ppriest/Arcade-KonamiGX_MiSTer) | `tbyahhoo.zip` | same | `konamigx.zip` |
 | TwinBee | 1985 | MiSTer main distribution | `twinbee.zip` | same |  |
 | Vulcan Venture | 1988 | JOTEGO cores | `vulcan.zip` | same |  |
+| Xexex | 1991 | [GitHub](https://github.com/jlrh/konami-fpga) | `xexex.zip` | same |  |
 
 \* Gradius III: jtbeta.zip is the JOTEGO beta key (Patreon), not a MAME file.
+
+### Kyugo
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Airwolf | 1987 | MiSTer main distribution | `airwolf.zip` | same |  |
+| Gyrodine | 1984 | MiSTer main distribution | `gyrodine.zip` | same |  |
+| S.R.D. Mission | 1986 | MiSTer main distribution | `srdmissn.zip` | same |  |
+
+### Lady Bug
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Cosmic Avenger | 1981 | MiSTer main distribution | `cavenger.zip` | same |  |
 
 ### M107
 
@@ -238,6 +324,17 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Mystic Riders | 1992 | MiSTer main distribution | `mysticri.zip` | same |  |
 | R-Type Leo | 1992 | MiSTer main distribution | `rtypeleo.zip` | same |  |
 
+### Mega System 1
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Chimera Beast | 1993 | [GitHub](https://github.com/kuzearcade/Arcade-JalecoMS1BCD_MiSTer) | `chimerab.zip` | same |  |
+| Cybattler | 1993 | [GitHub](https://github.com/kuzearcade/Arcade-JalecoMS1BCD_MiSTer) | `cybattlr.zip` | same |  |
+| E.D.F.: Earth Defense Force | 1991 | [GitHub](https://github.com/kuzearcade/Arcade-JalecoMS1BCD_MiSTer) | `edf.zip` | same |  |
+| P-47: The Phantom Fighter | 1988 | Coin-Op Collection | `p47j.zip` | `p47.zip` |  |
+| Plus Alpha | 1989 | Coin-Op Collection | `plusalph.zip` | same |  |
+| Saint Dragon | 1989 | Coin-Op Collection | `stdragon.zip` | same |  |
+
 ### MegaSystem 32
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
@@ -251,15 +348,31 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
+| Blast Off | 1989 | JOTEGO cores | `blastoff.zip` | same |  |
 | Burning Force * | 1989 | [GitHub](https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer) | `burnforc.zip` | same | `namcoc65.zip` |
+| Dangerous Seed | 1989 | JOTEGO cores | `dangseed.zip` | same |  |
 | Dragon Saber * | 1990 | [GitHub](https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer) | `dsaber.zip` | same | `namcoc65.zip` |
 | Dragon Spirit | 1987 | JOTEGO cores | `dspirit.zip` | same |  |
 | Ordyne | 1988 | [GitHub](https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer) | `ordyne.zip` | same | `namcoc65.zip` |
 | Phelios * | 1988 | [GitHub](https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer) | `phelios.zip` | same | `namcoc65.zip` |
+| Pistol Daimyo no Bouken | 1990 | JOTEGO cores | `pistoldm.zip` | same |  |
+| Sky Kid Deluxe | 1986 | JOTEGO cores | `skykiddx.zip` | same |  |
 
 \* Phelios: On first launch the game stops at a warning screen; press 1P Start. Open the MiSTer menu once it is running (or use Save NVRAM) and the core keeps the setting, so it only happens once.
 \* Burning Force: On first launch the game stops at a warning screen; press 1P Start. Open the MiSTer menu once it is running (or use Save NVRAM) and the core keeps the setting, so it only happens once.
 \* Dragon Saber: On first launch the game stops at a warning screen; press 1P Start. Open the MiSTer menu once it is running (or use Save NVRAM) and the core keeps the setting, so it only happens once.
+
+### Namco NA-1
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Fighter & Attacker | 1992 | [GitHub](https://github.com/OngoGablogian/MiSTer_Ongo) | `fa.zip` | `fghtatck.zip` | `namcoc69.zip` |
+
+### Namco System 11
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Xevious 3D/G | 1995 | [GitHub](https://github.com/OngoGablogian/MiSTer_Ongo) | `xevi3dg.zip` | same | `namcoc76.zip` |
 
 ### Nichibutsu
 
@@ -269,6 +382,12 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Legion | 1987 | Coin-Op Collection | `legion.zip` | same |  |
 | Terra Cresta | 1985 | Coin-Op Collection | `terracre.zip` | same |  |
 | Terra Force | 1987 | Coin-Op Collection | `terraf.zip` | same |  |
+
+### NMK
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Macross Plus | 1996 | [GitHub](https://github.com/kuzearcade/Arcade-NMKBP964_MiSTer) | `macrossp.zip` | same |  |
 
 ### NMK16
 
@@ -325,6 +444,7 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | --- | --- | --- | --- | --- | --- |
 | Dragon Blaze | 2000 | MiSTer main distribution | `dragnblz.zip` | same |  |
 | Gunbird 2 | 1998 | MiSTer main distribution | `gunbird2.zip` | same |  |
+| Sol Divide | 1997 | MiSTer main distribution | `soldivid.zip` | same |  |
 | Space Bomber | 1998 | MiSTer main distribution | `sbomber.zip` | same |  |
 | Strikers 1945 II | 1997 | MiSTer main distribution | `s1945ii.zip` | same |  |
 | Strikers 1945 III | 1999 | MiSTer main distribution | `s1945iii.zip` | same |  |
@@ -352,6 +472,13 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Kingdom Grandprix | 1994 | Coin-Op Collection | `kingdmgp.zip` | same |  |
 | Sorcer Striker | 1993 | Coin-Op Collection | `sstriker.zip` | same |  |
 
+### Scramble
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Scramble | 1981 | MiSTer main distribution | `scrambp.zip` | same |  |
+| Super Cobra | 1981 | MiSTer main distribution | `scobra.zip` | same |  |
+
 ### Sega
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
@@ -364,7 +491,28 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
+| 4-D Warriors | 1985 | MiSTer main distribution | `4dwarrio.zip` | same |  |
 | Rafflesia | 1986 | MiSTer main distribution | `raflesia.zip` | same |  |
+| Star Jacker | 1983 | MiSTer main distribution | `starjacks.zip` | same |  |
+
+### Sega System 16B
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Cotton | 1991 | JOTEGO cores | `cotton.zip` | same |  |
+| Sonic Boom | 1987 | JOTEGO cores | `sonicbom.zip` | same |  |
+
+### Sega System 18
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Hammer Away | 1991 | JOTEGO cores | `hamaway.zip` | same |  |
+
+### Sega System 24
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Scramble Spirits | 1988 | [GitHub](https://github.com/OngoGablogian/MiSTer_Ongo) | `sspirits.zip` | same |  |
 
 ### SeibuSPI
 
@@ -394,6 +542,7 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | --- | --- | --- | --- | --- | --- |
 | Arbalester | 1989 | [GitHub](https://github.com/ppriest/Arcade-Seta_MiSTer) | `arbalest.zip` | same |  |
 | Meta Fox | 1989 | [GitHub](https://github.com/ppriest/Arcade-Seta_MiSTer) | `metafox.zip` | same |  |
+| Thundercade | 1987 | [GitHub](https://github.com/ppriest/Arcade-Seta_MiSTer) | `tndrcade.zip` | same |  |
 | Twin Eagle | 1988 | [GitHub](https://github.com/ppriest/Arcade-Seta_MiSTer) | `twineagl.zip` | same |  |
 
 ### SKNS
@@ -402,6 +551,12 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | --- | --- | --- | --- | --- | --- |
 | Cyvern: The Dragon Weapons | 1998 | [GitHub](https://github.com/srg320/Arcade-SKNS_MiSTer) | `cyvern.zip` | same | `skns.zip` |
 | Sengeki Striker | 1997 | [GitHub](https://github.com/srg320/Arcade-SKNS_MiSTer) | `sengekis.zip` | same | `skns.zip` |
+
+### Sky Smasher
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Sky Smasher | 1990 | MiSTer main distribution | `skysmash.zip` | same |  |
 
 ### SlapFight
 
@@ -415,11 +570,20 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
 | ASO | 1985 | MiSTer main distribution | `aso.zip` | same |  |
+| Prehistoric Isle in 1930 | 1989 | Coin-Op Collection | `prehisle.zip` | same |  |
+| The Next Space | 1989 | Coin-Op Collection | `tnextspcj.zip` | `tnextspc.zip` |  |
+
+### SNK 6502
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Vanguard | 1981 | MiSTer main distribution | `vanguard.zip` | same |  |
 
 ### SSV
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
+| Change Air Blade | 1999 | MeatCores | `cairblad.zip` | same |  |
 | Storm Blade | 1996 | MeatCores | `stmblade.zip` | same |  |
 | Twin Eagle II | 1994 | MeatCores | `twineag2.zip` | same |  |
 | Ultra X Weapons | 1995 | MeatCores | `ultrax.zip` | same |  |
@@ -440,17 +604,46 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 
 \* Radiant Silvergun EX: trap15's patched release. The MRA comes from Arcade Offset, an optional Update All database..
 
+### Star Force
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Star Force | 1984 | MiSTer main distribution | `starforc.zip` | same |  |
+
+### SunA
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Star Fighter | 1990 | [GitHub](https://github.com/OngoGablogian/MiSTer_Ongo) | `starfigh.zip` | same |  |
+
+### System C2
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Thunder Force AC | 1990 | [GitHub](https://github.com/Mezzow/Arcade-SystemC2_MiSTer) | `tfrceacj.zip` | `tfrceac.zip` |  |
+
 ### Taito
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
+| Chuka Taisen | 1988 | JOTEGO cores | `chukatai.zip` | same |  |
 | Extermination | 1987 | JOTEGO cores | `extrmatn.zip` | same |  |
 | Tokio | 1986 | JOTEGO cores | `tokio.zip` | same |  |
+
+### Taito B
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Ashura Blaster | 1990 | [GitHub](https://github.com/Mezzow/Arcade-TaitoB_MiSTer) | `ashuraj.zip` | `ashura.zip` |  |
+| Master of Weapon | 1989 | [GitHub](https://github.com/Mezzow/Arcade-TaitoB_MiSTer) | `masterwj.zip` | `masterw.zip` |  |
+| Ryu Jin | 1993 | [GitHub](https://github.com/Mezzow/Arcade-TaitoB_MiSTer) | `ryujina.zip` | `ryujin.zip` |  |
 
 ### Taito F2
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
+| Gun & Frontier | 1990 | MiSTer main distribution | `gunfront.zip` | same |  |
+| Mega Blast | 1989 | MiSTer main distribution | `megablst.zip` | same |  |
 | Metal Black | 1991 | MiSTer main distribution | `metalb.zip` | same |  |
 
 ### Taito F3
@@ -476,6 +669,7 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
+| Back Fire | 1988 | MiSTer main distribution | `backfirt.zip` | same |  |
 | Gemini Wing | 1987 | MiSTer main distribution | `gemini.zip` | same |  |
 | Raiga Strato Fighter | 1991 | JOTEGO cores | `stratof.zip` | same |  |
 | Silkworm | 1988 | MiSTer main distribution | `silkworm.zip` | same |  |
@@ -495,6 +689,7 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Dogyuun | 1992 | [GitHub](https://github.com/TheJesusFish/Slop-Core) | `dogyuun.zip` | same |  |
 | Dr. Toppel's Adventure | 1987 | JOTEGO cores | `drtoppel.zip` | same |  |
 | Fire Shark | 1989 | Coin-Op Collection | `fireshrk.zip` | same |  |
+| FixEight | 1992 | [GitHub](https://github.com/TheJesusFish/Slop-Core) | `fixeightt.zip` | `fixeight.zip` |  |
 | Flying Shark | 1987 | Coin-Op Collection | `fshark.zip` | same |  |
 | Grind Stormer | 1992 | [GitHub](https://github.com/TheJesusFish/Slop-Core) | `grindstm.zip` | same |  |
 | Hellfire | 1989 | Coin-Op Collection | `hellfire.zip` | same |  |
@@ -512,11 +707,46 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | --- | --- | --- | --- | --- | --- |
 | Twin Hawk | 1989 | [GitHub](https://github.com/bazset/Twin-Hawk-FPGA) | `twinhawk.zip` | same |  |
 
+### UPL
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Omega Fighter | 1989 | MiSTer main distribution | `omegaf.zip` | same |  |
+
+### Vastar
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Vastar | 1983 | MiSTer main distribution | `vastar.zip` | same |  |
+
+### Video System
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Aero Fighters | 1992 | [GitHub](https://github.com/OngoGablogian/MiSTer_Ongo) | `aerofgtb.zip` | `aerofgt.zip` |  |
+| Turbo Force | 1991 | [GitHub](https://github.com/OngoGablogian/MiSTer_Ongo) | `turbofrc.zip` | same |  |
+
 ### Xevious
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
+| Super Xevious | 1984 | MiSTer main distribution | `sxevious.zip` | `xevious.zip` | `namco50.zip`, `namco51.zip`, `namco54.zip` |
 | Xevious | 1982 | MiSTer main distribution | `xevious.zip` | same | `namco50.zip`, `namco51.zip`, `namco54.zip` |
+
+### Zaxxon
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Future Spy | 1984 | MiSTer main distribution | `futspy.zip` | same |  |
+| Super Zaxxon | 1982 | MiSTer main distribution | `szaxxon.zip` | same |  |
+| Zaxxon | 1982 | MiSTer main distribution | `zaxxon.zip` | same |  |
+
+### ZN-1
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Aero Fighters Special | 1996 | [GitHub](https://github.com/OngoGablogian/MiSTer_Ongo) | `aerofgts.zip` | same | `coh1002v.zip` |
+| Brave Blade | 2000 | [GitHub](https://github.com/OngoGablogian/MiSTer_Ongo) | `brvblade.zip` | same | `coh1002m.zip` |
 
 ## Neo Geo games
 
@@ -535,6 +765,7 @@ Neo Geo games run on the Neo Geo core from the MiSTer main distribution and go i
 | Prehistoric Isle 2 | 1999 | `preisle2` | `preisle2.neo`, `Title (preisle2).neo`, or a `preisle2` Darksoft or MAME zip or folder |
 | Pulstar | 1995 | `pulstar` | `pulstar.neo`, `Title (pulstar).neo`, or a `pulstar` Darksoft or MAME zip or folder |
 | Strikers 1945 Plus | 1999 | `s1945p` | `s1945p.neo`, `Title (s1945p).neo`, or a `s1945p` Darksoft or MAME zip or folder |
+| Twinkle Star Sprites | 1996 | `twinspri` | `twinspri.neo`, `Title (twinspri).neo`, or a `twinspri` Darksoft or MAME zip or folder |
 | Viewpoint | 1992 | `viewpoin` | `viewpoin.neo`, `Title (viewpoin).neo`, or a `viewpoin` Darksoft or MAME zip or folder |
 | Zed Blade | 1994 | `zedblade` | `zedblade.neo`, `Title (zedblade).neo`, or a `zedblade` Darksoft or MAME zip or folder |
 
@@ -546,37 +777,60 @@ One per line, for filtering a download. Non-merged or split set:
 1941.zip
 1942.zip
 1943.zip
+1943kai.zip
 1944.zip
 19xx.zip
+4dwarrio.zip
 acrobatm.zip
+aerofgtb.zip
+aerofgts.zip
 agallet.zip
 airattck.zip
 airduelm72.zip
+airwolf.zip
 ajax.zip
 akatana.zip
+aleck64.zip
 arbalest.zip
 armedf.zip
+ashuraj.zip
 aso.zip
 asuka.zip
+backfirt.zip
 batrider.zip
 batsugun.zip
 batsugunsp.zip
 bbakraid.zip
 bgaregga.zip
 bioship.zip
+blastoff.zip
+blazeonj.zip
 blkheart.zip
 bluehawk.zip
+boogwinga.zip
+brvblade.zip
 burnforc.zip
+cairblad.zip
+cavenger.zip
 cawing.zip
+chimerab.zip
+chukatai.zip
 cobracom.zip
 coh1000t.zip
+coh1002m.zip
+coh1002v.zip
+cotton.zip
 cotton2.zip
 cottonbm.zip
+cybattlr.zip
 cyvern.zip
 daioh.zip
+dangar.zip
+dangseed.zip
 darius.zip
 darius2.zip
 dariusg.zip
+dblewingb.zip
 dbreedjm72.zip
 ddonpach.zip
 ddp2.zip
@@ -586,6 +840,7 @@ ddpdojblk.zip
 ddpsdoj.zip
 deathsml.zip
 desertwr.zip
+detatwin.zip
 dfeveron.zip
 dfkbl.zip
 dimahoo.zip
@@ -598,23 +853,28 @@ dsmbl.zip
 dspirit.zip
 earthjkr.zip
 ecofghtr.zip
+edf.zip
 eightfrc.zip
 espgal.zip
 espgal2.zip
 esprade.zip
 exedexes.zip
+explbrkr.zip
 extrmatn.zip
+fa.zip
 fantjour.zip
 fantzn2.zip
 fantzone.zip
 finalizr.zip
 firebarr.zip
 fireshrk.zip
+fixeightt.zip
 flytiger.zip
 forgottn.zip
 fshark.zip
 futari15.zip
 futaribl.zip
+futspy.zip
 gallopm72.zip
 galmedes.zip
 gametngk.zip
@@ -631,16 +891,22 @@ grdnstrm.zip
 grindstm.zip
 gseeker.zip
 gulfstrm.zip
+gulfwar2.zip
 gunbird.zip
 gunbird2.zip
+gunfront.zip
 gunlock.zip
 gunnail.zip
+gunsmoke.zip
 guwange.zip
+gyrodine.zip
 gyruss.zip
 hachamf.zip
+hamaway.zip
 hellfire.zip
 horizon.zip
 hotdogst.zip
+hyprduel.zip
 ibara.zip
 ibarablk.zip
 imgfight.zip
@@ -650,12 +916,18 @@ ket.zip
 kingdmgp.zip
 konamigx.zip
 lastday.zip
+lastduel.zip
 legion.zip
 lethalth.zip
+lgtnfght.zip
 lwings.zip
 macross.zip
 macross2.zip
+macrossp.zip
 madshark.zip
+masterwj.zip
+mazinger.zip
+megablst.zip
 metafox.zip
 metalb.zip
 mmatrix.zip
@@ -668,16 +940,23 @@ namco50.zip
 namco51.zip
 namco54.zip
 namcoc65.zip
+namcoc69.zip
+namcoc76.zip
 neobattl.zip
 nmk004.zip
+omegaf.zip
 ordyne.zip
 outzone.zip
 p47aces.zip
+p47j.zip
 parodius.zip
 pgm.zip
 phelios.zip
 pinkswts.zip
+pistoldm.zip
+plusalph.zip
 pollux.zip
+prehisle.zip
 progear.zip
 qsound.zip
 raflesia.zip
@@ -695,13 +974,17 @@ rshark.zip
 rtype.zip
 rtype2.zip
 rtypeleo.zip
+ryujina.zip
 s1945.zip
 s1945ii.zip
 s1945iii.zip
 salamand.zip
 salmndr2.zip
 samuraia.zip
+sandscrp.zip
 sbomber.zip
+scobra.zip
+scrambp.zip
 sdib.zip
 sectionz.zip
 sengekis.zip
@@ -710,18 +993,33 @@ shienryu.zip
 sidearms.zip
 silkworm.zip
 skns.zip
+skyadvnt.zip
+skykiddx.zip
+skysmash.zip
+skysoldr.zip
 slapfighb1.zip
 sokyugrt.zip
+soldivid.zip
+sonicbom.zip
 spec2k.zip
+srdmissn.zip
 ssmissin.zip
+sspirits.zip
 sstriker.zip
 stagger1.zip
+starfigh.zip
+starforc.zip
+starjacks.zip
+starsldr.zip
+stdragon.zip
 stg.zip
 stmblade.zip
 strahl.zip
 stratof.zip
 stvbios.zip
 superx.zip
+sxevious.zip
+szaxxon.zip
 tbyahhoo.zip
 tcobra2.zip
 tdragon.zip
@@ -729,13 +1027,18 @@ tdragon2.zip
 tengai.zip
 terracre.zip
 terraf.zip
+tfrceacj.zip
 tharrier.zip
+thndrx2.zip
 thunderx.zip
 tigerhb1.zip
+tndrcade.zip
+tnextspcj.zip
 tokio.zip
 tp84.zip
 truxton.zip
 truxton2.zip
+turbofrc.zip
 twinactn.zip
 twinbee.zip
 twincobr.zip
@@ -744,17 +1047,25 @@ twineagl.zip
 twinhawk.zip
 ultrax.zip
 unsquad.zip
+vanguard.zip
+vaportra.zip
 varth.zip
 vasara.zip
 vasara2.zip
+vastar.zip
 vimana.zip
 viprp1.zip
 vulcan.zip
 vulgus.zip
+wingforc.zip
+wndrplnt.zip
 wrofaero.zip
+xevi3dg.zip
 xevious.zip
+xexex.zip
 xmultiplm72.zip
 youjyudn.zip
+zaxxon.zip
 zerowing.zip
 zingzip.zip
 ```
@@ -765,40 +1076,64 @@ Merged set:
 1941.zip
 1942.zip
 1943.zip
+1943kai.zip
 1944.zip
 19xx.zip
+4dwarrio.zip
 acrobatm.zip
+aerofgt.zip
+aerofgts.zip
 agallet.zip
 airass.zip
 airattck.zip
 airduel.zip
+airwolf.zip
 ajax.zip
 akatana.zip
 alcon.zip
+aleck64.zip
 arbalest.zip
 arcadian.zip
 armedf.zip
+ashura.zip
 aso.zip
 asuka.zip
+backfirt.zip
 batrider.zip
 batsugun.zip
 bbakraid.zip
 bgaregga.zip
 bioship.zip
+blastoff.zip
+blazeon.zip
 blkheart.zip
+blswhstl.zip
 bluehawk.zip
+boogwinga.zip
+brvblade.zip
 burnforc.zip
+cairblad.zip
+cavenger.zip
 cawing.zip
+chimerab.zip
+chukatai.zip
 cobracom.zip
 coh1000t.zip
+coh1002m.zip
+coh1002v.zip
 cosmccop.zip
+cotton.zip
 cotton2.zip
 cottonbm.zip
+cybattlr.zip
 cyvern.zip
 daioh.zip
+dangar.zip
+dangseed.zip
 darius.zip
 darius2.zip
 dariusg.zip
+dblewing.zip
 dbreed.zip
 ddonpach.zip
 ddp2.zip
@@ -818,23 +1153,28 @@ dsmbl.zip
 dspirit.zip
 earthjkr.zip
 ecofghtr.zip
+edf.zip
 eightfrc.zip
 espgal.zip
 espgal2.zip
 esprade.zip
 exedexes.zip
+explbrkr.zip
 extrmatn.zip
 fantjour.zip
 fantzn2.zip
 fantzone.zip
 feversos.zip
+fghtatck.zip
 finalizr.zip
 fireshrk.zip
+fixeight.zip
 flytiger.zip
 forgottn.zip
 fshark.zip
 futari15.zip
 futaribl.zip
+futspy.zip
 galmedes.zip
 gametngk.zip
 gdarius2.zip
@@ -849,16 +1189,22 @@ grdnstrm.zip
 grindstm.zip
 gseeker.zip
 gulfstrm.zip
+gulfwar2.zip
 gunbird.zip
 gunbird2.zip
+gunfront.zip
 gunlock.zip
 gunnail.zip
+gunsmoke.zip
 guwange.zip
+gyrodine.zip
 gyruss.zip
 hachamf.zip
+hamaway.zip
 hellfire.zip
 horizon.zip
 hotdogst.zip
+hyprduel.zip
 ibara.zip
 ibarablk.zip
 imgfight.zip
@@ -868,12 +1214,18 @@ ket.zip
 kingdmgp.zip
 konamigx.zip
 lastday.zip
+lastduel.zip
 legion.zip
 lethalth.zip
+lgtnfght.zip
 lwings.zip
 macross.zip
 macross2.zip
+macrossp.zip
 madshark.zip
+masterw.zip
+mazinger.zip
+megablst.zip
 metafox.zip
 metalb.zip
 mmatrix.zip
@@ -886,17 +1238,24 @@ namco50.zip
 namco51.zip
 namco54.zip
 namcoc65.zip
+namcoc69.zip
+namcoc76.zip
 nemesis.zip
 neobattl.zip
 nmk004.zip
+omegaf.zip
 ordyne.zip
 outzone.zip
+p47.zip
 p47aces.zip
 parodius.zip
 pgm.zip
 phelios.zip
 pinkswts.zip
+pistoldm.zip
+plusalph.zip
 pollux.zip
+prehisle.zip
 progear.zip
 qsound.zip
 raflesia.zip
@@ -913,13 +1272,17 @@ rshark.zip
 rtype.zip
 rtype2.zip
 rtypeleo.zip
+ryujin.zip
 s1945.zip
 s1945ii.zip
 s1945iii.zip
 salamand.zip
 salmndr2.zip
 samuraia.zip
+sandscrp.zip
 sbomber.zip
+scobra.zip
+scrambp.zip
 sdi.zip
 sectionz.zip
 sengekis.zip
@@ -928,17 +1291,31 @@ shienryu.zip
 sidearms.zip
 silkworm.zip
 skns.zip
+skyadvnt.zip
+skykiddx.zip
+skysmash.zip
+skysoldr.zip
 sokyugrt.zip
+soldivid.zip
+sonicbom.zip
 spec2k.zip
+srdmissn.zip
 ssmissin.zip
+sspirits.zip
 sstriker.zip
 stagger1.zip
+starfigh.zip
+starforc.zip
+starjacks.zip
+starsldr.zip
+stdragon.zip
 stg.zip
 stmblade.zip
 strahl.zip
 stratof.zip
 stvbios.zip
 superx.zip
+szaxxon.zip
 tbyahhoo.zip
 tcobra2.zip
 tdragon.zip
@@ -946,13 +1323,18 @@ tdragon2.zip
 tengai.zip
 terracre.zip
 terraf.zip
+tfrceac.zip
 tharrier.zip
+thndrx2.zip
 thunderx.zip
 tigerh.zip
+tndrcade.zip
+tnextspc.zip
 tokio.zip
 tp84.zip
 truxton.zip
 truxton2.zip
+turbofrc.zip
 twinactn.zip
 twinbee.zip
 twincobr.zip
@@ -961,17 +1343,25 @@ twineagl.zip
 twinhawk.zip
 ultrax.zip
 unsquad.zip
+vanguard.zip
+vaportra.zip
 varth.zip
 vasara.zip
 vasara2.zip
+vastar.zip
 vimana.zip
 viprp1.zip
 vulcan.zip
 vulgus.zip
+wingforc.zip
+wndrplnt.zip
 wrofaero.zip
+xevi3dg.zip
 xevious.zip
+xexex.zip
 xmultipl.zip
 youjyudn.zip
+zaxxon.zip
 zerowing.zip
 zingzip.zip
 ```

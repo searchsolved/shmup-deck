@@ -4752,5 +4752,1599 @@
    "shared": []
   },
   "rotation": "ccw"
+ },
+ {
+  "id": "1943kai",
+  "title": "1943 Kai: Midway Kaisen",
+  "dev": "Capcom",
+  "year": 1987,
+  "core": "Capcom",
+  "system": "Capcom 1943",
+  "orientation": "tate",
+  "setnames": [
+   "1943kai"
+  ],
+  "rbf": "jt1943",
+  "roms": {
+   "zip": "1943kai",
+   "merged": "1943kai",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "4dwarrio",
+  "title": "4-D Warriors",
+  "dev": "Coreland",
+  "year": 1985,
+  "core": "Sega System 1",
+  "system": "Sega System 1",
+  "orientation": "yoko",
+  "setnames": [
+   "4dwarrio"
+  ],
+  "rbf": "segasys1",
+  "roms": {
+   "zip": "4dwarrio",
+   "merged": "4dwarrio",
+   "shared": []
+  }
+ },
+ {
+  "id": "aerofgt",
+  "title": "Aero Fighters",
+  "dev": "Video System",
+  "year": 1992,
+  "core": "Video System",
+  "system": "Video System Aero Fighters",
+  "orientation": "tate",
+  "setnames": [
+   "aerofgtb",
+   "aerofgt",
+   "aerofgtc",
+   "sonicwi"
+  ],
+  "rbf": "pspike",
+  "roms": {
+   "zip": "aerofgtb",
+   "merged": "aerofgt",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "aerofgts",
+  "title": "Aero Fighters Special",
+  "dev": "McO'River",
+  "year": 1996,
+  "core": "ZN-1",
+  "system": "Sony ZN-1",
+  "orientation": "tate",
+  "setnames": [
+   "aerofgts",
+   "aerofgtst",
+   "sncwgltd"
+  ],
+  "rbf": "XNZN1",
+  "roms": {
+   "zip": "aerofgts",
+   "merged": "aerofgts",
+   "shared": [
+    "coh1002v"
+   ]
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "airwolf",
+  "title": "Airwolf",
+  "dev": "Kyugo",
+  "year": 1987,
+  "core": "Kyugo",
+  "system": "Kyugo",
+  "orientation": "yoko",
+  "setnames": [
+   "airwolf",
+   "airwolfa"
+  ],
+  "rbf": "Kyugo",
+  "roms": {
+   "zip": "airwolf",
+   "merged": "airwolf",
+   "shared": []
+  }
+ },
+ {
+  "id": "ashura",
+  "title": "Ashura Blaster",
+  "dev": "Taito",
+  "year": 1990,
+  "core": "Taito B",
+  "system": "Taito B System",
+  "orientation": "tate",
+  "setnames": [
+   "ashuraj",
+   "ashura",
+   "ashurau"
+  ],
+  "rbf": "TaitoB",
+  "roms": {
+   "zip": "ashuraj",
+   "merged": "ashura",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "backfirt",
+  "title": "Back Fire",
+  "dev": "Tecmo",
+  "year": 1988,
+  "core": "Tecmo",
+  "system": "Tecmo Silkworm",
+  "orientation": "yoko",
+  "setnames": [
+   "backfirt"
+  ],
+  "rbf": "Tecmo",
+  "roms": {
+   "zip": "backfirt",
+   "merged": "backfirt",
+   "shared": []
+  }
+ },
+ {
+  "id": "blastoff",
+  "title": "Blast Off",
+  "dev": "Namco",
+  "year": 1989,
+  "core": "Namco",
+  "system": "Namco System 1",
+  "orientation": "tate",
+  "setnames": [
+   "blastoff"
+  ],
+  "rbf": "jtshouse",
+  "roms": {
+   "zip": "blastoff",
+   "merged": "blastoff",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "blazeon",
+  "title": "Blaze On",
+  "dev": "Atlus",
+  "year": 1992,
+  "core": "Kaneko16",
+  "system": "Kaneko 16",
+  "orientation": "yoko",
+  "setnames": [
+   "blazeonj",
+   "blazeon"
+  ],
+  "rbf": "Kaneko16",
+  "roms": {
+   "zip": "blazeonj",
+   "merged": "blazeon",
+   "shared": []
+  }
+ },
+ {
+  "id": "boogwing",
+  "title": "Boogie Wings",
+  "dev": "Data East",
+  "year": 1992,
+  "core": "Data East",
+  "system": "Data East Boogie Wings",
+  "orientation": "yoko",
+  "setnames": [
+   "boogwinga",
+   "boogwing",
+   "boogwingu",
+   "ragtime",
+   "ragtimea"
+  ],
+  "rbf": "BoogieWings",
+  "rbf_alt": [
+   "boogwing_mister"
+  ],
+  "roms": {
+   "zip": "boogwinga",
+   "merged": "boogwinga",
+   "shared": []
+  }
+ },
+ {
+  "id": "brvblade",
+  "title": "Brave Blade",
+  "dev": "Raizing",
+  "year": 2000,
+  "core": "ZN-1",
+  "system": "Sony ZN-1",
+  "orientation": "tate",
+  "setnames": [
+   "brvblade",
+   "brvbladeu",
+   "brvbladea",
+   "brvbladej"
+  ],
+  "rbf": "XNZN1",
+  "roms": {
+   "zip": "brvblade",
+   "merged": "brvblade",
+   "shared": [
+    "coh1002m"
+   ]
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "cairblad",
+  "title": "Change Air Blade",
+  "dev": "Sammy",
+  "year": 1999,
+  "core": "SSV",
+  "system": "Seta SSV",
+  "orientation": "tate",
+  "setnames": [
+   "cairblad"
+  ],
+  "rbf": "SSV",
+  "rbf_alt": [
+   "Meathax_SSV"
+  ],
+  "roms": {
+   "zip": "cairblad",
+   "merged": "cairblad",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "chimerab",
+  "title": "Chimera Beast",
+  "dev": "Jaleco",
+  "year": 1993,
+  "core": "Mega System 1",
+  "system": "Jaleco Mega System 1",
+  "orientation": "yoko",
+  "setnames": [
+   "chimerab"
+  ],
+  "rbf": "JalecoMS1BCD",
+  "rbf_alt": [
+   "kuze_JalecoMS1BCD"
+  ],
+  "roms": {
+   "zip": "chimerab",
+   "merged": "chimerab",
+   "shared": []
+  }
+ },
+ {
+  "id": "chukatai",
+  "title": "Chuka Taisen",
+  "dev": "Taito",
+  "year": 1988,
+  "core": "Taito",
+  "system": "Taito TNZS",
+  "orientation": "yoko",
+  "setnames": [
+   "chukatai",
+   "chukataiu",
+   "chukataij",
+   "chukataija"
+  ],
+  "rbf": "jtkiwi",
+  "roms": {
+   "zip": "chukatai",
+   "merged": "chukatai",
+   "shared": []
+  }
+ },
+ {
+  "id": "cavenger",
+  "title": "Cosmic Avenger",
+  "dev": "Universal",
+  "year": 1981,
+  "core": "Lady Bug",
+  "system": "Universal Lady Bug",
+  "orientation": "yoko",
+  "setnames": [
+   "cavenger"
+  ],
+  "rbf": "ladybug",
+  "roms": {
+   "zip": "cavenger",
+   "merged": "cavenger",
+   "shared": []
+  }
+ },
+ {
+  "id": "cotton",
+  "title": "Cotton",
+  "dev": "Success",
+  "year": 1991,
+  "core": "Sega System 16B",
+  "system": "Sega System 16B",
+  "orientation": "yoko",
+  "setnames": [
+   "cotton",
+   "cottonu",
+   "cottonj",
+   "cottonja"
+  ],
+  "rbf": "jts16b",
+  "roms": {
+   "zip": "cotton",
+   "merged": "cotton",
+   "shared": []
+  }
+ },
+ {
+  "id": "cybattlr",
+  "title": "Cybattler",
+  "dev": "Jaleco",
+  "year": 1993,
+  "core": "Mega System 1",
+  "system": "Jaleco Mega System 1",
+  "orientation": "tate",
+  "setnames": [
+   "cybattlr"
+  ],
+  "rbf": "JalecoMS1BCD",
+  "rbf_alt": [
+   "kuze_JalecoMS1BCD"
+  ],
+  "roms": {
+   "zip": "cybattlr",
+   "merged": "cybattlr",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "dangseed",
+  "title": "Dangerous Seed",
+  "dev": "Namco",
+  "year": 1989,
+  "core": "Namco",
+  "system": "Namco System 1",
+  "orientation": "tate",
+  "setnames": [
+   "dangseed"
+  ],
+  "rbf": "jtshouse",
+  "roms": {
+   "zip": "dangseed",
+   "merged": "dangseed",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "dblewing",
+  "title": "Double Wings",
+  "dev": "Mitchell",
+  "year": 1993,
+  "core": "Data East",
+  "system": "Data East Double Wings",
+  "orientation": "tate",
+  "setnames": [
+   "dblewingb",
+   "dblewing",
+   "dblewinga"
+  ],
+  "rbf": "dblewing",
+  "roms": {
+   "zip": "dblewingb",
+   "merged": "dblewing",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "edf",
+  "title": "E.D.F.: Earth Defense Force",
+  "dev": "Jaleco",
+  "year": 1991,
+  "core": "Mega System 1",
+  "system": "Jaleco Mega System 1",
+  "orientation": "yoko",
+  "setnames": [
+   "edf",
+   "edfa",
+   "edfb",
+   "edfu"
+  ],
+  "rbf": "JalecoMS1BCD",
+  "rbf_alt": [
+   "kuze_JalecoMS1BCD",
+   "megasys1_a"
+  ],
+  "roms": {
+   "zip": "edf",
+   "merged": "edf",
+   "shared": []
+  }
+ },
+ {
+  "id": "explbrkr",
+  "title": "Explosive Breaker",
+  "dev": "Kaneko",
+  "year": 1992,
+  "core": "Kaneko16",
+  "system": "Kaneko 16",
+  "orientation": "tate",
+  "setnames": [
+   "explbrkr",
+   "explbrkrk",
+   "bakubrkr"
+  ],
+  "rbf": "Kaneko16",
+  "roms": {
+   "zip": "explbrkr",
+   "merged": "explbrkr",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "fghtatck",
+  "title": "Fighter & Attacker",
+  "dev": "Namco",
+  "year": 1992,
+  "core": "Namco NA-1",
+  "system": "Namco NA-1",
+  "orientation": "tate",
+  "setnames": [
+   "fa",
+   "fghtatck"
+  ],
+  "rbf": "Namco_NA1_NA2",
+  "roms": {
+   "zip": "fa",
+   "merged": "fghtatck",
+   "shared": [
+    "namcoc69"
+   ]
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "fixeight",
+  "title": "FixEight",
+  "dev": "Toaplan",
+  "year": 1992,
+  "core": "Toaplan",
+  "system": "Toaplan 2",
+  "orientation": "tate",
+  "setnames": [
+   "fixeightt",
+   "fixeight",
+   "fixeightk",
+   "fixeighth",
+   "fixeighttw",
+   "fixeighta",
+   "fixeightu",
+   "fixeightj",
+   "fixeightkt",
+   "fixeightht",
+   "fixeighttwt",
+   "fixeightat",
+   "fixeightut",
+   "fixeightjt"
+  ],
+  "rbf": "FixEight",
+  "roms": {
+   "zip": "fixeightt",
+   "merged": "fixeight",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "futspy",
+  "title": "Future Spy",
+  "dev": "Sega",
+  "year": 1984,
+  "core": "Zaxxon",
+  "system": "Sega Zaxxon",
+  "orientation": "tate",
+  "setnames": [
+   "futspy"
+  ],
+  "rbf": "zaxxon",
+  "roms": {
+   "zip": "futspy",
+   "merged": "futspy",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "gulfwar2",
+  "title": "Gulf War II",
+  "dev": "Comad",
+  "year": 1991,
+  "core": "Gulf War II",
+  "system": "Comad Gulf War II",
+  "orientation": "tate",
+  "setnames": [
+   "gulfwar2",
+   "gulfwar2a"
+  ],
+  "rbf": "GulfWarII",
+  "roms": {
+   "zip": "gulfwar2",
+   "merged": "gulfwar2",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "gunfront",
+  "title": "Gun & Frontier",
+  "dev": "Taito",
+  "year": 1990,
+  "core": "Taito F2",
+  "system": "Taito F2",
+  "orientation": "tate",
+  "setnames": [
+   "gunfront",
+   "gunfrontj"
+  ],
+  "rbf": "TaitoF2",
+  "roms": {
+   "zip": "gunfront",
+   "merged": "gunfront",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "gunsmoke",
+  "title": "Gun.Smoke",
+  "dev": "Capcom",
+  "year": 1985,
+  "core": "Capcom",
+  "system": "Capcom Gun.Smoke",
+  "orientation": "tate",
+  "setnames": [
+   "gunsmoke",
+   "gunsmokej",
+   "gunsmokeu",
+   "gunsmokeua",
+   "gunsmokeub",
+   "gunsmokeuc",
+   "gunsmokeg"
+  ],
+  "rbf": "jtgunsmk",
+  "roms": {
+   "zip": "gunsmoke",
+   "merged": "gunsmoke",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "gyrodine",
+  "title": "Gyrodine",
+  "dev": "Crux",
+  "year": 1984,
+  "core": "Kyugo",
+  "system": "Kyugo",
+  "orientation": "tate",
+  "setnames": [
+   "gyrodine",
+   "gyrodinet",
+   "buzzard"
+  ],
+  "rbf": "Kyugo",
+  "roms": {
+   "zip": "gyrodine",
+   "merged": "gyrodine",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "hamaway",
+  "title": "Hammer Away",
+  "dev": "Santos",
+  "year": 1991,
+  "core": "Sega System 18",
+  "system": "Sega System 18",
+  "orientation": "tate",
+  "setnames": [
+   "hamaway"
+  ],
+  "rbf": "jts18",
+  "roms": {
+   "zip": "hamaway",
+   "merged": "hamaway",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "hyprduel",
+  "title": "Hyper Duel",
+  "dev": "Technosoft",
+  "year": 1993,
+  "core": "Hyper Duel",
+  "system": "Technosoft Hyper Duel",
+  "orientation": "yoko",
+  "setnames": [
+   "hyprduel",
+   "hyprduel2"
+  ],
+  "rbf": "hyprduel",
+  "roms": {
+   "zip": "hyprduel",
+   "merged": "hyprduel",
+   "shared": []
+  }
+ },
+ {
+  "id": "lastduel",
+  "title": "Last Duel",
+  "dev": "Capcom",
+  "year": 1988,
+  "core": "Capcom",
+  "system": "Capcom Last Duel",
+  "orientation": "tate",
+  "setnames": [
+   "lastduel",
+   "lastduelo",
+   "lastduelj"
+  ],
+  "rbf": "lastduel",
+  "roms": {
+   "zip": "lastduel",
+   "merged": "lastduel",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "lgtnfght",
+  "title": "Lightning Fighters",
+  "dev": "Konami",
+  "year": 1990,
+  "core": "Konami",
+  "system": "Konami Lightning Fighters",
+  "orientation": "tate",
+  "setnames": [
+   "lgtnfght",
+   "lgtnfghta",
+   "lgtnfghtu",
+   "trigon"
+  ],
+  "rbf": "jtriders",
+  "roms": {
+   "zip": "lgtnfght",
+   "merged": "lgtnfght",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "macrossp",
+  "title": "Macross Plus",
+  "dev": "Banpresto",
+  "year": 1996,
+  "core": "NMK",
+  "system": "NMK BP964",
+  "orientation": "tate",
+  "setnames": [
+   "macrossp"
+  ],
+  "rbf": "NMKBP964",
+  "rbf_alt": [
+   "kuze_NMKBP964"
+  ],
+  "roms": {
+   "zip": "macrossp",
+   "merged": "macrossp",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "masterw",
+  "title": "Master of Weapon",
+  "dev": "Taito",
+  "year": 1989,
+  "core": "Taito B",
+  "system": "Taito B System",
+  "orientation": "tate",
+  "setnames": [
+   "masterwj",
+   "masterw",
+   "masterwu"
+  ],
+  "rbf": "TaitoB",
+  "roms": {
+   "zip": "masterwj",
+   "merged": "masterw",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "mazinger",
+  "title": "Mazinger Z",
+  "dev": "Banpresto",
+  "year": 1994,
+  "core": "Cave",
+  "system": "Cave 68000",
+  "orientation": "tate",
+  "setnames": [
+   "mazinger",
+   "mazingerj"
+  ],
+  "rbf": "CaveBanpresto",
+  "roms": {
+   "zip": "mazinger",
+   "merged": "mazinger",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "megablst",
+  "title": "Mega Blast",
+  "dev": "Taito",
+  "year": 1989,
+  "core": "Taito F2",
+  "system": "Taito F2",
+  "orientation": "yoko",
+  "setnames": [
+   "megablst",
+   "megablstu",
+   "megablstj"
+  ],
+  "rbf": "TaitoF2",
+  "roms": {
+   "zip": "megablst",
+   "merged": "megablst",
+   "shared": []
+  }
+ },
+ {
+  "id": "omegaf",
+  "title": "Omega Fighter",
+  "dev": "UPL",
+  "year": 1989,
+  "core": "UPL",
+  "system": "UPL",
+  "orientation": "tate",
+  "setnames": [
+   "omegaf",
+   "omegafa",
+   "omegafs"
+  ],
+  "rbf": "UPLFramebuffer",
+  "roms": {
+   "zip": "omegaf",
+   "merged": "omegaf",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "p47",
+  "title": "P-47: The Phantom Fighter",
+  "dev": "Jaleco",
+  "year": 1988,
+  "core": "Mega System 1",
+  "system": "Jaleco Mega System 1",
+  "orientation": "yoko",
+  "setnames": [
+   "p47j",
+   "p47",
+   "p47a",
+   "p47je"
+  ],
+  "rbf": "megasys1_a",
+  "roms": {
+   "zip": "p47j",
+   "merged": "p47",
+   "shared": []
+  }
+ },
+ {
+  "id": "pistoldm",
+  "title": "Pistol Daimyo no Bouken",
+  "dev": "Namco",
+  "year": 1990,
+  "core": "Namco",
+  "system": "Namco System 1",
+  "orientation": "yoko",
+  "setnames": [
+   "pistoldm"
+  ],
+  "rbf": "jtshouse",
+  "roms": {
+   "zip": "pistoldm",
+   "merged": "pistoldm",
+   "shared": []
+  }
+ },
+ {
+  "id": "plusalph",
+  "title": "Plus Alpha",
+  "dev": "Jaleco",
+  "year": 1989,
+  "core": "Mega System 1",
+  "system": "Jaleco Mega System 1",
+  "orientation": "tate",
+  "setnames": [
+   "plusalph"
+  ],
+  "rbf": "megasys1_a",
+  "roms": {
+   "zip": "plusalph",
+   "merged": "plusalph",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "prehisle",
+  "title": "Prehistoric Isle in 1930",
+  "dev": "SNK",
+  "year": 1989,
+  "core": "SNK",
+  "system": "SNK Prehistoric Isle",
+  "orientation": "yoko",
+  "setnames": [
+   "prehisle",
+   "prehisleu",
+   "prehislek",
+   "gensitou"
+  ],
+  "rbf": "prehisle",
+  "roms": {
+   "zip": "prehisle",
+   "merged": "prehisle",
+   "shared": []
+  }
+ },
+ {
+  "id": "ryujin",
+  "title": "Ryu Jin",
+  "dev": "Taito",
+  "year": 1993,
+  "core": "Taito B",
+  "system": "Taito B System",
+  "orientation": "tate",
+  "setnames": [
+   "ryujina",
+   "ryujin"
+  ],
+  "rbf": "TaitoB",
+  "roms": {
+   "zip": "ryujina",
+   "merged": "ryujin",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "srdmissn",
+  "title": "S.R.D. Mission",
+  "dev": "Kyugo",
+  "year": 1986,
+  "core": "Kyugo",
+  "system": "Kyugo",
+  "orientation": "tate",
+  "setnames": [
+   "srdmissn"
+  ],
+  "rbf": "Kyugo",
+  "roms": {
+   "zip": "srdmissn",
+   "merged": "srdmissn",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "stdragon",
+  "title": "Saint Dragon",
+  "dev": "Jaleco",
+  "year": 1989,
+  "core": "Mega System 1",
+  "system": "Jaleco Mega System 1",
+  "orientation": "yoko",
+  "setnames": [
+   "stdragon",
+   "stdragona"
+  ],
+  "rbf": "megasys1_a",
+  "roms": {
+   "zip": "stdragon",
+   "merged": "stdragon",
+   "shared": []
+  }
+ },
+ {
+  "id": "sandscrp",
+  "title": "Sand Scorpion",
+  "dev": "Face",
+  "year": 1992,
+  "core": "Kaneko",
+  "system": "Kaneko Sand Scorpion",
+  "orientation": "tate",
+  "setnames": [
+   "sandscrp",
+   "sandscrpa",
+   "sandscrpb"
+  ],
+  "rbf": "SandScrp",
+  "rbf_alt": [
+   "kuze_SandScrp"
+  ],
+  "roms": {
+   "zip": "sandscrp",
+   "merged": "sandscrp",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "scramble",
+  "title": "Scramble",
+  "dev": "Konami",
+  "year": 1981,
+  "core": "Scramble",
+  "system": "Konami Scramble",
+  "orientation": "tate",
+  "setnames": [
+   "scrambp",
+   "scramble",
+   "scrambles",
+   "scrambles2",
+   "seainv"
+  ],
+  "rbf": "scramble",
+  "roms": {
+   "zip": "scrambp",
+   "merged": "scrambp",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "sspirits",
+  "title": "Scramble Spirits",
+  "dev": "Sega",
+  "year": 1988,
+  "core": "Sega System 24",
+  "system": "Sega System 24",
+  "orientation": "tate",
+  "setnames": [
+   "sspirits",
+   "sspiritj",
+   "sspirtfc"
+  ],
+  "rbf": "Meathax_SegaSystem24",
+  "rbf_alt": [
+   "SegaSystem24"
+  ],
+  "roms": {
+   "zip": "sspirits",
+   "merged": "sspirits",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "skyadvnt",
+  "title": "Sky Adventure",
+  "dev": "Alpha Denshi",
+  "year": 1989,
+  "core": "Alpha 68K",
+  "system": "SNK Alpha 68K",
+  "orientation": "tate",
+  "setnames": [
+   "skyadvnt",
+   "skyadvntu",
+   "skyadvntj"
+  ],
+  "rbf": "alpha68k",
+  "roms": {
+   "zip": "skyadvnt",
+   "merged": "skyadvnt",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "skykiddx",
+  "title": "Sky Kid Deluxe",
+  "dev": "Namco",
+  "year": 1986,
+  "core": "Namco",
+  "system": "Namco System 86",
+  "orientation": "yoko",
+  "setnames": [
+   "skykiddx",
+   "skykiddxo"
+  ],
+  "rbf": "jtthundr",
+  "roms": {
+   "zip": "skykiddx",
+   "merged": "skykiddx",
+   "shared": []
+  }
+ },
+ {
+  "id": "skysmash",
+  "title": "Sky Smasher",
+  "dev": "Nihon System",
+  "year": 1990,
+  "core": "Sky Smasher",
+  "system": "Nihon System Sky Smasher",
+  "orientation": "tate",
+  "setnames": [
+   "skysmash"
+  ],
+  "rbf": "SkySmasher",
+  "roms": {
+   "zip": "skysmash",
+   "merged": "skysmash",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "skysoldr",
+  "title": "Sky Soldiers",
+  "dev": "Alpha Denshi",
+  "year": 1988,
+  "core": "Alpha 68K",
+  "system": "SNK Alpha 68K",
+  "orientation": "tate",
+  "setnames": [
+   "skysoldr"
+  ],
+  "rbf": "alpha68k",
+  "roms": {
+   "zip": "skysoldr",
+   "merged": "skysoldr",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "soldivid",
+  "title": "Sol Divide",
+  "dev": "Psikyo",
+  "year": 1997,
+  "core": "PsikyoSH2",
+  "system": "Psikyo SH-2",
+  "orientation": "yoko",
+  "setnames": [
+   "soldivid",
+   "soldividk"
+  ],
+  "rbf": "PsikyoSH2",
+  "roms": {
+   "zip": "soldivid",
+   "merged": "soldivid",
+   "shared": []
+  }
+ },
+ {
+  "id": "sonicbom",
+  "title": "Sonic Boom",
+  "dev": "Sega",
+  "year": 1987,
+  "core": "Sega System 16B",
+  "system": "Sega System 16B",
+  "orientation": "tate",
+  "setnames": [
+   "sonicbom"
+  ],
+  "rbf": "jts16b",
+  "roms": {
+   "zip": "sonicbom",
+   "merged": "sonicbom",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "starfigh",
+  "title": "Star Fighter",
+  "dev": "SunA",
+  "year": 1990,
+  "core": "SunA",
+  "system": "SunA 8-bit",
+  "orientation": "tate",
+  "setnames": [
+   "starfigh"
+  ],
+  "rbf": "Meathax_Suna8bit",
+  "rbf_alt": [
+   "Suna8bit"
+  ],
+  "roms": {
+   "zip": "starfigh",
+   "merged": "starfigh",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "starforc",
+  "title": "Star Force",
+  "dev": "Tehkan",
+  "year": 1984,
+  "core": "Star Force",
+  "system": "Tehkan Star Force",
+  "orientation": "tate",
+  "setnames": [
+   "starforc",
+   "starforce",
+   "starforca",
+   "megaforc",
+   "megaforcu"
+  ],
+  "rbf": "starforce",
+  "roms": {
+   "zip": "starforc",
+   "merged": "starforc",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "starjack",
+  "title": "Star Jacker",
+  "dev": "Sega",
+  "year": 1983,
+  "core": "Sega System 1",
+  "system": "Sega System 1",
+  "orientation": "tate",
+  "setnames": [
+   "starjacks",
+   "starjack"
+  ],
+  "rbf": "segasys1",
+  "roms": {
+   "zip": "starjacks",
+   "merged": "starjacks",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "starsldr",
+  "title": "Star Soldier: Vanishing Earth",
+  "dev": "Hudson",
+  "year": 1998,
+  "core": "Aleck64",
+  "system": "Seta Aleck64",
+  "orientation": "yoko",
+  "setnames": [
+   "starsldr"
+  ],
+  "rbf": "Aleck64",
+  "roms": {
+   "zip": "starsldr",
+   "merged": "starsldr",
+   "shared": [
+    "aleck64"
+   ]
+  }
+ },
+ {
+  "id": "scobra",
+  "title": "Super Cobra",
+  "dev": "Konami",
+  "year": 1981,
+  "core": "Scramble",
+  "system": "Konami Scramble",
+  "orientation": "tate",
+  "setnames": [
+   "scobra",
+   "scobrase",
+   "scobras",
+   "scobrae",
+   "scobrae2"
+  ],
+  "rbf": "scramble",
+  "roms": {
+   "zip": "scobra",
+   "merged": "scobra",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "sxevious",
+  "title": "Super Xevious",
+  "dev": "Namco",
+  "year": 1984,
+  "core": "Xevious",
+  "system": "Namco Galaga",
+  "orientation": "tate",
+  "setnames": [
+   "sxevious",
+   "sxeviousj"
+  ],
+  "rbf": "xevious",
+  "roms": {
+   "zip": "sxevious",
+   "merged": "xevious",
+   "shared": [
+    "namco50",
+    "namco51",
+    "namco54"
+   ]
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "szaxxon",
+  "title": "Super Zaxxon",
+  "dev": "Sega",
+  "year": 1982,
+  "core": "Zaxxon",
+  "system": "Sega Zaxxon",
+  "orientation": "tate",
+  "setnames": [
+   "szaxxon"
+  ],
+  "rbf": "zaxxon",
+  "roms": {
+   "zip": "szaxxon",
+   "merged": "szaxxon",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "thndrx2",
+  "title": "Thunder Cross II",
+  "dev": "Konami",
+  "year": 1991,
+  "core": "Konami",
+  "system": "Konami Thunder Cross II",
+  "orientation": "yoko",
+  "setnames": [
+   "thndrx2",
+   "thndrx2a",
+   "thndrx2j"
+  ],
+  "rbf": "jttmnt",
+  "roms": {
+   "zip": "thndrx2",
+   "merged": "thndrx2",
+   "shared": []
+  }
+ },
+ {
+  "id": "tfrceac",
+  "title": "Thunder Force AC",
+  "dev": "Technosoft",
+  "year": 1990,
+  "core": "System C2",
+  "system": "Sega System C2",
+  "orientation": "yoko",
+  "setnames": [
+   "tfrceacj",
+   "tfrceac"
+  ],
+  "rbf": "SystemC2",
+  "roms": {
+   "zip": "tfrceacj",
+   "merged": "tfrceac",
+   "shared": []
+  }
+ },
+ {
+  "id": "tndrcade",
+  "title": "Thundercade",
+  "dev": "Seta",
+  "year": 1987,
+  "core": "SetaDowntown",
+  "system": "Seta Downtown",
+  "orientation": "tate",
+  "setnames": [
+   "tndrcade",
+   "tndrcadej"
+  ],
+  "rbf": "SetaDowntown",
+  "roms": {
+   "zip": "tndrcade",
+   "merged": "tndrcade",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "tnextspc",
+  "title": "The Next Space",
+  "dev": "SNK",
+  "year": 1989,
+  "core": "SNK",
+  "system": "SNK Next Space",
+  "orientation": "tate",
+  "setnames": [
+   "tnextspcj",
+   "tnextspc",
+   "tnextspc2"
+  ],
+  "rbf": "nextspace",
+  "roms": {
+   "zip": "tnextspcj",
+   "merged": "tnextspc",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "turbofrc",
+  "title": "Turbo Force",
+  "dev": "Video System",
+  "year": 1991,
+  "core": "Video System",
+  "system": "Video System Aero Fighters",
+  "orientation": "tate",
+  "setnames": [
+   "turbofrc",
+   "turbofrco",
+   "turbofrcu",
+   "turbofrcua",
+   "turbofrcj"
+  ],
+  "rbf": "pspike",
+  "roms": {
+   "zip": "turbofrc",
+   "merged": "turbofrc",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "dangar",
+  "title": "UFO Robo Dangar",
+  "dev": "Nichibutsu",
+  "year": 1986,
+  "core": "Galivan",
+  "system": "Nichibutsu Galivan",
+  "orientation": "tate",
+  "setnames": [
+   "dangar",
+   "dangara",
+   "dangarj"
+  ],
+  "rbf": "galivan",
+  "roms": {
+   "zip": "dangar",
+   "merged": "dangar",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "vanguard",
+  "title": "Vanguard",
+  "dev": "SNK",
+  "year": 1981,
+  "core": "SNK 6502",
+  "system": "SNK 6502",
+  "orientation": "tate",
+  "setnames": [
+   "vanguard",
+   "vanguarda",
+   "vanguardc",
+   "vanguardg",
+   "vanguardj"
+  ],
+  "rbf": "SNK6502",
+  "roms": {
+   "zip": "vanguard",
+   "merged": "vanguard",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "vaportra",
+  "title": "Vapor Trail",
+  "dev": "Data East",
+  "year": 1989,
+  "core": "Data East",
+  "system": "Data East Vapor Trail",
+  "orientation": "tate",
+  "setnames": [
+   "vaportra",
+   "vaportra3",
+   "vaportrau",
+   "kuhga"
+  ],
+  "rbf": "deco16",
+  "rbf_alt": [
+   "vaportra_mister"
+  ],
+  "roms": {
+   "zip": "vaportra",
+   "merged": "vaportra",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "vastar",
+  "title": "Vastar",
+  "dev": "Orca",
+  "year": 1983,
+  "core": "Vastar",
+  "system": "Orca Vastar",
+  "orientation": "tate",
+  "setnames": [
+   "vastar",
+   "vastar2",
+   "vastar3",
+   "vastar4"
+  ],
+  "rbf": "Vastar",
+  "roms": {
+   "zip": "vastar",
+   "merged": "vastar",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "wingforc",
+  "title": "Wing Force",
+  "dev": "Atlus",
+  "year": 1993,
+  "core": "Kaneko16",
+  "system": "Kaneko 16",
+  "orientation": "tate",
+  "setnames": [
+   "wingforc"
+  ],
+  "rbf": "Kaneko16",
+  "roms": {
+   "zip": "wingforc",
+   "merged": "wingforc",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "wndrplnt",
+  "title": "Wonder Planet",
+  "dev": "Data East",
+  "year": 1987,
+  "core": "Data East",
+  "system": "Data East Karnov",
+  "orientation": "tate",
+  "setnames": [
+   "wndrplnt"
+  ],
+  "rbf": "jtkarnov",
+  "roms": {
+   "zip": "wndrplnt",
+   "merged": "wndrplnt",
+   "shared": []
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "xevi3dg",
+  "title": "Xevious 3D/G",
+  "dev": "Namco",
+  "year": 1995,
+  "core": "Namco System 11",
+  "system": "Namco System 11",
+  "orientation": "yoko",
+  "setnames": [
+   "xevi3dg",
+   "xevi3dga",
+   "xevi3dgj"
+  ],
+  "rbf": "SYSTEM11",
+  "roms": {
+   "zip": "xevi3dg",
+   "merged": "xevi3dg",
+   "shared": [
+    "namcoc76"
+   ]
+  }
+ },
+ {
+  "id": "xexex",
+  "title": "Xexex",
+  "dev": "Konami",
+  "year": 1991,
+  "core": "Konami",
+  "system": "Konami Xexex",
+  "orientation": "yoko",
+  "setnames": [
+   "xexex",
+   "orius",
+   "xexexa",
+   "xexexj"
+  ],
+  "rbf": "ffxexex",
+  "roms": {
+   "zip": "xexex",
+   "merged": "xexex",
+   "shared": []
+  }
+ },
+ {
+  "id": "zaxxon",
+  "title": "Zaxxon",
+  "dev": "Sega",
+  "year": 1982,
+  "core": "Zaxxon",
+  "system": "Sega Zaxxon",
+  "orientation": "tate",
+  "setnames": [
+   "zaxxon",
+   "zaxxon2",
+   "zaxxon3",
+   "zaxxonj"
+  ],
+  "rbf": "zaxxon",
+  "roms": {
+   "zip": "zaxxon",
+   "merged": "zaxxon",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "blswhstl",
+  "title": "Detana!! TwinBee",
+  "dev": "Konami",
+  "year": 1991,
+  "core": "Konami",
+  "system": "Konami Bells & Whistles",
+  "orientation": "tate",
+  "setnames": [
+   "detatwin",
+   "blswhstl",
+   "blswhstla"
+  ],
+  "rbf": "ffblswhstl",
+  "roms": {
+   "zip": "detatwin",
+   "merged": "blswhstl",
+   "shared": []
+  },
+  "rotation": "cw"
+ },
+ {
+  "id": "twinspri",
+  "title": "Twinkle Star Sprites",
+  "dev": "ADK",
+  "year": 1996,
+  "core": "Neo Geo",
+  "system": "Neo Geo MVS",
+  "platform": "neogeo",
+  "orientation": "yoko",
+  "setnames": [
+   "twinspri"
+  ],
+  "rbf": "NeoGeo",
+  "roms": {
+   "zip": "twinspri",
+   "merged": "twinspri",
+   "shared": []
+  }
  }
 ]
