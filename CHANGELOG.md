@@ -2,6 +2,15 @@
 
 Every release of Shmup Deck, newest first. The GitHub release for each version carries the same notes at greater length. `tools/release.sh` reads the notes for a release from this file, so a version cannot be published without an entry here.
 
+## 1.12.3 (2026-10-01)
+
+- New MRAs are found without a rescan. Whether they come from Update All, are copied over the network or are installed by hand, the game shows as ready the next time the deck or the ROMs page opens. Before, the deck only knew the MRAs that were on the card when it was installed (issue #10).
+- MRAs edited on a PC are picked up when the MiSTer next starts.
+- The ROMs page names the set an MRA needs, such as "an MRA for set hyprduel", instead of "the MRA". MRAs are matched on the set name inside them, whatever the file is called.
+- The ROMs page has a Rescan the SD card button, for an MRA replaced with a new version under the same name.
+- New games' flyers download first, and a flyer is downloaded again only when its art changes, so an update no longer downloads every flyer again. Until a flyer is on the MiSTer, the deck shows it straight from the flyer mirror.
+- The deck and the ROMs page load faster on a MiSTer with a full cores folder.
+
 ## 1.12.2 (2026-09-30)
 
 - Gyruss is gone: it is a tube shooter rather than a scrolling one, and the deck keeps to scrolling shooters. The Konami tate deck now has nine games.

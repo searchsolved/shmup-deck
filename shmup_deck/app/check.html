@@ -150,6 +150,9 @@ zip from a non-merged or split set, or its parent's zip from a merged set.</p>
   Cores that Update All doesn't distribute aren't listed here; games on them appear once you've installed the core yourself.
   Zip names come from each game's MRA and MAME's parent and clone sets.
   The full list is also on <a href="https://github.com/searchsolved/shmup-deck/blob/main/ROMS.md">GitHub</a>.
+  <p id="rescanNote" hidden>New MRAs are picked up on their own. To make the MiSTer read every MRA again,
+  for example after replacing one with a new version under the same name:
+  <button class="btn" id="rescan" type="button">Rescan the SD card</button></p>
 </footer>
 </div>
 
@@ -196,7 +199,12 @@ function zipCell(g, c) {
   if (!c) return wanted(g).map(z => esc(z) + ".zip").join("<br>") + note;
   if (c.state === "ready") return `<span class="ok">nothing</span>`;
   const parts = [];
-  if (c.state === "mra") parts.push("the MRA");
+  // an MRA is matched on the set name inside it, whatever the file is called
+  if (c.state === "mra") {
+    const sets = g.setnames || [g.id];
+    parts.push(`an MRA for set <b>${esc(sets[0])}</b>` +
+      (sets.length > 1 ? `<div class="sub">or ${sets.slice(1).map(esc).join(", ")}</div>` : ""));
+  }
   if (!c.core) parts.push(`core <b>${esc(g.rbf)}</b>`);
   const zips = c.missing.map(z => z.split(" or ").map(x => esc(x) + ".zip").join(" or "));
   return [...parts, ...zips].join("<br>") + note;
@@ -258,10 +266,38 @@ $("#copy").addEventListener("click", async () => {
 });
 $("#search").addEventListener("input", render);
 
+const getChecklist = () =>
+  fetch("api/checklist", { cache: "no-store" }).then(r => r.ok ? r.json() : null).catch(() => null);
+
+/* The MiSTer notices new MRAs on its own; this is for the rare file it can't
+   see change, such as an MRA replaced in place. */
+$("#rescan").addEventListener("click", async () => {
+  const btn = $("#rescan");
+  btn.disabled = true; btn.textContent = "Scanning…";
+  try {
+    await fetch("api/rescan", { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" });
+    for (let i = 0; i < 120; i++) {
+      await new Promise(r => setTimeout(r, 2000));
+      const s = await (await fetch("api/status", { cache: "no-store" })).json();
+      if (!s.scanning) break;
+    }
+    CHECK = await getChecklist() || CHECK;
+    render();
+  } catch {}
+  btn.disabled = false; btn.textContent = "Rescan the SD card";
+});
+
+// back from adding files: show what is ready now
+document.addEventListener("visibilitychange", async () => {
+  if (document.visibilityState !== "visible" || !CHECK) return;
+  CHECK = await getChecklist() || CHECK;
+  render();
+});
+
 Promise.all([
   fetch("games.json").then(r => r.json()),
   fetch("cores.json").then(r => r.json()).catch(() => ({ sources: {}, cores: {} })),
-  fetch("api/checklist", { cache: "no-store" }).then(r => r.ok ? r.json() : null).catch(() => null)
+  getChecklist()
 ]).then(([games, cores, check]) => {
   GAMES = games; CORES = cores; CHECK = check;
   // opened from a card on the deck: show just that game
@@ -270,6 +306,7 @@ Promise.all([
   if (g) $("#search").value = g.title;
   if (!CHECK) $("#intro").insertAdjacentHTML("beforeend",
     " This copy of the page can't reach a MiSTer, so it lists what each game needs without checking.");
+  $("#rescanNote").hidden = !CHECK;
   render();
 }).catch(() => { $("#rows").innerHTML = `<p class="empty">Could not load games.json.</p>`; });
 </script>

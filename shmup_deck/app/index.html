@@ -830,12 +830,19 @@ function paintArt(el, g) {
   lazy.observe(el);
 }
 
+/* The MiSTer serves the flyers it has downloaded. One it hasn't fetched yet
+   (a new game, or a MiSTer with no internet at the time) comes straight from
+   the flyer mirror instead, when this device can reach it. */
 function loadArt(el, g) {
   const a = ART[artId(g)];
   const img = new Image();
+  const mirror = (ART._mirrors || [])[0];
+  img.onerror = () => {
+    if (mirror && a && !img.src.startsWith(mirror)) img.src = `${mirror}${artId(g)}.webp`;
+  };
   img.onload = () => {
     const [sw, sh] = [img.naturalWidth, img.naturalHeight];
-    el.style.backgroundImage = `url("art/${artId(g)}")`;
+    el.style.backgroundImage = `url("${img.src}")`;
     el.classList.add("loaded");
     // a flyer that isn't card shaped (landscape, or much squarer) is shown
     // whole, centred on the card, rather than cropped or stretched
@@ -1175,7 +1182,10 @@ $("#kstart").addEventListener("click", () => { localStorage.setItem(LS.kioskIntr
 $("#knot").addEventListener("click", () => { ksheet.hidden = true; });
 document.addEventListener("click", e => { if (!ksheet.hidden && !e.target.closest("#ksheet, #kioskTog")) ksheet.hidden = true; });
 document.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "visible" && document.body.classList.contains("kiosk")) keepAwake();
+  if (document.visibilityState !== "visible") return;
+  if (document.body.classList.contains("kiosk")) keepAwake();
+  // back from installing something: show what is ready now
+  if (CHECK) loadChecklist();
 });
 // hold the corner for two seconds
 const spot = $("#exitspot");
@@ -1556,7 +1566,7 @@ $("#updBtn").addEventListener("click", async () => {
   ping();
 });
 
-let artWasFetching = false, firstStatus = true;
+let artWasFetching = false, scanWasRunning = false, firstStatus = true;
 async function ping() {
   const lamp = $("#lamp"), txt = $("#statusText");
   try {
@@ -1577,6 +1587,9 @@ async function ping() {
     // flyers that arrived since the page loaded
     if (artWasFetching && !s.art.fetching) renderDeck();
     artWasFetching = s.art.fetching;
+    // a scan that just finished may have found games
+    if (scanWasRunning && !s.scanning && CHECK) loadChecklist();
+    scanWasRunning = s.scanning;
     NOW_SET = s.now_playing_set || null;
     if (s.now_playing !== NOW) {
       NOW = s.now_playing;

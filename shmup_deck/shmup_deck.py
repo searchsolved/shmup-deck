@@ -43,7 +43,8 @@ MRA_ROOTS = os.environ.get("SHMUP_MRA_ROOTS")
 DRIVES = ["/media/fat"] + ["/media/usb%d" % i for i in range(6)]
 CMD = os.environ.get("SHMUP_CMD", "/dev/MiSTer_cmd")
 CACHE = os.environ.get("SHMUP_CACHE", os.path.join(HERE, "mra_index.json"))
-SEEN = CACHE[:-5] + "_seen.json"     # size, date and setname of every MRA read
+SEEN = CACHE[:-5] + "_seen.jsonl"    # size, date and setname of every MRA read, one per line
+OLD_SEEN = CACHE[:-5] + "_seen.json"  # the same as one JSON document, up to 1.12.2
 MGL_PATH = os.environ.get("SHMUP_MGL", "/tmp/shmup_deck.mgl")
 MENU_RBF = os.environ.get("SHMUP_MENU", "/media/fat/menu.rbf")
 CORENAME = os.environ.get("SHMUP_CORENAME", "/tmp/CORENAME")
@@ -53,7 +54,7 @@ VERSIONS_FILE = os.environ.get("SHMUP_VERSIONS", os.path.join(HERE, "versions.js
 DECKS_FILE = os.environ.get("SHMUP_DECKS", os.path.join(HERE, "decks.json"))
 SETTINGS_FILE = os.environ.get("SHMUP_SETTINGS", os.path.join(HERE, "settings.json"))
 
-VERSION = "1.12.2"
+VERSION = "1.12.3"
 USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
 PROGRAM = os.path.abspath(__file__)
 REPO = os.environ.get("SHMUP_REPO", "searchsolved/shmup-deck")
@@ -91,14 +92,19 @@ def arcade_root(path):
     return path[:j] if j >= 0 else path
 
 
+BOOTLEG = re.compile(r"\[bl\]|bootleg", re.I)
+VARIANT = re.compile(r"free play|arrange|hack|prototype", re.I)
+
+
 def path_cost(path):
     """Lower is better: the ordinary release beats variants and edits."""
     name = os.path.basename(path)
     low = path.lower()
+    root = arcade_root(path)
     # organised sets file copies of each game into sorting folders (by letter,
     # region, rotation...); the copy nearest the top of _Arcade is the plain one
-    n = 10 * os.path.relpath(path, arcade_root(path)).count(os.sep)
-    if arcade_root(path) != ARCADE:
+    n = 10 * path[len(root) + 1:].count(os.sep)
+    if root != ARCADE:
         n += 30                       # a quick-launch copy outside _Arcade
     if "/_alternatives/" in low:
         n += 100
@@ -110,22 +116,77 @@ def path_cost(path):
         n += 60                       # rotation and control-scheme edits
     if name.startswith("}"):
         n += 50                       # year-prefixed duplicate
-    if re.search(r"\[bl\]|bootleg", name, re.I):
+    if BOOTLEG.search(name):
         n += 40
-    if re.search(r"free play|arrange|hack|prototype", name, re.I):
+    if VARIANT.search(name):
         n += 30
     return n + len(name)
 
 
+def best_paths(seen, only=None):
+    """setname -> the MRA to launch, from scan entries, for every set name or
+    just those in only. Ranking costs about 0.5 ms a path on a MiSTer, so
+    only set names with more than one MRA are ranked."""
+    by_set = {}
+    for path, e in seen.items():
+        if e[2] and (only is None or e[2] in only):
+            by_set.setdefault(e[2], []).append(path)
+    return {s: ps[0] if len(ps) == 1 else min(ps, key=path_cost) for s, ps in by_set.items()}
+
+
+def load_seen():
+    """The per-file record of the last scan, path -> [size, date, setname].
+    One JSON line per MRA, read a line at a time: parsing it as one 3.5 MB
+    document held the whole text in memory as well, 5 MB more at peak."""
+    seen = {}
+    try:
+        with open(SEEN) as f:
+            for line in f:
+                try:
+                    e = json.loads(line)
+                except ValueError:
+                    continue
+                seen[e[0]] = e[1:]
+        return seen
+    except OSError:
+        pass
+    try:
+        with open(OLD_SEEN) as f:          # once, after updating from 1.12.2
+            return json.load(f)
+    except (OSError, ValueError):
+        return {}
+
+
+def write_json(f, data):
+    """json.dump, made cheaper. dump runs the pure Python encoder (3.3 s for
+    the 30,000-entry scan file on a MiSTer) and dumps holds the whole text in
+    memory twice over (7 MB more at peak). One dumps per top-level entry uses
+    the C encoder and holds one entry at a time."""
+    f.write("{")
+    for i, (k, v) in enumerate(data.items()):
+        f.write((", " if i else "") + json.dumps(k) + ": " + json.dumps(v))
+    f.write("}")
+
+
 class Index:
-    """setname -> best .mra path, built by reading every MRA once."""
+    """setname -> best .mra path, built by reading every MRA once.
+
+    Kept current without the user doing anything. Every folder's date is
+    remembered, and adding, removing or renaming a file changes the date of
+    the folder it sits in, so refresh() can spot changes with one stat per
+    folder and list just the folders that changed. A full walk at start-up
+    catches what folder dates miss: edits made on a PC, whose FAT drivers don't
+    always date folders, and MRAs rewritten in place."""
 
     def __init__(self):
-        self.lock = threading.Lock()
+        self.lock = threading.Lock()        # guards the fields below
+        self.work = threading.Lock()        # one scan or refresh at a time
         self.best = {}
         self.roots = []                 # the folders the cached index covers
+        self.dirs = {}                  # folder -> its date when last listed; None = list it again
         self.stats = {"mras": 0, "broken_links": 0, "unreadable": 0, "seconds": 0, "built": None}
         self.scanning = False
+        self.checked = 0
         self._load_cache()
 
     def _load_cache(self):
@@ -134,77 +195,225 @@ class Index:
                 data = json.load(f)
             self.best, self.stats = data["best"], data["stats"]
             self.roots = data.get("roots", [ARCADE])
+            self.dirs = data.get("dirs", {})
         except (OSError, ValueError, KeyError):
             pass
 
+    @staticmethod
+    def _list(d, seen, dirs, counts, last=()):
+        """List folder d: returns its subfolders and (path, setname) for each
+        of its MRAs, and records its date in dirs. With seen (the per-file
+        record of the last scan), an MRA whose size and date match its entry
+        is not read again, seen is updated in place, and the paths in last
+        (d's MRAs at the last scan) that are gone are dropped from it. Without
+        seen every MRA in d is read."""
+        try:
+            mtime = os.stat(d).st_mtime
+            entries = list(os.scandir(d))
+        except OSError:
+            return [], []
+        subdirs, mras, here = [], [], set()
+        for e in entries:
+            try:
+                if e.is_dir(follow_symlinks=False):
+                    subdirs.append(e.path)
+                    continue
+            except OSError:
+                continue
+            if not e.name.lower().endswith(".mra"):
+                continue
+            path = e.path
+            here.add(path)
+            try:
+                st = os.stat(path)
+            except OSError:
+                # organised sets often carry shortcuts to files that have
+                # since moved; those are not worth reporting as errors
+                if seen is not None:
+                    seen[path] = [None, None, None, "link" if os.path.islink(path) else "unreadable"]
+                continue
+            prev = seen.get(path) if seen is not None else None
+            if prev and prev[0] == st.st_size and prev[1] == st.st_mtime:
+                setname = prev[2]
+            else:
+                counts["read"] += 1
+                try:
+                    with open(path, "rb") as f:
+                        m = SETNAME.search(f.read(HEAD_BYTES))
+                except OSError:
+                    if seen is not None:
+                        seen[path] = [None, None, None, "unreadable"]
+                    continue
+                setname = m.group(1).decode("utf-8", "replace") if m else None
+                if seen is not None:
+                    seen[path] = [st.st_size, st.st_mtime, setname]
+            if setname:
+                mras.append((path, setname))
+        for p in last:
+            if p not in here:
+                seen.pop(p, None)
+        # A file added in the same second as this listing would leave the
+        # folder's date as recorded, so a date that close to now is not
+        # trusted and the folder is listed again on the next check. Dates far
+        # from now (a MiSTer clock that never synced) can't be in that race.
+        dirs[d] = None if abs(time.time() - mtime) <= 2 else mtime
+        return subdirs, mras
+
+    @staticmethod
+    def _stats(seen, read, started):
+        kinds = [e[3] for e in seen.values() if len(e) > 3]
+        return {"mras": len(seen), "read": read, "broken_links": kinds.count("link"),
+                "unreadable": kinds.count("unreadable"),
+                "seconds": round(time.time() - started, 1), "built": int(time.time())}
+
+    def _save(self, seen=None):
+        """Write the index, and the per-file record when given one."""
+        with self.lock:
+            index = {"best": self.best, "stats": self.stats, "roots": self.roots, "dirs": self.dirs}
+        with open(CACHE + ".tmp", "w") as f:
+            write_json(f, index)
+        os.replace(CACHE + ".tmp", CACHE)
+        if seen is None:
+            return
+        with open(SEEN + ".tmp", "w") as f:
+            for path, e in seen.items():
+                f.write(json.dumps([path] + e) + "\n")
+        os.replace(SEEN + ".tmp", SEEN)
+        try:
+            os.remove(OLD_SEEN)
+        except OSError:
+            pass
+
+    def _compact(self):
+        """Rebuild the kept maps as fresh objects once the 30,000 temporary
+        scan entries are gone. Their strings were made among the temporaries
+        and would pin that memory; this hands back about 1.4 MB on a MiSTer."""
+        with self.lock:
+            self.best = json.loads(json.dumps(self.best))
+            self.dirs = json.loads(json.dumps(self.dirs))
+
     def scan(self, full=False):
-        """Index every MRA. Only files that are new or have changed size or
-        date since the last scan are actually read; the rest come from the
-        cache, so a rescan costs a directory walk rather than 30,000 file
-        reads. full=True reads everything again. That per-file cache is 30,000
-        entries, so it lives in its own file and only in memory during a scan."""
+        """Index every MRA, in a child process. Python keeps the memory a
+        30,000-entry walk used, so walking here would leave this long-running
+        service several MB bigger after every scan; the child hands all of it
+        back when it exits, and the service reads the small index it wrote.
+        Scans here instead if the child can't run."""
         with self.lock:
             if self.scanning:
                 return
             self.scanning = True
         try:
-            t = time.time()
-            roots = mra_roots()
-            old = {}
-            if not full:
+            with self.work:
+                cmd = [sys.executable, PROGRAM, "--scan"] + (["--full"] if full else [])
                 try:
-                    with open(SEEN) as f:
-                        old = json.load(f)
-                except (OSError, ValueError):
-                    pass
-            seen, costs = {}, {}
-            found, mras, broken, unreadable, read = {}, 0, 0, 0, 0
-            for top in roots:
-                for root, _dirs, files in os.walk(top):
-                    for name in files:
-                        if not name.lower().endswith(".mra"):
-                            continue
-                        mras += 1
-                        path = os.path.join(root, name)
-                        try:
-                            st = os.stat(path)
-                        except OSError:
-                            # organised sets often carry shortcuts to files that
-                            # have since moved; those are not worth reporting as errors
-                            if os.path.islink(path):
-                                broken += 1
-                            else:
-                                unreadable += 1
-                            continue
-                        prev = old.get(path)
-                        if prev and prev[0] == st.st_size and prev[1] == st.st_mtime:
-                            setname = prev[2]
-                        else:
-                            read += 1
-                            try:
-                                with open(path, "rb") as f:
-                                    m = SETNAME.search(f.read(HEAD_BYTES))
-                            except OSError:
-                                unreadable += 1
-                                continue
-                            setname = m.group(1).decode("utf-8", "replace") if m else None
-                        seen[path] = [st.st_size, st.st_mtime, setname]
-                        if not setname:
-                            continue
-                        cost = costs[path] = path_cost(path)
-                        if setname not in found or cost < costs[found[setname]]:
-                            found[setname] = path
-            stats = {"mras": mras, "read": read, "broken_links": broken, "unreadable": unreadable,
-                     "seconds": round(time.time() - t, 1), "built": int(time.time())}
-            with self.lock:
-                self.best, self.stats, self.roots = found, stats, roots
-            for path, data in ((CACHE, {"best": found, "stats": stats, "roots": roots}), (SEEN, seen)):
-                with open(path + ".tmp", "w") as f:
-                    json.dump(data, f)
-                os.replace(path + ".tmp", path)
+                    done = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                                          timeout=3600).returncode == 0
+                except (OSError, subprocess.SubprocessError):
+                    done = False
+                if done:
+                    with self.lock:
+                        self._load_cache()
+                        self.checked = time.time()
+                else:
+                    self.scan_here(full)
         finally:
             with self.lock:
                 self.scanning = False
+
+    def scan_here(self, full=False):
+        """The walk itself. Only files that are new or have changed size or
+        date since the last scan are actually read; the rest come from the
+        per-file record, so a rescan costs a directory walk rather than
+        30,000 file reads. full=True reads everything again. The record is
+        30,000 entries, so it lives in its own file, is only in memory during
+        a scan, and is updated in place rather than copied."""
+        t = time.time()
+        roots = mra_roots()
+        seen = {} if full else load_seen()
+        # each folder's MRAs at the last scan, to spot the ones now gone
+        last = {}
+        for p in seen:
+            last.setdefault(p.rpartition("/")[0], []).append(p)
+        dirs, counts = {}, {"read": 0}
+        stack = list(reversed(roots))
+        while stack:
+            d = stack.pop()
+            stack += self._list(d, seen, dirs, counts, last.pop(d, ()))[0]
+        for paths in last.values():         # folders that are gone
+            for p in paths:
+                seen.pop(p, None)
+        del last
+        found = best_paths(seen)
+        with self.lock:
+            self.best, self.roots, self.dirs = found, roots, dirs
+            self.stats = self._stats(seen, counts["read"], t)
+            self.checked = time.time()
+        self._save(seen)
+        del seen, found, dirs
+        self._compact()
+
+    def refresh(self):
+        """Catch up with MRAs added, removed or renamed since the last look.
+        When nothing changed this costs one stat per folder: about 1,500
+        folders and 0.07 s on a MiSTer with 30,000 MRAs. Otherwise the MRAs in
+        the folders that changed are read again, before the answer goes back,
+        so the page never shows a game as missing after its MRA arrived. The
+        per-file record isn't touched; the next start-up walk brings it up to
+        date."""
+        with self.lock:
+            if self.scanning or not self.dirs or time.time() - self.checked < 2:
+                return
+            self.checked = time.time()
+        if not self.work.acquire(blocking=False):
+            return
+        rescan = False
+        try:
+            if self.roots != mra_roots():
+                # a drive or a new top-level folder: walk everything, meanwhile
+                # answer from what is known
+                rescan = True
+                return
+            with self.lock:
+                known = dict(self.dirs)
+            changed = set()
+            for d, was in known.items():
+                try:
+                    now = os.stat(d).st_mtime
+                except OSError:
+                    now = None                  # gone
+                if was is None or now != was:
+                    changed.add(d)
+            if not changed:
+                return
+            dirs, counts, found = {d: m for d, m in known.items() if d not in changed}, {"read": 0}, {}
+            stack = [d for d in changed if os.path.isdir(d)]
+            while stack:
+                subdirs, mras = self._list(stack.pop(), None, dirs, counts)
+                for path, setname in mras:
+                    found.setdefault(setname, []).append(path)
+                # subfolders already known are checked on their own dates;
+                # new ones (a folder copied or renamed in) are listed whole
+                stack += [s for s in subdirs if s not in known and s not in dirs]
+            here = {p: s for s, ps in found.items() for p in ps}
+            with self.lock:
+                best = dict(self.best)
+            for setname, path in list(best.items()):
+                if path.rpartition("/")[0] in changed and here.get(path) != setname:
+                    # its best MRA went; another copy elsewhere may now be the
+                    # best, which only a walk can tell
+                    del best[setname]
+                    rescan = True
+            for setname, paths in found.items():
+                if setname in best:
+                    paths = paths + [best[setname]]
+                best[setname] = min(paths, key=path_cost)
+            with self.lock:
+                self.best, self.dirs = best, dirs
+            self._save()
+        finally:
+            self.work.release()
+            if rescan:
+                threading.Thread(target=self.scan, daemon=True).start()
 
     def resolve(self, setnames):
         with self.lock:
@@ -248,15 +457,39 @@ class Art:
             # The mirrors hold a small, card-sized copy of every flyer; the
             # per-game source is the original scan, used if no mirror has it.
             mirrors = sources.get("_mirrors", [])
-            # a flyer is fetched when it is missing, or when the preferred
-            # place to get it has changed (a better scan, or a new mirror snapshot)
-            todo = [(gid, s) for gid, s in sources.items()
-                    if not gid.startswith("_") and self._stored_url(gid) != self._urls(gid, s, mirrors)[0]]
+            # Missing flyers come first, so a new game's card fills in before
+            # anything already on the card is replaced. A stored flyer is
+            # fetched again only when its art.json entry changed (a better
+            # scan or a new crop), or when it came from the original scan
+            # because no mirror had it then. A new mirror snapshot alone
+            # doesn't count: its other flyers are the same pictures.
+            missing, stale = [], []
+            for gid, s in sources.items():
+                if gid.startswith("_"):
+                    continue
+                url, key = self._stored(gid)
+                if url is None:
+                    missing.append((gid, s))
+                elif key is not None:
+                    if key != self._key(s) or (mirrors and url == s["url"]):
+                        stale.append((gid, s))
+                elif url != self._urls(gid, s, mirrors)[0]:
+                    stale.append((gid, s))      # fetched before entries were recorded
+                else:
+                    # current, but from before entries were recorded: record
+                    # it now, so the next mirror snapshot doesn't fetch it again
+                    try:
+                        with open(os.path.join(ART_DIR, gid + ".src"), "w") as f:
+                            f.write(url + "\n" + self._key(s))
+                    except OSError:
+                        pass
+            todo = missing + stale
             self.total, self.done, self.failed = len(todo), 0, []
             for i, (gid, src) in enumerate(todo):
                 if i:
                     time.sleep(ART_DELAY)
-                if not any(self._get(gid, url, src.get("referer") if url == src["url"] else None)
+                if not any(self._get(gid, url, src.get("referer") if url == src["url"] else None,
+                                     self._key(src))
                            for url in self._urls(gid, src, mirrors)):
                     self.failed.append(gid)
                 self.done += 1
@@ -269,16 +502,24 @@ class Art:
         return [m.rstrip("/") + "/" + gid + ".webp" for m in mirrors] + [src["url"]]
 
     @staticmethod
-    def _stored_url(gid):
+    def _key(src):
+        """What a flyer was made from: its art.json entry."""
+        return json.dumps(src, sort_keys=True, separators=(",", ":"))
+
+    @staticmethod
+    def _stored(gid):
+        """(url, key) of the flyer on the card: url None when there is no
+        flyer, "" when its source wasn't recorded; key None before 1.12.3."""
         if not os.path.exists(os.path.join(ART_DIR, gid + ".img")):
-            return None
+            return None, None
         try:
             with open(os.path.join(ART_DIR, gid + ".src")) as f:
-                return f.read().strip()
+                lines = f.read().splitlines()
         except OSError:
-            return ""                   # fetched before sources were recorded
+            return "", None
+        return (lines[0].strip() if lines else ""), (lines[1] if len(lines) > 1 else None)
 
-    def _get(self, gid, url, referer=None):
+    def _get(self, gid, url, referer=None, key=""):
         headers = {"User-Agent": USER_AGENT}
         if referer:
             headers["Referer"] = referer
@@ -297,7 +538,7 @@ class Art:
             f.write(data)
         os.replace(tmp, dest)
         with open(os.path.join(ART_DIR, gid + ".src"), "w") as f:
-            f.write(url)
+            f.write(url + "\n" + key)
         return True
 
 
@@ -320,10 +561,38 @@ class NeoIndex:
 
     def __init__(self):
         self.lock = threading.Lock()
+        self.work = threading.Lock()
         self.best = {}                          # setname -> (root, relpath, kind)
+        self.dirs = {}                          # folder -> date at the last scan; None = absent, 0 = look again
+        self.checked = 0
 
     def scan(self):
-        found = {}
+        with self.work:
+            self._scan()
+
+    def refresh(self):
+        """Rescan when any folder's date says a game was added, removed or
+        renamed since the last scan. The Neo Geo folder is small, so a change
+        anywhere simply rescans all of it."""
+        with self.lock:
+            if time.time() - self.checked < 2:
+                return
+            self.checked = time.time()
+        for d, was in list(self.dirs.items()):
+            try:
+                now = os.stat(d).st_mtime
+            except OSError:
+                now = None                  # absent, as None records it
+            if now != was or was == 0:      # 0: a date too recent to trust
+                if self.work.acquire(blocking=False):
+                    try:
+                        self._scan()
+                    finally:
+                        self.work.release()
+                return
+
+    def _scan(self):
+        found, dirs = {}, {}
 
         def offer(setname, root, path, kind):
             rel = os.path.relpath(path, root)
@@ -332,13 +601,21 @@ class NeoIndex:
                 found[setname] = (root, rel, kind, key)
 
         for root in NEO_ROOTS:
+            dirs[root] = None
             if not os.path.isdir(root):
                 continue
-            for d, dirs, files in os.walk(root):
+            for d, subdirs, files in os.walk(root):
                 if d != root and DARKSOFT_PARTS & {f.lower() for f in files}:
                     offer(os.path.basename(d).lower(), root, d, "dir")
-                    dirs[:] = []
+                    subdirs[:] = []
                     continue
+                try:
+                    mtime = os.stat(d).st_mtime
+                except OSError:
+                    continue
+                # a date this close to now may not show a file added this
+                # same second, so it is not trusted (see Index._list)
+                dirs[d] = mtime if abs(time.time() - mtime) > 2 else 0
                 for f in files:
                     stem, ext = os.path.splitext(f)
                     ext = ext.lower()
@@ -348,6 +625,8 @@ class NeoIndex:
                     offer(m.group(1) if m else stem.lower(), root, os.path.join(d, f), ext)
         with self.lock:
             self.best = {s: v[:3] for s, v in found.items()}
+            self.dirs = dirs
+            self.checked = time.time()
 
     def resolve(self, setnames):
         with self.lock:
@@ -898,6 +1177,13 @@ def restart():
 UPDATER = Updater()
 
 
+def catch_up():
+    """Before answering what is installed: pick up MRAs and Neo Geo games
+    added, removed or renamed since the last look. Cheap when nothing changed."""
+    INDEX.refresh()
+    NEO.refresh()
+
+
 def resolve_game(game):
     """Where a deck game lives on this MiSTer, or None if it isn't installed."""
     sets = game.get("setnames", [game["id"]])
@@ -923,15 +1209,27 @@ def listing(dirs, ext):
     return found
 
 
-def core_present(rbf, cores):
-    # The MiSTer takes the newest <rbf>_<date>.rbf, with or without an
-    # "Arcade-" prefix: cores in the main distribution drop it, cores from a
-    # developer's own repo usually keep it. Match either way.
+def core_names(files):
+    """The core names a cores/ folder answers to. The MiSTer takes the newest
+    <rbf>_<date>.rbf, with or without an "Arcade-" prefix: cores in the main
+    distribution drop it, cores from a developer's own repo usually keep it.
+    So "arcade-namcos2_std_20260927" answers to namcos2, namcos2_std and
+    namcos2_std_20260927. One set per folder, rather than scanning every core
+    file for every game: 0.9 s a page on a MiSTer with a full cores folder."""
+    names = set()
+    for c in files:
+        if c.startswith("arcade-"):
+            c = c[7:]
+        parts = c.split("_")
+        names.update("_".join(parts[:i]) for i in range(1, len(parts) + 1))
+    return names
+
+
+def core_present(rbf, names):
     want = rbf.lower()
     if want.startswith("arcade-"):
         want = want[7:]
-    return any(c == want or c.startswith(want + "_") or
-               c == "arcade-" + want or c.startswith("arcade-" + want + "_") for c in cores)
+    return want in names
 
 
 def card_rbfs(game):
@@ -999,11 +1297,11 @@ def checklist():
         if path:
             home = arcade_root(path)
             if home not in cores:
-                cores[home] = listing([os.path.join(home, "cores")], ".rbf")
+                cores[home] = core_names(listing([os.path.join(home, "cores")], ".rbf"))
             entry["core"] = any(core_present(r, cores[home]) for r in card_rbfs(g))
         else:
             if ARCADE not in cores:
-                cores[ARCADE] = listing([os.path.join(ARCADE, "cores")], ".rbf")
+                cores[ARCADE] = core_names(listing([os.path.join(ARCADE, "cores")], ".rbf"))
             entry["core"] = any(core_present(r, cores[ARCADE]) for r in card_rbfs(g))
         entry["missing"] = [" or ".join(grp) for grp in needed_zips(g)
                             if not any(z.lower() in zips for z in grp)]
@@ -1027,6 +1325,7 @@ def send_command(cmd):
 
 
 def launch(game, setname=None):
+    catch_up()
     if game.get("platform") == "neogeo":
         hit = NEO.resolve(game.get("setnames", [game["id"]]))
         if not hit:
@@ -1112,8 +1411,10 @@ class Handler(SimpleHTTPRequestHandler):
                 "now_playing_set": now_playing_set(),
                 "update": UPDATER.snapshot()})
         if self.path == "/api/available":
+            catch_up()
             return self.send_json({g["id"]: resolve_game(g) for g in load_deck()})
         if self.path == "/api/checklist":
+            catch_up()
             return self.send_json(checklist())
         if self.path == "/api/stats":
             return self.send_json(PLAYED.snapshot())
@@ -1126,6 +1427,7 @@ class Handler(SimpleHTTPRequestHandler):
             game = next((g for g in load_deck() if g["id"] == gid), None)
             if not game:
                 return self.send_json({"error": "unknown game"}, 404)
+            catch_up()
             return self.send_json({"id": gid, "versions": versions_of(game), "chosen": VERSIONS.get(gid)})
         if self.path.startswith("/art/"):
             return self.send_art(self.path[5:].split("?")[0])
@@ -1347,20 +1649,25 @@ def bind(port):
             time.sleep(1)
 
 
-def rescan_if_folders_changed():
-    """Rescan when the cached index covers different folders, e.g. a USB drive
-    was plugged in, or the cache predates scanning outside _Arcade. USB drives
-    can mount after the service starts at boot, so wait before comparing."""
+def rescan_at_start():
+    """Walk every folder once per start, re-reading only new or changed MRAs:
+    about 9 s for 30,000 MRAs on a MiSTer. Folder dates catch changes made
+    while the service runs; this catches the rest, such as an SD card edited
+    on a PC. USB drives can mount after the service starts at boot, so wait."""
     time.sleep(60)
-    if INDEX.roots != mra_roots():
-        INDEX.scan()
+    INDEX.scan()
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--port", type=int, default=8190)
     ap.add_argument("--name", default="shmupdeck", help="answers at http://<name>.local")
+    ap.add_argument("--scan", action="store_true", help="index the MRAs and exit (the service runs this)")
+    ap.add_argument("--full", action="store_true", help="with --scan, read every MRA again")
     args = ap.parse_args()
+    if args.scan:
+        INDEX.scan_here(args.full)
+        return
     # Stay out of the way of the MiSTer's own software: the cores run in the
     # FPGA, but loading games, the menu and CD-based cores use the same ARM CPU.
     try:
@@ -1370,7 +1677,7 @@ def main():
     if not INDEX.best:
         threading.Thread(target=INDEX.scan, daemon=True).start()
     else:
-        threading.Thread(target=rescan_if_folders_changed, daemon=True).start()
+        threading.Thread(target=rescan_at_start, daemon=True).start()
     # the Neo Geo folder is small, so it is simply rescanned on every start
     threading.Thread(target=NEO.scan, daemon=True).start()
     threading.Thread(target=ART.fetch_missing, daemon=True).start()

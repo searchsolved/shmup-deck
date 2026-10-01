@@ -127,13 +127,21 @@ Baseline measured on 1.4.3 on a DE10-Nano (492 MB RAM on the ARM side), with
 
 A full rescan takes 45 to 90 seconds at nice 10, so the MiSTer's own work comes
 first. It runs on first start, when a drive or folder is added, or on request.
+Every later start walks the folders and re-reads only new or changed MRAs,
+about 15 seconds. While it runs, the service checks folder dates whenever the
+deck is opened (0.07 seconds for 1,529 folders), so MRAs added, removed or
+renamed by Update All, by hand or over the network show up without a rescan.
+Scans run in a short-lived child process, so the memory a scan uses is handed
+back when it finishes rather than kept by the service.
 Otherwise the service polls a file every few seconds. Every release is
 benchmarked against this baseline (see Development).
 
 ### Flyer art
 
 Flyers are not in this repository. Each is downloaded once on first start,
-about 20 MB in total, and stored on your SD card. They come from
+about 20 MB in total, and stored on your SD card. A flyer is downloaded again
+only when its art changes, and new games' flyers come first. Until a flyer is
+on the card, the deck shows it straight from the mirror. They come from
 [shmup-deck-art](https://github.com/searchsolved/shmup-deck-art), a mirror of
 the original scans cut to size, pinned in `art.json`. If the mirror is down,
 the original is fetched from its source: the
