@@ -6,7 +6,6 @@ These games use the best art found so far, shown whole on the card. A portrait s
 | --- | --- |
 | 1943 Kai: Midway Kaisen | Flyer squarer than a card, shown whole |
 | 4-D Warriors | Flyer squarer than a card, shown whole |
-| Aero Fighters | Flyer squarer than a card, shown whole |
 | Blast Off | Landscape flyer |
 | Boogie Wings | Landscape flyer |
 | Brave Blade | Landscape flyer |
@@ -16,7 +15,6 @@ These games use the best art found so far, shown whole on the card. A portrait s
 | Guardian Storm | US flyer, squarer than a card |
 | Gulf War II | Flyer squarer than a card, shown whole |
 | Gyrodine | Flyer taller than a card, shown whole |
-| Hyper Duel | Flyer squarer than a card, shown whole |
 | Koutetsu Yousai Strahl | Landscape flyer |
 | Master of Weapon | Flyer taller than a card, shown whole |
 | Omega Fighter | Flyer squarer than a card, shown whole |

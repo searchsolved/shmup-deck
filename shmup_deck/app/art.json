@@ -1,6 +1,6 @@
 {
  "_mirrors": [
-  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/6d5061f5b971d9048ec198b6e05c704959137999/"
+  "https://raw.githubusercontent.com/searchsolved/shmup-deck-art/8deaff11e19c80bcbf66f582f26bba0517f48a64/"
  ],
  "forgottn": {
   "url": "https://images.launchbox-app.com/da018d5c-cdc4-4d1e-939b-364e5bfe6889.jpg",
@@ -2841,19 +2841,17 @@
   "upgrade": "Flyer squarer than a card, shown whole"
  },
  "aerofgt": {
-  "url": "https://images.launchbox-app.com/d5a1cb05-6427-4dbf-9788-99797fcd4170.jpg",
+  "url": "https://adb.arcadeitalia.net/media/mame.current/flyers/aerofgt.png",
   "size": [
-   850,
-   1099
+   1000,
+   1424
   ],
   "crop": [
-   43,
-   41,
-   766,
-   998
-  ],
-  "fit": "contain",
-  "upgrade": "Flyer squarer than a card, shown whole"
+   0,
+   0,
+   1000,
+   1424
+  ]
  },
  "aerofgts": {
   "url": "https://images.launchbox-app.com/ad7f5c0d-6a31-44d2-aa66-1a37388ed4c5.jpg",
@@ -3135,19 +3133,17 @@
   ]
  },
  "hyprduel": {
-  "url": "https://images.launchbox-app.com/cc9c1e21-bc76-4d7d-aafa-cb61d8d3b870.jpg",
+  "url": "https://raw.githubusercontent.com/libretro-thumbnails/MAME/master/Named_Boxarts/Hyper%20Duel%20(Japan%20set%201).png",
   "size": [
-   1062,
-   1386
+   512,
+   683
   ],
   "crop": [
    0,
    0,
-   1062,
-   1386
-  ],
-  "fit": "contain",
-  "upgrade": "Flyer squarer than a card, shown whole"
+   512,
+   683
+  ]
  },
  "lastduel": {
   "url": "https://images.launchbox-app.com/03f96031-72ab-459b-8181-8ef453e4bed5.jpg",

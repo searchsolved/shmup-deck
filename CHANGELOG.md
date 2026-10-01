@@ -2,6 +2,10 @@
 
 Every release of Shmup Deck, newest first. The GitHub release for each version carries the same notes at greater length. `tools/release.sh` reads the notes for a release from this file, so a version cannot be published without an entry here.
 
+## 1.12.4 (2026-10-01)
+
+- Card-shaped flyers for Aero Fighters and Hyper Duel: the Video System flyer, and the Japanese cover in place of the text page. Only these two download.
+
 ## 1.12.3 (2026-10-01)
 
 - New MRAs are found without a rescan. Whether they come from Update All, are copied over the network or are installed by hand, the game shows as ready the next time the deck or the ROMs page opens. Before, the deck only knew the MRAs that were on the card when it was installed (issue #10).
