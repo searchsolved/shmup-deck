@@ -67,6 +67,6 @@ unzip -l dist/shmup_deck.zip | tail -1
 
 echo "== publish v$ver"
 git push -q origin main
-gh release create "v$ver" -R searchsolved/shmup-deck --title "Shmup Deck $ver" --target main \
+gh release create "v$ver" -R shmupfan/shmup-deck --title "Shmup Deck $ver" --target main \
   dist/shmup_deck.zip dist/shmup_deck.sh --notes-file "$notes"
 rm -f "$notes"

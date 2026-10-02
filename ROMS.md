@@ -32,7 +32,7 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Capcom | 1 | [OngoGablogian/MiSTer_Ongo](https://github.com/OngoGablogian/MiSTer_Ongo) |  |
 | Darius | 1 | [rmonic79/Arcade-Darius_MiSTer](https://github.com/rmonic79/Arcade-Darius_MiSTer) | Core and MRAs in the repository's releases folder |
 | Darius II | 1 | [rmonic79/Arcade-Darius2NinjaWarriors_MiSTer](https://github.com/rmonic79/Arcade-Darius2NinjaWarriors_MiSTer) | Core and MRAs in the repository's releases folder; The Ninja Warriors shares it |
-| Dooyong | 7 | [searchsolved/Arcade-Dooyong_MiSTer](https://github.com/searchsolved/Arcade-Dooyong_MiSTer) | Core and MRAs in the repository's releases folder; one core runs all the Dooyong games |
+| Dooyong | 7 | [shmupfan/Arcade-Dooyong_MiSTer](https://github.com/shmupfan/Arcade-Dooyong_MiSTer) | Core and MRAs in the repository's releases folder; one core runs all the Dooyong games |
 | EarthJoker | 1 | [www.patreon.com/bazset](https://www.patreon.com/bazset/posts/u-n-defense-1993-169900198) | Core and MRA from the author's Patreon post; no repository |
 | Galmedes | 1 | [www.patreon.com/bazset](https://www.patreon.com/bazset/posts/galmedes-visco-169900687) | Core and MRA from the author's Patreon post; no repository |
 | Gigandes | 1 | [bazset/Gigandes-FPGA](https://github.com/bazset/Gigandes-FPGA) | Source only; the core build and MRA are on the author's Patreon |
@@ -187,13 +187,13 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
-| Blue Hawk | 1993 | [GitHub](https://github.com/searchsolved/Arcade-Dooyong_MiSTer) | `bluehawk.zip` | same |  |
-| Flying Tiger | 1992 | [GitHub](https://github.com/searchsolved/Arcade-Dooyong_MiSTer) | `flytiger.zip` | same |  |
-| Gulf Storm | 1991 | [GitHub](https://github.com/searchsolved/Arcade-Dooyong_MiSTer) | `gulfstrm.zip` | same |  |
-| Pollux | 1991 | [GitHub](https://github.com/searchsolved/Arcade-Dooyong_MiSTer) | `pollux.zip` | same |  |
-| R-Shark | 1995 | [GitHub](https://github.com/searchsolved/Arcade-Dooyong_MiSTer) | `rshark.zip` | same |  |
-| Super-X | 1994 | [GitHub](https://github.com/searchsolved/Arcade-Dooyong_MiSTer) | `superx.zip` | same |  |
-| The Last Day | 1990 | [GitHub](https://github.com/searchsolved/Arcade-Dooyong_MiSTer) | `lastday.zip` | same |  |
+| Blue Hawk | 1993 | [GitHub](https://github.com/shmupfan/Arcade-Dooyong_MiSTer) | `bluehawk.zip` | same |  |
+| Flying Tiger | 1992 | [GitHub](https://github.com/shmupfan/Arcade-Dooyong_MiSTer) | `flytiger.zip` | same |  |
+| Gulf Storm | 1991 | [GitHub](https://github.com/shmupfan/Arcade-Dooyong_MiSTer) | `gulfstrm.zip` | same |  |
+| Pollux | 1991 | [GitHub](https://github.com/shmupfan/Arcade-Dooyong_MiSTer) | `pollux.zip` | same |  |
+| R-Shark | 1995 | [GitHub](https://github.com/shmupfan/Arcade-Dooyong_MiSTer) | `rshark.zip` | same |  |
+| Super-X | 1994 | [GitHub](https://github.com/shmupfan/Arcade-Dooyong_MiSTer) | `superx.zip` | same |  |
+| The Last Day | 1990 | [GitHub](https://github.com/shmupfan/Arcade-Dooyong_MiSTer) | `lastday.zip` | same |  |
 
 ### EarthJoker
 

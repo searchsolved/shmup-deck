@@ -183,7 +183,7 @@ const artId = g => (g && g.art) || (g && g.id);
 const isReady = id => READY ? READY.has(id) : true;
 const post = body => fetch("api/decks", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }).then(r => r.json());
 const COMMUNITY_URL = new URLSearchParams(location.search).get("community")
-  || "https://raw.githubusercontent.com/searchsolved/shmup-deck/main/decks/index.json";
+  || "https://raw.githubusercontent.com/shmupfan/shmup-deck/main/decks/index.json";
 
 function strip(d) {
   const first = d.cover && d.ids.includes(d.cover) ? d.cover : d.ids[0];
@@ -282,7 +282,7 @@ const previewLink = d => `./?games=${d.ids.join(",")}&name=${encodeURIComponent(
 function publishLink(d) {
   const slug = d.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40) || "deck";
   const file = JSON.stringify({ name: d.name, note: d.note || "", ids: d.ids, cover: d.cover || null, author: "" }, null, 1) + "\n";
-  return `https://github.com/searchsolved/shmup-deck/new/main/decks?filename=${encodeURIComponent(slug + ".json")}&value=${encodeURIComponent(file)}`;
+  return `https://github.com/shmupfan/shmup-deck/new/main/decks?filename=${encodeURIComponent(slug + ".json")}&value=${encodeURIComponent(file)}`;
 }
 function renderMine() {
   $("#mine").replaceChildren(...DECKS.map(d => tile(d, true)));
@@ -297,8 +297,8 @@ async function loadCommunity() {
     const list = (await r.json()).decks || [];
     $("#community").replaceChildren(...list.map(d => tile(d, false)));
     hint.innerHTML = list.length
-      ? `Decks shared by the community. Add yours with a pull request: <a href="https://github.com/searchsolved/shmup-deck/tree/main/decks">decks/ on GitHub</a>.`
-      : `None shared yet. Add yours with a pull request: <a href="https://github.com/searchsolved/shmup-deck/tree/main/decks">decks/ on GitHub</a>.`;
+      ? `Decks shared by the community. Add yours with a pull request: <a href="https://github.com/shmupfan/shmup-deck/tree/main/decks">decks/ on GitHub</a>.`
+      : `None shared yet. Add yours with a pull request: <a href="https://github.com/shmupfan/shmup-deck/tree/main/decks">decks/ on GitHub</a>.`;
   } catch {
     hint.textContent = "Couldn't reach GitHub for the shared decks. They'll be here when the MiSTer's network can see it.";
   }

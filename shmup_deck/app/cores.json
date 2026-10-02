@@ -101,7 +101,7 @@
   },
   "dooyong": {
    "source": "github",
-   "url": "https://github.com/searchsolved/Arcade-Dooyong_MiSTer",
+   "url": "https://github.com/shmupfan/Arcade-Dooyong_MiSTer",
    "note": "Core and MRAs in the repository's releases folder; one core runs all the Dooyong games"
   },
   "EarthJoker": {

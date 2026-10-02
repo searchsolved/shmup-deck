@@ -8,7 +8,7 @@
 #   shmup_deck.sh             install / update / restart
 #   shmup_deck.sh uninstall   stop and remove the boot entry (files are kept)
 
-REPO="searchsolved/shmup-deck"
+REPO="shmupfan/shmup-deck"
 PORT=8190
 HOME_DIR=/media/fat/Scripts/.config/shmup_deck
 PID_FILE=/tmp/shmup_deck.pid

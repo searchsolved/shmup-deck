@@ -24,7 +24,7 @@ from PIL import Image
 
 MAX_W, MAX_H = 640, 900
 QUALITY = 80
-UA = "ShmupDeck-mirror/1.0 (+https://github.com/searchsolved/shmup-deck)"
+UA = "ShmupDeck-mirror/1.0 (+https://github.com/shmupfan/shmup-deck)"
 ROOT = Path(__file__).resolve().parent.parent
 
 

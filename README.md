@@ -22,7 +22,7 @@ Release notes are in [CHANGELOG.md](CHANGELOG.md).
 
 ## Install
 
-1. Download [`shmup_deck.sh`](https://github.com/searchsolved/shmup-deck/releases/latest/download/shmup_deck.sh)
+1. Download [`shmup_deck.sh`](https://github.com/shmupfan/shmup-deck/releases/latest/download/shmup_deck.sh)
    to the `Scripts` folder on your SD card.
 2. On the MiSTer, run `shmup_deck` from the Scripts menu.
 3. On your phone, open **http://shmupdeck.local** and add it to your home screen.
@@ -142,7 +142,7 @@ Flyers are not in this repository. Each is downloaded once on first start,
 about 20 MB in total, and stored on your SD card. A flyer is downloaded again
 only when its art changes, and new games' flyers come first. Until a flyer is
 on the card, the deck shows it straight from the mirror. They come from
-[shmup-deck-art](https://github.com/searchsolved/shmup-deck-art), a mirror of
+[shmup-deck-art](https://github.com/shmupfan/shmup-deck-art), a mirror of
 the original scans cut to size, pinned in `art.json`. If the mirror is down,
 the original is fetched from its source: the
 [libretro thumbnails](https://github.com/libretro-thumbnails/MAME), LaunchBox,

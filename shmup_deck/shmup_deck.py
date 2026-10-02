@@ -55,9 +55,9 @@ DECKS_FILE = os.environ.get("SHMUP_DECKS", os.path.join(HERE, "decks.json"))
 SETTINGS_FILE = os.environ.get("SHMUP_SETTINGS", os.path.join(HERE, "settings.json"))
 
 VERSION = "1.12.4"
-USER_AGENT = "ShmupDeck/%s (+https://github.com/searchsolved/shmup-deck)" % VERSION
+USER_AGENT = "ShmupDeck/%s (+https://github.com/shmupfan/shmup-deck)" % VERSION
 PROGRAM = os.path.abspath(__file__)
-REPO = os.environ.get("SHMUP_REPO", "searchsolved/shmup-deck")
+REPO = os.environ.get("SHMUP_REPO", "shmupfan/shmup-deck")
 GITHUB_API = os.environ.get("SHMUP_API", "https://api.github.com")
 UPDATE_EVERY = int(os.environ.get("SHMUP_UPDATE_EVERY", 6 * 3600))
 # the script in the Scripts menu, which is part of every release too
