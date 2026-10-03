@@ -312,6 +312,11 @@
    "source": "ongo",
    "url": "https://github.com/OngoGablogian/MiSTer_Ongo"
   },
+  "Namco_NB1": {
+   "source": "github",
+   "url": "https://github.com/kyledlester/Namco_NB1_MiSTer",
+   "note": "Core and MRAs in the repository's Releases and MRA folders; a beta. Nebulas Ray also needs namcoc75.zip"
+  },
   "NamcoS2_STD": {
    "source": "github",
    "url": "https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer",
@@ -343,6 +348,11 @@
    "source": "github",
    "url": "https://github.com/kuzearcade/Arcade-NMKBP964_MiSTer",
    "note": "Core and MRAs in the repository's releases folder"
+  },
+  "Nostradamus": {
+   "source": "github",
+   "url": "https://github.com/kyledlester/MiSTer_Nostradamus",
+   "note": "Core and MRAs in the repository's Releases and MRA folders; a beta"
   },
   "prehisle": {
    "source": "coinop"

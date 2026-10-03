@@ -2,6 +2,11 @@
 
 Every release of Shmup Deck, newest first. The GitHub release for each version carries the same notes at greater length. `tools/release.sh` reads the notes for a release from this file, so a version cannot be published without an entry here.
 
+## 1.12.5 (2026-10-03)
+
+- Two games on kyledlester's new cores: Nostradamus (Face, 1993) with its Japan and Korea sets, and Nebulas Ray (Namco, 1994) with its Japan set. Both cores are betas outside Update All, so these cards appear once the core is installed. Nebulas Ray also needs namcoc75.zip (issue #11).
+- Nebulas Ray joins the Namco deck.
+
 ## 1.12.4 (2026-10-01)
 
 - Card-shaped flyers for Aero Fighters and Hyper Duel: the Video System flyer, and the Japanese cover in place of the text page. Only these two download.

@@ -8,7 +8,7 @@ itself: nothing to host, no PC, no other service to install.
 
 ![Shmup Deck trailer: DoDonPachi sprites, the flyer wall, and tapping a flyer to launch the game](docs/deck.gif)
 
-- 294 shooters on 106 arcade boards: Toaplan, Cave, CV1000, CPS1/CPS2, PGM,
+- 296 shooters on 108 arcade boards: Toaplan, Cave, CV1000, CPS1/CPS2, PGM,
   Psikyo, Raizing, Konami, Irem, NMK, Taito, Seta, Sega ST-V, Neo Geo and more
 - Only games installed on your SD card show, unless you ask to see the rest
 - Filter by screen (tate or yoko) and region; sort by name, year or plays;

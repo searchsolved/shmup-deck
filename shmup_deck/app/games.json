@@ -6304,5 +6304,49 @@
    "merged": "twinspri",
    "shared": []
   }
+ },
+ {
+  "id": "nost",
+  "title": "Nostradamus",
+  "dev": "Face",
+  "year": 1993,
+  "core": "Face",
+  "system": "Face LINDA",
+  "orientation": "tate",
+  "setnames": [
+   "nost",
+   "nostj",
+   "nostk"
+  ],
+  "rbf": "Nostradamus",
+  "roms": {
+   "zip": "nost",
+   "merged": "nost",
+   "shared": [],
+   "note": "The screen stays black for about 3 seconds at power-on while the board runs its start-up check"
+  },
+  "rotation": "ccw"
+ },
+ {
+  "id": "nebulray",
+  "title": "Nebulas Ray",
+  "dev": "Namco",
+  "year": 1994,
+  "core": "Namco NB-1",
+  "system": "Namco NB-1",
+  "orientation": "tate",
+  "setnames": [
+   "nebulray",
+   "nebulrayj"
+  ],
+  "rbf": "Namco_NB1",
+  "roms": {
+   "zip": "nebulray",
+   "merged": "nebulray",
+   "shared": [
+    "namcoc75"
+   ]
+  },
+  "rotation": "cw"
  }
 ]

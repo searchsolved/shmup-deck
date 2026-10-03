@@ -1,6 +1,6 @@
 {
  "_mirrors": [
-  "https://raw.githubusercontent.com/shmupfan/shmup-deck-art/8deaff11e19c80bcbf66f582f26bba0517f48a64/"
+  "https://raw.githubusercontent.com/shmupfan/shmup-deck-art/7c8a52546087462ad355226aef16f1616552c01a/"
  ],
  "forgottn": {
   "url": "https://images.launchbox-app.com/da018d5c-cdc4-4d1e-939b-364e5bfe6889.jpg",
@@ -3760,5 +3760,33 @@
   ],
   "fit": "contain",
   "upgrade": "Landscape flyer"
+ },
+ "nost": {
+  "url": "https://images.launchbox-app.com/9a125af6-2438-41a5-9585-1cf50a89f9aa.jpg",
+  "size": [
+   707,
+   1000
+  ],
+  "crop": [
+   0,
+   0,
+   707,
+   1000
+  ]
+ },
+ "nebulray": {
+  "url": "https://images.launchbox-app.com/ad541133-ccad-4c1d-ab09-992992c9ed8d.jpg",
+  "size": [
+   480,
+   751
+  ],
+  "crop": [
+   0,
+   0,
+   480,
+   751
+  ],
+  "fit": "contain",
+  "upgrade": "Flyer taller than a card, shown whole"
  }
 }

@@ -17,6 +17,7 @@ These games use the best art found so far, shown whole on the card. A portrait s
 | Gyrodine | Flyer taller than a card, shown whole |
 | Koutetsu Yousai Strahl | Landscape flyer |
 | Master of Weapon | Flyer taller than a card, shown whole |
+| Nebulas Ray | Flyer taller than a card, shown whole |
 | Omega Fighter | Flyer squarer than a card, shown whole |
 | Ordyne | Landscape flyer |
 | Rezon | Landscape flyer |

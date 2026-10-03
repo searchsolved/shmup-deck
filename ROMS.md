@@ -1,6 +1,6 @@
 # Supported games and ROMs
 
-Shmup Deck supports 294 games: 280 arcade games that run from MRA files and 14 Neo Geo games. This page lists the core and ROM files each one needs.
+Shmup Deck supports 296 games: 282 arcade games that run from MRA files and 14 Neo Geo games. This page lists the core and ROM files each one needs.
 
 To see what your own MiSTer is missing, open **http://shmupdeck.local/check.html** once Shmup Deck is installed. It checks every game for its MRA, core and ROM zips and can copy the missing zip names.
 
@@ -34,6 +34,7 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Darius II | 1 | [rmonic79/Arcade-Darius2NinjaWarriors_MiSTer](https://github.com/rmonic79/Arcade-Darius2NinjaWarriors_MiSTer) | Core and MRAs in the repository's releases folder; The Ninja Warriors shares it |
 | Dooyong | 7 | [shmupfan/Arcade-Dooyong_MiSTer](https://github.com/shmupfan/Arcade-Dooyong_MiSTer) | Core and MRAs in the repository's releases folder; one core runs all the Dooyong games |
 | EarthJoker | 1 | [www.patreon.com/bazset](https://www.patreon.com/bazset/posts/u-n-defense-1993-169900198) | Core and MRA from the author's Patreon post; no repository |
+| Face | 1 | [kyledlester/MiSTer_Nostradamus](https://github.com/kyledlester/MiSTer_Nostradamus) | Core and MRAs in the repository's Releases and MRA folders; a beta |
 | Galmedes | 1 | [www.patreon.com/bazset](https://www.patreon.com/bazset/posts/galmedes-visco-169900687) | Core and MRA from the author's Patreon post; no repository |
 | Gigandes | 1 | [bazset/Gigandes-FPGA](https://github.com/bazset/Gigandes-FPGA) | Source only; the core build and MRA are on the author's Patreon |
 | Kaneko | 1 | [kuzearcade/Arcade-SandScrp_MiSTer](https://github.com/kuzearcade/Arcade-SandScrp_MiSTer) | Core and MRAs in the repository's releases folder |
@@ -47,6 +48,7 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | NMK16 | 19 | [kuzearcade/Arcade-NMK16_MiSTer](https://github.com/kuzearcade/Arcade-NMK16_MiSTer) |  |
 | Namco | 3 | [kuzearcade/Arcade-NamcoSystem2_MiSTer](https://github.com/kuzearcade/Arcade-NamcoSystem2_MiSTer) | Core and MRAs in the repository's releases folder; in development. Every game also needs namcoc65.zip |
 | Namco NA-1 | 1 | [OngoGablogian/MiSTer_Ongo](https://github.com/OngoGablogian/MiSTer_Ongo) |  |
+| Namco NB-1 | 1 | [kyledlester/Namco_NB1_MiSTer](https://github.com/kyledlester/Namco_NB1_MiSTer) | Core and MRAs in the repository's Releases and MRA folders; a beta. Nebulas Ray also needs namcoc75.zip |
 | Namco System 11 | 1 | [OngoGablogian/MiSTer_Ongo](https://github.com/OngoGablogian/MiSTer_Ongo) |  |
 | Raiden | 1 | [rmonic79/Arcade-Raiden_MiSTer](https://github.com/rmonic79/Arcade-Raiden_MiSTer) | Core and MRAs in the repository's releases folder |
 | Raiden2 | 2 | [rmonic79/Arcade-Raiden2_MiSTer](https://github.com/rmonic79/Arcade-Raiden2_MiSTer) | Core and MRAs in the repository's releases folder; Raiden II and Raiden DX share it |
@@ -200,6 +202,14 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
 | U.N. Defense Force: Earth Joker | 1993 | [GitHub](https://www.patreon.com/bazset/posts/u-n-defense-1993-169900198) | `earthjkr.zip` | same |  |
+
+### Face
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Nostradamus * | 1993 | [GitHub](https://github.com/kyledlester/MiSTer_Nostradamus) | `nost.zip` | same |  |
+
+\* Nostradamus: The screen stays black for about 3 seconds at power-on while the board runs its start-up check.
 
 ### Galivan
 
@@ -359,6 +369,12 @@ These cores are not in update_all. Install the core and its MRAs from each repos
 | Game | Year | Core source | Zip | Merged set zip | Also needs |
 | --- | --- | --- | --- | --- | --- |
 | Fighter & Attacker | 1992 | [GitHub](https://github.com/OngoGablogian/MiSTer_Ongo) | `fa.zip` | `fghtatck.zip` | `namcoc69.zip` |
+
+### Namco NB-1
+
+| Game | Year | Core source | Zip | Merged set zip | Also needs |
+| --- | --- | --- | --- | --- | --- |
+| Nebulas Ray | 1994 | [GitHub](https://github.com/kyledlester/Namco_NB1_MiSTer) | `nebulray.zip` | same | `namcoc75.zip` |
 
 ### Namco System 11
 
@@ -931,9 +947,12 @@ namco51.zip
 namco54.zip
 namcoc65.zip
 namcoc69.zip
+namcoc75.zip
 namcoc76.zip
+nebulray.zip
 neobattl.zip
 nmk004.zip
+nost.zip
 omegaf.zip
 ordyne.zip
 outzone.zip
@@ -1227,10 +1246,13 @@ namco51.zip
 namco54.zip
 namcoc65.zip
 namcoc69.zip
+namcoc75.zip
 namcoc76.zip
+nebulray.zip
 nemesis.zip
 neobattl.zip
 nmk004.zip
+nost.zip
 omegaf.zip
 ordyne.zip
 outzone.zip
